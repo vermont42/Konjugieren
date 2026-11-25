@@ -132,15 +132,48 @@ struct VerbDrawTests {
     }
   }
 
+  /// The My Verbs days among the first `dayCount`, each drawn from `myVerbs(turn)` with what the
+  /// earlier turns showed, as the snapshot writer threads it from bundle to bundle.
+  private func myVerbsTurns(dayCount: Int, myVerbs: (Int) -> [Verb]) -> [Verb] {
+    var lastShown: [String: Date] = [:]
+    var drawn: [Verb] = []
+    for day in days(dayCount) where VerbDraw.isMyVerbsDay(day) {
+      guard let verb = VerbDraw.verbOfTheDay(on: day, myVerbs: myVerbs(drawn.count), frequentVerbs: frequent, lastShown: lastShown) else {
+        continue
+      }
+      lastShown[verb.infinitiv] = day
+      drawn.append(verb)
+    }
+    return drawn
+  }
+
   @Test func myVerbsDaysTakeMyVerbsInTurn() {
     let myVerbs = verbs(["abbehalten", "abbeißen", "abberufen"])
-    let drawn = days(27).compactMap { VerbDraw.verbOfTheDay(on: $0, myVerbs: myVerbs, frequentVerbs: frequent) }
-    let fromMyVerbs = drawn.filter { myVerbs.contains($0) }
-    #expect(fromMyVerbs.count == 9)
-    for (index, verb) in fromMyVerbs.enumerated() {
-      #expect(verb == fromMyVerbs[index % 3], "turn \(index)")
+    let drawn = myVerbsTurns(dayCount: 27) { _ in myVerbs }
+    #expect(drawn.count == 9)
+    for (index, verb) in drawn.enumerated() {
+      #expect(verb == drawn[index % 3], "turn \(index)")
     }
-    #expect(Set(fromMyVerbs.prefix(3)).count == 3)
+    #expect(Set(drawn.prefix(3)).count == 3)
+  }
+
+  /// My Verbs is newest first, and a verb opened between turns joins it at the front. The old
+  /// draw indexed the list by turn, so the growth shifted the index onto the verb just shown.
+  @Test func aVerbOpenedBetweenTurnsRepeatsNoneWhileAnotherWaits() {
+    let opened = verbs(["abbehalten", "abbeißen", "abberufen", "abbestellen", "abbezahlen", "abbiegen", "abbilden", "abbinden"])
+    #expect(opened.count == 8)
+    let drawn = myVerbsTurns(dayCount: 60) { turn in
+      Array(opened.prefix(min(3 + turn, opened.count)).reversed())
+    }
+    var shownSinceRepeat: Set<String> = []
+    for (turn, verb) in drawn.enumerated() {
+      let list = Set(opened.prefix(min(3 + turn, opened.count)).map(\.infinitiv))
+      if shownSinceRepeat.contains(verb.infinitiv) {
+        #expect(shownSinceRepeat == list, "turn \(turn): \(verb.infinitiv) again while \(list.subtracting(shownSinceRepeat)) waited")
+        shownSinceRepeat = []
+      }
+      shownSinceRepeat.insert(verb.infinitiv)
+    }
   }
 
   @Test func strongAndUnprefixedVerbsAreFavored() {

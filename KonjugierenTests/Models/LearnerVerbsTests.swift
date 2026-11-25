@@ -34,12 +34,57 @@ struct LearnerVerbsTests {
     #expect(!record.hasOpened("haben"))
   }
 
-  @Test func clearRecentsForgetsWhatWasOpened() {
+  @Test func clearRecentsKeepsWhatWasEverOpened() {
     var record = LearnerVerbs()
     record.recordOpen("gehen", at: date(1))
     record.clearRecents()
 
+    #expect(record.recent.isEmpty)
+    #expect(record.hasOpened("gehen"))
+  }
+
+  @Test func removingAVerbKeepsWhatWasEverOpened() {
+    var record = LearnerVerbs()
+    record.recordOpen("gehen", at: date(1))
+    record.recordOpen("sein", at: date(2))
+    record.setStarred(true, infinitiv: "sein", at: date(3))
+
+    record.remove("gehen")
+    record.remove("sein")
+
+    #expect(record.myVerbs.isEmpty)
+    #expect(record.hasOpened("gehen"))
+    #expect(record.hasOpened("sein"))
+  }
+
+  @Test func aVerbOnlyEverOpenedIsInNeitherList() {
+    var record = LearnerVerbs()
+    record.recordOpen("gehen", at: date(1))
+    record.setStarred(true, infinitiv: "gehen", at: date(2))
+    record.remove("gehen")
+
+    #expect(record.starred.isEmpty)
+    #expect(record.recent.isEmpty)
+    #expect(record.recentUnstarred.isEmpty)
+    #expect(record.entries["gehen"]?.firstOpened == date(1))
+  }
+
+  @Test func forgettingFirstOpensKeepsStarsAndRecent() {
+    var record = LearnerVerbs()
+    record.recordOpen("gehen", at: date(1))
+    record.recordOpen("sein", at: date(2))
+    record.setStarred(true, infinitiv: "haben", at: date(3))
+    record.recordOpen("werden", at: date(4))
+    record.remove("werden")
+
+    record.forgetFirstOpens()
+
     #expect(!record.hasOpened("gehen"))
+    #expect(!record.hasOpened("werden"))
+    #expect(record.recent == ["sein", "gehen"])
+    #expect(record.starred == ["haben"])
+    #expect(record.entries["werden"] == nil)
+    #expect(record.entries["gehen"]?.openCount == 0)
   }
 
   @Test func recentIsNewestFirst() {
@@ -49,7 +94,20 @@ struct LearnerVerbsTests {
     record.recordOpen("haben", at: date(3))
     record.recordOpen("gehen", at: date(4))
 
-    #expect(record.recent() == ["gehen", "haben", "sein"])
+    #expect(record.recent == ["gehen", "haben", "sein"])
+  }
+
+  @Test func recentUnstarredFillsToItsLimitPastStarredOpens() {
+    var record = LearnerVerbs()
+    for index in 0..<(LearnerVerbs.recentLimit + 5) {
+      record.recordOpen("verb\(index)", at: date(Double(index)))
+    }
+    for index in 10..<(LearnerVerbs.recentLimit + 5) {
+      record.setStarred(true, infinitiv: "verb\(index)", at: date(100))
+    }
+
+    #expect(record.recentUnstarred == (0..<10).reversed().map { "verb\($0)" })
+    #expect(record.myVerbs.count == LearnerVerbs.recentLimit + 5)
   }
 
   @Test func recentStopsAtItsLimit() {
@@ -58,7 +116,7 @@ struct LearnerVerbsTests {
       record.recordOpen("verb\(index)", at: date(Double(index)))
     }
 
-    let recent = record.recent()
+    let recent = record.recent
     #expect(recent.count == LearnerVerbs.recentLimit)
     #expect(recent.first == "verb\(LearnerVerbs.recentLimit + 4)")
   }
@@ -68,7 +126,7 @@ struct LearnerVerbsTests {
     record.recordOpen("sein", at: date(1))
     record.recordOpen("gehen", at: date(1))
 
-    #expect(record.recent() == ["gehen", "sein"])
+    #expect(record.recent == ["gehen", "sein"])
   }
 
   @Test func starringAndUnstarring() {
@@ -105,7 +163,7 @@ struct LearnerVerbsTests {
     record.setStarred(true, infinitiv: "gehen", at: date(2))
     record.setStarred(false, infinitiv: "gehen", at: date(3))
 
-    #expect(record.recent() == ["gehen"])
+    #expect(record.recent == ["gehen"])
     #expect(record.entries["gehen"]?.openCount == 1)
   }
 
@@ -127,13 +185,12 @@ struct LearnerVerbsTests {
 
     record.clearRecents()
 
-    #expect(record.recent().isEmpty)
+    #expect(record.recent.isEmpty)
     #expect(record.starred == ["sein"])
-    #expect(record.entries.count == 1)
-    #expect(record.entries["sein"]?.openCount == 0)
+    #expect(record.entries["sein"]?.openCount == 1)
   }
 
-  @Test func removingAStarredVerbThatWasOpenedForgetsItEntirely() {
+  @Test func removingAStarredVerbThatWasOpenedTakesItOutOfMyVerbs() {
     var record = LearnerVerbs()
     record.recordOpen("gehen", at: date(1))
     record.setStarred(true, infinitiv: "gehen", at: date(2))
@@ -142,7 +199,7 @@ struct LearnerVerbsTests {
     record.remove("gehen")
 
     #expect(record.starred.isEmpty)
-    #expect(record.recent() == ["sein"])
+    #expect(record.recent == ["sein"])
     #expect(record.myVerbs == ["sein"])
   }
 
@@ -173,6 +230,19 @@ struct LearnerVerbsTests {
     let record = try #require(LearnerVerbs(json: json))
     #expect(record.entries["gehen"]?.lastOpened == nil)
     #expect(record.entries["gehen"]?.isStarred == false)
+  }
+
+  /// What a build before 2026-11-25 wrote: every field, and the review schedule that Phase 15 of
+  /// the Browse plan kept on an entry before the practice record took it over.
+  @Test func anEntryFromAnEarlierBuildDecodesAndCountsAsOpened() throws {
+    let opened = date(4).timeIntervalSinceReferenceDate
+    let json = #"{"entries":{"singen":{"infinitiv":"singen","firstOpened":\#(opened),"lastOpened":\#(opened),"openCount":2,"starred":\#(opened),"review":{"box":2,"due":\#(opened)}}}}"#
+
+    let record = try #require(LearnerVerbs(json: json))
+    #expect(record.hasOpened("singen"))
+    #expect(record.isStarred("singen"))
+    #expect(record.recent == ["singen"])
+    #expect(record.entries["singen"]?.openCount == 2)
   }
 
   @Test func garbageDoesNotDecode() {
@@ -220,6 +290,25 @@ struct LearnerVerbsTests {
 
     let store = LearnerVerbStore(getterSetter: getterSetter)
     #expect(store.recentVerbs.map(\.infinitiv) == ["gehen"])
+  }
+
+  @Test func theStoreKeepsCollectionProgressThroughASwipeAndClear() throws {
+    let getterSetter = GetterSetterFake()
+    let store = LearnerVerbStore(getterSetter: getterSetter)
+    let modals = VerbCollection.modals.verbs()
+    let können = try #require(Verb.verbs["können"])
+    let müssen = try #require(Verb.verbs["müssen"])
+    store.recordOpen(können, at: date(1))
+    store.recordOpen(müssen, at: date(2))
+
+    store.remove(können)
+    store.clearRecents()
+
+    #expect(store.myVerbs.isEmpty)
+    #expect(LearnerVerbStore(getterSetter: getterSetter).openedCount(of: modals) == 2)
+
+    store.forgetFirstOpens()
+    #expect(LearnerVerbStore(getterSetter: getterSetter).openedCount(of: modals) == 0)
   }
 
   @Test func recentUnstarredLeavesOutStarredVerbs() {

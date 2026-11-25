@@ -12545,3 +12545,49 @@ and is now true without a word changed.
 The phase also put `tapKeepPracticeSet` back in alphabetical order and retired a doc comment that
 still said "once the quiz track sends it", though the quiz signals have carried a source since
 the pedagogy plan's early phases.
+
+## Tidying a list stops costing progress, and the widget stops repeating itself (2026-11-25)
+
+Phase 3 of [`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md) took the learner's record
+and the widget's draw: the review's C2, C4, Recent's short count from C7, G1, G4, and an unused
+parameter.
+
+**C4 was one field doing two jobs.** `lastOpened` put a verb in Recent and also said it had ever
+been opened, which a collection counts as progress. So swiping werden out of My Verbs took the
+top-100 page from 3 of 100 back to 2, and Clear, which asks for no confirmation, took 37 to 0.
+`firstOpened` had been written on every open since the record was born and read nowhere, so it
+became the progress field, and Clear and the swipe now forget only `lastOpened`. That left a
+question the plan had foreseen: Clear had been the only way to empty the record of which verbs
+were ever opened. Josh chose to hang that on Settings' Reset Practice, which now forgets first
+opens too, while stars and Recent stay. His choice also settled something the plan had asked for
+without seeing the conflict. The plan wanted an entry with a last open but no first open to count
+as opened, as a guard for old records. But Reset Practice leaves exactly that shape behind, a
+recent verb whose first open is forgotten, and counting it would undo the reset. Git settled it:
+both dates were born in the same commit and always written together, so no such old entry exists,
+and `hasOpened` reads `firstOpened` alone.
+
+**C2's suggested fix would not have worked.** The widget's every-third-day My Verbs pick indexed
+the list by turn, and the list is newest first, so each verb opened between turns shifted the
+index back onto the verb just shown. The review suggested indexing a sorted list instead. Trying
+the plan's own test against that showed the real fault: `turn % count` with a changing count lands
+anywhere. Going from 3 verbs to 4 can map consecutive turns to the same index. No function of the
+day and today's list alone can know what earlier days showed, so the fix keeps state: a My Verbs
+day takes the verb whose last My Verbs day is longest ago, and the snapshot bundle, which the app
+already reads back on every write to keep today's verb, now carries those days too. A rewrite
+keeps the days before today and plans the rest again, since a bundle's future days were only ever
+a plan. The new test grows the list by one verb each turn and asserts that no verb repeats while
+another waits. Against the old draw it failed four times, abbehalten turning up again while three
+newer verbs waited.
+
+**The rest was deletion and prose.** Recent in My Verbs now leaves out starred verbs before taking
+its 20, so a learner with 15 starred recent opens sees 20 unstarred verbs, not 5. The migration
+from the per-verb review schedule went, since no shipped build ever wrote one, and with it
+`PracticeRecord.adopt` and a `now` parameter nobody passed. The comments that said the widget
+reads the learner's record, and the practice record, now say what is true: the widget reads only
+the snapshot bundle. The rule that added fields must be optional stays, for its real reason,
+an app upgrade.
+
+Every test of changed behaviour was run against the old logic, put back temporarily, and all nine
+failed as expected. The three new writer tests pin the carried state itself, which the old code
+did not have. The session was interrupted in the middle of that run, and the first job after it
+was to confirm that the script had restored the new code before anything else happened.

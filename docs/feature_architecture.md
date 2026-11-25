@@ -421,10 +421,10 @@ plays. A slip's first attempt records nothing, and a right second attempt counts
 
 | Piece | Role |
 |---|---|
-| `Shared/PracticeRecord.swift` | `PracticeItem` (an item and its permanent `key`) and `PracticeRecord` (an `Entry` per key: a `ReviewSchedule`, the last answer's date and rightness, the last lookup). Compiled into the widget, which has no corpus |
+| `Shared/PracticeRecord.swift` | `PracticeItem` (an item and its permanent `key`) and `PracticeRecord` (an `Entry` per key: a `ReviewSchedule`, the last answer's date and rightness, the last lookup). Compiled into the widget, which does not read it |
 | `Shared/ReviewSchedule.swift` | The ladder: 1, 3, 7, 14, and 30 days, the last repeating; due dates fall at the start of a day. `answered(correctly:)` is the quiz's move |
 | `PracticeItemMapping.swift` | Which item a question exercises, the items a lookup schedules, and the cell an item asks |
-| `PracticeStore.swift` | `Current.practice`: saves each change to the App Group's defaults under `practiceRecord`, offers the review card, resets, and once migrates the review card's older schedules from `LearnerVerbs` |
+| `PracticeStore.swift` | `Current.practice`: saves each change to the App Group's defaults under `practiceRecord`, offers the review card, and resets |
 | `QuizDueItems.swift` | `QuizDraw.dueQuestions` and `mixing`: the due items a default round takes |
 
 **Two kinds of item.** A strong or mixed reading's question exercises one of the verb's key
@@ -454,10 +454,12 @@ so the default quiz stays within its level. Every Ten More round does the same. 
 outside the default quiz's verb mix, which balances the other seven. Scoped quizzes mix in nothing.
 
 **Reset Practice**, in Settings' last card while there is a record, a last result, or a kept wrong
-answer, asks for confirmation, then empties the record (saving it empty, so the migration does not
-run again), forgets the last result, the Speed Round's best, the streak, and each level's best,
-and empties `QuizErrorHistory`, which Josh kept beside the record on 2026-11-14 because the Tutor's
-recommendations read it. Starred and recent verbs stay.
+answer, asks for confirmation, then empties the record, forgets the last result, the Speed
+Round's best, the streak, and each level's best, and empties `QuizErrorHistory`, which Josh kept
+beside the record on 2026-11-14 because the Tutor's recommendations read it. It also forgets which
+verbs were ever opened (`LearnerVerbs.forgetFirstOpens()`), so every collection's progress returns
+to nothing, since My Verbs' Clear and swipe no longer do (Josh, 2026-11-25). Starred and recent
+verbs stay.
 
 ### Review and My Mistakes
 
@@ -1258,24 +1260,27 @@ ging, and the guess's row names ging's cells.
 
 One on-device record of the learner's own verbs: each verb opened, with its first and last dates
 and a count, and each verb starred, with the date. Recents, My Verbs, the quiz's My Verbs scope,
-the verb of the day and random verb, and collections read it.
+the verb of the day and random verb, and collections read it. The first open says a verb was ever
+opened, which collections count; the last open puts it in Recent. Tidying My Verbs forgets only
+the last, and only Reset Practice forgets the first (Josh, 2026-11-25).
 
 | Piece | Role |
 |---|---|
-| `Shared/LearnerVerbs.swift` | The record: a Codable value keyed by infinitive, with `recent()` (the 20 last opened), `starred`, `myVerbs` (starred, then recent not starred), `remove(_:)`, which forgets a verb's star and opens alike, and `clearRecents()`, which keeps stars. Compiled into the widget too |
+| `Shared/LearnerVerbs.swift` | The record: a Codable value keyed by infinitive, with `recent` (the 20 last opened, starred or not, for the empty search field), `recentUnstarred` (the 20 last opened that are not starred, which leaves the starred out before the limit), `starred`, `myVerbs` (starred, then `recentUnstarred`), `remove(_:)`, which forgets a verb's star and last open, `clearRecents()`, which forgets every last open, and `forgetFirstOpens()`, Reset Practice's part. Compiled into the widget, which does not read it |
 | `LearnerVerbStore.swift` | `Current.learnerVerbs`, an `@Observable` store that saves each change and maps infinitives to `Verb`s, skipping any that left the corpus |
 
 **Where it lives.** JSON under the key `learnerVerbs` in the App Group's defaults
-(`WidgetConstants.sharedDefaults`), written through a `GetterSetterReal` given those defaults, so
-the widget extension, which has no corpus, can read the infinitives. Under unit tests it uses a
+(`WidgetConstants.sharedDefaults`), written through a `GetterSetterReal` given those defaults.
+The widget extension does not read it: My Verbs reaches the widget as verbs already chosen, inside
+the snapshot bundle the app writes (§ Choosing the Verb). Under unit tests it uses a
 `GetterSetterFake`. iCloud sync was rejected.
 
 **What counts as an open.** Every `viewVerbView` whose source is not `resume`: a verb page
 arriving by any route, but not the same page reappearing after another tab or the background.
 
 **Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
-the key, so a required field would fail to decode every older record, and the learner's verbs
-would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. The
+the key, so a required field would fail to decode every record an older build wrote, and on
+upgrade the learner's verbs would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. The
 review card's old `review` field was such a field. The practice record now holds that schedule,
 and decoding ignores the field in older records.
 
@@ -1283,8 +1288,8 @@ and decoding ignores the field in older records.
 lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
 It is a `List`, unlike the rest of the verb list, because only a `List`'s rows can be swiped: a
 left swipe deletes a recent verb at once, and a starred verb after an alert asking to remove its
-star. Deleting forgets the verb entirely, so an opened, starred verb leaves My Verbs rather than
-dropping into Recent. On iPad it is a list rather than the grid the other modes use. Search
+star. Deleting forgets the star and the last open, so an opened, starred verb leaves My Verbs
+rather than dropping into Recent. It keeps the first open, so a collection's progress stays. On iPad it is a list rather than the grid the other modes use. Search
 ignores the picker, as it ignores the sort order. And the verb list with its search field
 focused and empty, which lists the recent verbs under Recent, reachable with the arrow keys and
 Return on iPad and Mac. Nothing is shown when there is no history.
@@ -1316,10 +1321,9 @@ keeps its place. Dismissing before revealing is no review: each due one keeps it
 the next day. Quiz answers move the same items.
 
 **Weak verbs are not offered** (Josh, 2026-11-14). Their conjugations are patterns shared by
-every weak verb, so a lookup of a weak verb schedules nothing, and Review drills the patterns. On
-the first launch with a practice record, each strong verb's per-verb schedule in `LearnerVerbs`
-(`LearnerVerbs.Entry.review`, or for an older entry its last open) becomes its key conjugations'
-schedule, and weak verbs' schedules are dropped.
+every weak verb, so a lookup of a weak verb schedules nothing, and Review drills the patterns.
+The per-verb schedule that `LearnerVerbs` kept before the practice record had a migration until
+2026-11-25, when it was deleted: no shipped build wrote that schedule.
 
 ## Collections
 
@@ -1333,7 +1337,7 @@ sheet, and is shared as text with a `list/<key>` link and the App Store link.
 | `VerbCollection.swift` | The collections, their keys, their verbs (alphabetical, as every list's arrive), the share text, `viewCollection`, and `QuizScope.collection(_:)` |
 | `VerbCollectionView.swift` | A featured collection's page, and `VerbCollectionBar` (progress, Quiz, Share), which the Ablaut page's expanded groups also show |
 | `FamilyBrowseView.swift` | The Collections section at the top of the Families tab, and the `list` route's landing |
-| `LearnerVerbs.hasOpened(_:)` | What counts toward progress: a verb with a last open. Clear in My Verbs forgets opens, so it resets every collection's progress; a star alone does not count |
+| `LearnerVerbs.hasOpened(_:)` | What counts toward progress: a verb ever opened, which is a verb with a first open. Clear and a swipe in My Verbs keep it, and Reset Practice forgets it; a star alone does not count |
 
 **Where they live (Josh, 2026-11-13).** At the top of the Families tab, which keeps its name. The
 ablaut groups stay on the Ablaut page, where an expanded group begins with the bar, rather
@@ -1477,8 +1481,13 @@ deeplink, which the Random Verb control and shortcut send).
 - **My Verbs** (starred, then recent, as `LearnerVerbs.myVerbs`) gets one draw in three once it
   has entries, as Josh chose. For the widget that is every third day, by day number, taking the
   verbs in turn; independent draws left gaps of two weeks and repeated one verb while another
-  waited. A random verb goes to My Verbs by a one-in-three chance. A My Verbs day changes no other
-  day's verb.
+  waited. A My Verbs day takes the verb whose last My Verbs day is longest ago, a verb never given
+  one first, the infinitive breaking ties. The bundle carries those days
+  (`WidgetSnapshotBundle.myVerbsLastShown`), and each write reads the last bundle's, keeping the
+  days before today and planning the rest again. Until 2026-11-25 the turn indexed the list, which
+  is newest first, so a verb opened between turns shifted the index back onto the verb just shown,
+  and about a third of My Verbs days repeated the one before. A random verb goes to My Verbs by a
+  one-in-three chance. A My Verbs day changes no other day's verb.
 - **Determinism.** A day's frequent verb comes from `SeededRNG` seeded with the day's number since
   2025-01-01, read with plain modulo rather than `Int.random(in:using:)`, whose use of the generator
   is not documented.

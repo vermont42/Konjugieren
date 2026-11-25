@@ -65,12 +65,13 @@ nonisolated enum PracticeItem: Hashable, Sendable {
 }
 
 /// The learner's practice record: a box and a due date for each item a quiz answer, a lookup, or
-/// the review card has touched, and how the last answer went. It is kept in the App Group's shared
-/// defaults, so that a widget or a reminder can read it, and it is never sent anywhere.
+/// the review card has touched, and how the last answer went. The app keeps it in the App Group's
+/// shared defaults, beside `LearnerVerbs`, but no extension reads it: the widget reads the
+/// snapshot bundle the app writes. It is never sent anywhere.
 nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
   // A field added later must be optional. Synthesized decoding ignores a default value and
-  // requires the key, so any other field would fail to decode every record written before it,
-  // and the learner's practice would silently vanish.
+  // requires the key, so any other field would fail to decode every record an older build of the
+  // app wrote, and the learner's practice would silently vanish on upgrade.
   struct Entry: Codable, Equatable, Sendable {
     var schedule: ReviewSchedule
     var lastAnswered: Date?
@@ -201,11 +202,6 @@ nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
 
   mutating func reset() {
     entries = [:]
-  }
-
-  /// Folds in a schedule from before the record existed, which only the migration uses.
-  mutating func adopt(_ item: PracticeItem, schedule: ReviewSchedule, lastLookedUp: Date?) {
-    entries[item.key] = Entry(schedule: schedule, lastLookedUp: lastLookedUp)
   }
 
   private mutating func updateDue(_ items: [PracticeItem], at date: Date, _ change: (ReviewSchedule) -> ReviewSchedule) {

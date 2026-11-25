@@ -1099,3 +1099,29 @@ Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
 ```
 - Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler, in der Übung „Verb-Grundlagen“, in der Übung einer Ablautgruppe, allein oder gemischt, samt der Angabe, welche Gruppe, in der Übung „Konjugationen bestimmen“, in der Übung „Lückensätze“, in der „Blitzrunde“, in der täglichen Übung, samt der Angabe, ob Sie diese über ihre Erinnerung begonnen haben, in der täglichen Herausforderung, samt der Angabe, ob Sie diese auf dem Quiz-Bildschirm, über einen Link, den jemand mit Ihnen geteilt hat, oder über das Quiz-Widget begonnen haben, oder über einen Link von außerhalb der App. Wenn Sie eine tägliche Übung abschließen, ungefähr, an wie vielen Tagen in Folge Sie eine abgeschlossen haben (1, 2 bis 6, 7 bis 29 oder 30 und mehr)
 ```
+
+## Collection progress outlasts My Verbs (2026-11-25)
+
+No new signal or parameter. Phase 3 of [`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md)
+made a collection's progress count every verb ever opened, so that clearing Recent or deleting a
+verb from My Verbs no longer takes "37 of 100 looked up" back to nothing. The list on the device
+now keeps, for a verb deleted from My Verbs, the day it was first opened, and only Reset Practice
+forgets that (Josh, 2026-11-25). The paragraph about the list, as last given in the practice
+record's section above, is still true; a sentence says where the full forget lives, so that a
+learner who deletes a verb from My Verbs is not misled about what stays.
+
+### English
+
+The paragraph about the list kept on the device now reads:
+
+```
+The app keeps a list of the verbs you have opened and the verbs you have starred, so that it can show your recent verbs, My Verbs, and how many verbs of each collection you have looked up. The list stays on your device and is never sent. Deleting a verb from My Verbs, or clearing your recent verbs, leaves it counted as looked up; Reset Practice in Settings forgets which verbs you have looked up.
+```
+
+### German
+
+Der Absatz über die Liste auf dem Gerät lautet nun:
+
+```
+Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet. Wenn Sie ein Verb aus „Meine Verben“ löschen oder Ihre zuletzt geöffneten Verben leeren, zählt es weiter als nachgeschlagen; „Übungsstand zurücksetzen“ in den Einstellungen vergisst, welche Verben Sie nachgeschlagen haben.
+```

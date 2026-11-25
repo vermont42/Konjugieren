@@ -324,9 +324,11 @@ struct SettingsView: View {
   }
 
   /// Forgets the practice record and the wrong answers kept for the Tutor, which are practice too
-  /// (Josh, 2026-11-14). Starred and recent verbs stay.
+  /// (Josh, 2026-11-14), and which verbs were ever opened, which collections count as progress
+  /// (Josh, 2026-11-25). Starred and recent verbs stay.
   private func resetPractice() {
     Current.practice.reset()
+    Current.learnerVerbs.forgetFirstOpens()
     QuizErrorHistory.clear(getterSetter: Current.getterSetter)
     hasQuizErrors = false
     Current.rescheduleReminders()

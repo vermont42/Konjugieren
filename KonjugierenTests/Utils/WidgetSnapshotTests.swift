@@ -62,6 +62,46 @@ struct WidgetSnapshotTests {
     #expect(second.snapshots[0] == shown)
   }
 
+  private func myVerbsDayVerbs(in bundle: WidgetSnapshotBundle) -> [String] {
+    bundle.snapshots.indices.compactMap { index in
+      let day = WidgetConstants.gregorianCalendar.date(byAdding: .day, value: index, to: bundle.baseDate) ?? bundle.baseDate
+      return VerbDraw.isMyVerbsDay(day) ? bundle.snapshots[index].infinitiv : nil
+    }
+  }
+
+  @Test func myVerbsTurnsCarryFromOneBundleToTheNext() throws {
+    let myVerbs = ["abbehalten", "aufstehen", "verstehen"].compactMap { Verb.verbs[$0] }
+    #expect(myVerbs.count == 3)
+    let first = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-01"), myVerbs: myVerbs))
+    let second = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-11"), myVerbs: myVerbs, lastShown: first.myVerbsLastShown ?? [:]))
+
+    let turns = myVerbsDayVerbs(in: first) + myVerbsDayVerbs(in: second)
+    #expect(turns.count >= 6)
+    for (index, infinitiv) in turns.enumerated() {
+      #expect(infinitiv == turns[index % 3], "turn \(index)")
+    }
+    #expect(Set(turns.prefix(3)).count == 3)
+  }
+
+  @Test func aRewriteTheSameDayPlansTheSameDays() throws {
+    let morning = date("2026-03-01").addingTimeInterval(7 * 3600)
+    let evening = morning.addingTimeInterval(14 * 3600)
+    let myVerbs = ["abbehalten", "aufstehen", "verstehen"].compactMap { Verb.verbs[$0] }
+    let first = try #require(WidgetSnapshotWriter.generateBundle(startDate: morning, myVerbs: myVerbs))
+    let kept = Verb.verbs[try #require(first.displayedSnapshot(at: evening, pageOffset: 0)).infinitiv]
+    let second = try #require(WidgetSnapshotWriter.generateBundle(startDate: evening, myVerbs: myVerbs, keeping: kept, lastShown: first.myVerbsLastShown ?? [:]))
+    #expect(second == first)
+  }
+
+  @Test func aBundleWrittenWithoutTurnsStillDecodes() throws {
+    let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-01")))
+    var object = try #require(try JSONSerialization.jsonObject(with: JSONEncoder().encode(bundle)) as? [String: Any])
+    #expect(object.removeValue(forKey: "myVerbsLastShown") != nil)
+    let decoded = try JSONDecoder().decode(WidgetSnapshotBundle.self, from: JSONSerialization.data(withJSONObject: object))
+    #expect(decoded.snapshots == bundle.snapshots)
+    #expect(decoded.myVerbsLastShown == nil)
+  }
+
   @Test func displayedSnapshotIsNilOutsideTheCachedDays() throws {
     let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-10")))
     #expect(bundle.displayedSnapshot(at: date("2026-03-09"), pageOffset: 0) == nil)

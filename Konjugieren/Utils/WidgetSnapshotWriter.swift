@@ -10,11 +10,11 @@ enum WidgetSnapshotWriter {
       return
     }
     let pageOffset = WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
-    let displayed = (try? Data(contentsOf: url))
-      .flatMap { try? JSONDecoder().decode(WidgetSnapshotBundle.self, from: $0) }
+    let previous = (try? Data(contentsOf: url)).flatMap { try? JSONDecoder().decode(WidgetSnapshotBundle.self, from: $0) }
+    let displayed = previous
       .flatMap { $0.displayedSnapshot(at: now, pageOffset: pageOffset) }
       .flatMap { Verb.verbs[$0.infinitiv] }
-    guard let bundle = generateBundle(startDate: now, myVerbs: Current.learnerVerbs.myVerbs, keeping: displayed, pageOffset: pageOffset) else {
+    guard let bundle = generateBundle(startDate: now, myVerbs: Current.learnerVerbs.myVerbs, keeping: displayed, pageOffset: pageOffset, lastShown: previous?.myVerbsLastShown ?? [:]) else {
       return
     }
     guard let data = try? JSONEncoder().encode(bundle) else {
@@ -24,26 +24,33 @@ enum WidgetSnapshotWriter {
   }
 
   /// `keeping` is the verb the widget shows now. It stays in the place the widget will show
-  /// today, so that a change to My Verbs since the last write cannot replace it.
-  @MainActor static func generateBundle(startDate: Date = Date(), myVerbs: [Verb] = [], keeping displayed: Verb? = nil, pageOffset: Int = 0, level: QuizLevel = Current.settings.quizLevel) -> WidgetSnapshotBundle? {
+  /// today, so that a change to My Verbs since the last write cannot replace it. `lastShown` is
+  /// the previous bundle's `myVerbsLastShown`. Its days from today on were the previous bundle's
+  /// plan rather than what the widget showed, so this bundle plans them again.
+  @MainActor static func generateBundle(startDate: Date = Date(), myVerbs: [Verb] = [], keeping displayed: Verb? = nil, pageOffset: Int = 0, lastShown: [String: Date] = [:], level: QuizLevel = Current.settings.quizLevel) -> WidgetSnapshotBundle? {
     let baseDay = calendar.startOfDay(for: startDate)
     let dayCount = WidgetConstants.snapshotDayCount
     let displayedIndex = WidgetSnapshotBundle.snapshotIndex(dayOffset: 0, pageOffset: pageOffset, count: dayCount)
     let eligibleMyVerbs = myVerbs.filter(isEligible)
+    let eligibleInfinitives = Set(eligibleMyVerbs.map(\.infinitiv))
     let eligibleFrequentVerbs = VerbDraw.frequentVerbs.filter(isEligible)
+    var lastShown = lastShown.filter { eligibleInfinitives.contains($0.key) && $0.value < baseDay }
     var snapshots: [WidgetSnapshot] = []
     for dayOffset in 0..<dayCount {
       guard let day = calendar.date(byAdding: .day, value: dayOffset, to: baseDay) else { continue }
       let kept = dayOffset == displayedIndex ? displayed : nil
-      guard let verb = kept ?? VerbDraw.verbOfTheDay(on: day, myVerbs: eligibleMyVerbs, frequentVerbs: eligibleFrequentVerbs) else {
+      guard let verb = kept ?? VerbDraw.verbOfTheDay(on: day, myVerbs: eligibleMyVerbs, frequentVerbs: eligibleFrequentVerbs, lastShown: lastShown) else {
         return nil
+      }
+      if VerbDraw.isMyVerbsDay(day), eligibleInfinitives.contains(verb.infinitiv) {
+        lastShown[verb.infinitiv] = day
       }
       snapshots.append(generateSnapshot(verb: verb, date: day, level: level))
     }
     guard !snapshots.isEmpty else {
       return nil
     }
-    return WidgetSnapshotBundle(baseDate: baseDay, snapshots: snapshots)
+    return WidgetSnapshotBundle(baseDate: baseDay, snapshots: snapshots, myVerbsLastShown: lastShown)
   }
 
   /// The large widget shows the example sentence.

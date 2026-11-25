@@ -9607,13 +9607,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie und deinen Bestwert auf jeder Stufe. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
+            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie, deinen Bestwert auf jeder Stufe und welche Verben jeder Sammlung du nachgeschlagen hast. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, your Speed Round best, your daily streak, and your best score at each level. Your starred and recent verbs stay. This cannot be undone."
+            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, your Speed Round best, your daily streak, your best score at each level, and which verbs of each collection you have looked up. Your starred and recent verbs stay. This cannot be undone."
           }
         }
       }
@@ -9639,13 +9639,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie und deinen Bestwert auf jeder Stufe."
+            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie, deinen Bestwert auf jeder Stufe und welche Verben jeder Sammlung du nachgeschlagen hast."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, your Speed Round best, your daily streak, and your best score at each level."
+            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, your Speed Round best, your daily streak, your best score at each level, and which verbs of each collection you have looked up."
           }
         }
       }

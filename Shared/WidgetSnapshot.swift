@@ -5,6 +5,10 @@ import Foundation
 struct WidgetSnapshotBundle: Codable, Equatable {
   let baseDate: Date
   let snapshots: [WidgetSnapshot]
+  /// The last day each verb of My Verbs was given, by infinitive, so that the app's next write
+  /// takes them in turn. The widget does not read it. Optional, so that a bundle written before
+  /// it still decodes.
+  var myVerbsLastShown: [String: Date]?
 
   // For each cached day (index = days since baseDate), the snapshot index to show.
   // The page offset advances the verb on a Next tap and wraps around the cached range.

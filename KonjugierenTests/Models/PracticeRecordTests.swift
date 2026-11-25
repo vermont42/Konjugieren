@@ -185,37 +185,10 @@ struct PracticeRecordTests {
     #expect(practice.cardOffer(at: date(5)) == nil)
   }
 
-  @Test func theFirstLaunchMigratesStrongVerbsSchedulesAndDropsWeakOnes() throws {
+  @Test func aResetIsKept() throws {
     let getterSetter = GetterSetterFake()
-    let reviewed = ReviewSchedule(box: 2, due: startOf(20))
-    let reviewJSON = try #require(String(data: JSONEncoder().encode(reviewed), encoding: .utf8))
-    let opened = date(4).timeIntervalSinceReferenceDate
-    let json = #"{"entries":{"#
-      + #""singen":{"infinitiv":"singen","openCount":2,"lastOpened":\#(opened),"review":\#(reviewJSON)},"#
-      + #""sinken":{"infinitiv":"sinken","openCount":1,"lastOpened":\#(opened)},"#
-      + #""machen":{"infinitiv":"machen","openCount":1,"lastOpened":\#(opened),"review":\#(reviewJSON)},"#
-      + #""nichtverben":{"infinitiv":"nichtverben","openCount":1,"lastOpened":\#(opened)}}}"#
-    getterSetter.set(key: LearnerVerbs.storageKey, value: json)
-
     let practice = store(getterSetter)
-
-    for item in keys("singen") {
-      #expect(practice.record.entry(for: item)?.schedule == reviewed)
-      #expect(practice.record.entry(for: item)?.lastLookedUp == date(4))
-    }
-    // An entry without a review schedule counts as looked up on its last open.
-    for item in keys("sinken") {
-      #expect(practice.record.entry(for: item)?.schedule == ReviewSchedule(box: 0, due: startOf(5)))
-    }
-    #expect(practice.record.entries.keys.allSatisfy { !$0.contains("machen") && !$0.contains("nichtverben") })
-    #expect(LearnerVerbs(json: json)?.entries["singen"]?.openCount == 2)
-  }
-
-  @Test func aResetIsKeptAndDoesNotMigrateAgain() throws {
-    let getterSetter = GetterSetterFake()
-    let opened = date(4).timeIntervalSinceReferenceDate
-    getterSetter.set(key: LearnerVerbs.storageKey, value: #"{"entries":{"singen":{"infinitiv":"singen","openCount":1,"lastOpened":\#(opened)}}}"#)
-    let practice = store(getterSetter)
+    practice.recordLookup(try #require(Verb.verbs["singen"]), source: .browse, at: date(4))
     #expect(!practice.isEmpty)
 
     practice.reset()

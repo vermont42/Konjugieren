@@ -19,12 +19,12 @@ final class LearnerVerbStore {
   }
 
   var recentVerbs: [Verb] {
-    verbs(record.recent())
+    verbs(record.recent)
   }
 
   /// The recent verbs that are not also starred, which My Verbs lists below the starred ones.
   var recentUnstarredVerbs: [Verb] {
-    verbs(record.recent().filter { !record.isStarred($0) })
+    verbs(record.recentUnstarred)
   }
 
   var myVerbs: [Verb] {
@@ -65,6 +65,11 @@ final class LearnerVerbStore {
 
   func clearRecents() {
     record.clearRecents()
+    save()
+  }
+
+  func forgetFirstOpens() {
+    record.forgetFirstOpens()
     save()
   }
 

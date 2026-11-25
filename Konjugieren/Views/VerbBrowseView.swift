@@ -428,8 +428,9 @@ struct VerbBrowseView: View {
   }
 
   /// The starred verbs, then the recent ones not starred. Search ignores this choice, as it
-  /// ignores the sort order. A swipe deletes a verb, star and opens alike, so it leaves the list;
-  /// a starred verb asks first, since its star was put there on purpose.
+  /// ignores the sort order. A swipe forgets a verb's star and last open, so it leaves the list;
+  /// a starred verb asks first, since its star was put there on purpose. Neither a swipe nor
+  /// Clear costs a collection's progress, which counts verbs ever opened.
   @ViewBuilder
   private var myVerbsList: some View {
     let starred = learnerVerbs.starredVerbs

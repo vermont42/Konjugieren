@@ -88,7 +88,7 @@ Konjugieren/
 │   ├── Mastery.swift           # The Mastery page's model: MasteryState (not practiced, learning, or mastered at the third box of the ladder, which the Speed Round shares), the level's weak patterns by conjugationgroup and person (the Futurs serving every verb), and the key conjugations each level asks of the 50 most frequent strong and mixed verbs, a row per strong reading; the counts the hub's row shows
 │   ├── PracticeItemMapping.swift # Which PracticeItem a question exercises (a strong reading's key conjugation by the stem its cell is built on, otherwise its cell's pattern; the Futurs are patterns for every verb), the items a lookup schedules, the cell an item asks, and PracticeItem.Stem's tables and key cell
 │   ├── PracticeSet.swift       # A custom quiz shared as a link or QR code: reads and writes konjugieren://quiz/set, carries the sharer's level while a part is left to it, turns My Verbs into a list of infinitives, its scope, share text, and summary; PracticeSetRequest, which World.handleURL sets
-│   ├── PracticeStore.swift     # Current.practice: @Observable view of Shared/PracticeRecord.swift that records answers and lookups, offers the review card's verb, reviews and snoozes it, resets, keeps the last quiz's result (lastResult, recordResult), the Speed Round's best, the daily streak, and each level's best ranked score (levelBests, recordRankedScore), saves to the App Group's defaults, and migrates LearnerVerbs' per-verb review schedules once
+│   ├── PracticeStore.swift     # Current.practice: @Observable view of Shared/PracticeRecord.swift that records answers and lookups, offers the review card's verb, reviews and snoozes it, resets, keeps the last quiz's result (lastResult, recordResult), the Speed Round's best, the daily streak, and each level's best ranked score (levelBests, recordRankedScore), and saves to the App Group's defaults
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (pronouns live in ConjugationLabels.swift)
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
@@ -246,13 +246,13 @@ Shared/
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
-├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
+├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults, which the widget does not read; a first open is collection progress and a last open is Recent; new fields must be optional
 ├── PracticeRecord.swift            # The practice record: PracticeItem (a strong verb's key conjugation or a weak pattern, with a permanent string key) and a ReviewSchedule, last answer, and last lookup per item, stored as JSON in the App Group's defaults; never sent
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── ReviewSchedule.swift            # The practice record's Leitner ladder (1, 3, 7, 14, 30 days): a box and a due date per item, started by a lookup or a wrong answer, raised by a review or a right answer when due, postponed a day by a snooze
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
-└── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, and the snapshot displayed at a moment)
+└── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, the snapshot displayed at a moment, and the last day each verb of My Verbs was given, which only the app reads)
 
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
@@ -273,7 +273,7 @@ KonjugierenTests/
 │   ├── DailyChallengeTests.swift # The seed pinned, days round-tripped, the same key drawing the same challenge, days and levels differing, each level's five balanced questions, the result and the agreed share text, and the quiz widget's question agreeing; nested in QuizTests, the same five whatever the device, a result kept once and unranked, no re-ask, a quit keeping nothing, the store's limit and persistence, and the share signal
 │   ├── DailySessionTests.swift # The daily streak across days (repair by two sessions, a failed repair, two missed days, a 25-hour day, pruning, the bands, the store across a launch and a reset), the draw (due items first, ten due, one beyond the level), the scope, and the reminder plan (each day at the time, today's past or done, the repair line, what will be due); nested in QuizTests, a session at the level, the streak extended and sent, a quit not counting, a repair across days, the reminder rescheduled, and the reminder as source
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
-│   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents, My Verbs, removal, clearing, JSON round trip and an old record's decoding, and the store's reload
+│   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents (unstarred ones filling to the limit), My Verbs, removal and clearing that keep first opens, Reset Practice's forgetting of them, JSON round trip and old records' decoding, and the store's reload and collection progress
 │   ├── MasteryTests.swift      # The Mastery page's model: the state by box, each level's pattern count and which conjugationgroups have patterns, the Futurs serving every verb, the 50 core verbs, the stems each level asks, a verb mastered when every asked stem in every strong reading is, and answers landing where the item mapping sends them
 │   ├── KeyConjugationsTests.swift # Key conjugations per reading and region, the share text, and what a long press copies
 │   ├── InfoTests.swift         # Info articles: a heading and text per article in each language, every ‡link‡ opens an article or a verb (both catalogs), stable keys
@@ -281,7 +281,7 @@ KonjugierenTests/
 │   ├── PracticeSetTests.swift  # Practice sets: the pinned link, every table, verb set, list, and level round-tripped, links that name nothing, My Verbs shared as a capped list, the QR code read back as the link; extends DeeplinkTests (the quiz/set route) and nests sessions in QuizTests (the set's level, no score)
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── PracticeItemTests.swift # Which item each question exercises: a strong verb's stems by table, the Futurs as patterns, every weak, separable, inseparable, and -ieren verb sharing one pattern per cell, prefixed strong verbs' own items, hängen's two readings, pinned keys, and items asking their own cell back
-│   ├── PracticeRecordTests.swift # The record and store: climbing when due, starting over on a miss, due order, lookups and the card's review and snooze, the card's choice and caption, weak patterns never on the card, a relaunch, the migration of LearnerVerbs' per-verb schedules, and a reset that stays
+│   ├── PracticeRecordTests.swift # The record and store: climbing when due, starting over on a miss, due order, lookups and the card's review and snooze, the card's choice and caption, weak patterns never on the card, a relaunch, and a reset that stays
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests, including Reset Practice's clear
 │   ├── QuizPracticeTests.swift # Nested in QuizTests: answers recorded as given and kept on quit, every scope writing, due items limited to the level and band, a default round mixing in at most three, scoped quizzes mixing in none
 │   ├── QuizRecordSessionTests.swift # Review and My Mistakes: missed items most recent first, days to the next due item, sessions beyond the level's pool and band, a verb's key conjugations together, excluded and unaskable items, never ranked; nested in QuizTests, sessions of ten then the rest, a short Review, an empty record, a mistake leaving once right and not re-asked in Ten More, and signals without counts
@@ -303,7 +303,7 @@ KonjugierenTests/
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   ├── VerbCollectionTests.swift # Collections: keys, members (modals, the top 100, sein by region, ablaut groups as on the Ablaut page), share text, the quiz scope, the store's count of verbs looked up
 │   ├── VerbEssentialsTests.swift # Verb Essentials: a step's cells and items, each blank's answers for separable, inseparable, sein-taking, and mixed verbs, the draw (distinct strong verbs, weak verbs never, a mixed-reading verb's strong reading, asked verbs last), the scope, and re-ask placement; nested in QuizTests, a round's steps and rows, each blank recorded alone, a re-ask step with its other rows given, a diagnosed blank's second try, Five More's new verbs, and signals, the last result, and no score
-│   ├── VerbDrawTests.swift     # Frequency bands, and VerbDraw: weights, My Verbs every third day and in turn, stability through a day, the favored share
+│   ├── VerbDrawTests.swift     # Frequency bands, and VerbDraw: weights, My Verbs every third day and in turn, even as the list grows, stability through a day, the favored share
 │   ├── VerbLookupTests.swift   # Look Up a Verb: what it says about infinitives, conjugations, ambiguous and unknown words, and where it opens the app
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
 │   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region
@@ -320,7 +320,7 @@ KonjugierenTests/
 │   ├── URLExtensionTests.swift      # mailto: percent-encoding and the App Store link
 │   ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
 │   ├── VerbExportTests.swift        # Harness: every verb's page as JSON, for scripts/generate_verb_pdf.py. Gated on TEST_RUNNER_KONJUGIEREN_EXPORT_OUT (optional TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY)
-│   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
+│   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, My Verbs turns carried from bundle to bundle, a same-day rewrite, an older bundle's decoding, and process-stable answer-shuffle tests
 └── Views/
     └── VerbBrowseViewTests.swift    # Arrow-key selection arithmetic and grid sections for the verb list
 

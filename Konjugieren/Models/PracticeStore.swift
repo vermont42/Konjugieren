@@ -34,17 +34,10 @@ final class PracticeStore {
     let wasLookedUp: Bool
   }
 
-  /// `getterSetter` must be the store that holds `LearnerVerbs`, since the first launch with a
-  /// practice record migrates its review schedules.
-  init(getterSetter: GetterSetter, calendar: Calendar = .current, now: Date = .now) {
+  init(getterSetter: GetterSetter, calendar: Calendar = .current) {
     self.getterSetter = getterSetter
     self.calendar = calendar
-    if let stored = getterSetter.get(key: PracticeRecord.storageKey).flatMap(PracticeRecord.init(json:)) {
-      record = stored
-    } else {
-      record = Self.migrated(from: getterSetter, calendar: calendar)
-      save()
-    }
+    record = getterSetter.get(key: PracticeRecord.storageKey).flatMap(PracticeRecord.init(json:)) ?? PracticeRecord()
     lastResult = getterSetter.getCodable(key: LastQuizResult.storageKey)
     speedRoundBest = getterSetter.getCodable(key: Self.speedRoundBestKey)
     dailyStreak = getterSetter.getCodable(key: DailyStreak.storageKey) ?? DailyStreak()
@@ -192,8 +185,7 @@ final class PracticeStore {
   }
 
   /// Settings' Reset Practice, which forgets the last result, the Speed Round's best, the daily
-  /// streak, and each level's best too. The record is saved empty
-  /// rather than removed, so that the next launch does not migrate the old schedules again.
+  /// streak, and each level's best too.
   func reset() {
     record.reset()
     save()
@@ -211,37 +203,5 @@ final class PracticeStore {
     if let json = record.json {
       getterSetter.set(key: PracticeRecord.storageKey, value: json)
     }
-  }
-
-  /// Before the practice record, `LearnerVerbs.Entry.review` kept one review schedule per verb,
-  /// and an entry with no schedule, which predates that field, counts as looked up on its last
-  /// open. Each strong or mixed verb's schedule becomes its key conjugations' schedule. A weak
-  /// verb's is dropped, since the card no longer offers weak verbs (Josh, 2026-11-14).
-  private static func migrated(from getterSetter: GetterSetter, calendar: Calendar) -> PracticeRecord {
-    var record = PracticeRecord()
-    guard let legacy: LegacyLearnerVerbs = getterSetter.getCodable(key: LearnerVerbs.storageKey) else {
-      return record
-    }
-    for entry in legacy.entries.values {
-      guard let verb = Verb.verbs[entry.infinitiv],
-            let schedule = entry.review ?? entry.lastOpened.map({ ReviewSchedule.start(at: $0, calendar: calendar) }) else {
-        continue
-      }
-      for item in PracticeItem.keyConjugations(of: verb) {
-        record.adopt(item, schedule: schedule, lastLookedUp: entry.lastOpened)
-      }
-    }
-    return record
-  }
-
-  /// The fields of a `LearnerVerbs` record that the migration reads. Decoding ignores the rest.
-  private struct LegacyLearnerVerbs: Decodable {
-    struct Entry: Decodable {
-      let infinitiv: String
-      let lastOpened: Date?
-      let review: ReviewSchedule?
-    }
-
-    let entries: [String: Entry]
   }
 }

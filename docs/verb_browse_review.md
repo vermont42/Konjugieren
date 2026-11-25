@@ -107,6 +107,11 @@ never changes between days.
 **Fix.** Rotate over a stable order, such as the list sorted by infinitive, so that a new verb
 shifts only the entries after it. Test with a list that grows between days.
 
+**Fixed on `main` 2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), though not as suggested. A sorted list
+indexed by turn still repeats: once the list's length changes, `turn % count` lands anywhere,
+often on the verb just shown. A My Verbs day now takes the verb whose last My Verbs day is longest
+ago, and the snapshot bundle carries those days from one write to the next.
+
 <a id="c3"></a>
 ### C3. The red-letter tip's guard is true for every verb (Run)
 
@@ -139,6 +144,9 @@ Clear has no confirmation, so one tap takes "37 of 100 looked up" to 0.
 
 **Fix.** Count progress on `firstOpened`, and have Clear and the swipe forget only `lastOpened`.
 Or keep the coupling, confirm before Clear, and say so in the docs.
+
+**Fixed on `main` 2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), the first way. Reset Practice now
+forgets first opens, as Josh chose.
 
 <a id="c5"></a>
 ### C5. "Alphabetical" on the prefix pages is code-point order (Read)
@@ -174,7 +182,8 @@ with ß.
   pages. Match a verb if any reading is in the group.
 - **Recent can show fewer than 20 (Read).** `recent()` takes 20 before starred verbs are filtered
   out (`LearnerVerbStore.swift:27`, `LearnerVerbs.swift:65-67`). With 15 of the last 20 opens
-  starred, Recent lists 5 while older unstarred opens exist.
+  starred, Recent lists 5 while older unstarred opens exist. **Fixed on `main` 2026-11-25**, by
+  Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **A bad link cancels a good pending one (Read).** `handleURL` calls `clearDeeplinkTargets()`
   before it knows that the route resolves (`World.swift:131`), so
   `konjugieren://verb/nonexistent` wipes a pending practice set, challenge, or search and replaces
@@ -265,7 +274,7 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   12's note all say the widget decodes it. Nothing under `KonjugierenWidget/` names either type.
   My Verbs reaches the widget inside the snapshot bundle that the app writes. The "added fields
   must be optional" rule still matters for app upgrades. Correcting the prose is cheaper than
-  moving the types out of `Shared/`.
+  moving the types out of `Shared/`. **Fixed on `main` 2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **G2. The frequency doc overstates Perfekt Konjunktiv I and Futur Konjunktiv I (Run, by a
   reviewer; I read the rule).** In `scripts/count_conjugationgroups.py`, "habe" or "werde" with no
   adjacent ich counts as Konjunktiv I (`auxiliary_kind`, lines 348-371). A subordinate clause
@@ -285,6 +294,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   practice record. Both exist only on `main`; version 1.4 has neither. The migration serves Josh's
   own devices. This is the only trace of "two mechanisms for one job": the schedule itself now
   lives once, in `PracticeRecord`. Delete before release unless Josh wants his history kept.
+  **Fixed on `main` 2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): deleted, with
+  `PracticeRecord.adopt` and the store's unused `now` parameter.
 - **G5. Dwell time includes time under a sheet (Read, not measured).** `VerbVisit` ends on
   `onDisappear` or backgrounding (`VerbView.swift:239-254`). Presenting the article sheet or the
   Test Me quiz does not make the page disappear, so `leaveVerbView`'s `dwell` counts three quiz
@@ -384,7 +395,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   Phase 1 notes this. Disabling the picker while `isSearching` would say so on screen.
 - **S9. Unused or unguarded.**
   - `URL.konjugierenURLPrefix` (`URLExtension.swift:121`) has no caller.
-  - `LearnerVerbs.recent(limit:)` takes a limit that nothing passes.
+  - `LearnerVerbs.recent(limit:)` takes a limit that nothing passes. **Fixed on `main`
+    2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
   - `ConjugationMapTool` accepts any `--flag value`, so `--form-json` for `--forms-json` writes
     the map and silently skips the file (`main.swift:32-41`).
   - `ConjugationMap(compressed:)` turns invalid UTF-8 into an empty map, so every way the map can

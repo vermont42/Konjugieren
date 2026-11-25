@@ -21,7 +21,7 @@ empty until it is committed.
 |---:|---|---|---|---|---|
 | 1 | Done | 2026-11-25 | `d6640eb` | C1 | No |
 | 2 | Done | 2026-11-25 | `c731457` | P1, two analytics nits | No |
-| 3 | Not started | | | C2, C4, C7 (recents), G1, G4 | No, but it has a question for him |
+| 3 | Done | 2026-11-25 | | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
 | 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Not started | | | S1 (the rest) | Yes |
 | 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |
@@ -198,7 +198,42 @@ parameters. The suite went from 961 to 963.
   and the doc's § The Review Card: the widget reads the snapshot bundle, not the record. Keep the
   rule that added fields must be optional, with its true reason, an app upgrade.
 
-**How it differed:**
+**How it differed:** In C2's mechanism and in one rule of C4's, both for reasons the code gave.
+The suite went from 963 to 972.
+
+- **Josh's answer (2026-11-25): Reset Practice forgets first opens.** Settings' reset now calls
+  `LearnerVerbStore.forgetFirstOpens()`, which forgets every `firstOpened` and `openCount`, so
+  collection progress returns to nothing; stars and Recent stay. The reset's description and
+  confirmation say so in both languages, and `docs/privacy_policy_pending.md` stages a sentence
+  for the list paragraph in a new dated section.
+- **C2 is fixed with state, not a sorted list.** The plan's own test fails against a sorted list
+  indexed by turn: once the list's length changes, `turn % count` lands anywhere, and 3 verbs
+  becoming 4 can map consecutive turns to the same index. No function of the day and today's list
+  can know what earlier days showed. A My Verbs day now takes the verb whose last My Verbs day is
+  longest ago (never given one first, the infinitive breaking ties), and
+  `WidgetSnapshotBundle.myVerbsLastShown`, optional so old bundles decode, carries those days from
+  one write to the next. A rewrite keeps the days before today and plans the rest again. The
+  widget's stable-through-the-day rule holds: `WidgetSnapshotTests` pass, and a new test pins
+  that a same-day rewrite produces an identical bundle. This sits well with Phase 12's T3, which
+  wants the writer as a function from the old bundle to the new.
+- **An entry with a last open but no first open does not count as opened.** The plan asked for
+  the opposite, as a guard for old records, but Josh's answer makes that shape meaningful: it is
+  what Reset Practice leaves for a recent verb, and counting it would undo the reset. No old
+  entry has that shape: both dates were added in `37bb963`, and every write set both, so
+  `hasOpened` reads `firstOpened` alone. The test of an earlier build's record decodes a full
+  entry, with the per-verb `review` field Phase 15 of the Browse plan wrote, and counts it opened.
+- **Clear and the swipe keep `openCount`** along with `firstOpened`, since both describe the
+  verb's whole history; Reset Practice zeroes it. Nothing reads it yet.
+- **`recent` became a property** once its `limit` went, and `recentUnstarred` joined it, so the
+  filtering lives in `LearnerVerbs`, where `myVerbs` uses it too, rather than in the store.
+- **G4 took two more things with it:** `PracticeRecord.adopt`, which only the migration called,
+  and `PracticeStore.init`'s `now` parameter, which nothing used or passed. The reset test that
+  checked "does not migrate again" now checks only that a reset survives a reload.
+- **Tests.** Each test of changed behaviour was run against the old logic, put back temporarily:
+  the nine in `LearnerVerbsTests` and `VerbDrawTests` all failed, the growth test with abbehalten
+  repeating while three newer verbs waited. The three new writer tests pin the carried state,
+  which the old code did not have. `myVerbsDaysTakeMyVerbsInTurn` now threads the last-shown days,
+  as the writer does.
 
 ## Phase 4: The Guess Leaves the Main Thread, in a Search Model
 

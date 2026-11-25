@@ -57,6 +57,42 @@ The skill also provides a verify half (launch the app, tap by accessibility iden
 | `ONBOARDING_DISMISS_LABEL` | `Skip` | `launch_app.sh` interleaves a Skip-tap during wait-for-render so onboarding auto-dismisses. |
 | `MAIN_TABS_COORDS` | per-project (5 tabs) | Calibrated via `measure_tab_pill.sh` (Pillow centroid detection); the shipped 3-tab defaults don't fit. Re-measure if tab-bar geometry changes. |
 
+### Konjugieren's own simulators
+
+Konjugieren has dedicated iOS 26.3 simulators (2026-11-24), freshly created from the device types
+it always used, so layouts and tab coordinates hold. They let a Konjugieren session run beside a
+Conjuguer or Conjugar session without colliding.
+
+- **"Konjugieren iPhone 17"**, `A7B6ECD9-FE8D-4FF7-9D91-4368969D4F80`, the default target:
+  `.claude/ios-build-verify.config.sh` sets `TARGET_SIM="${TARGET_SIM:-Konjugieren iPhone 17}"`.
+  Raw `xcodebuild` takes `-destination 'platform=iOS Simulator,name=Konjugieren iPhone 17'`.
+- **"Konjugieren iPad Pro 11"** (an iPad Pro 11-inch (M5)), `E44D6058-F7F8-451E-909F-B8EF8BD90CCA`.
+  Prefix a script to use it: `TARGET_SIM="Konjugieren iPad Pro 11" "$IBV_SCRIPTS/launch_app.sh"`.
+  `tap_tab.sh` uses the config's iPhone coordinates, so on the iPad tap by identifier (`tap_id.sh`)
+  or by `describe_ui.sh` frames. Boot it only for an iPad check and shut it down afterward
+  (`xcrun simctl shutdown E44D6058-F7F8-451E-909F-B8EF8BD90CCA`). On this Intel Mac its first
+  screen takes longer than the config's 10-second `WAIT_FOR_RENDER_BUDGET_S`, so `launch_app.sh`
+  can report that `verb_browse_anchor` never appeared while the app is in fact up. Confirm with
+  `verify_screen_loaded.sh verb_browse_anchor` before treating it as a failure.
+- **Never use** "Conjuguer iPhone 17", "Conjuguer iPad Pro 11", "Conjugar iPhone 17", or "Conjugar
+  iPad Pro 11". Leave the plain "iPhone 17" and "iPad Pro 11-inch (M5)" to other work.
+- **Name the UDID in every `simctl` command.** With several simulators booted, `simctl openurl
+  booted` reaches the wrong one.
+- **If a simulator hangs, ask Josh before restarting CoreSimulator** (`killall -9
+  com.apple.CoreSimulator.CoreSimulatorService`), because that stops every simulator, the other
+  apps' included.
+- **A new device starts bare.** The iPhone was set up to match the plain iPhone 17 that preceded
+  it: languages `en-US` then `de-US`, a connected hardware keyboard, and Konjugieren's notification
+  permission allowed. Neither device is signed in to Game Center, and the plain one never was. The
+  iPad has the languages and the app. Notification permission cannot be granted with `simctl
+  privacy`, which has no notifications service: turn the Daily Reminder on in Settings, tap Allow,
+  and turn it off again. A device's first launch after creation also outruns the render budget,
+  while its accessibility tree warms up, so expect one failed `launch_app.sh` on a new device.
+
+The App Store screenshot scripts (`scripts/take_screenshots.sh`, `scripts/prep_screenshot_sim.sh`)
+choose their own capture devices, including "Konjugieren iPad Screenshots"; see
+[`docs/screenshot_playbook.md`](docs/screenshot_playbook.md).
+
 ### App-specific friction: review-prompt UserDefaults accumulation
 
 Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promptActionCount` and `lastReviewPromptDate` cooldowns (see `Settings.swift`). On a simulator with accumulated UserDefaults (typical after exploratory testing), the prompt fires on launch and gates the AXTree, and `launch_app.sh` exits 5 with the modal-gating hint pointing at SKILL.md "Modal AXTree gating". Recovery: tap "Not Now" once (cooldown blocks subsequent prompts) or `xcrun simctl uninstall <UDID> biz.joshadams.Konjugieren` for a clean reset.
@@ -107,9 +143,9 @@ not on the `func` line.
 When `xcbeautify`'s lossy filter drops an early-stage error or you need raw `xcodebuild` output:
 
 ```bash
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' build
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' build
 
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/ConjugatorTests/perfektpartizip\(\)
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/ConjugatorTests/perfektpartizip\(\)
 ```
 
 `build.log` (gitignored) preserves raw output from the last skill-script invocation; `grep -B2 -A20 'error:' build.log` is the deepest fallback for surfacing errors.

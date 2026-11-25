@@ -188,7 +188,7 @@ Select the **Konjugieren** scheme, choose an iOS 26 simulator, and build (Cmd-B)
 
 ```bash
 xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
-  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' \
   -parallel-testing-enabled NO test
 ```
 

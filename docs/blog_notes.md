@@ -12359,3 +12359,82 @@ glass Dismiss button, and the verb page's header matched except for a one-level 
 toolbar glass. The rest of the verb page differed only because TipKit's Red Letters tip was
 caught mid-entrance in one capture and settled in the other, which is a reminder that a pixel
 diff of a page with a tip needs its region chosen by hand.
+
+## A quiz begun from a hand-written link (2026-11-24)
+
+The Conjuguer session, auditing its own quiz signals during the pedagogy Closing, found that a
+quiz begun from a `quiz/daily`, `quiz/challenge`, or `quiz/set` link with no `source` item reports
+`source` `deeplink` (`url.analyticsSource ?? .deeplink` in `World.handleURL`), and that the pending
+privacy policy's list of where a quiz was begun never mentioned a link. It asked Konjugieren to
+check, and Konjugieren has the same gap. Every link the app writes carries its own `source`: the
+reminder, the shared challenge result, the quiz widget's literal URL, and a practice set's link and
+QR code. So `deeplink` here means a link typed by hand or written by another app, and the value
+names nothing. The list should still be complete. Conjugar's pending policy already was.
+
+A new last section of `docs/privacy_policy_pending.md` gives the first quiz bullet whole, in
+English and German, with "or a link from outside the app" ("oder über einen Link von außerhalb der
+App") as its last item. The bullet had last been given whole in the daily-session section and then
+patched by a phrase in the daily-challenge section. Restating it whole spares whoever applies the
+policy at release from having to assemble two sections in order. In
+`docs/feature_architecture.md`, the `deeplink` row of the `source` table now names the three quiz
+links, and so do the Source column of the quiz-scope table and the daily session's and challenge's
+Signals bullets.
+
+The same table had four older gaps, which Josh asked to have fixed in the same pass. The
+`sharedLink` row said "`viewCollection` only", though a practice set's quiz has sent it since
+practice sets landed. `qrCode` had no row at all. `ablautAlone` and `ablautMixed` were listed
+twice, once as their own rows and once as a combined row added later, and the combined row went.
+And the Analytics table's row for `startQuiz`, `quitQuiz`, and `completeQuiz` still listed the
+five `source` values the quiz had before its redesign. It now lists all twenty-one and links to
+the vocabulary table. None of this needed a privacy line, since the pending policy already
+described every one of those quizzes.
+
+The Analytics section's signal table also lacked the three practice-set signals,
+`tapSharePracticeSet`, `viewPracticeSet`, and `tapKeepPracticeSet`, which the pending policy had
+named since 2026-11-14. They have rows now, beside `tapShareCollection`, with their parameters as
+the call sites send them.
+
+Josh then asked for the rest. Seventeen signals had no row: sixteen that a name check found, plus
+`viewInfoView`, which the check missed because another row mentions it in passing. They now have
+a table of their own, "Screen, Settings, Tutor, and game signals", since none carries a parameter.
+Each row was written from its call site rather than from the name, and one of them settled
+something the name would have got wrong: `tapExplainError` is not sent at all today, because
+the "Why wrong?" card that sends it is commented out of `QuizView` for 1.0. With these rows the
+Analytics section names every case of `AnalyticsName`.
+
+Last, the sentence that introduces the `source` vocabulary named only `viewVerbView`,
+`finishSearch`, and "the three quiz signals". A search of the code for `ParameterKey.source`
+found ten signals that send it: those, `abandonQuiz` as the fourth quiz signal,
+`viewCollection`, `viewPracticeSet`, and the hub's `tapViewAchievements` and
+`tapViewLeaderboard`. The sentence now names all ten.
+
+## Konjugieren's own simulators (2026-11-24)
+
+Conjuguer and Conjugar each had simulators of their own, so that sessions on different apps could
+run at once without one app's build or launch landing on another's device. Konjugieren still built
+to the plain "iPhone 17". The Conjuguer session created "Konjugieren iPhone 17" and "Konjugieren
+iPad Pro 11" fresh, not as clones, and asked this session to switch over. Josh approved the edits
+to CLAUDE.md and the `ios-build-verify` config, which a request from another session alone does
+not authorize.
+
+`TARGET_SIM` now reads `"${TARGET_SIM:-Konjugieren iPhone 17}"`, so a prefix can still point a
+script at the iPad. `build.log` showed `TARGET_DEVICE_IDENTIFIER` resolving to the new iPhone's
+UDID, which is the check that the name and not some fallback was used. Thirteen raw `xcodebuild`
+examples across CLAUDE.md, the README, six docs, and `generate_verb_pdf.py` now name the new
+device. The screenshot scripts were left alone, since they choose their own capture devices, and
+so were the docs that record a past session on the plain iPhone 17.
+
+A fresh device is bare, so the old one's state was read before it was shut down rather than
+guessed. It had languages `en-US` then `de-US`, a hardware keyboard connected, and Konjugieren's
+notification permission allowed. It had never been signed in to Game Center: its sign-in banner
+had been shown 334 times. The new iPhone got the languages from `defaults write`, and the keyboard
+was already connected, which a focused search field with no on-screen keyboard confirmed.
+Notification permission was the awkward one. `simctl privacy` has no notifications service, so the
+permission was granted the way a learner grants it: Daily Reminder on, Allow, and Daily Reminder
+off again. A "Play the Game" tip that covered the Settings screen had to be closed first.
+
+Both devices failed their first `launch_app.sh` with an empty accessibility tree. That turned out
+to be warm-up, not a modal, since the iPhone's second launch passed. The iPad kept failing because
+on this Intel Mac its first screen takes longer than the 10-second render budget, even though
+`verify_screen_loaded.sh` found the anchor moments later. CLAUDE.md now says so rather than raising
+a budget that every iPhone launch shares.

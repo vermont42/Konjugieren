@@ -117,7 +117,7 @@ in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
 | `.collection(_:)` | A collection's verbs, with replacement, in a sheet | 10, then Ten More | `list` | No |
 | `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band | 10, then Ten More | `custom` | No |
-| `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet | 10, then Ten More | `sharedLink` or `qrCode` | No |
+| `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet | 10, then Ten More | `sharedLink` or `qrCode`, or `deeplink` from a link without a `source` | No |
 | `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band | Up to 10, then Ten More while any are due | `review` | No |
 | `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
 | `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations | 15, then five more verbs | `verbEssentials` | No |
@@ -125,8 +125,8 @@ in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person | 10, then Ten More | `recognition` | No |
 | `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow | Up to 10, then Ten More | `sentences` | No |
 | `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
-| `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question | 10; no Ten More, but Another Session while a repair needs a second | `daily`, or `reminder` from the reminder | No |
-| `.challenge(_:source:)` | The daily challenge: the default quiz's draw at the key's level, seeded by its day and level alone, no due items, no choice question, no re-ask | 5, once per day and level | `challenge`, `challengeLink` from a shared result, or `challengeWidget` from the quiz widget | No |
+| `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question | 10; no Ten More, but Another Session while a repair needs a second | `daily`, `reminder` from the reminder, or `deeplink` from a link without a `source` | No |
+| `.challenge(_:source:)` | The daily challenge: the default quiz's draw at the key's level, seeded by its day and level alone, no due items, no choice question, no re-ask | 5, once per day and level | `challenge`, `challengeLink` from a shared result, `challengeWidget` from the quiz widget, or `deeplink` from a link without a `source` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -826,7 +826,8 @@ Practice, with a flame once there is a streak.
   `konjugieren://quiz/daily?source=reminder` (`ReminderNotificationDelegate`, set in `AppDelegate`),
   which starts a session unless a quiz is under way. A reminder due while the app is open is not
   shown. The widgets do not show the streak (Josh, 2026-11-13).
-- **Signals.** `source` `daily` or `reminder` on the quiz signals; `completeQuiz` of a daily session
+- **Signals.** `source` `daily` or `reminder` on the quiz signals (`deeplink` for a `quiz/daily` link
+  without a `source`); `completeQuiz` of a daily session
   carries `streak` in bands (`AnalyticsBand.streak`: `1`, `2-6`, `7-29`, `30+`), the streak at stake
   while a repair awaits its second session; `tapDailyReminder` with `enabled`. Question counts are
   sent, since a daily session is always ten.
@@ -878,7 +879,8 @@ Herausforderung", the hub's row under the Daily Session.
   today's result. A link without a valid date asks for today's, and one without a known level asks
   at the learner's (`World.challengeKey(in:level:)`).
 - **The quiz widget** asks the challenge's first question. See [Quiz Widget](#quiz-widget).
-- **Signals.** `source` `challenge`, `challengeLink`, or `challengeWidget` on the quiz signals, with
+- **Signals.** `source` `challenge`, `challengeLink`, or `challengeWidget` on the quiz signals
+  (`deeplink` for a `quiz/challenge` link without a `source`), with
   the question count, always five; `tapShareChallenge` with `level`. Never the result.
 - **VoiceOver.** The dots are read as a sentence ("3 of 5 right on the first try, 1 on the second.
   35 of 50 points."), on the hub and the results; Share Result and the row have hints.
@@ -1715,13 +1717,16 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page. The key names a fixed list, not anything the learner chose |
 | `tapShareChallenge` | `level` | When Share Result on a daily challenge's results, or its row on the hub once taken, is tapped, whether or not the learner then shares. Never the result |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares |
+| `tapSharePracticeSet` | `method` (`link`, `qrCode`), `customChoice` (`conjugationgroups`, `verbs`, `both`) | When Share Link or Show QR Code in the Custom segment's Share menu is tapped, whether or not the learner then shares. Neither names the set's conjugationgroups or verbs |
+| `viewPracticeSet` | `source` (`sharedLink`, `qrCode`, `deeplink`), `outcome` (`opened`, or `invalid` for a link naming nothing this version knows) | Once, when a practice set's sheet appears (`PracticeSetView`). Nothing about the set's contents is sent. Its Start sends `startQuiz` with the same `source` |
+| `tapKeepPracticeSet` | None | When Keep as My Custom Quiz on a practice set's sheet is tapped |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed. Nothing about the record is sent |
 | `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off. `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
 | `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears. Nothing about the record or the level is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card. A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `tapViewAchievements` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Achievements on the hub or in Settings is tapped. Nothing about progress is sent |
 | `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub or View Leaderboards in Settings is tapped |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz, or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz. A Review or My Mistakes session (`review`, `mistakes`) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results. Without `source`, three-question quizzes would inflate the completion rate of the default quiz. `level` replaces `difficulty` (`regular`, `ridiculous`), which the shipped app sends with `quitQuiz` and `completeQuiz` only. `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` is wall-clock time from the start to the quit, background included. `questionNumber` does not count re-asks (`Quiz.questionReached`): a re-ask follows only a wrong answer, so a position counting them, such as 13 in a round of ten, would tell how many answers were wrong |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`, `sharedLink`, `qrCode`, `review`, `mistakes`, `verbEssentials`, `ablautAlone`, `ablautMixed`, `recognition`, `sentences`, `speedRound`, `daily`, `reminder`, `challenge`, `challengeLink`, `challengeWidget`, `deeplink`; see [The `source` vocabulary](#the-source-vocabulary)); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz, or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz. A Review or My Mistakes session (`review`, `mistakes`) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results. Without `source`, three-question quizzes would inflate the completion rate of the default quiz. `level` replaces `difficulty` (`regular`, `ridiculous`), which the shipped app sends with `quitQuiz` and `completeQuiz` only. `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` is wall-clock time from the start to the quit, background included. `questionNumber` does not count re-asks (`Quiz.questionReached`): a re-ask follows only a wrong answer, so a position counting them, such as 13 in a round of ten, would tell how many answers were wrong |
 | `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress: the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
@@ -1745,10 +1750,36 @@ verb page reached through a search still says which outside surface led there.
 inside a folded row, and `resultPosition` counts rows as shown, so the verbs of an open folded row
 follow it. Opening or closing that row sends nothing.
 
+### Screen, Settings, Tutor, and game signals
+
+None of these carries a parameter.
+
+| Signal | Sent |
+|---|---|
+| `viewVerbBrowseView` | Each time the Verbs tab's verb list appears |
+| `viewFamilyBrowseView` | Each time the Families tab's list appears |
+| `viewFamilyDetailView` | Each time a family's page appears, from the Families tab, the verb list, or the Quiz tab. The family is not named |
+| `viewInfoBrowseView` | Each time the Info tab's list of articles appears |
+| `viewInfoView` | Each time an Info article appears, including a conjugationgroup's article opened from a verb page. The article is not named |
+| `viewQuizView` | Each time the Quiz tab's own quiz screen appears. A quiz shown in a sheet sends none |
+| `viewSettingsView` | Each time Settings appears |
+| `viewTutorView` | Each time the Tutor appears, which it can only where Apple Intelligence is available |
+| `tapSendTutorMessage` | When a message is sent to the Tutor. The message is never sent to analytics |
+| `tapDeleteChatHistory` | When Settings' Delete Chat History is tapped, shown only while the Tutor is available and a history exists |
+| `tapExplainError` | Not sent today. "Why wrong?" under a quiz's correction sends it on opening or on Retry, and that card is disabled in 1.0 (see [`cloud_llm_tier.md`](cloud_llm_tier.md)) |
+| `tapShowOnboarding` | When Settings' Show Onboarding is tapped |
+| `tapRateOrReview` | When Settings' Rate or Review is tapped, which opens the App Store's review page |
+| `tapPlayGame` | When Settings' Play Game is tapped |
+| `startGame` | When a game begins, including a restart after a loss |
+| `completeWave` | When a wave is cleared and the next begins. Neither the wave's number nor the score is sent |
+| `loseGame` | When a game is lost. The score is not sent |
+
 ### The `source` vocabulary
 
-`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch`, and the three quiz
-signals. A quiz's `source` is where it was begun, or for the Quiz tab's
+`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch`, `viewCollection`,
+`viewPracticeSet`, the four quiz signals (`startQuiz`, `quitQuiz`, `completeQuiz`, and
+`abandonQuiz`), and, from the Quiz tab's hub, `tapViewAchievements` and `tapViewLeaderboard`.
+Each signal sends only the values its row in the tables above lists. A quiz's `source` is where it was begun, or for the Quiz tab's
 My Verbs scope, the list it was begun on.
 
 | Value | Sent today? | Meaning |
@@ -1758,7 +1789,7 @@ My Verbs scope, the list it was begun on.
 | `browse` | Yes | A row of the verb list with the search field empty |
 | `control` | Yes | The Random Verb control in Control Center; for `finishSearch`, the Find a Verb control |
 | `custom` | Yes | The quiz signals only: a custom quiz from the Quiz tab |
-| `deeplink` | Yes | A `konjugieren://` link with no recognized `source` |
+| `deeplink` | Yes | A `konjugieren://` link with no recognized `source`; for the quiz signals, a `quiz/set`, `quiz/daily`, or `quiz/challenge` link without one |
 | `lookup` | Yes | Look Up a Verb: the page it opens, or the search it opens when the word is ambiguous |
 | `family` | Yes | A verb on a family's page, including an expanded ablaut group; for `viewCollection`, a collection opened from the Families tab |
 | `handoff` | Yes | Handoff from another device |
@@ -1772,7 +1803,8 @@ My Verbs scope, the list it was begun on.
 | `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
-| `sharedLink` | Yes | `viewCollection` only: a collection's `list` link inside the text its share button sends. A verb's share text carries only the App Store link, as Josh chose on 2026-11-12 |
+| `sharedLink` | Yes | For `viewCollection`, a collection's `list` link inside the text its share button sends; for the quiz signals, a practice set opened from the `quiz/set` link inside the text Share Link sends. A verb's share text carries only the App Store link, as Josh chose on 2026-11-12 |
+| `qrCode` | Yes | The quiz signals only: a practice set opened from the QR code that Show QR Code displays |
 | `myVerbs` | Yes | A verb in the verb list's My Verbs; for the quiz signals, a quiz over My Verbs |
 | `recent` | Yes | A recent verb, listed while the search field is focused and empty |
 | `list` | Yes | A verb on a featured collection's page; for the quiz signals, a collection's quiz |
@@ -1780,7 +1812,6 @@ My Verbs scope, the list it was begun on.
 | `review` | Yes | The quiz signals only: a Review session from the Quiz tab |
 | `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab |
 | `verbEssentials` | Yes | The quiz signals only: Verb Essentials from the Quiz tab |
-| `ablautAlone`, `ablautMixed` | Yes | The quiz signals only: an ablaut group's practice, alone or mixed |
 | `recognition` | Yes | The quiz signals only: Name the Conjugation from the Quiz tab |
 | `sentences` | Yes | The quiz signals only: Sentences from the Quiz tab |
 | `speedRound` | Yes | The quiz signals only: the Speed Round from the Quiz tab |

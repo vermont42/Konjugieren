@@ -178,12 +178,12 @@ After implementation:
 
 1. **Build the app:**
    ```bash
-   xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' build
+   xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' build
    ```
 
 2. **Run tests:**
    ```bash
-   xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test
+   xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' -parallel-testing-enabled NO test
    ```
 
 3. **Visual verification:**

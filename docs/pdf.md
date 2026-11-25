@@ -18,7 +18,7 @@ print(f'Downloaded {len(data)} bytes')
 2. The JSON export must be at `/tmp/konjugieren-export.json`. If missing or stale, regenerate it:
 
 ```bash
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/VerbExportTests/exportAllVerbs\(\)
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/VerbExportTests/exportAllVerbs\(\)
 ```
 
 Note: Swift Testing's `--only-testing` filter silently runs zero tests if the method name doesn't match exactly. The real test is `exportAllVerbs()`, and the trailing `()` is required. A run that reports "Test Succeeded" with `0 tests in 1 suite` is the signal that the filter matched the suite but not any method.

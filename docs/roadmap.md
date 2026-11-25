@@ -145,7 +145,7 @@ python3 verbdata/build_candidates.py --include-existing
 TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN="$PWD/verbdata/candidates.json" \
 TEST_RUNNER_KONJUGIEREN_CLASSIFY_OUT="$PWD/verbdata/classification.json" \
 xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
-  -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
+  -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' -parallel-testing-enabled NO test \
   -only-testing:KonjugierenTests/VerbClassificationTests
 
 python3 verbdata/summarize_classification.py

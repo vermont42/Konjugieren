@@ -1065,3 +1065,32 @@ Josh kept the `quizCorrection` source on 2026-11-15, though a held correction fo
 answer. It says that a link under a correction was followed, as `mistakes` says that My Mistakes
 was begun: a surface, not a count of answers. Nothing is sent for the example sentence that only
 a right answer's row offers (see the Sentences section above), and the two rulings stand side by side.
+
+## A quiz begun from a link (2026-11-24)
+
+No new signal or parameter. A `konjugieren://quiz/daily` or `konjugieren://quiz/challenge` link
+without a `source` item starts the daily session or the daily challenge with the quiz signals'
+`source` `deeplink`, and a practice set's `quiz/set` link without one does the same
+(`World.handleURL`). The links the app writes all carry their own `source` (`reminder`,
+`challengeLink`, `challengeWidget`, `sharedLink`, `qrCode`), so `deeplink` comes only from a link
+written by hand or by another app. The value names nothing, but the first quiz bullet's list of
+where a quiz was begun did not include such a link. Conjuguer's Closing audit found the same gap
+on 2026-11-24, and Conjugar's pending policy already covers it. The first quiz bullet in section 2
+is given whole below, as the section on a daily session and a streak gives it with the change from
+the section on the daily challenge applied, plus the new item, so it replaces both.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), a practice set someone shared with you, and whether it came as a link or a QR code, a review of your due questions or of your mistakes, the Verb Essentials exercise, the practice of an ablaut group, alone or mixed, and which group, the Name the Conjugation exercise, the Sentences exercise, the Speed Round, the daily session, and whether you began it from its reminder, the daily challenge, and whether you began it from the quiz screen, from a link someone shared with you, or from the quiz widget, or a link from outside the app. When you finish a daily session, roughly how many days in a row you have finished one (1, 2 to 6, 7 to 29, or 30 or more)
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler, in der Übung „Verb-Grundlagen“, in der Übung einer Ablautgruppe, allein oder gemischt, samt der Angabe, welche Gruppe, in der Übung „Konjugationen bestimmen“, in der Übung „Lückensätze“, in der „Blitzrunde“, in der täglichen Übung, samt der Angabe, ob Sie diese über ihre Erinnerung begonnen haben, in der täglichen Herausforderung, samt der Angabe, ob Sie diese auf dem Quiz-Bildschirm, über einen Link, den jemand mit Ihnen geteilt hat, oder über das Quiz-Widget begonnen haben, oder über einen Link von außerhalb der App. Wenn Sie eine tägliche Übung abschließen, ungefähr, an wie vielen Tagen in Folge Sie eine abgeschlossen haben (1, 2 bis 6, 7 bis 29 oder 30 und mehr)
+```

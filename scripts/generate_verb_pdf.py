@@ -5,7 +5,7 @@ The JSON comes from the gated VerbExportTests harness. To write it where this sc
 
     TEST_RUNNER_KONJUGIEREN_EXPORT_OUT=/tmp/konjugieren-export.json \
     xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
-      -destination 'platform=iOS Simulator,name=iPhone 17' \
+      -destination 'platform=iOS Simulator,name=Konjugieren iPhone 17' \
       test -only-testing:KonjugierenTests/VerbExportTests
 
 Add TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY=abbauen,gehen to export only those verbs.

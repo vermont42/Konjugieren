@@ -23,7 +23,7 @@ empty until it is committed.
 | 2 | Done | 2026-11-25 | `c731457` | P1, two analytics nits | No |
 | 3 | Done | 2026-11-25 | `eb8d40b` | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
 | 4 | Done | 2026-11-25 | `905c500` | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
-| 5 | Awaiting Josh | 2026-11-25 | | S1 (the rest) | Yes |
+| 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
 | 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Not started | | | C3, D4, E2, E3, G5, G6 | Yes |
 | 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |

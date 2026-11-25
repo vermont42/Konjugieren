@@ -7,16 +7,11 @@ struct VerbBrowseView: View {
   @Bindable var world = Current
   @State private var listMode: VerbListMode = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
-  @State private var searchText: String = ""
+  @State private var search = VerbSearchModel(includeGlosses: Current.settings.searchScope == .infinitiveAndTranslation)
   @State private var navigationPath = NavigationPath()
-  @State private var keyboardSelection: Int?
   @State private var addressWasCopied = false
-  @State private var searchTracker = SearchTracker()
-  @State private var resultsCache = SearchResultsCache()
-  @State private var separableVerbsAreShown = false
   @State private var verbToUnstar: Verb?
   @State private var searchIsEngaged = false
-  @State private var searchFocusLostAt: Date?
   @State private var reviewCard: ReviewCardState?
   @State private var reviewCardIsChosen = false
   @State private var appWasInBackground = false
@@ -39,16 +34,8 @@ struct VerbBrowseView: View {
     settings.searchScope == .infinitiveAndTranslation
   }
 
-  private var trimmedSearchText: String {
-    searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-  }
-
   private var isSearching: Bool {
-    !trimmedSearchText.isEmpty
-  }
-
-  private var searchResults: VerbSearchResults {
-    isSearching ? resultsCache.results(for: trimmedSearchText, includeGlosses: searchIncludesGlosses) : .empty
+    search.isSearching
   }
 
   private var learnerVerbs: LearnerVerbStore { Current.learnerVerbs }
@@ -65,10 +52,8 @@ struct VerbBrowseView: View {
   private func searchFocusChanged() {
     guard !searchIsFocused else {
       searchIsEngaged = true
-      searchFocusLostAt = nil
       return
     }
-    searchFocusLostAt = .now
     Task {
       try? await Task.sleep(for: Self.searchLingering)
       if !searchIsFocused {
@@ -79,11 +64,16 @@ struct VerbBrowseView: View {
 
   private static let searchLingering = Duration.milliseconds(700)
 
+  /// The field has lost its focus, and the views that follow it have not yet let go.
+  private var searchIsLingering: Bool {
+    searchIsEngaged && !searchIsFocused
+  }
+
   // A tap that ends an empty search on iPad would push while the search is still animating away,
   // and UIKit drops such a push; see ViewControllerTransitions. A typed search does not end on
   // that tap, and on iPhone nothing is animating, so both push at once.
   private func pushFromSearch(_ destination: VerbDestination) {
-    guard !isSearching, searchFocusLostAt != nil else {
+    guard !isSearching, searchIsLingering else {
       navigationPath.append(destination)
       return
     }
@@ -98,12 +88,12 @@ struct VerbBrowseView: View {
   // the search to be gone, then reopens it, as a search request from outside the app does.
   private func insertLetter(_ letter: String) {
     guard !searchIsFocused else {
-      searchText.append(letter)
+      search.text.append(letter)
       return
     }
     Task {
       await ViewControllerTransitions.waitUntilIdle()
-      searchText.append(letter)
+      search.text.append(letter)
       searchIsFocused = true
     }
   }
@@ -120,7 +110,7 @@ struct VerbBrowseView: View {
       let verbs = showsRecents ? learnerVerbs.recentVerbs : sortedVerbs
       return verbs.map { .hit(VerbSearchResults.Hit(verb: $0, kind: nil, conjugation: nil), isInSeparableVerbs: false) }
     }
-    return searchResults.entries(separableVerbsAreShown: separableVerbsAreShown)
+    return search.entries
   }
 
   /// The source of a row opened with the field empty. Settled as the row is drawn, because a tap
@@ -134,7 +124,7 @@ struct VerbBrowseView: View {
   }
 
   var body: some View {
-    let results = searchResults
+    let results = search.results
     let entries = self.entries
     let browseSource = self.browseSource
     NavigationStack(path: $navigationPath) {
@@ -170,11 +160,8 @@ struct VerbBrowseView: View {
 
               if entries.isEmpty {
                 ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
-                  .onAppear {
-                    Current.soundPlayer.play(.randomSadTrombone)
-                  }
 
-                failedSearchHelp(guess: results.guess)
+                failedSearchHelp(guess: search.guess)
               } else {
                 if showsRecents {
                   listHeading(L.MyVerbs.recent)
@@ -215,7 +202,7 @@ struct VerbBrowseView: View {
                             openResult(hit, at: index, browseSource: browseSource)
                           }
                         case .separableVerbs(let hits):
-                          SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
+                          SeparableVerbsRow(hits: hits, isShown: search.separableVerbsAreShown, toggle: toggleSeparableVerbs)
                         }
                       }
                       .background(rowBackground(index: index))
@@ -227,8 +214,8 @@ struct VerbBrowseView: View {
                 }
               }
             }
-            .onChange(of: keyboardSelection) {
-              if let keyboardSelection, entries.indices.contains(keyboardSelection) {
+            .onChange(of: search.keyboardSelection) {
+              if let keyboardSelection = search.keyboardSelection, entries.indices.contains(keyboardSelection) {
                 proxy.scrollTo(entries[keyboardSelection].id)
               }
             }
@@ -261,6 +248,9 @@ struct VerbBrowseView: View {
           }
           .pickerStyle(.segmented)
           .padding()
+          // Search ignores the order, so with text in the field and the keyboard down, the
+          // picker would offer a choice that changes nothing on screen.
+          .disabled(isSearching)
           .accessibilityIdentifier("verb_list_mode_picker")
         }
       }
@@ -297,7 +287,7 @@ struct VerbBrowseView: View {
         FamilyDetailView(family: family) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
       }
       .searchable(
-        text: $searchText,
+        text: $search.text,
         placement: searchPlacement,
         prompt: searchIncludesGlosses ? L.VerbBrowse.searchPromptInfinitiveOrMeaning : L.VerbBrowse.searchPromptInfinitive
       )
@@ -317,23 +307,17 @@ struct VerbBrowseView: View {
           }
         } else {
           VerbSearchArrowKeys.uninstall()
-          searchTracker.fieldClosed()
+          search.fieldClosed()
         }
       }
-      .onChange(of: searchText) {
-        keyboardSelection = nil
-        separableVerbsAreShown = false
-        if let search = searchTracker.textChanged(to: searchText) {
-          signalEndedSearch(search)
-        }
+      .onChange(of: settings.searchScope) {
+        search.includeGlosses = searchIncludesGlosses
       }
       .onChange(of: scenePhase) {
         switch scenePhase {
         case .background:
           appWasInBackground = true
-          if let search = searchTracker.finish() {
-            signalEndedSearch(search)
-          }
+          search.appLeftForeground()
         case .active where appWasInBackground:
           appWasInBackground = false
           chooseReviewCard()
@@ -532,14 +516,14 @@ struct VerbBrowseView: View {
           .padding(.horizontal)
           .accessibilityIdentifier("search_guess_intro")
 
-        VerbRowView(verb: guess.verb, match: guess.conjugation, conjugationgroupLang: conjugationgroupLang) { openGuess(guess) }
-          .background(keyboardSelection == 0 ? Color.customRed.opacity(0.2) : Color.clear)
+        VerbRowView(verb: guess.verb, match: guess.conjugation, conjugationgroupLang: conjugationgroupLang) { openGuess() }
+          .background(search.keyboardSelection == 0 ? Color.customRed.opacity(0.2) : Color.clear)
 
         Divider()
           .padding(.leading)
       }
 
-      Text(verbRequestText(query: trimmedSearchText))
+      Text(verbRequestText(query: search.query))
         .font(.footnote)
         .foregroundStyle(.secondary)
         .padding(.horizontal)
@@ -561,6 +545,7 @@ struct VerbBrowseView: View {
           .accessibilityIdentifier("address_copied_note")
       }
     }
+    .animation(.easeInOut, value: guess)
   }
 
   /// A device with no email app, such as the simulator, cannot open the link, so the address
@@ -599,13 +584,7 @@ struct VerbBrowseView: View {
     }
     world.searchRequest = nil
     if let text = request.text {
-      if let ended = searchTracker.fieldOpened(from: request.source) {
-        signalEndedSearch(ended)
-      }
-      searchText = text
-      // onChange(of: searchText) does not fire when the text is unchanged, and the request
-      // still begins a search.
-      _ = searchTracker.textChanged(to: text)
+      search.request(text: text, source: request.source)
     }
     let wantsKeyboard = request.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
     Task {
@@ -635,7 +614,7 @@ struct VerbBrowseView: View {
   }
 
   private func rowBackground(index: Int) -> Color {
-    if index == keyboardSelection {
+    if index == search.keyboardSelection {
       return Color.customRed.opacity(0.2)
     }
     return index.isMultiple(of: 2) ? Color.clear : Color.customYellow.opacity(0.03)
@@ -643,7 +622,7 @@ struct VerbBrowseView: View {
 
   private func gridSelectionBackground(index: Int) -> some View {
     RoundedRectangle(cornerRadius: Layout.defaultSpacing)
-      .fill(index == keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
+      .fill(index == search.keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
   }
 
   @ViewBuilder
@@ -655,7 +634,7 @@ struct VerbBrowseView: View {
   }
 
   private func separableVerbsRow(_ hits: [VerbSearchResults.Hit], at index: Int) -> some View {
-    SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
+    SeparableVerbsRow(hits: hits, isShown: search.separableVerbsAreShown, toggle: toggleSeparableVerbs)
       .background(gridSelectionBackground(index: index))
   }
 
@@ -700,44 +679,27 @@ struct VerbBrowseView: View {
 
   private func toggleSeparableVerbs() {
     withAnimation {
-      separableVerbsAreShown.toggle()
+      search.toggleSeparableVerbs()
     }
   }
 
-  /// The rows that Return and the arrow keys move through: the entries as shown, or the guess
-  /// when a search found nothing.
+  /// The rows that Return and the arrow keys move through: the search's, or the list as shown.
   private var keyboardTargetCount: Int {
-    let count = entries.count
-    if count == 0, isSearching, searchResults.guess != nil {
-      return 1
-    }
-    return count
+    isSearching ? search.keyboardTargetCount : entries.count
   }
 
   private func moveKeyboardSelection(by offset: Int) {
     guard navigationPath.isEmpty else {
       return
     }
-    keyboardSelection = Self.keyboardSelection(after: keyboardSelection, moving: offset, count: keyboardTargetCount)
-  }
-
-  /// The first arrow press lands on the first result, and the selection stops at either end
-  /// rather than wrapping.
-  nonisolated static func keyboardSelection(after current: Int?, moving offset: Int, count: Int) -> Int? {
-    guard count > 0 else {
-      return nil
-    }
-    guard let current else {
-      return offset > 0 ? 0 : nil
-    }
-    return min(max(current + offset, 0), count - 1)
+    search.moveKeyboardSelection(by: offset, count: keyboardTargetCount)
   }
 
   private func openKeyboardSelection() {
-    let index = keyboardSelection ?? 0
+    let index = search.keyboardSelection ?? 0
     let entries = self.entries
-    if entries.isEmpty, index == 0, let guess = searchResults.guess {
-      openGuess(guess)
+    if entries.isEmpty, index == 0 {
+      openGuess()
       return
     }
     guard entries.indices.contains(index) else {
@@ -752,30 +714,17 @@ struct VerbBrowseView: View {
   }
 
   private func openResult(_ hit: VerbSearchResults.Hit, at index: Int, browseSource: AnalyticsSource) {
-    guard isSearching, let kind = hit.kind else {
+    guard isSearching, hit.kind != nil else {
       pushFromSearch(VerbDestination(verb: hit.verb, source: browseSource))
       return
     }
-    if let search = searchTracker.finish() {
-      signal(.opened(query: search.query, resultCount: searchResults.matchCount, kind: kind, position: index, source: search.source))
+    pushFromSearch(search.open(hit, at: index))
+  }
+
+  private func openGuess() {
+    if let destination = search.openGuess() {
+      pushFromSearch(destination)
     }
-    pushFromSearch(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
-  }
-
-  private func openGuess(_ guess: VerbSearchResults.Hit) {
-    if let search = searchTracker.finish() {
-      signal(.openedGuess(query: search.query, source: search.source))
-    }
-    pushFromSearch(VerbDestination(verb: guess.verb, source: .searchGuess, marks: guess.conjugation?.marks(on: guess.verb)))
-  }
-
-  private func signalEndedSearch(_ search: SearchTracker.Search) {
-    let matches = VerbSearch.matches(for: search.query, in: Verb.verbsSortedByFrequency, includeGlosses: searchIncludesGlosses)
-    signal(.ended(query: search.query, matches: matches, source: search.source))
-  }
-
-  private func signal(_ report: SearchReport) {
-    Current.analytics.signal(name: .finishSearch, parameters: report.parameters)
   }
 
   private func updateSortedVerbs() {
@@ -942,22 +891,6 @@ private struct ReviewCardState {
   let offer: PracticeStore.CardOffer
   var isRevealed = false
   var wasSignaled = false
-}
-
-/// The last search's results. SwiftUI evaluates the list's body several times per keystroke,
-/// and naming a matched conjugation's cells costs a few hundred conjugations.
-final class SearchResultsCache {
-  private var key: (query: String, includeGlosses: Bool)?
-  private var results = VerbSearchResults.empty
-
-  func results(for query: String, includeGlosses: Bool) -> VerbSearchResults {
-    if let key, key == (query, includeGlosses) {
-      return results
-    }
-    results = VerbSearchResults(query: query, verbs: Verb.verbsSortedByFrequency, includeGlosses: includeGlosses)
-    key = (query, includeGlosses)
-    return results
-  }
 }
 
 #Preview {

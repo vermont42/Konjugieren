@@ -1256,6 +1256,19 @@ marked section, and tints the marked rows, which VoiceOver reads as matching the
 query's length as well as infinitives, and an infinitive wins a tie. ginng guesses gehen through
 ging, and the guess's row names ging's cells.
 
+**The search model.** `VerbSearchModel` owns the verb list's search: the text, its results, the
+guess, the `SearchTracker`, the keyboard selection, and whether the folded row is open.
+`VerbBrowseView` keeps the field's focus and the navigation. An ordinary search costs a few
+hundredths of a second, so its results come at once. The guess compared xyzzyq with every
+conjugation of about its length for 0.7 seconds on the main thread in a debug build on the Intel
+Mac (2026-11-25). Now "No verbs found" shows at once, and the guess runs in a `@concurrent`
+function over `Sendable` candidates and appears when it is ready. The next edit cancels it, and the
+guess checks for cancellation as it goes. The sad trombone plays as a search begins to fail, not
+again for each further letter or on a return from a verb page. A search ended by clearing the
+field is reported from the results it showed, not searched again. Look Up a Verb still asks
+`VerbSearchResults` for the guess in line, since Siri waits for the answer anyway. The sort picker
+is disabled while the field has text, because search ignores the order.
+
 ## Learner's Verbs
 
 One on-device record of the learner's own verbs: each verb opened, with its first and last dates

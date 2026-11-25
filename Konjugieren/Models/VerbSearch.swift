@@ -203,58 +203,87 @@ enum VerbSearch {
     let conjugation: String?
   }
 
+  /// What the guess needs of a verb, as values that can leave the main actor.
+  nonisolated struct GuessCandidate: Sendable {
+    let infinitiv: String
+    let foldedInfinitiv: String
+    let frequency: Int
+  }
+
+  /// A guess by name, before its verb is looked up again on the main actor.
+  nonisolated struct GuessFinding: Equatable, Sendable {
+    let infinitiv: String
+    let conjugation: String?
+  }
+
+  static func guessCandidates(of verbs: [Verb]) -> [GuessCandidate] {
+    verbs.map { GuessCandidate(infinitiv: $0.infinitiv, foldedInfinitiv: keys(for: $0).foldedInfinitiv, frequency: $0.frequency) }
+  }
+
+  static func guess(for query: String, in verbs: [Verb], index: ConjugationIndex = .bundled) -> Guess? {
+    guard let finding = guess(for: query, among: guessCandidates(of: verbs), index: index) else {
+      return nil
+    }
+    return verbs.first { $0.infinitiv == finding.infinitiv }.map { Guess(verb: $0, conjugation: finding.conjugation) }
+  }
+
   /// The verb whose folded infinitive, or one of whose folded conjugations, is fewest edits
   /// from the folded query. On a tie, an infinitive beats a conjugation, and then the more
-  /// frequent verb wins. Nil when no verb is near enough to be a plausible misspelling.
-  static func guess(for query: String, in verbs: [Verb], index: ConjugationIndex = .bundled) -> Guess? {
+  /// frequent verb wins. Nil when no verb is near enough to be a plausible misspelling, and
+  /// when the task running it is cancelled, since a guess for text since edited is not wanted.
+  nonisolated static func guess(for query: String, among candidates: [GuessCandidate], index: ConjugationIndex = .bundled) -> GuessFinding? {
     let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     let foldedQuery = Array(fold(trimmed))
     guard !foldedQuery.isEmpty else {
       return nil
     }
     let maxDistance = maxGuessDistance(forQueryLength: foldedQuery.count)
-    var best: (guess: Guess, rank: (distance: Int, isConjugation: Int, frequency: Int))?
+    var best: (finding: GuessFinding, rank: (distance: Int, isConjugation: Int, frequency: Int))?
 
-    func consider(_ guess: Guess, distance: Int) {
-      let rank = (distance: distance, isConjugation: guess.conjugation == nil ? 0 : 1, frequency: guess.verb.frequency)
+    func consider(_ finding: GuessFinding, frequency: Int, distance: Int) {
+      let rank = (distance: distance, isConjugation: finding.conjugation == nil ? 0 : 1, frequency: frequency)
       if let current = best, current.rank <= rank {
         return
       }
-      best = (guess, rank)
+      best = (finding, rank)
     }
 
-    var verbsByInfinitiv: [String: Verb] = [:]
-    for verb in verbs {
-      verbsByInfinitiv[verb.infinitiv] = verb
-      let candidate = Array(keys(for: verb).foldedInfinitiv)
-      guard abs(candidate.count - foldedQuery.count) <= maxDistance else {
+    var candidatesByInfinitiv: [String: GuessCandidate] = [:]
+    for candidate in candidates {
+      candidatesByInfinitiv[candidate.infinitiv] = candidate
+      let folded = Array(candidate.foldedInfinitiv)
+      guard abs(folded.count - foldedQuery.count) <= maxDistance else {
         continue
       }
-      let distance = editDistance(foldedQuery, candidate)
+      let distance = editDistance(foldedQuery, folded, limit: maxDistance)
       if distance <= maxDistance {
-        consider(Guess(verb: verb, conjugation: nil), distance: distance)
+        consider(GuessFinding(infinitiv: candidate.infinitiv, conjugation: nil), frequency: candidate.frequency, distance: distance)
       }
     }
 
     guard !trimmed.contains(" ") else {
-      return best?.guess
+      return best?.finding
     }
     for (folded, conjugations) in index.foldedConjugations(nearLength: foldedQuery.count, distance: maxDistance) {
-      let distance = editDistance(foldedQuery, Array(folded))
-      guard distance <= min(maxDistance, best?.rank.distance ?? maxDistance) else {
+      if Task.isCancelled {
+        return nil
+      }
+      let limit = min(maxDistance, best?.rank.distance ?? maxDistance)
+      let distance = editDistance(foldedQuery, Array(folded), limit: limit)
+      guard distance <= limit else {
         continue
       }
       for conjugation in conjugations {
         for entry in index.map.entries(for: conjugation) where entry.particle == nil {
-          guard let verb = verbsByInfinitiv[entry.infinitiv] else {
+          guard let candidate = candidatesByInfinitiv[entry.infinitiv] else {
             continue
           }
-          let isInfinitive = conjugation == verb.infinitiv.lowercased()
-          consider(Guess(verb: verb, conjugation: isInfinitive ? nil : conjugation), distance: distance)
+          let isInfinitive = conjugation == candidate.infinitiv.lowercased()
+          consider(GuessFinding(infinitiv: candidate.infinitiv, conjugation: isInfinitive ? nil : conjugation), frequency: candidate.frequency, distance: distance)
         }
       }
     }
-    return best?.guess
+    return Task.isCancelled ? nil : best?.finding
   }
 
   // One edit in three letters, and never more than three, keeps a guess recognizable: gehn
@@ -265,28 +294,38 @@ enum VerbSearch {
 
   /// Insertions, deletions, substitutions, and swaps of two adjacent letters each cost one,
   /// because a swap is the commonest slip on a keyboard (ghen for gehen).
-  nonisolated static func editDistance(_ lhs: [Character], _ rhs: [Character]) -> Int {
+  ///
+  /// With a `limit`, any distance above it is reported as `limit + 1`, and the work stops once
+  /// a whole row exceeds it. That is safe because no later row has a smaller value: each cell is
+  /// at most one more than the cell above it, and a swap costs one more than a cell two rows up.
+  nonisolated static func editDistance(_ lhs: [Character], _ rhs: [Character], limit: Int = .max) -> Int {
+    let beyondLimit = limit == .max ? limit : limit + 1
     guard !lhs.isEmpty else {
-      return rhs.count
+      return min(rhs.count, beyondLimit)
     }
     guard !rhs.isEmpty else {
-      return lhs.count
+      return min(lhs.count, beyondLimit)
     }
     var twoRowsBack = [Int](repeating: 0, count: rhs.count + 1)
     var previousRow = Array(0...rhs.count)
     var currentRow = [Int](repeating: 0, count: rhs.count + 1)
     for i in 1...lhs.count {
       currentRow[0] = i
+      var rowMinimum = i
       for j in 1...rhs.count {
         let substitutionCost = lhs[i - 1] == rhs[j - 1] ? 0 : 1
         currentRow[j] = min(previousRow[j] + 1, currentRow[j - 1] + 1, previousRow[j - 1] + substitutionCost)
         if i > 1, j > 1, lhs[i - 1] == rhs[j - 2], lhs[i - 2] == rhs[j - 1] {
           currentRow[j] = min(currentRow[j], twoRowsBack[j - 2] + 1)
         }
+        rowMinimum = min(rowMinimum, currentRow[j])
+      }
+      if rowMinimum > limit {
+        return beyondLimit
       }
       (twoRowsBack, previousRow, currentRow) = (previousRow, currentRow, twoRowsBack)
     }
-    return previousRow[rhs.count]
+    return min(previousRow[rhs.count], beyondLimit)
   }
 
   /// Collapses the spellings a learner without a German keyboard types (konnen, koennen) and

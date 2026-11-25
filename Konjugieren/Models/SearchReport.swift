@@ -87,13 +87,13 @@ struct SearchReport: Equatable {
 
   /// A search that ended without a verb opened. Its match kind is the top result's, which says
   /// what the learner saw first and passed over.
-  static func ended(query: String, matches: [VerbSearch.Match], source: AnalyticsSource = .tab) -> SearchReport {
+  static func ended(query: String, results: VerbSearchResults, source: AnalyticsSource = .tab) -> SearchReport {
     SearchReport(
       source: source,
-      outcome: matches.isEmpty ? .noResult : .abandoned,
+      outcome: results.matchCount == 0 ? .noResult : .abandoned,
       queryLength: query.count,
-      resultCount: matches.count,
-      matchKind: matches.first?.kind.analyticsValue ?? .none,
+      resultCount: results.matchCount,
+      matchKind: results.topKind?.analyticsValue ?? .none,
       resultPosition: nil
     )
   }

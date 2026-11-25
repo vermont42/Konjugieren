@@ -16,7 +16,7 @@ struct VerbBrowseViewTests {
     (2, 1, 0, nil)
   ] as [(Int?, Int, Int, Int?)])
   func arrowKeysMoveTheSelectionAndStopAtTheEnds(current: Int?, offset: Int, count: Int, expected: Int?) {
-    #expect(VerbBrowseView.keyboardSelection(after: current, moving: offset, count: count) == expected)
+    #expect(VerbSearchModel.keyboardSelection(after: current, moving: offset, count: count) == expected)
   }
 }
 

@@ -169,6 +169,36 @@ struct VerbSearchTests {
     #expect(VerbSearch.editDistance(Array(lhs), Array(rhs)) == expected)
   }
 
+  // A limit may only shorten the work: below it, the distance is exact, and above it, the answer
+  // is one past it, which every caller reads as too far.
+  @Test(arguments: [
+    ("gehen", "gehen"),
+    ("gheen", "gehen"),
+    ("kitten", "sitting"),
+    ("xyzzyq", "gehen"),
+    ("abcdef", "badcfe"),
+    ("", "abc"),
+    ("abc", "")
+  ])
+  func aLimitedDistanceIsExactUpToTheLimit(lhs: String, rhs: String) {
+    let distance = VerbSearch.editDistance(Array(lhs), Array(rhs))
+    for limit in 0...4 {
+      #expect(VerbSearch.editDistance(Array(lhs), Array(rhs), limit: limit) == min(distance, limit + 1))
+    }
+  }
+
+  // The verb list cancels a guess when the text changes, and the guess stops rather than finish
+  // for text no longer in the field.
+  @Test func aCancelledGuessFindsNothing() async {
+    let candidates = VerbSearch.guessCandidates(of: Verb.verbsSortedByFrequency)
+    #expect(VerbSearch.guess(for: "ginng", among: candidates) != nil)
+    let task = Task.detached { () -> VerbSearch.GuessFinding? in
+      withUnsafeCurrentTask { $0?.cancel() }
+      return VerbSearch.guess(for: "ginng", among: candidates)
+    }
+    #expect(await task.value == nil)
+  }
+
   @Test(arguments: zip([1, 4, 6, 9, 20], [1, 1, 2, 3, 3]))
   func guessDistanceGrowsWithTheQueryAndIsCapped(length: Int, expected: Int) {
     #expect(VerbSearch.maxGuessDistance(forQueryLength: length) == expected)

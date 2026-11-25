@@ -10,6 +10,10 @@ struct SearchReportTests {
     VerbSearch.matches(for: query, in: Verb.verbsSortedByFrequency, includeGlosses: true)
   }
 
+  private func results(_ query: String) -> VerbSearchResults {
+    VerbSearchResults(query: query, verbs: Verb.verbsSortedByFrequency, includeGlosses: true, includesGuess: false)
+  }
+
   private func openedFirst(_ query: String) throws -> SearchReport {
     let found = matches(query)
     let kind = try #require(found.first?.kind)
@@ -138,17 +142,44 @@ struct SearchReportTests {
 
   // geh is gehen's Imperativ, so its top result is a conjugation, not an infinitive prefix.
   @Test func searchWithResultsAndNoOpenIsAbandoned() {
-    let report = SearchReport.ended(query: "geh", matches: matches("geh"))
+    let report = SearchReport.ended(query: "geh", results: results("geh"))
     #expect(report.outcome == .abandoned)
     #expect(report.matchKind == .conjugation)
     #expect(report.parameters["resultPosition"] == "none")
   }
 
   @Test func searchWithNoResultsIsNoResult() {
-    let report = SearchReport.ended(query: "xyzzyq", matches: matches("xyzzyq"))
+    let report = SearchReport.ended(query: "xyzzyq", results: results("xyzzyq"))
     #expect(report.outcome == .noResult)
     #expect(report.matchKind == .none)
     #expect(report.parameters["resultCount"] == "0")
+  }
+
+  // The verb list reports a search's end from the results it showed, where it once searched
+  // again. hielt and fuhren have folded rows, whose verbs count one by one.
+  @Test(arguments: ["geh", "hielt", "fuhren", "eat", "xyzzyq"])
+  func aReportFromTheResultsMatchesOneFromASearch(query: String) {
+    let found = matches(query)
+    let shown = results(query)
+    #expect(shown.matchCount == found.count)
+    #expect(shown.topKind == found.first?.kind)
+  }
+
+  // A word that is only ever a stranded part puts the folded row first, and the row stands
+  // for its verbs' kind.
+  @Test func aFoldedRowOnTopReportsItsVerbsKind() throws {
+    let map = ConjugationMap.bundled
+    let part = try #require(map.entriesByConjugation.keys.sorted().first { key in
+      let entries = map.entries(for: key)
+      return entries.count > 1 && entries.allSatisfy { $0.particle != nil } && !key.contains(" ")
+    })
+    let shown = results(part)
+    guard case .separableVerbs = shown.rows.first else {
+      Issue.record("Expected \(part) to put its folded row first")
+      return
+    }
+    #expect(shown.topKind == .finitePart)
+    #expect(shown.topKind == matches(part).first?.kind)
   }
 
   @Test func openingTheGuessIsAnOpenWithNoResults() {
@@ -175,7 +206,7 @@ struct SearchReportTests {
     )
     let found = matches(query)
     let reports = [
-      SearchReport.ended(query: query, matches: found),
+      SearchReport.ended(query: query, results: results(query)),
       SearchReport.opened(query: query, resultCount: found.count, kind: found.first?.kind ?? .glossSubstring, position: 0),
       SearchReport.openedGuess(query: query)
     ]

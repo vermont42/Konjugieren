@@ -12591,3 +12591,43 @@ Every test of changed behaviour was run against the old logic, put back temporar
 failed as expected. The three new writer tests pin the carried state itself, which the old code
 did not have. The session was interrupted in the middle of that run, and the first job after it
 was to confirm that the script had restored the new code before anything else happened.
+
+## A Misspelling Stops Freezing the Verb List (2026-11-25)
+
+Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md) took on the review's F1: a
+search that matched nothing computed its guess inside the list's `body`, on the main thread. The
+guess measures edit distance against every conjugation within a few letters of the query's
+length, so the stall came exactly when a learner had mistyped, and each further letter paid it
+again. A temporary timing test, run first against the old code, measured it in a debug build in
+the simulator on the Intel Mac: ginng took 0.18 to 0.23 seconds, and xyzzyq, for which no guess
+exists and so nothing stops the search early, 0.67 to 0.76.
+
+**The fix was a search model, which the review wanted anyway.** `VerbSearchModel` now owns the
+text, its results, the guess, the `SearchTracker`, the hardware keyboard's selection, and whether
+the folded row of separable verbs is open. The view keeps focus and navigation. The results come
+at once, and the guess comes from a task the next edit cancels. On the main thread, ginng now
+costs 0.02 to 0.04 seconds and xyzzyq 0.02 to 0.03. Their guesses arrive after 0.11 and 0.39
+seconds, while the field stays responsive.
+
+**Two Swift 6.2 details shaped it.** The project turns on Approachable Concurrency, under which a
+plain `nonisolated async` function runs on its caller's actor. An async helper called from the
+main actor would therefore have stalled it just as before. The hop is a `@concurrent` function.
+And `Verb`, under default main-actor isolation, has a main-actor `Hashable`, so the guess's core
+now works on plain `Sendable` values (infinitive, folded infinitive, frequency) and names its
+answer by infinitive. The main actor turns that back into a verb. The core checks
+`Task.isCancelled` as it walks the conjugations, so a cancelled guess stops instead of finishing
+for text no longer in the field. Removing either check makes its test fail, which was tried.
+
+**The review's second suggestion came almost free.** `editDistance` now takes a limit and stops
+once a whole row exceeds it. That is safe even with swaps, because no later row can hold a
+smaller value. On its own it halved the old in-line guess, which Look Up a Verb still uses, to
+0.10 and 0.39 seconds.
+
+**Smaller things fell out of the model.** Ending a search by clearing the field had searched the
+corpus again only to count the results; the report now reads the results the learner saw, and a
+test pins that the two agree, including when a folded row sits on top. The sad trombone used to
+play from the empty state's `onAppear`, so returning from a verb page to a failed search played
+it again. Now it plays as a search begins to fail. `searchFocusLostAt`, a `Date` used as a `Bool`
+that never reset, became `searchIsLingering`, derived from the two states that already said what
+it meant. And the sort picker is disabled while the field has text, since search ignores the
+order.

@@ -143,7 +143,8 @@ struct VerbSearchResults {
     self.guess = guess
   }
 
-  init(query: String, verbs: [Verb], includeGlosses: Bool, index: ConjugationIndex = .bundled) {
+  /// The verb list asks for no guess, which it computes off the main actor; see VerbSearchModel.
+  init(query: String, verbs: [Verb], includeGlosses: Bool, includesGuess: Bool = true, index: ConjugationIndex = .bundled) {
     let matches = VerbSearch.matches(for: query, in: verbs, includeGlosses: includeGlosses, index: index)
     let hits = matches.map { match in
       Hit(verb: match.verb, kind: match.kind, conjugation: Self.conjugation(of: match))
@@ -161,9 +162,24 @@ struct VerbSearchResults {
     }
     self.rows = rows
     matchCount = matches.count
-    guess = matches.isEmpty ? VerbSearch.guess(for: query, in: verbs, index: index).map { guess in
-      Hit(verb: guess.verb, kind: nil, conjugation: guess.conjugation.map { MatchedConjugation(whole: $0, of: guess.verb) })
-    } : nil
+    guess = matches.isEmpty && includesGuess ? VerbSearch.guess(for: query, in: verbs, index: index).map(Self.hit(for:)) : nil
+  }
+
+  static func hit(for guess: VerbSearch.Guess) -> Hit {
+    Hit(verb: guess.verb, kind: nil, conjugation: guess.conjugation.map { MatchedConjugation(whole: $0, of: guess.verb) })
+  }
+
+  /// The kind of the first row, which is the best match's: a folded row stands where its first
+  /// verb would.
+  var topKind: VerbSearch.MatchKind? {
+    switch rows.first {
+    case .hit(let hit):
+      return hit.kind
+    case .separableVerbs(let hits):
+      return hits.first?.kind
+    case nil:
+      return nil
+    }
   }
 
   private static func conjugation(of match: VerbSearch.Match) -> MatchedConjugation? {

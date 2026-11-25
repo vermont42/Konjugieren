@@ -22,7 +22,7 @@ empty until it is committed.
 | 1 | Done | 2026-11-25 | `d6640eb` | C1 | No |
 | 2 | Done | 2026-11-25 | `c731457` | P1, two analytics nits | No |
 | 3 | Done | 2026-11-25 | `eb8d40b` | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
-| 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
+| 4 | Awaiting Josh | 2026-11-25 | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Not started | | | S1 (the rest) | Yes |
 | 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Not started | | | C3, D4, E2, E3, G5, G6 | Yes |
@@ -259,7 +259,40 @@ section: ginng and xyzzyq, the time until `body` can return. Record both numbers
 on the iPad with a hardware keyboard, Command-F, the arrow keys, Return on a result, Return on
 the folded row, and Return on the guess.
 
-**How it differed:**
+**How it differed:** Mostly in how the guess leaves the main actor, which the project's
+concurrency settings decided. The suite went from 972 to 994 tests, in 101 suites.
+
+- **Measured**, three runs each, debug build, Konjugieren iPhone 17 simulator on the Intel Mac:
+
+  | Query | Before, main thread | After, main thread | After, guess ready |
+  |---|---:|---:|---:|
+  | ginng | 0.18–0.23 s | 0.02–0.04 s | 0.11 s |
+  | xyzzyq | 0.67–0.76 s | 0.02–0.03 s | 0.37–0.40 s |
+
+- **The guess runs in a `@concurrent` function, not a detached task.** With
+  `SWIFT_APPROACHABLE_CONCURRENCY`, a plain `nonisolated async` function runs on its caller's
+  actor. A structured call also carries the task's cancellation into the work, where a detached
+  task would have run on after the next letter. `VerbSearch.guess(for:among:index:)` works on
+  `Sendable` `GuessCandidate`s, since `Verb`'s conformances are main-actor-isolated, and checks
+  `Task.isCancelled` as it walks the conjugations. The old `guess(for:in:index:)` wraps it for
+  `VerbLookup`, which still takes the guess in line.
+- **`editDistance` gained a limit**, the review's second suggestion. It halved the in-line guess
+  that Look Up a Verb uses (0.10 and 0.39 s). A test pins that a limited distance is exact up to
+  the limit and one past it beyond.
+- **`VerbSearchResults` takes `includesGuess`**, and the model asks for none. It also gained
+  `topKind`, so `SearchReport.ended` reads `results:` rather than `matches:`. A test checks that
+  the two agree, including a query whose top row is the folded row.
+- **The sad trombone moved into the model.** It plays as a search begins to fail, and no longer
+  again when the learner returns from a verb page to the same failed search, which the empty
+  state's `onAppear` did.
+- **S2 needed no new state.** `searchIsLingering` is `searchIsEngaged && !searchIsFocused`, which
+  is true from the loss of focus until the lingering views let go, and resets by itself.
+- **The model's text is observed with `didSet`**, so typing, the letter row, and a request all
+  take one path, and the view's `onChange(of: searchText)` went. The search scope reaches the
+  model by an `onChange` of the setting.
+- **Checked in the simulator:** a `search` deeplink for ginng showed "No verbs found", then the
+  guess, with the sort picker disabled. The keyboard flows were left for Josh, as the phase says.
+- `README.md`'s three test counts went to 994, and its file count to sixty-five.
 
 ## Phase 5: Split the Verb List's View
 

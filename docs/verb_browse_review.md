@@ -228,6 +228,11 @@ a phone will be several times faster, and I did not measure one.
 task when the text changes. `ConjugationIndex` is already `Sendable`. A cheaper bound would also
 help: `editDistance` can stop once a row's minimum exceeds the limit.
 
+**Fixed on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), both ways: the guess runs off the main actor in
+`VerbSearchModel` and is cancelled by the next edit, and `editDistance` takes a limit. On the main
+thread, ginng went from 0.18–0.23 s to 0.02–0.04 s and xyzzyq from 0.67–0.76 s to 0.02–0.03 s; the
+guesses arrive after 0.11 s and 0.39 s.
+
 ### F2. Smaller performance findings
 
 - **Related verbs are rebuilt in `body` (Read).** `verb.related(readingIndex:)` runs at
@@ -240,7 +245,7 @@ help: `editDistance` can stop once a row's minimum exceeds the limit.
   (`LookUpVerbIntent.swift:24-28`). Not measured.
 - **A search ended by clearing the field is computed again (Read).** `signalEndedSearch`
   re-runs `VerbSearch.matches` (`VerbBrowseView.swift:772`) for a query whose results the cache
-  still holds.
+  still holds. **Fixed on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the report reads the model's results.
 
 ## Privacy
 
@@ -357,12 +362,15 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   request. Each phase added a little. Natural seams: `MyVerbsList`, `FailedSearchHelp`, a
   review-card host, and an `@Observable` search model that owns `searchText`, the cache, the
   tracker, and the keyboard selection. The last would also make the search flow testable, which
-  today only two static functions are.
+  today only two static functions are. **The search model is on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+  `VerbSearchModel`, with its own tests. The other three seams are Phase 5's.
 - **S2. `searchFocusLostAt` is a `Date` used as a `Bool`, and it never resets.** It is assigned
   `.now` and compared only with `nil` (`VerbBrowseView.swift:19`, `:68-71`, `:86`). After the
   field first loses focus it stays set, so every later push from the list goes through `Task {
   await waitUntilIdle() }`. That is harmless, because the wait returns at once when nothing is
-  animating, but the guard does not do what its comment describes.
+  animating, but the guard does not do what its comment describes. **Fixed on `main`
+  2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `searchIsLingering` is true from the loss of focus until the views that
+  follow it let go, and it is derived from the two states that already say so.
 - **S3. Declarations in files named for something else.** `Conjugationgroup.isParticiple` and
   `isImperativ`, `Reading.zuInfinitive`, and a `MarkedConjugations` initializer live in
   `VerbSearchResults.swift`. `VerbDestination` and `MarkedConjugations` live in `VerbVisit.swift`.
@@ -392,7 +400,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   the note early. They are worth one list in a doc, to retry on each new iOS.
 - **S8. The sort picker returns during a search and does nothing.** With text in the field and the
   keyboard down, the picker replaces the letter row, and choosing My Verbs has no visible effect.
-  Phase 1 notes this. Disabling the picker while `isSearching` would say so on screen.
+  Phase 1 notes this. Disabling the picker while `isSearching` would say so on screen. **Fixed
+  on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **S9. Unused or unguarded.**
   - `URL.konjugierenURLPrefix` (`URLExtension.swift:121`) has no caller.
   - `LearnerVerbs.recent(limit:)` takes a limit that nothing passes. **Fixed on `main`

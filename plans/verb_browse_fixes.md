@@ -21,7 +21,7 @@ empty until it is committed.
 |---:|---|---|---|---|---|
 | 1 | Done | 2026-11-25 | `d6640eb` | C1 | No |
 | 2 | Done | 2026-11-25 | `c731457` | P1, two analytics nits | No |
-| 3 | Done | 2026-11-25 | | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
+| 3 | Done | 2026-11-25 | `eb8d40b` | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
 | 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Not started | | | S1 (the rest) | Yes |
 | 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |

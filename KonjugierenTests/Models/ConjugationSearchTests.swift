@@ -64,6 +64,14 @@ enum ConjugationSearchTests {
       #expect(!matches(query).contains { $0.kind == .finitePart })
     }
 
+    // fuhren is an infinitive only once folded, and a folded spelling is a guess, so it keeps
+    // the separable verbs of which it is literally a part, as fuhr does.
+    @Test func foldedInfinitiveQueryKeepsItsStrandedParts() {
+      let parts = matches("fuhren").filter { $0.kind == .finitePart }
+      #expect(parts.contains { $0.verb.infinitiv == "abfahren" && $0.particle == "ab" })
+      #expect(parts.count == matches("fuhr").filter { $0.kind == .finitePart }.count)
+    }
+
     @Test func strandedPartTakesInItsSeparableVerbsButNotOthers() throws {
       let found = matches("halte")
       #expect(found.first?.verb.infinitiv == "halten")
@@ -163,6 +171,21 @@ enum ConjugationSearchTests {
       } else {
         Issue.record("Expected a separable verb after the row")
       }
+    }
+
+    @Test func literalConjugationLeadsAndItsFoldedRowPrecedesTheFoldedInfinitive() {
+      let rows = results("fuhren").rows
+      guard
+        case .hit(let fahren) = rows.first,
+        case .separableVerbs(let hits) = rows.dropFirst().first,
+        case .hit(let führen) = rows.dropFirst(2).first
+      else {
+        Issue.record("Expected fahren, then its separable verbs, then führen")
+        return
+      }
+      #expect(fahren.verb.infinitiv == "fahren")
+      #expect(hits.contains { $0.verb.infinitiv == "abfahren" })
+      #expect(führen.verb.infinitiv == "führen")
     }
 
     @Test func infinitiveQueryHasNoFoldedRow() {

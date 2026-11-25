@@ -42,6 +42,17 @@ struct VerbSearchTests {
     #expect(Array(results("zahlen").prefix(2)) == ["zahlen", "zählen"])
   }
 
+  // fuhren is wir fuhren of fahren, and führen only once folded. Josh, 2026-11-25: the literal
+  // reading leads.
+  @Test func literalConjugationOutranksFoldedInfinitive() throws {
+    let found = VerbSearch.matches(for: "fuhren", in: Verb.verbsSortedByFrequency, includeGlosses: true)
+    #expect(found.first?.verb.infinitiv == "fahren")
+    #expect(found.first?.kind == .conjugation)
+    let führen = try #require(found.firstIndex { $0.verb.infinitiv == "führen" })
+    #expect(found[führen].kind == .exactFoldedInfinitive)
+    #expect(found[..<führen].allSatisfy { $0.kind == .conjugation || $0.kind == .finitePart })
+  }
+
   // "zahl" spells the zahlen family literally and the zählen family only after folding.
   @Test func unfoldedMatchesRankAboveFoldedOnes() throws {
     let ranked = results("zahl")

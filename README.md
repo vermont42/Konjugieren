@@ -14,7 +14,7 @@ Konjugieren
 
 **Konjugieren** is two apps in one. The reference finds a verb from whatever a learner types, including a conjugation like _ging_, and shows every conjugation with its ablaut highlighted, its etymology traced to Proto-Indo-European, and an example sentence from published German. The quiz is a practice hub: graded the way a teacher would grade, aware of why an answer is wrong, backed by a spaced-repetition record of what the learner knows, and offering seven kinds of exercise.
 
-Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a conjugation map generated at build time for reverse lookup, a rule-based diagnosis of wrong answers, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 957 tests across 14,000+ lines.
+Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a conjugation map generated at build time for reverse lookup, a rule-based diagnosis of wrong answers, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 961 tests across 14,000+ lines.
 
 **Konjugieren** is available for free download in the iOS App Store™. Tap the button below to install.
 
@@ -155,7 +155,7 @@ Konjugieren is fully accessible to VoiceOver users, using four distinct accessib
 - **SwiftUI**: declarative UI with custom `ViewModifier`s and layouts, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
 - **Foundation Models**: on-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
 - **Core Motion**: 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
-- **Swift Testing**: modern test framework (`@Test`, `#expect`) with 957 test functions
+- **Swift Testing**: modern test framework (`@Test`, `#expect`) with 961 test functions
 - **Game Center**: a leaderboard for each of the four quiz levels and eight achievements, via `GKLeaderboard`, `GKAchievement`, and `GKAccessPoint`
 - **WidgetKit and ActivityKit**: two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling, plus Live Activities for quizzes and the game
 - **App Intents, Core Spotlight, and Control Center**: Siri and Shortcuts verb lookup, a Spotlight entry for every verb, and controls that start a quiz or open a random verb
@@ -168,7 +168,7 @@ Konjugieren is fully accessible to VoiceOver users, using four distinct accessib
 
 ### Testing
 
-The test suite spans **14,000+ lines** across sixty-four files, with **957 test functions** covering conjugation logic, search and the conjugation map, quiz state management, answer grading and diagnosis, the practice record and its schedule, the draw of each exercise, the authored sentences, rich-text parsing, and time formatting.
+The test suite spans **14,000+ lines** across sixty-four files, with **961 test functions** covering conjugation logic, search and the conjugation map, quiz state management, answer grading and diagnosis, the practice record and its schedule, the draw of each exercise, the authored sentences, rich-text parsing, and time formatting.
 
 The conjugation tests use a **mixed-case convention** to verify ablaut highlighting: lowercase letters represent unchanged portions, and UPPERCASE letters mark ablaut-changed regions. For example, `"sAng"` asserts that _singen_'s Präteritum changes "i" to "a" and the UI will highlight that change. This convention makes it immediately visible when a test expectation involves an ablaut transformation.
 

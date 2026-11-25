@@ -19,7 +19,7 @@ empty until it is committed.
 
 | Phase | Status | Date | Commit | Findings | Waits for Josh |
 |---:|---|---|---|---|---|
-| 1 | Not started | | | C1 | No |
+| 1 | Done | 2026-11-25 | | C1 | No |
 | 2 | Not started | | | P1, two analytics nits | No |
 | 3 | Not started | | | C2, C4, C7 (recents), G1, G4 | No, but it has a question for him |
 | 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
@@ -126,7 +126,23 @@ separable verbs; zahlen is still followed directly by zählen; konnen still find
 Look Up a Verb gives drucken, drücken, fallen, and fällen each a page as its destination.
 `VerbSearchTests` and `ConjugationSearchTests` pass, with any expectation that changes explained.
 
-**How it differed:**
+**How it differed:** Little. No existing expectation changed; four tests were added, each run
+first against the old code to see it fail, and the suite went from 957 to 961.
+
+- **The folded row sits between fahren and führen.** Because `finitePart` moved up with
+  `conjugation`, as the phase says, fuhren's rows are fahren, "Also in 32 separable verbs", then
+  führen. The two verbs are in Josh's order, and the stranded parts are literal spellings too, so
+  they rank as literal. If Josh wants führen directly under fahren, `finitePart` moves below
+  `exactFoldedInfinitive` and `literalConjugationLeadsAndItsFoldedRowPrecedesTheFoldedInfinitive`
+  changes with it.
+- **"30 more" became "dozens more", not 63.** The map does give ging 63 separable verbs, but the
+  corpus is still growing, and a count in a comment would go stale.
+- **Analytics.** `VerbSearch.MatchKind.analyticsValue` is a switch from name to name, so the order
+  is irrelevant to the signals; its cases were reordered to follow the enum.
+- **konnen in `infinitiveQueryHasNoStrandedParts` still passes, for another reason.** konnen is no
+  longer an infinitive to that rule, but a folded spelling never strands a part
+  (`conjugationMatches` refuses one), so it still has none. The test was left as it is.
+- `README.md`'s three test counts went to 961, which `check_docs.py` asked for.
 
 ## Phase 2: A Correction's Link Names No Verb
 

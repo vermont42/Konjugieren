@@ -29,15 +29,16 @@ struct VerbLookup {
   /// At most this many verbs are named, so that a spoken answer stays short.
   static let maxNamedVerbs = 4
 
-  private static let literalAnswerKinds: Set<VerbSearch.MatchKind> = [.exactInfinitive, .exactFoldedInfinitive, .conjugation]
+  private static let literalAnswerKinds: Set<VerbSearch.MatchKind> = [.exactInfinitive, .conjugation]
+  private static let foldedAnswerKinds: Set<VerbSearch.MatchKind> = [.exactFoldedInfinitive, .foldedConjugation]
 
   let word: String
   let findings: [Finding]
 
   /// A verb's page, when one verb answers; otherwise the verb list searched for the word, which
   /// shows every match and, failing them, the guess. The separable verbs of a finite part do
-  /// not count against the page: ging is a part of ausgehen and 30 more, and a learner who
-  /// says ging nearly always means gehen. The answer names them instead.
+  /// not count against the page: ging is a part of ausgehen and dozens more, and a learner
+  /// who says ging nearly always means gehen. The answer names them instead.
   let destination: URL?
 
   init(word: String, verbs: [Verb], includeGlosses: Bool, index: ConjugationIndex = .bundled) {
@@ -55,9 +56,10 @@ struct VerbLookup {
 
     // An infinitive and a conjugation answer the question equally: gefallen is a verb and
     // fallen's Perfektpartizip, and naming only the first would mislead a reader of the second.
-    // A folded spelling answers only when nothing literal does, as it ranks in the list.
+    // A folded spelling answers only when nothing literal does, so that drucken opens drucken
+    // and not a choice between it and drücken. The two folded kinds then answer together.
     let literalAnswers = hits.filter { $0.kind.map(Self.literalAnswerKinds.contains) ?? false }
-    let answers = literalAnswers.isEmpty ? hits.filter { $0.kind == .foldedConjugation } : literalAnswers
+    let answers = literalAnswers.isEmpty ? hits.filter { $0.kind.map(Self.foldedAnswerKinds.contains) ?? false } : literalAnswers
     let finiteParts = hits.filter { $0.kind == .finitePart }
 
     var findings: [Finding] = answers.prefix(Self.maxNamedVerbs).map { hit in

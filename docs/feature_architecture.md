@@ -1226,14 +1226,18 @@ index and length buckets, and is built once, off the main actor, when the verb l
 | A compound (hat gefunden, wird gehen) | The last word's whole-verb entries, kept only if `conjugations(matching:)` confirms the whole text is a cell: "hat gegangen" finds nothing. |
 | Any of these after ich, du, er, sie, es, wir, ihr, or man | The pronoun is dropped. |
 
-**Ranking.** `MatchKind` adds `conjugation` (after the two exact-infinitive kinds), `finitePart`
-(next), and `foldedConjugation` (after every literal match, as a folded infinitive ranks). So war
-finds sein ahead of warten, and zahl, zahlen's Imperativ, keeps zählen below zahlen's literal
-matches. A finite part comes only from a literal spelling, or zahl would gather zählen's separable
+**Ranking.** `MatchKind` adds `conjugation` (after the exact infinitive), `finitePart` (next),
+and `foldedConjugation` (after every literal match). A literal conjugation and its stranded parts
+outrank `exactFoldedInfinitive`, because folding is a guess and a literal spelling is not: fuhren
+finds fahren (wir fuhren), then fahren's separable verbs, then führen. Josh chose this on
+2026-11-25, in Phase 1 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). So war finds
+sein ahead of warten, zahlen is still followed directly by zählen, and zahl, zahlen's Imperativ,
+keeps zählen below zahlen's literal matches. A finite part comes only from a literal spelling, or zahl would gather zählen's separable
 verbs.
 
 **Stranded parts.** A finite part (hielt, of aufhalten) matches only when the query is not itself
-an infinitive. Josh chose this on 2026-11-12, so that a search for gehen or kommen does not also
+an infinitive, literally spelled: fuhren, which is führen only once folded, keeps them. Josh chose
+this on 2026-11-12, so that a search for gehen or kommen does not also
 list every separable verb whose finite part it spells. The verb list (`VerbSearchResults`) folds two or more finite-part matches into one row,
 "Also in 67 separable verbs", placed after the base verb and opened in place; a lone finite part
 gets an ordinary row. The shortcut picker passes `includeFiniteParts: false`, since it cannot fold
@@ -1638,6 +1642,10 @@ the learner's Search Scope and answers in the learner's language and conjugation
 | An infinitive that is also another verb's conjugation (gefallen), or a conjugation of two verbs (gehört) | One line per verb, at most four | The search |
 | Anything else that matches (eat) | "Konjugieren has no verb or conjugation spelled “eat”, but <n> verbs match. The first is essen, “eat”." | The search |
 | Nothing (gehn) | "… Perhaps you meant gehen." or no suggestion | The search, which shows the guess and the mail link |
+
+The literal answers are the exact infinitive and the literal conjugations. The two folded kinds,
+a folded infinitive and a folded conjugation, answer together, and only when no literal one does.
+So drucken opens drucken's page, although it folds to drücken too, and konnen opens können's.
 
 The stranded parts of a conjugation do not keep the learner from the base verb's page: nearly
 every strong verb's Präteritum is also a part of separable verbs, and someone who says ging

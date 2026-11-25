@@ -5,17 +5,21 @@ import Foundation
 /// The one matching and ranking rule for verb search, shared by the verb list and the shortcut
 /// picker so that the two cannot drift.
 enum VerbSearch {
-  // Semantic ordering: rank, best first. Whole-word gloss matches sit between German prefix
-  // and German substring matches because Josh wanted "eat" to find essen ahead of beatmen and
-  // "go" to find gehen ahead of gönnen, while "es" still finds essen ahead of ruhen (rest).
-  // A conjugation outranks an infinitive prefix, so that war finds sein ahead of warten, and a
-  // folded conjugation ranks below every literal match, as a folded infinitive does: zahl is
-  // zahlen's Imperativ, and zählen's only after folding.
+  // Semantic ordering: rank, best first. Folding is a guess at what a learner meant, and a
+  // query that literally spells a conjugation is not a guess, so a literal conjugation, and
+  // the separable verbs it is a part of, outrank a folded infinitive: fuhren is wir fuhren,
+  // and finds fahren ahead of führen (Josh, 2026-11-25). A folded infinitive still outranks
+  // every partial match, so zahlen is followed directly by zählen. Whole-word gloss matches sit
+  // between German prefix and German substring matches because Josh wanted "eat" to find essen
+  // ahead of beatmen and "go" to find gehen ahead of gönnen, while "es" still finds essen ahead
+  // of ruhen (rest). A conjugation outranks an infinitive prefix, so that war finds sein ahead
+  // of warten, and a folded conjugation ranks below every literal match: zahl is zahlen's
+  // Imperativ, and zählen's only after folding.
   enum MatchKind: Int, CaseIterable, Comparable {
     case exactInfinitive
-    case exactFoldedInfinitive
     case conjugation
     case finitePart
+    case exactFoldedInfinitive
     case infinitivePrefix
     case wholeWordGloss
     case infinitiveSubstring
@@ -55,7 +59,8 @@ enum VerbSearch {
   ///
   /// A stranded finite part (hielt, of aufhalten) matches only with `includeFiniteParts`, and
   /// never when the query is itself an infinitive. Searching gehen lists ausgehen as a
-  /// substring match, as it always has, rather than as a place where gehen is a word.
+  /// substring match, as it always has, rather than as a place where gehen is a word. A query
+  /// that is an infinitive only once folded is not one: fuhren keeps fahren's separable verbs.
   static func matches(
     for query: String,
     in verbs: [Verb],
@@ -79,7 +84,7 @@ enum VerbSearch {
       }
     }
 
-    let queryIsInfinitive = best.values.contains { $0.kind <= .exactFoldedInfinitive }
+    let queryIsInfinitive = best.values.contains { $0.kind == .exactInfinitive }
     let conjugationMatches = self.conjugationMatches(
       for: germanQuery,
       includeFiniteParts: includeFiniteParts && !queryIsInfinitive,

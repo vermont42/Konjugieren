@@ -44,6 +44,15 @@ struct VerbLookupTests {
     #expect(lookup("konnen").findings == [.infinitive(verb("können"))])
   }
 
+  // Each is the other's twin once folded. The literal spelling answers alone, so the shortcut
+  // opens the page and not the search.
+  @Test(arguments: ["drucken", "drücken", "fallen", "fällen"])
+  func aTwinInfinitiveOpensItsOwnPage(word: String) {
+    let found = lookup(word)
+    #expect(found.findings == [.infinitive(verb(word))])
+    #expect(found.destination == URL.verbDeeplink(word, source: .lookup))
+  }
+
   @Test func aFoldedConjugationAnswersInTheAppsSpelling() {
     let found = lookup("muß")
     #expect(found.findings.first == .conjugation(MatchedConjugation(whole: "muss", of: verb("müssen")), of: verb("müssen")))

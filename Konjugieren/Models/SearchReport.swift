@@ -115,12 +115,12 @@ extension VerbSearch.MatchKind {
     switch self {
     case .exactInfinitive:
       return .exactInfinitive
-    case .exactFoldedInfinitive:
-      return .exactFoldedInfinitive
     case .conjugation:
       return .conjugation
     case .finitePart:
       return .finitePart
+    case .exactFoldedInfinitive:
+      return .exactFoldedInfinitive
     case .infinitivePrefix:
       return .infinitivePrefix
     case .wholeWordGloss:

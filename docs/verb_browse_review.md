@@ -85,6 +85,11 @@ or above, the literal reading.
 `conjugation` above `exactFoldedInfinitive`: zahlen would still be followed directly by zählen,
 since no other verb has zahlen as a whole conjugation. Add tests for fuhren and for one twin.
 
+**Fixed on `main` 2026-11-25**, by Phase 1 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+`conjugation` and `finitePart` now rank above `exactFoldedInfinitive`, only `.exactInfinitive`
+suppresses stranded parts, and Look Up a Verb's folded kinds answer together after the literal
+tier.
+
 <a id="c2"></a>
 ### C2. The widget's My Verbs rotation repeats a verb whenever the list grows (Read)
 

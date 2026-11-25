@@ -12503,3 +12503,24 @@ empties it. The plan leaves that to the session as a question for Josh, with two
 does not guess. Two proofs are borrowed from the Browse plan's own practice: a refactor that
 touches files the map tool compiles is done when `forms.json` comes out byte-identical, and the
 guess's move off the main thread is measured before and after.
+
+## A literal spelling outranks a folded one (2026-11-25)
+
+Phase 1 of [`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md) fixed the review's C1.
+Folding is the search's guess at what a learner without umlaut keys meant, and three places had
+been ranking that guess level with, or above, what the learner literally typed. "fuhren" is wir
+fuhren of fahren, yet it put führen first; it also counted as an infinitive, which silenced
+fahren's 32 separable verbs; and Look Up a Verb treated a folded infinitive as a literal answer,
+so drucken had two answers, drucken and drücken, and the shortcut opened the search list instead
+of the page. The same held for fallen and fällen and the other twins.
+
+The fix is an ordering and two comparisons. `MatchKind` now reads exact infinitive, conjugation,
+finite part, then folded infinitive; only a literal infinitive suppresses stranded parts; and
+`VerbLookup` keeps a literal tier and a folded tier, consulting the second only when the first is
+empty. zahlen is still followed directly by zählen, since no other verb spells zahlen.
+
+Each of the four new tests was run first against the old code, where all four failed for exactly
+the reasons the review gave, before the fix went in. One choice is left visible for Josh: moving
+the finite parts up with the conjugations puts fuhren's folded row of separable verbs between
+fahren and führen. The plan asked for that, and the principle supports it, since "fuhren … ab" is a
+literal spelling too, but it is a one-line change if he would rather see führen second.

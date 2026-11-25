@@ -1722,7 +1722,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped |
 | `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped. The quiz it opens sends `startQuiz` with `source` `verbPage` |
 | `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background |
-| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page. The key names a fixed list, not anything the learner chose |
+| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page. The key names a fixed list, not anything the learner chose. For `quizCorrection` the signal has no `collection`: a correction follows only a wrong answer, so its ablaut group's key, which for a one-verb group is the verb, would say which verb was missed (decided 2026-11-25) |
 | `tapShareChallenge` | `level` | When Share Result on a daily challenge's results, or its row on the hub once taken, is tapped, whether or not the learner then shares. Never the result |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares |
 | `tapSharePracticeSet` | `method` (`link`, `qrCode`), `customChoice` (`conjugationgroups`, `verbs`, `both`) | When Share Link or Show QR Code in the Custom segment's Share menu is tapped, whether or not the learner then shares. Neither names the set's conjugationgroups or verbs |
@@ -1803,7 +1803,7 @@ My Verbs scope, the list it was begun on.
 | `handoff` | Yes | Handoff from another device |
 | `infoLink` | Yes | A verb linked from an Info article |
 | `related` | Yes | A verb in a verb page's Related Verbs card, or in the full list it opens |
-| `quizCorrection` | Yes | A verb page opened from a quiz's held correction; for `viewCollection`, an ablaut group opened from it |
+| `quizCorrection` | Yes | A verb page opened from a quiz's held correction; for `viewCollection`, an ablaut group opened from it, sent without the group's key |
 | `quickAction` | Yes | `finishSearch` only: the Find a Verb quick action on the app icon |
 | `resume` | Yes | The same page appearing again (see above) |
 | `search` | Yes | A search result, opened by tap, Return, or the arrow keys |

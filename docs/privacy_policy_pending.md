@@ -272,6 +272,11 @@ covers the verb page with "for example", and the collection bullet's "in the app
 ablaut group, so no line changes. The source says only that a link under a correction was
 followed, never which verb or answer, as Decision 5 of the pedagogy plan requires.
 
+Until 2026-11-25 the ablaut group's `viewCollection` also carried its `collection` key, and the
+pair named the group of the verb just missed, which for a one-verb group is the verb. Since Phase 2
+of `plans/verb_browse_fixes.md` that signal sends `source` alone, so the paragraph above is true
+and, as Josh decided, no line changes.
+
 ## Quiz levels (2026-11-13)
 
 Replaces the quiz's `difficulty` parameter (`regular`, `ridiculous`), sent with `quitQuiz` and

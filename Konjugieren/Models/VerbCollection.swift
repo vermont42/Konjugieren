@@ -140,11 +140,14 @@ enum VerbCollection: Hashable, Identifiable {
 
   static let shareSampleCount = 6
 
+  // A correction appears only after a wrong answer, so the key of the ablaut group it opens,
+  // which for a one-verb group is the verb, would say which verb the learner missed.
   func signalView(source: AnalyticsSource) {
-    Current.analytics.signal(name: .viewCollection, parameters: [
-      ParameterKey.collection.rawValue: key,
-      ParameterKey.source.rawValue: source.rawValue
-    ])
+    var parameters = [ParameterKey.source.rawValue: source.rawValue]
+    if source != .quizCorrection {
+      parameters[ParameterKey.collection.rawValue] = key
+    }
+    Current.analytics.signal(name: .viewCollection, parameters: parameters)
   }
 }
 

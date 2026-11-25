@@ -20,7 +20,7 @@ empty until it is committed.
 | Phase | Status | Date | Commit | Findings | Waits for Josh |
 |---:|---|---|---|---|---|
 | 1 | Done | 2026-11-25 | `d6640eb` | C1 | No |
-| 2 | Not started | | | P1, two analytics nits | No |
+| 2 | Done | 2026-11-25 | | P1, two analytics nits | No |
 | 3 | Not started | | | C2, C4, C7 (recents), G1, G4 | No, but it has a question for him |
 | 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Not started | | | S1 (the rest) | Yes |
@@ -156,7 +156,21 @@ first against the old code to see it fail, and the suite went from 957 to 961.
 - Restore the alphabetical order of the signal names, and correct the comment that says "once the
   quiz track sends it".
 
-**How it differed:**
+**How it differed:** Hardly. Two tests were added, one for each source, and the correction's test
+was run first against the old code, where it failed with `"collection": "ablaut-gehen"` in the
+parameters. The suite went from 961 to 963.
+
+- **The staged privacy text is now true and was left as written.** "A correction's links" says the
+  source names "never which verb or answer", which the pairing had made false. A dated note under
+  that paragraph records the fix, without changing a line that would be published. The collection
+  bullet's "which collection" still describes every other source.
+- **The guard has a comment.** `signalView(source:)` says why a correction's view omits the key,
+  since an `if` on one source looks arbitrary from the call site.
+- **The source comment now names collections too**, since `viewCollection` shares the vocabulary,
+  and points to `docs/feature_architecture.md` for which values each signal sends.
+- **G7's "30 more" bullet got its fixed line**, crediting Phase 1, which had fixed the comment
+  but not marked the bullet.
+- `README.md`'s three test counts went to 963.
 
 ## Phase 3: The Learner's Record and the Widget's Draw
 

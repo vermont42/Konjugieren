@@ -254,6 +254,10 @@ chose beyond opening it".
 **Fix.** For `quizCorrection`, send `viewCollection` without `collection`, or with a constant such
 as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 
+**Fixed on `main` 2026-11-25**, by Phase 2 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+`signalView(source:)` sends `viewCollection` without `collection` when the source is
+`quizCorrection`. Josh chose the omission, and the staged text stays as written.
+
 ## Gaps Between the Docs and the Code
 
 - **G1. The widget does not read the learner's record (Read).** `Shared/LearnerVerbs.swift:5-8`,
@@ -288,14 +292,16 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **G6. The Related Verbs card has no `VerbPageSection` (Reviewer)**, so `deepestSection` cannot
   say that a learner reached the newest thing on the page.
 - **G7. Stale prose (Read).**
-  - `VerbLookup.swift:39`: "ausgehen and 30 more". The map has 63.
+  - `VerbLookup.swift:39`: "ausgehen and 30 more". The map has 63. **Fixed on `main`
+    2026-11-25**, by Phase 1 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as "dozens more".
   - `ConjugationMap.swift:55`: "about 160 KB". The file is 173 KB.
   - `ConjugationMapTool/main.swift:83-84`: the map is not written atomically because of the script
     sandbox, which the app target has since turned off. An atomic write would now work, and would
     avoid a truncated map whose fresh timestamp keeps the phase from rerunning.
   - `QuizView.swift:1509-1514`: `QuizSheet`'s doc comment opens with a sentence about
     `TabQuizScope`.
-  - `Analytics.swift:70-71`: "once the quiz track sends it".
+  - `Analytics.swift:70-71`: "once the quiz track sends it". **Fixed on `main` 2026-11-25**, by
+    Phase 2 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 
 ## Duplication
 
@@ -385,7 +391,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
     fail to load looks the same (`ConjugationMap.swift:93-96`).
   - `scripts/count_conjugationgroups.py` prints zeros and then divides by zero when given another
     app's `cells.json` (line 578).
-  - `Analytics.swift:44-45` breaks the alphabetical order of the signal names.
+  - `Analytics.swift:44-45` breaks the alphabetical order of the signal names. **Fixed on `main`
+    2026-11-25**, by Phase 2 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **S10. Konjugieren and Conjuguer build the tool into one directory (Reviewer).**
   `$TMPDIR/ConjugationMapTool-build` in `scripts/write_forms_json.sh:31` and
   `scripts/count_conjugationgroups.py:184` is the path Conjuguer's script uses for a target of the

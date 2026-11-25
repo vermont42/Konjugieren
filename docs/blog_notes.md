@@ -12524,3 +12524,24 @@ the reasons the review gave, before the fix went in. One choice is left visible 
 the finite parts up with the conjugations puts fuhren's folded row of separable verbs between
 fahren and führen. The plan asked for that, and the principle supports it, since "fuhren … ab" is a
 literal spelling too, but it is a one-line change if he would rather see führen second.
+
+## A correction's link stops naming the verb (2026-11-25)
+
+Phase 2 of [`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md) fixed the review's P1, a
+privacy leak made of two harmless halves. A quiz's held correction appears only after a wrong
+answer, and its link opens the ablaut group of the verb missed. The pedagogy plan had added the
+`quizCorrection` source to `viewCollection`, and the Browse plan had added the collection's key;
+each was ruled on, and each was disclosed. Nobody had ruled on the pair, which together said
+"wrong answer, in this group", and 18 of the 76 groups hold a single verb, so for those the key is
+the verb itself.
+
+Josh chose to drop the key rather than amend the policy, so `signalView(source:)` now sends only
+the source when it is `quizCorrection`. The fix is four lines; the test that proves it asks the
+spy for the exact parameter dictionary, not merely for the presence of a source, since a check for
+"source is quizCorrection" would have passed on the old code too. The staged privacy paragraph
+about a correction's links, which promised "never which verb or answer", had been quietly false
+and is now true without a word changed.
+
+The phase also put `tapKeepPracticeSet` back in alphabetical order and retired a doc comment that
+still said "once the quiz track sends it", though the quiz signals have carried a source since
+the pedagogy plan's early phases.

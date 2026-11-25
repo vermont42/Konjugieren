@@ -102,6 +102,25 @@ struct VerbCollectionTests {
     #expect(!scope.isRanked)
   }
 
+  @Test func viewSignalNamesTheCollection() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    VerbCollection.ablautGroup("gehen").signalView(source: .family)
+    #expect(Array(spy.signalNames.dropFirst(initialCount)) == [.viewCollection])
+    #expect(spy.signalParameters.last == [
+      ParameterKey.collection.rawValue: "ablaut-gehen",
+      ParameterKey.source.rawValue: "family"
+    ])
+  }
+
+  @Test func viewSignalFromACorrectionNamesNoCollection() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    VerbCollection.ablautGroup("gehen").signalView(source: .quizCorrection)
+    #expect(Array(spy.signalNames.dropFirst(initialCount)) == [.viewCollection])
+    #expect(spy.signalParameters.last == [ParameterKey.source.rawValue: "quizCorrection"])
+  }
+
   @Test func storeCountsOpenedVerbs() throws {
     let store = LearnerVerbStore(getterSetter: GetterSetterFake())
     let verbs = VerbCollection.modals.verbs(region: .north)

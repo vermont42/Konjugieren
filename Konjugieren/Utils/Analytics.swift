@@ -37,12 +37,12 @@ enum AnalyticsName: String {
   case tapDailyReminder
   case tapDeleteChatHistory
   case tapExplainError
+  case tapKeepPracticeSet
   case tapPlayGame
   case tapRateOrReview
   case tapResetPractice
   case tapRevealReviewCard
   case tapSendTutorMessage
-  case tapKeepPracticeSet
   case tapShareChallenge
   case tapShareCollection
   case tapSharePracticeSet
@@ -67,10 +67,9 @@ enum AnalyticsName: String {
   case viewVerbView
 }
 
-/// How the learner reached a verb page, began a search, or, once the quiz track sends it, began
-/// a quiz. The signals share one vocabulary so that a verb page, a search, and a quiz reached
-/// from the same surface carry the same value. `docs/feature_architecture.md` says which values
-/// are sent today.
+/// How the learner reached a verb page or a collection, began a search, or began a quiz. The
+/// signals share one vocabulary so that a verb page, a search, and a quiz reached from the same
+/// surface carry the same value. `docs/feature_architecture.md` says which values each sends.
 enum AnalyticsSource: String, CaseIterable {
   case ablautAlone
   case ablautMixed

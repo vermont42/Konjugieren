@@ -381,6 +381,7 @@ docs/
 ├── ui_audit_2.md                              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
 ├── usage.md                                   # Reading the five-hour window from inside a session: the zero-token `/usage` probe, why the calling session pays, and what a headless child costs
 ├── vanilla_build_and_test.md                  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
+├── verb_browse_review.md                      # Code review (2026-11-25) of what plans/browse_and_verb_implementation.md built: correctness, performance, privacy, doc gaps, duplication, smells, elegance, and tests, each finding labelled by how it was verified, with a suggested order of work; nothing fixed there. plans/verb_browse_fixes.md is the plan to fix them
 ├── verb_classification.md                     # The classify-and-verify pipeline: design, invocation, and what it found
 ├── verb_history.txt                           # Editable English source of Info.verbHistoryText, header plus body; sync with `scripts/sync_verb_history.py`
 ├── verb_history_claims.md                     # Claim inventory for the verb-history fact-check: 111 numbered claims, one owning cluster each
@@ -445,6 +446,7 @@ plans/                         # What Claude wrote to get another session to do 
 ├── tutor_row_killswitch.md                 # Plan for the Tutor-row kill switch used when taking screenshots, ported from Conjugar; shipped in 7dd7b88
 ├── ui_audit_2_next_session.md              # Next-session brief for the OnboardingView page-1 layout work, item 16 of docs/ui_audit_2.md
 ├── uses_etymologies.md                     # The combined etymology-and-example-sentence pipeline, in phases 0 to 5; complete 2026-07-23, and kept live because the corpus-expansion re-mine reuses Phase 4. Mode B of the integrate skill reads its output
+├── verb_browse_fixes.md                    # Multi-session plan, in 12 phases plus a closing, for fixing what docs/verb_browse_review.md found, with Josh's eight decisions of 2026-11-25; phases that change what he can see wait for him before git, and each session marks its phase done and notes how it differed
 └── verify_verb_history.md                  # Plan for fact-checking "A History of the German Verb System" in phases 0 to 4; every phase done, with docs/history_corrections.md as the deliverable
 
 prompts/                       # What Josh wrote to get Claude to do something. A plan Claude writes in answer goes in plans/, and research or other informational output goes in docs/
@@ -458,7 +460,8 @@ prompts/                       # What Josh wrote to get Claude to do something. 
 ├── location_cleanup.md        # Asks for the sorting of 2026-11-16 that put prompts, plans, and documents in the folders this file describes
 ├── more_verbs.md              # Asks for new sources of verbs; executed 2026-07-18, producing docs/verb_sources.md
 ├── pedagogy.md                # Asks whether the quiz is pedagogically sound and how to improve it; answered by docs/pedagogy_research.md
-└── telemetry.md               # Asks for the usage data of all three apps from TelemetryDeck; answered by docs/telemetry_usage.md
+├── telemetry.md               # Asks for the usage data of all three apps from TelemetryDeck; answered by docs/telemetry_usage.md
+└── verb_browse_review.md      # Asks for a review of the code that plans/browse_and_verb_implementation.md built; answered by docs/verb_browse_review.md
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness

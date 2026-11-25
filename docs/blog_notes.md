@@ -12438,3 +12438,68 @@ to be warm-up, not a modal, since the iPhone's second launch passed. The iPad ke
 on this Intel Mac its first screen takes longer than the 10-second render budget, even though
 `verify_screen_loaded.sh` found the anchor moments later. CLAUDE.md now says so rather than raising
 a budget that every iPhone launch shares.
+
+## Reviewing the Browse and verb code (2026-11-25)
+
+Josh asked for a review of what the sixteen-phase Browse plan built: about 10,000 lines across
+some 70 files, written two weeks earlier and since touched by the pedagogy plan. The review is in
+[`docs/verb_browse_review.md`](verb_browse_review.md). Nothing was fixed.
+
+The work was split. The session read the search core, the verb list, and the verb page itself, and
+three Opus subagents each took one other area with no view of the session's conclusions: the
+conjugation map and lookup from outside the app, what the verb page is built from, and the
+learner's record with collections and the widget's draw. Every finding of theirs that ranked above
+"small" was then traced in the code again before it went into the document, and each finding
+carries a label saying whether it was run, read, reported, or only suspected.
+
+Running code settled what reading could not. A temporary probe test, deleted afterward, searched
+fifteen queries and conjugated every cell of all 3,572 verbs. It showed that "fuhren" ranks führen
+above fahren and loses fahren's 32 separable verbs, where "fuhr" keeps them. One cause explains
+that and a second symptom a subagent found independently: a folded infinitive is treated as a
+literal match, so Look Up a Verb cannot open the page of drucken or fallen, each of which has an
+umlauted twin. The probe also showed that the verb page's `hasRedLetters` guard is true for every
+verb. The first explanation was the marked auxiliaries (hAst gemacht). The probe found a second:
+the capital S of "machen Sie", which the renderer exempts and the guard does not. A subagent's
+proposed fix, checking only the simple tables, would therefore have changed nothing, since the Sie
+row is in one of them.
+
+One suspicion was wrong, and the simulator said so. `openKeyboardSelection` defaults to index 0,
+which suggested that Command-F and then Return on an iPad would open the first verb in the list.
+On the iPad simulator the field took focus and Return did nothing. It went into the review's list
+of things checked and found fine, where a guess would have gone into the findings.
+
+Two findings sit on the seam between the two plans. The pedagogy plan's correction view links to
+an ablaut group through this plan's `viewCollection` signal, so a wrong answer followed by a tap
+sends both `source: quizCorrection` and the group's key, which together name the verb missed. Each
+half had been ruled on. The pairing had not. And the widget's "take My Verbs in turn" rotation
+indexes a newest-first list by a counter, so each newly opened verb shifts the list by exactly the
+step the counter takes, and the same verb returns three days later. A subagent's simulation put
+the repeat rate at 35% for a light user against 5% for the uniform pick the rotation replaced.
+
+The failed-search guess takes 0.15 to 0.8 seconds on the main thread per keystroke in a debug
+build on this Intel Mac, which is the one performance finding with a number behind it.
+
+## A plan for the review's findings (2026-11-25)
+
+Josh read the review and asked for its open questions to be settled and a plan written. Eight
+questions went to him, each one a place where the review had named two reasonable courses, and he
+took the recommendation on seven: omit the collection key from a correction's signal, rank a
+literal conjugation above a folded infinitive, show the red-letter tip only where the verb itself
+is irregular, separate collection progress from My Verbs, delete the migration no shipped build
+needs, leave the widget's lookup resetting a verb's box, and stop before git only for phases that
+change what he can see. On the eighth he went further than recommended and chose the full split of
+`VerbBrowseView` over extracting the search model alone.
+
+[`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md) has twelve phases and a closing. It
+does not restate the findings. The review is the specification, and the plan adds the order, the
+grouping, the decisions, and what counts as done, so that the two cannot drift apart. Findings are
+grouped by the files they touch, not by the review's categories, since a session that opens
+`VerbView.swift` for the tip's guard should also take the three smaller things there.
+
+Writing the phase for collection progress turned up a consequence the question to Josh had not
+mentioned. The Browse plan added Clear so that a history kept on the device would have a way to be
+emptied. Once progress counts `firstOpened` and Clear forgets only `lastOpened`, Clear no longer
+empties it. The plan leaves that to the session as a question for Josh, with two candidates, and
+does not guess. Two proofs are borrowed from the Browse plan's own practice: a refactor that
+touches files the map tool compiles is done when `forms.json` comes out byte-identical, and the
+guess's move off the main thread is measured before and after.

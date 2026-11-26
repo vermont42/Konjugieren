@@ -58,8 +58,10 @@ struct ConjugationTableTests {
     }
   }
 
+  // The page draws its tables from the stacks, so a stack that dropped or reordered a table
+  // would put the page out of step with allCells, which the search's marks follow.
   @Test func allCellsFollowsThePage() {
-    #expect(Conjugationgroup.allCells == ConjugationTable.allCases.flatMap(\.cells))
+    #expect(Conjugationgroup.allCells == ConjugationTable.stacks.flatMap { $0 }.flatMap(\.cells))
   }
 
   @Test(arguments: ConjugationTable.allCases)

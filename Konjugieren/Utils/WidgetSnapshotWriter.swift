@@ -10,17 +10,24 @@ enum WidgetSnapshotWriter {
       return
     }
     let pageOffset = WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
-    let previous = (try? Data(contentsOf: url)).flatMap { try? JSONDecoder().decode(WidgetSnapshotBundle.self, from: $0) }
-    let displayed = previous
-      .flatMap { $0.displayedSnapshot(at: now, pageOffset: pageOffset) }
-      .flatMap { Verb.verbs[$0.infinitiv] }
-    guard let bundle = generateBundle(startDate: now, myVerbs: Current.learnerVerbs.myVerbs, keeping: displayed, pageOffset: pageOffset, lastShown: previous?.myVerbsLastShown ?? [:]) else {
-      return
-    }
-    guard let data = try? JSONEncoder().encode(bundle) else {
+    guard
+      let bundle = nextBundle(after: try? Data(contentsOf: url), now: now, myVerbs: Current.learnerVerbs.myVerbs, pageOffset: pageOffset),
+      let data = try? JSONEncoder().encode(bundle)
+    else {
       return
     }
     try? data.write(to: url, options: .atomic)
+  }
+
+  /// The bundle that replaces `previous`, the file the last write left, which may be missing or
+  /// unreadable. The verb the widget shows now stays where the widget will show it today, and
+  /// the My Verbs turns carry over.
+  @MainActor static func nextBundle(after previous: Data?, now: Date, myVerbs: [Verb], pageOffset: Int = 0, level: QuizLevel = Current.settings.quizLevel) -> WidgetSnapshotBundle? {
+    let previous = previous.flatMap { try? JSONDecoder().decode(WidgetSnapshotBundle.self, from: $0) }
+    let displayed = previous
+      .flatMap { $0.displayedSnapshot(at: now, pageOffset: pageOffset) }
+      .flatMap { Verb.verbs[$0.infinitiv] }
+    return generateBundle(startDate: now, myVerbs: myVerbs, keeping: displayed, pageOffset: pageOffset, lastShown: previous?.myVerbsLastShown ?? [:], level: level)
   }
 
   /// `keeping` is the verb the widget shows now. It stays in the place the widget will show

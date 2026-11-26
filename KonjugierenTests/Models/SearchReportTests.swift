@@ -194,10 +194,19 @@ struct SearchReportTests {
     ])
   }
 
-  // The privacy policy promises that nothing typed is sent. Every value must come from a fixed
-  // vocabulary or a band, so none can echo the query.
+  // The privacy policy promises that nothing typed is sent, and a report can keep a query only
+  // in a stored property, so this is where an echo would begin.
+  @Test func aReportKeepsNoText() {
+    let report = SearchReport.ended(query: "Schmiesing", results: results("Schmiesing"))
+    for child in Mirror(reflecting: report).children {
+      #expect(!(child.value is String) && !(child.value is Substring), "\(child.label ?? "?") holds text")
+    }
+  }
+
+  // The values come from fixed vocabularies and bands. A count sent unbanded would fail here:
+  // Schmiesing's length would be "10", which is not among them.
   @Test(arguments: ["gehen", "es", "1", "10+", "opened", "Schmiesing"])
-  func noParameterValueEchoesTheQuery(query: String) {
+  func everyParameterValueIsAWordOfTheVocabularyOrABand(query: String) {
     let vocabulary = Set(
       SearchOutcome.allCases.map(\.rawValue)
         + SearchMatchKind.allCases.map(\.rawValue)

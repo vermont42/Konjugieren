@@ -158,6 +158,59 @@ struct WidgetSnapshotTests {
     let decoded = try JSONDecoder().decode(WidgetSnapshotBundle.self, from: data)
     #expect(bundle == decoded)
   }
+
+  // The writer's path from the file the last write left. The tests above hand `keeping` and
+  // `lastShown` in themselves.
+
+  private func myVerbs() -> [Verb] {
+    ["abbehalten", "aufstehen", "verstehen"].compactMap { Verb.verbs[$0] }
+  }
+
+  /// A bundle from 2026-03-01 that shows abbehalten, which no plan without My Verbs draws, on
+  /// its last day, and whose turns differ from those a write with no history would plan.
+  private func previousBundle() throws -> WidgetSnapshotBundle {
+    let start = date("2026-03-01")
+    let fresh = try #require(WidgetSnapshotWriter.generateBundle(startDate: start))
+    let abbehalten = try #require(Verb.verbs["abbehalten"])
+    let lastIndex = fresh.snapshots.count - 1
+    let lastDay = try #require(WidgetConstants.gregorianCalendar.date(byAdding: .day, value: lastIndex, to: fresh.baseDate))
+    var snapshots = fresh.snapshots
+    snapshots[lastIndex] = WidgetSnapshotWriter.generateSnapshot(verb: abbehalten, date: lastDay)
+    return WidgetSnapshotBundle(baseDate: fresh.baseDate, snapshots: snapshots, myVerbsLastShown: ["abbehalten": date("2026-03-02"), "aufstehen": start])
+  }
+
+  @Test func aMissingFilePlansAfresh() throws {
+    let now = date("2026-03-05")
+    let next = try #require(WidgetSnapshotWriter.nextBundle(after: nil, now: now, myVerbs: myVerbs()))
+    #expect(next == WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs()))
+  }
+
+  @Test func anUnreadableFilePlansAfresh() throws {
+    let now = date("2026-03-05")
+    let next = try #require(WidgetSnapshotWriter.nextBundle(after: Data(#"{"baseDate": "#.utf8), now: now, myVerbs: myVerbs()))
+    #expect(next == WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs()))
+  }
+
+  @Test func aFileFromAnEarlierDayKeepsTodaysVerbAndTheTurns() throws {
+    let previous = try previousBundle()
+    let now = date("2026-03-10").addingTimeInterval(9 * 3600)
+    let next = try #require(WidgetSnapshotWriter.nextBundle(after: try JSONEncoder().encode(previous), now: now, myVerbs: myVerbs()))
+    #expect(next.snapshots[0] == previous.snapshots.last)
+    let lastShown = try #require(previous.myVerbsLastShown)
+    #expect(next == WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs(), keeping: Verb.verbs["abbehalten"], lastShown: lastShown))
+    #expect(next != WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs(), keeping: Verb.verbs["abbehalten"]), "The turns must matter to this test.")
+  }
+
+  // abbehalten's turn is the last of the three, so no plan from these turns shows it on 03-11.
+  @Test func aFilePastItsCachedDaysKeepsNoVerbButCarriesTheTurns() throws {
+    let previous = try previousBundle()
+    let now = date("2026-03-11")
+    let next = try #require(WidgetSnapshotWriter.nextBundle(after: try JSONEncoder().encode(previous), now: now, myVerbs: myVerbs()))
+    let lastShown = try #require(previous.myVerbsLastShown)
+    #expect(next.snapshots[0].infinitiv != "abbehalten")
+    #expect(next == WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs(), lastShown: lastShown))
+    #expect(next != WidgetSnapshotWriter.generateBundle(startDate: now, myVerbs: myVerbs()), "The turns must matter to this test.")
+  }
 }
 
 @Suite("WidgetSnapshotPaging")
@@ -226,10 +279,14 @@ struct WidgetAnswerShuffleTests {
     #expect(Set(shuffled) == ["gehe", "geht", "gehen", "gehst"])
   }
 
-  @Test func differentQuestionsCanOrderDifferently() {
-    let a = question(id: "day-a").shuffledAnswers
-    let b = question(id: "day-b").shuffledAnswers
-    #expect(Set(a) == Set(b))
+  // The right answer is appended after the wrong ones, so a shuffle that did nothing, or one
+  // whose seed ignored the question, would leave it in one place on every day.
+  @Test func theRightAnswerMovesFromQuestionToQuestion() {
+    let positions = Set((1...28).compactMap { day in
+      let asked = question(id: "2026-02-\(day)-gehen")
+      return asked.shuffledAnswers.firstIndex(of: asked.correctAnswer)
+    })
+    #expect(positions == [0, 1, 2, 3])
   }
 }
 

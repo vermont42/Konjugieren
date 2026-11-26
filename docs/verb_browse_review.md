@@ -512,30 +512,50 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **T1. Three tests cannot fail.**
   - `allCellsFollowsThePage` (`ConjugationTableTests.swift:43-45`) asserts the definition of
     `allCells` (`ConjugationTable.swift:224`). What can drift is `stacks`; assert against
-    `stacks.flatMap { $0 }.flatMap(\.cells)`.
+    `stacks.flatMap { $0 }.flatMap(\.cells)`. **Fixed on `main` 2026-11-26**, by Phase 12 of
+    [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as suggested.
   - `differentQuestionsCanOrderDifferently` (`WidgetSnapshotTests.swift:189-193`) compares two
-    sets, which are equal in any order.
+    sets, which are equal in any order. **Fixed on `main` 2026-11-26**, by Phase 12 of
+    [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `theRightAnswerMovesFromQuestionToQuestion` finds the right answer in every
+    position across 28 days' questions.
   - `noParameterValueEchoesTheQuery` (`SearchReportTests.swift:168-185`) holds by the types, since
-    every value is an enum case or a band. Harmless, and not evidence.
+    every value is an enum case or a band. Harmless, and not evidence. **Half right, and repaired
+    on `main` 2026-11-26**, by Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The bands are not held by the
+    types: the parameters are strings, and a length sent unbanded failed the test ("Schmiesing"
+    gave "10"), so it stays, renamed `everyParameterValueIsAWordOfTheVocabularyOrABand`. The echo
+    is held by the types, and `aReportKeepsNoText` now pins those: it fails if a report stores a
+    `String`.
 - **T2. Three tests check a copy of what they claim to check.**
   - `VerbLookupTests.swift:20` and `:49` compare against `MatchedConjugation(whole:of:)`, built by
-    the code under test.
-  - `InfoTests.swift:30-32` copies `InfoView.cleanURLString`.
-  - `DeeplinkTests` retypes the widget's links (G3).
+    the code under test. **Fixed on `main` 2026-11-26**, by Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): they
+    name the text and the cells (ging fills Präteritum Indikativ ich and er).
+  - `InfoTests.swift:30-32` copies `InfoView.cleanURLString`. **Fixed on `main` 2026-11-26**, by
+    Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): both call `Info.linkTarget`, which has its own test.
+  - `DeeplinkTests` retypes the widget's links (G3). **Fixed on `main` 2026-11-26**, by Phase 9
+    of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), with `WidgetDeeplink`.
 - **T3. Branches with no test.**
-  - Twin infinitives and "fuhren" (C1).
-  - The rotation with a list that changes (C2).
+  - Twin infinitives and "fuhren" (C1). **Tested on `main` 2026-11-25**, by Phase 1 of
+    [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
+  - The rotation with a list that changes (C2). **Tested on `main` 2026-11-25**, by Phase 3 of
+    [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
   - `writeSnapshot`'s path from disk: every stability test passes `keeping:` by hand, so a
     missing, corrupt, or stale bundle on disk is never met (`WidgetSnapshotWriter.swift:8-24`).
+    **Tested on `main` 2026-11-26**, by Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `nextBundle(after:…)`
+    takes the file's bytes, and four tests give it none, a broken file, one from nine days
+    before, and one past its ten days.
   - The Spotlight migration's order, the bug Phase 11 found by testing. `VerbSpotlight` calls
-    `CSSearchableIndex` directly, so a test cannot reach it.
+    `CSSearchableIndex` directly, so a test cannot reach it. **Tested on `main` 2026-11-26**, by
+    Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), behind `Current.spotlightIndex`.
   - The begin-and-end pairing of a visit across `scenePhase`, which lives in `VerbView`.
     **Tested on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `VerbVisitTrackerTests`.
-  - `ReviewSchedule` on a daylight-saving day. The code is right; nothing pins it.
+  - `ReviewSchedule` on a daylight-saving day. The code is right; nothing pins it. **Tested on
+    `main` 2026-11-26**, by Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), on both of Berlin's 2026 changes.
 - **T4. Exact assertions against a growing corpus.** `results("eat", includeGlosses: false) ==
   ["beatmen"]` (`VerbSearchTests.swift:68`) breaks the day a verb containing "eat" is imported.
   That may be wanted as a tripwire. If it is, a comment should say so, as the roadmap expects more
-  verbs.
+  verbs. **Fixed on `main` 2026-11-26**, by Phase 12 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). It was not meant as
+  a tripwire: the test now asks that beatmen is found and that every result holds the letters.
+  `sharedConjugationShowsBothVerbs` counted two matches, and now names the two verbs.
 
 ## Costs of Settled Decisions
 

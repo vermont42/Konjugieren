@@ -1556,10 +1556,13 @@ deeplink, which the Random Verb control and shortcut send).
   2025-01-01, read with plain modulo rather than `Int.random(in:using:)`, whose use of the generator
   is not documented.
 - **Stable through the day.** The app rewrites the bundle at every activation, and My Verbs may
-  have changed since the last write. `WidgetSnapshotWriter.writeSnapshot` reads the old bundle,
-  asks it which snapshot the widget shows now (`WidgetSnapshotBundle.displayedSnapshot(at:pageOffset:)`,
-  the page offset included), and puts that verb where the new bundle shows today. This also keeps
-  the quiz widget's answered state, which is keyed by date and infinitive.
+  have changed since the last write. `WidgetSnapshotWriter.writeSnapshot` reads the old bundle's
+  file and hands it to `nextBundle(after:now:myVerbs:pageOffset:)`, which asks the old bundle
+  which snapshot the widget shows now (`WidgetSnapshotBundle.displayedSnapshot(at:pageOffset:)`,
+  the page offset included) and puts that verb where the new bundle shows today. This also keeps
+  the quiz widget's answered state, which is keyed by date and infinitive. A missing or unreadable
+  file plans afresh, and a bundle past its ten days keeps no verb but still carries its My Verbs
+  turns; `WidgetSnapshotTests` pins each case.
 - **Eligibility.** The widget still draws only verbs with an example sentence, which today is all
   of them.
 

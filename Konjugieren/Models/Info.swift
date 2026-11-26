@@ -57,6 +57,17 @@ struct Info: Hashable, Identifiable {
     return nil
   }
 
+  /// The article heading or infinitive that a link in an article's text names. A link to a
+  /// verb is written as it reads in the sentence, so its first letter may be a capital, and a
+  /// link may sit inside parentheses.
+  nonisolated static func linkTarget(_ link: String) -> String {
+    let decoded = link.removingPercentEncoding ?? link
+    let parenless = decoded
+      .replacingOccurrences(of: "(", with: "")
+      .replacingOccurrences(of: ")", with: "")
+    return parenless.prefix(1).lowercased() + parenless.dropFirst()
+  }
+
   static func headingToIndex(heading: String) -> Int? {
     for (i, info) in infos.enumerated() {
       if info.heading.lowercased() == heading.lowercased() {

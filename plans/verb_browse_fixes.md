@@ -30,7 +30,7 @@ empty until it is committed.
 | 9 | Done | 2026-11-26 | `b1d3344` | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Done | 2026-11-26 | `8525086` | S6, D7, the sein collection's quiz, G7 (`QuizSheet`) | No |
-| 12 | Not started | | | T1, T2, T3, T4 | No |
+| 12 | Done | 2026-11-26 | | T1, T2, T3, T4 | No |
 | Closing | Not started | | | S5, S7, the audit | No |
 
 ## How to Work This Plan
@@ -763,7 +763,44 @@ though it is shortest when taken last.
 - **T4.** Where an exact assertion against the corpus is meant as a tripwire, say so in a comment.
   Where it is not, assert what the test is about.
 
-**How it differed:**
+**How it differed:** In one of T1's three, which could fail after all, and in how the writer takes
+the old bundle. The suite went from 1052 to 1059 tests, in 106 suites.
+
+- **`noParameterValueEchoesTheQuery` was half evidence.** The review said it held by the types.
+  The echo does: a report stores only enums and counts. The bands do not, since the parameters
+  are strings, and sending the length unbanded failed the test ("Schmiesing" gave "10"). So it
+  stays, renamed `everyParameterValueIsAWordOfTheVocabularyOrABand`, and `aReportKeepsNoText` pins
+  the types themselves: it fails if any stored property of a report is text.
+- **The shuffle's test asks where the right answer lands.** It is appended after the wrong
+  answers, so a shuffle that did nothing, or a seed that ignored the question, would leave it
+  last every day. Over 28 days' question IDs it lands in all four positions.
+- **`allCellsFollowsThePage` reads `stacks`**, as the review suggested, since the page draws from
+  them.
+- **`nextBundle(after:now:myVerbs:pageOffset:)` takes the file's bytes, not a decoded bundle**, so
+  that an unreadable file is a case a test can give it. `writeSnapshot` keeps the file, the page
+  offset from the App Group's defaults, and the write. The four tests are a missing file, a broken
+  one, one from nine days before (its last day's verb stays, and its turns carry), and one past
+  its ten days (no verb stays, the turns still carry). Each of the last two also checks that the
+  turns change the plan, so that carrying them is not vacuous.
+- **The link cleaning is `Info.linkTarget`**, beside `Info.headingToIndex`, which reads its result.
+  The copy in `InfoTests` had dropped the percent-decoding, which a link with an umlaut needs, so
+  the new function has its own test, with Üben.
+- **`ReviewSchedule` is pinned on both of Berlin's 2026 changes**: 29 March, 23 hours long, and 25
+  October, 25. A start, a snooze, and a review across each fall at midnight. A due date counted in
+  seconds lands at 01:00 after the first and 23:00 after the second.
+- **T4, in the search and lookup tests.** Neither exact assertion found was meant as a tripwire.
+  "eat" now asks that beatmen is found and that every result holds the letters, and
+  `sharedConjugationShowsBothVerbs` names its two verbs where it counted two matches. The assertion
+  that hielt finds only halten stays exact: only halten conjugates to hielt, so new verbs cannot
+  join it.
+- **The already-covered bullets.** T3's twins, rotation, Spotlight, and visit items, and T2's
+  `DeeplinkTests`, were covered by Phases 1, 3, 9, and 7. The review now says so under each.
+- **Tests.** Each new or repaired test was run against a mutation of the code, put back
+  temporarily: no shuffle, the participles dropped from `stacks`, a stored text field in the
+  report, an unbanded length, one cell per match, the turns dropped by the writer, due dates in
+  seconds, and no percent-decoding. Every test tied to a mutation failed, and the diff was then
+  restored byte for byte. The missing and broken file tests are guards and passed throughout.
+- `README.md`'s three test counts went to 1059. No file was added, so its file count stays.
 
 ## Closing
 

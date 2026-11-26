@@ -74,7 +74,7 @@ struct InfoView: View {
   }
 
   private func handleInfoLink(_ url: URL) -> OpenURLAction.Result {
-    let cleaned = cleanURLString(url.absoluteString)
+    let cleaned = Info.linkTarget(url.absoluteString)
 
     if let infoIndex = Info.headingToIndex(heading: cleaned) {
       if let infoURL = URL.infoDeeplink(Info.infos[infoIndex]) {
@@ -99,13 +99,5 @@ struct InfoView: View {
     } else {
       Current.handleURL(url)
     }
-  }
-
-  private func cleanURLString(_ input: String) -> String {
-    let decoded = input.removingPercentEncoding ?? input
-    let parenless = decoded
-      .replacingOccurrences(of: "(", with: "")
-      .replacingOccurrences(of: ")", with: "")
-    return parenless.prefix(1).lowercased() + parenless.dropFirst()
   }
 }

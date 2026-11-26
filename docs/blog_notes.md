@@ -12907,3 +12907,53 @@ the old code gave precisely the predicted "ssandte groß". The variant now uses 
 split before respelling.
 
 The suite went from 1042 tests to 1052.
+
+## Tests That Prove What They Claim (2026-11-26)
+
+Phase 12 of `plans/verb_browse_fixes.md` repaired the review's last section, on tests. A test can
+be green and still say nothing, and the review found three kinds: tests that cannot fail, tests
+that check a copy of the code instead of the code, and branches nobody tests at all.
+
+**Cannot fail, mostly.** One widget test shuffled a question's four answers twice and compared the
+results as sets, which are equal in any order. The repair asks a sharper question. The app appends
+the right answer after the three wrong ones, so a shuffle that did nothing, or a seed that ignored
+the question, would leave the right answer last every day. Over 28 days of question IDs it now has
+to land in all four positions. Another test compared `allCells` with its own definition, and now
+compares it with `stacks`, which is what the verb page actually draws.
+
+The third was more interesting, because the review was only half right about it. It said the
+"no parameter echoes the query" test held by the types, since every value of a search report is an
+enum case or a band. The echo is held by the types: a report stores enums and counts, never text.
+But the bands are not. The parameters are strings, and when the query's length was temporarily sent
+unbanded, the test failed at once, because "Schmiesing" gave "10" and only "10+" is a band. So the
+test stayed, under a name that says what it shows, and a new one asks the types directly: it uses
+`Mirror` to fail if any stored property of a report is a `String`. That covers the review's half,
+and catches an echo where it would have to start.
+
+**Checking a copy.** `InfoTests` had re-typed the link cleaning that `InfoView` does, and the copy
+had quietly dropped the percent-decoding. A link to Üben reaches the view as `%C3%9Cben`, so the
+test was checking a function the app does not run. Both now call `Info.linkTarget`. The lookup
+tests had compared a finding with a match built by the code under test, so a match that lost a cell
+would have agreed with itself. They now name the cells: ging fills the Präteritum's ich and er.
+
+**Untested branches.** The widget's writer read last time's bundle from disk, and every stability
+test bypassed the disk by passing the kept verb in by hand. The read is now split off, as a
+function from the old file's bytes to the new bundle. It takes bytes, not a decoded bundle, so that
+a broken file is something a test can hand it. Four tests give it no file, a broken one, one from
+nine days before, and one past its ten days. Two of them also check that the carried My Verbs turns
+change the plan. A first draft of the last test passed no My Verbs at all, so the writer's filter
+emptied the carried turns, and the test's claim that they carried was vacuous.
+
+`ReviewSchedule` is now pinned on both of Germany's 2026 clock changes, 29 March with 23 hours and
+25 October with 25. The code was already right, because it adds calendar days rather than seconds.
+A version that added 86,400 seconds would make an item due at 23:00 on the evening before its day,
+and now a test would say so.
+
+**The method.** A test that "fails without the fix" is hard to show when the fix is to the test.
+So each new or repaired test was run against a mutation of the code it guards: no shuffle, the
+participles dropped from the stacks, a text field added to the report, an unbanded length, one cell
+per match, the turns dropped by the writer, due dates in seconds, no percent-decoding. All eight
+mutations went in at once, the seven affected suites ran, and every test tied to a mutation went
+red. The working tree's diff was then restored and compared byte for byte with a copy saved before.
+
+The suite went from 1052 tests to 1059.

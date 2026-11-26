@@ -28,10 +28,13 @@ enum ConjugationSearchTests {
       #expect(results(query).first == wanted)
     }
 
-    @Test(arguments: ["gehört", "gestanden", "gefallen", "gedacht"])
-    func sharedConjugationShowsBothVerbs(query: String) {
+    @Test(arguments: zip(
+      ["gehört", "gestanden", "gefallen", "gedacht"],
+      [["gehören", "hören"], ["gestehen", "stehen"], ["fallen", "gefallen"], ["denken", "gedenken"]]
+    ))
+    func sharedConjugationShowsBothVerbs(query: String, verbs: Set<String>) {
       let conjugationMatches = matches(query).filter { $0.kind <= .conjugation }
-      #expect(conjugationMatches.count == 2)
+      #expect(Set(conjugationMatches.map(\.verb.infinitiv)).isSuperset(of: verbs))
     }
 
     @Test(arguments: zip(["war", "bin"], ["warten", "binden"]))

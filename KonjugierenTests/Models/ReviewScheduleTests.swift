@@ -78,4 +78,28 @@ struct ReviewScheduleTests {
     #expect(new.answered(correctly: true, at: date(6), calendar: calendar) == ReviewSchedule(box: 1, due: startOf(9)))
     #expect(new.answered(correctly: false, at: date(6), calendar: calendar) == ReviewSchedule(box: 0, due: startOf(7)))
   }
+
+  // Germany's clocks went forward on 2026-03-29, a day of 23 hours, and back on 2026-10-25, a day
+  // of 25. A due date counted in seconds would land at 01:00 or 23:00 after either, and an item
+  // due at 23:00 would come due the evening before its day.
+  private static let berlinCalendar: Calendar = {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "Europe/Berlin") ?? .gmt
+    return calendar
+  }()
+
+  private func berlin(month: Int, day: Int, hour: Int) -> Date {
+    Self.berlinCalendar.date(from: DateComponents(year: 2026, month: month, day: day, hour: hour)) ?? .distantPast
+  }
+
+  @Test(arguments: zip([3, 10], [29, 25]))
+  func aDueDateCrossingAClockChangeFallsAtMidnight(month: Int, day: Int) {
+    let start = ReviewSchedule.start(at: berlin(month: month, day: day, hour: 12), calendar: Self.berlinCalendar)
+    let snoozed = start.snoozed(at: berlin(month: month, day: day, hour: 23), calendar: Self.berlinCalendar)
+    let reviewed = ReviewSchedule(box: 0, due: .distantPast).reviewed(at: berlin(month: month, day: day - 1, hour: 20), calendar: Self.berlinCalendar)
+
+    #expect(start.due == berlin(month: month, day: day + 1, hour: 0))
+    #expect(snoozed.due == berlin(month: month, day: day + 1, hour: 0))
+    #expect(reviewed == ReviewSchedule(box: 1, due: berlin(month: month, day: day + 2, hour: 0)))
+  }
 }

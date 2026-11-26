@@ -15,9 +15,23 @@ struct VerbLookupTests {
     Verb.verbs[infinitiv]!
   }
 
-  @Test func aConjugationOpensItsVerbOnTheMatch() {
+  /// The match of a finding that names a conjugation, so that a test can name its cells rather
+  /// than compare against a match built by the code under test.
+  private func conjugation(_ finding: VerbLookup.Finding?, of infinitiv: String, sourceLocation: SourceLocation = #_sourceLocation) -> MatchedConjugation? {
+    guard case .conjugation(let matched, let verb) = finding, verb.infinitiv == infinitiv else {
+      Issue.record("Expected a conjugation of \(infinitiv), found \(String(describing: finding))", sourceLocation: sourceLocation)
+      return nil
+    }
+    return matched
+  }
+
+  @Test func aConjugationOpensItsVerbOnTheMatch() throws {
     let found = lookup("ging")
-    #expect(found.findings.first == .conjugation(MatchedConjugation(whole: "ging", of: verb("gehen")), of: verb("gehen")))
+    let matched = try #require(conjugation(found.findings.first, of: "gehen"))
+    #expect(matched.text == "ging")
+    #expect(matched.particle == nil)
+    #expect(matched.readingIndex == 0)
+    #expect(matched.conjugationgroups == [.präteritumIndikativ(.firstSingular), .präteritumIndikativ(.thirdSingular)])
     #expect(found.destination == URL.verbDeeplink("gehen", source: .lookup, match: "ging"))
   }
 
@@ -53,9 +67,11 @@ struct VerbLookupTests {
     #expect(found.destination == URL.verbDeeplink(word, source: .lookup))
   }
 
-  @Test func aFoldedConjugationAnswersInTheAppsSpelling() {
+  @Test func aFoldedConjugationAnswersInTheAppsSpelling() throws {
     let found = lookup("muß")
-    #expect(found.findings.first == .conjugation(MatchedConjugation(whole: "muss", of: verb("müssen")), of: verb("müssen")))
+    let matched = try #require(conjugation(found.findings.first, of: "müssen"))
+    #expect(matched.text == "muss")
+    #expect(matched.conjugationgroups == [.präsensIndikativ(.firstSingular), .präsensIndikativ(.thirdSingular)])
     #expect(found.destination == URL.verbDeeplink("müssen", source: .lookup, match: "muss"))
   }
 

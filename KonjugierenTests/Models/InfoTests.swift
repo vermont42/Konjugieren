@@ -28,12 +28,20 @@ struct InfoTests {
 
     for (key, text) in texts {
       for target in Self.linkTargets(in: text) where !target.hasPrefix("http") {
-        let cleaned = target.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
-        let verb = cleaned.prefix(1).lowercased() + cleaned.dropFirst()
-        let opens = headings.contains(cleaned.lowercased()) || Verb.verbs[verb] != nil
+        let cleaned = Info.linkTarget(target)
+        let opens = headings.contains(cleaned.lowercased()) || Verb.verbs[cleaned] != nil
         #expect(opens, "\(key) [\(language)] links to “\(target)”, which is neither an article heading nor a verb.")
       }
     }
+  }
+
+  // A link reaches the view as a URL, so a target with an umlaut arrives percent-encoded.
+  @Test(arguments: zip(
+    ["Ablaut", "(Gehen)", "%C3%9Cben", "aufstehen"],
+    ["ablaut", "gehen", "üben", "aufstehen"]
+  ))
+  func aLinkNamesItsTargetAsTheAppSpellsIt(link: String, target: String) {
+    #expect(Info.linkTarget(link) == target)
   }
 
   @Test func stableKeysAreUnique() {

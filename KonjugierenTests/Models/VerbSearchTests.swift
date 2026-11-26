@@ -75,9 +75,13 @@ struct VerbSearchTests {
     #expect(vergessen < schließen)
   }
 
+  // beatmen holds the letters, and the verbs glossed "eat" do not, so the scope still searches
+  // infinitives. The corpus is growing, so other verbs with the letters may join beatmen.
   @Test func infinitiveOnlyScopeIgnoresGlosses() {
-    #expect(!results("eat", includeGlosses: false).contains("essen"))
-    #expect(results("eat", includeGlosses: false) == ["beatmen"])
+    let found = results("eat", includeGlosses: false)
+    #expect(!found.contains("essen"))
+    #expect(found.contains("beatmen"))
+    #expect(found.allSatisfy { $0.contains("eat") }, "\(found)")
   }
 
   @Test func blankQueryMatchesNothing() {

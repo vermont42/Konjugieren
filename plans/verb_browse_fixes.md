@@ -30,7 +30,7 @@ empty until it is committed.
 | 9 | Done | 2026-11-26 | `b1d3344` | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Done | 2026-11-26 | `8525086` | S6, D7, the sein collection's quiz, G7 (`QuizSheet`) | No |
-| 12 | Done | 2026-11-26 | | T1, T2, T3, T4 | No |
+| 12 | Done | 2026-11-26 | `3a924a1` | T1, T2, T3, T4 | No |
 | Closing | Not started | | | S5, S7, the audit | No |
 
 ## How to Work This Plan

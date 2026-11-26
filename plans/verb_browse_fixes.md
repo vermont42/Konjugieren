@@ -28,7 +28,7 @@ empty until it is committed.
 | 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
 | 8 | Done | 2026-11-26 | `a06f7e3` | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Done | 2026-11-26 | `b1d3344` | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
-| 10 | Done | 2026-11-26 | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
+| 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Not started | | | S6, D7, the sein collection's quiz | No |
 | 12 | Not started | | | T1, T2, T3, T4 | No |
 | Closing | Not started | | | S5, S7, the audit | No |

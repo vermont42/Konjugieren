@@ -26,7 +26,7 @@ empty until it is committed.
 | 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
 | 6 | Done | 2026-11-25 | `ab2493b` | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
-| 8 | Done | 2026-11-26 | | D1, D2, D3, E1, S3 (the rest), S4 | No |
+| 8 | Done | 2026-11-26 | `a06f7e3` | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Not started | | | S6, D7, the sein collection's quiz | No |

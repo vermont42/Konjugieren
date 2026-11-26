@@ -86,7 +86,7 @@ struct PracticeSetTests {
     let verbSet = QuizVerbSet.list(["kommen", "gehen"])
     #expect(verbSet.verbs(myVerbs: []).map(\.infinitiv) == ["kommen", "gehen"])
     #expect(!verbSet.mixesVerbs)
-    #expect(verbSet.collectionKey == nil)
+    #expect(verbSet.collection == nil)
   }
 
   @Test func sharingMyVerbsCarriesTheVerbs() {

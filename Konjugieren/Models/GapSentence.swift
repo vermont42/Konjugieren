@@ -4,7 +4,7 @@ import Foundation
 
 extension QuizScope {
   static func sentences() -> QuizScope {
-    QuizScope(verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .sentences, isSentences: true)
+    QuizScope(kind: .sentences, verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .sentences)
   }
 }
 

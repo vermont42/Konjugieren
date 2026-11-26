@@ -40,7 +40,7 @@ extension QuizScope {
   /// The Speed Round, from the hub's Exercises. Never ranked, never continued, and mixing in
   /// nothing.
   static func speedRound() -> QuizScope {
-    QuizScope(verbs: nil, readingIndex: nil, questionCount: SpeedRound.batchSize, source: .speedRound, isSpeedRound: true)
+    QuizScope(kind: .speedRound, verbs: nil, readingIndex: nil, questionCount: SpeedRound.batchSize, source: .speedRound)
   }
 }
 

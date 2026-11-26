@@ -15,11 +15,11 @@ extension QuizScope {
   /// `ablautPractice(_:)`, which chooses the readings too.
   static func verbEssentials(_ verbs: [Verb]? = nil) -> QuizScope {
     QuizScope(
+      kind: .verbEssentials,
       verbs: verbs,
       readingIndex: nil,
       questionCount: verbEssentialsVerbCount * PracticeItem.Stem.allCases.count,
-      source: .verbEssentials,
-      isVerbEssentials: true
+      source: .verbEssentials
     )
   }
 }

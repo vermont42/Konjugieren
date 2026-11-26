@@ -125,45 +125,47 @@ struct LastQuizResult: Codable, Equatable {
 }
 
 extension LastQuizResult.Kind {
-  /// A practice set is a custom quiz opened from a link or a code, and a custom quiz over a
-  /// collection counts as custom, since the learner chose it in the editor.
+  /// A custom quiz over a collection counts as custom, since the learner chose it in the editor.
   init(scope: QuizScope) {
-    if let session = scope.recordSession {
-      switch session {
-      case .mistakes:
-        self = .mistakes
-      case .review:
-        self = .review
-      }
-    } else if let session = scope.ablautPractice {
+    switch scope.kind {
+    case .ablautPractice(let session):
       switch session.mode {
       case .alone:
         self = .ablautAlone
       case .mixed:
         self = .ablautMixed
       }
-    } else if scope.isVerbEssentials {
-      self = .verbEssentials
-    } else if scope.isRecognition {
-      self = .recognition
-    } else if scope.isSentences {
-      self = .sentences
-    } else if scope.isSpeedRound {
-      self = .speedRound
-    } else if scope.isDaily {
-      self = .daily
-    } else if scope.isChallenge {
-      self = .challenge
-    } else if scope.source == .verbPage {
-      self = .verbPage
-    } else if scope.custom != nil {
-      self = scope.source == .custom ? .custom : .practiceSet
-    } else if scope.collectionKey != nil {
-      self = .collection
-    } else if scope.verbs != nil {
-      self = .myVerbs
-    } else {
+    case .allVerbs:
       self = .allVerbs
+    case .challenge:
+      self = .challenge
+    case .collection:
+      self = .collection
+    case .custom:
+      self = .custom
+    case .daily:
+      self = .daily
+    case .myVerbs:
+      self = .myVerbs
+    case .practiceSet:
+      self = .practiceSet
+    case .recognition:
+      self = .recognition
+    case .recordSession(let session):
+      switch session {
+      case .mistakes:
+        self = .mistakes
+      case .review:
+        self = .review
+      }
+    case .sentences:
+      self = .sentences
+    case .speedRound:
+      self = .speedRound
+    case .verbEssentials:
+      self = .verbEssentials
+    case .verbPage:
+      self = .verbPage
     }
   }
 }

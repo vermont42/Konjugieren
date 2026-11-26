@@ -106,16 +106,36 @@ No verb whose `hi` is an estimate (`hp="y"`, compounds DWDS cannot measure) may 
 
 ### Scopes
 
-A `QuizScope` names the verbs a quiz asks about (nil for every verb), the reading to ask about,
-the question count, and the `source` its analytics signals carry, along with `title` (what a quiz
-in a sheet shows) and `collectionKey` (which `startQuiz` names).
+A `QuizScope` names its `kind`, the verbs a quiz asks about (nil for every verb), the reading to
+ask about, the question count, and the `source` its analytics signals carry, along with `title`
+(what a quiz in a sheet shows) and `collection` (which `startQuiz` names by its key, and which
+chooses the readings a question may ask).
+
+**The kind decides; the source only reports** (Phase 11 of
+[`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), 2026-11-26). `QuizScope.Kind` has one case
+per mode, and a mode's own state rides in its case (`.custom(CustomQuiz)`, `.recordSession(_:)`,
+`.ablautPractice(_:)`, `.challenge(_:)`), so a scope cannot be two modes at once. `isRanked`,
+`mixesDueItems`, and `mixesChoiceQuestions` ask only whether the kind is `.allVerbs`, so a new mode
+is unranked and mixes in nothing until it says otherwise. `showsVerbLink` (a correction's link to
+its verb) is false for `.verbPage` alone, and `LastQuizResult.Kind(scope:)` is an exhaustive switch
+on the kind. Before, both read `source`, which a link may set to any value: a practice set opened
+with `source=verbPage` hid its verb links and was remembered as a verb's quiz.
+
+**A collection's quiz asks the readings that earn a verb its place** (same phase).
+`VerbCollection.admits(_:region:)` says which: the sein verbs' sein readings in the learner's
+region, so that fahren is asked "ist gefahren" and never "hat das Auto gefahren", and an ablaut
+group's own readings, so that hängen's group never asks weak hängte (hängen, schaffen, and weichen
+have such a second reading). The modals and the 100 most frequent verbs admit every reading.
+`QuizDraw.questions` takes the test as `admitsReading`, and it holds for a custom quiz or practice
+set over a collection too. A verb belongs to a group by its primary reading, which is always
+admitted, so no verb of a collection is left with nothing to ask.
 
 | Scope | Verbs | Questions | `source` | Ranked |
 |---|---|---|---|---|
 | `.allVerbs` | Every verb; from Elementary up, one question of each round is a choice question | 10, then Ten More | `tab` | First round |
 | `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 10, then Ten More | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
-| `.collection(_:)` | A collection's verbs, with replacement, in a sheet | 10, then Ten More | `list` | No |
+| `.collection(_:)` | A collection's verbs, with replacement, in a sheet, in the readings the collection admits | 10, then Ten More | `list` | No |
 | `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band | 10, then Ten More | `custom` | No |
 | `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet | 10, then Ten More | `sharedLink` or `qrCode`, or `deeplink` from a link without a `source` | No |
 | `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band | Up to 10, then Ten More while any are due | `review` | No |
@@ -187,9 +207,9 @@ Start is disabled until something is chosen, or while the choice names an empty 
 - **Bands are mixed, lists are not.** A band or every verb is balanced as the default quiz is (half
   strong, two core, the derivative rules), since it was chosen for its size, not its verbs. A
   collection or My Verbs asks its own verbs as they come. `QuizScope.mixesVerbs` decides.
-- **Never ranked.** `QuizScope.isRanked` requires `custom == nil`, so a custom quiz posts nowhere,
-  even one whose choice matches the level's. It continues with Ten More, starts a Live Activity, and
-  counts toward `ChangeLevelTip` as any ten-question quiz does.
+- **Never ranked.** `QuizScope.isRanked` is true for the `.allVerbs` kind alone, so a custom quiz
+  posts nowhere, even one whose choice matches the level's. It continues with Ten More, starts a
+  Live Activity, and counts toward `ChangeLevelTip` as any ten-question quiz does.
 
 ### Practice Sets
 
@@ -857,9 +877,9 @@ Herausforderung", the hub's row under the Daily Session.
   them, and a corpus that gains verbs changes the band. A challenge shared across app versions may
   differ; nothing ships before 2027, and the test pins determinism within a build rather than a
   golden list that every verb import would break.
-- **The scope.** `QuizScope.challenge(_:source:)`, with `challenge` set and `level` the key's, so
-  that a friend's link asks the friend's questions at any level. Never ranked or continued, no Live
-  Activity, and **no re-ask**, so that the results are the five questions the shared text reports;
+- **The scope.** `QuizScope.challenge(_:source:)`, of kind `.challenge(key)` and with `level` the
+  key's, so that a friend's link asks the friend's questions at any level. Never ranked or
+  continued, no Live Activity, and **no re-ask**, so that the results are the five questions the shared text reports;
   the correction still holds a wrong answer, and a slip still earns its second attempt at half
   points. Answers move the practice record as in any quiz. `LastQuizResult.Kind.challenge`.
 - **Once a day per level** (Josh, 2026-11-15). `Quiz.finishQuiz` keeps a `DailyChallengeResult` (the

@@ -211,7 +211,6 @@ enum StandardVariants {
     guard head.count == reading.prefixes.totalLength else {
       return []
     }
-    let separableRun = reading.prefixes.separableRun
 
     switch conjugationgroup {
     case .präteritumIndikativ(let personNumber):
@@ -219,11 +218,9 @@ enum StandardVariants {
         return []
       }
       let ending = doublet.präteritumIsWeak ? (doublet.takesEpentheticE ? "e" : "") + weakEndings[index] : strongEndings[index]
-      let joined = (head + stem + ending).inRegion(region)
-      guard !separableRun.isEmpty else {
-        return [joined]
-      }
-      return [joined, String(joined.dropFirst(separableRun.count)) + " " + separableRun]
+      // Joined (absandte) and split (sandte ab), which are one for a verb with no separable run.
+      let joined = head + stem + ending
+      return [joined, Conjugator.withSeparablePrefix(reading: reading, form: joined)].map { $0.inRegion(region) }
 
     case .perfektpartizip:
       return alternativeParticiple(doublet: doublet, head: head, reading: reading, region: region).map { [$0] } ?? []

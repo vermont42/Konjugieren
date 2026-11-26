@@ -226,7 +226,9 @@ enum Conjugator {
     }
   }
 
-  private static func withSeparablePrefix(reading: Reading, form: String) -> String {
+  /// A main clause's word order: stand auf from aufstand. Region-free, like everything here, so a
+  /// caller splits before it respells, since Swiss ss would move the cut.
+  static func withSeparablePrefix(reading: Reading, form: String) -> String {
     let run = reading.prefixes.separableRun
     guard !run.isEmpty else {
       return form

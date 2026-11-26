@@ -7,7 +7,7 @@ import Foundation
 /// is the direction a reader needs, and practice develops in the direction practiced.
 extension QuizScope {
   static func recognition() -> QuizScope {
-    QuizScope(verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .recognition, isRecognition: true)
+    QuizScope(kind: .recognition, verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .recognition)
   }
 }
 

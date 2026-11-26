@@ -350,7 +350,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
     2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the write is atomic, and an unchanged rebuild still
     skips the phase, by the map's timestamp.
   - `QuizView.swift:1509-1514`: `QuizSheet`'s doc comment opens with a sentence about
-    `TabQuizScope`.
+    `TabQuizScope`. **Fixed on `main` 2026-11-26**, by Phase 11 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the sentence
+    moved to `TabQuizScope`.
   - `Analytics.swift:70-71`: "once the quiz track sends it". **Fixed on `main` 2026-11-25**, by
     Phase 2 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 
@@ -396,7 +397,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `StandardVariants.swift:226` cuts the separable run off a string that has already been through
   `inRegion`. Swiss ss is one character longer than ß, so the cut would land a letter off for a
   prefix such as groß or maß. No doublet verb has such a prefix today. This is pedagogy-plan code
-  duplicating Phase 4's `withSeparablePrefix`.
+  duplicating Phase 4's `withSeparablePrefix`. **Fixed on `main` 2026-11-26**, by Phase 11 of
+  [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `Conjugator.withSeparablePrefix` splits the region-free conjugation, and
+  both spellings are respelled after. A made-up groß- doublet gave "ssandte groß" before.
 
 ## Smells
 
@@ -446,7 +449,12 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `showsVerbLink` is `quiz.scope.source != .verbPage` (`QuizView.swift:449`). And `isRanked` is
   `isDefaultQuiz`, a conjunction of ten negatives (`Quiz.swift:1413-1415`), so a new mode that
   forgets to add itself is ranked and posts to Game Center. No mode is wrongly ranked today. A
-  `kind` enum on `QuizScope`, with only `.default` ranked, fails safe.
+  `kind` enum on `QuizScope`, with only `.default` ranked, fails safe. **Fixed on `main`
+  2026-11-26**, by Phase 11 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `QuizScope.Kind`, whose cases carry each mode's
+  state, with only `.allVerbs` ranked or mixing anything in. `showsVerbLink` and
+  `LastQuizResult.Kind(scope:)` read the kind. The finding was worse than it looked: a link's
+  `source` takes any value, so a practice set opened with `source=verbPage` hid its verb links and
+  was remembered as a verb's quiz.
 - **S7. Five timed workarounds.** 700 ms of lingering focus, a 500 ms wait for a pop, a 400 ms wait
   for a sheet, a poll of up to a second for UIKit transitions, and a 4-second note
   (`VerbBrowseView.swift:80`, `:620`, `:576`; `VerbView.swift:722`;
@@ -496,7 +504,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   **Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `ConjugationTable.pageSection`, and a
   function that returns the closure.
 - **E4. `sorted(by:)` should sort** (see C5), and **`QuizScope` wants a `kind`** (see S6).
-  **The sort is fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The `kind` is Phase 11's.
+  **The sort is fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The `kind` is Phase 11's. **The `kind`
+  is on `main` 2026-11-26**, by Phase 11 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md) (see S6).
 
 ## Tests
 
@@ -540,7 +549,11 @@ These are Josh's decisions, recorded in the plan. Each has a cost its note does 
   inherited the old one, and the two cannot be told apart.
 - **The sein collection's quiz may ask a haben reading (Suspected).** Its scope passes no reading
   index, so a question on fahren may expect "hat gefahren" under a title that says sein. The
-  reading draw was not traced.
+  reading draw was not traced. **Confirmed and fixed on `main` 2026-11-26**, by Phase 11 of
+  [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). `QuizDraw.candidates` offered every reading when the scope named none: a
+  quiz on fahren alone asked its haben reading in 44 of 100 questions. `VerbCollection.admits`
+  now chooses the readings, for the sein verbs and also for an ablaut group, whose quiz asked weak
+  hängte, schaffte, and weichte; a custom quiz or practice set over a collection follows it too.
 
 ## Checked and Found Fine
 

@@ -29,7 +29,7 @@ empty until it is committed.
 | 8 | Done | 2026-11-26 | `a06f7e3` | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Done | 2026-11-26 | `b1d3344` | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
-| 11 | Not started | | | S6, D7, the sein collection's quiz | No |
+| 11 | Done | 2026-11-26 | | S6, D7, the sein collection's quiz, G7 (`QuizSheet`) | No |
 | 12 | Not started | | | T1, T2, T3, T4 | No |
 | Closing | Not started | | | S5, S7, the audit | No |
 
@@ -705,7 +705,49 @@ they are told apart.
   "hat gefahren", restrict that scope to readings that take sein in the learner's region, and pin
   it.
 
-**How it differed:**
+**How it differed:** In how far the kind reaches, and in which collections lost a reading. The
+suite went from 1042 to 1052 tests, in 106 suites.
+
+- **The kind carries each mode's state.** `QuizScope.Kind` has fourteen cases, one per scope the
+  app starts, and `.custom`, `.practiceSet`, `.recordSession`, `.ablautPractice`, and `.challenge`
+  hold what the scope held in five stored optionals. The six Booleans and those optionals are now
+  computed from the kind, so every call site reads as before, and a scope can no longer say it is
+  both a Speed Round and a daily session. `isDefaultQuiz` asks only for `.allVerbs`; its old
+  `verbs == nil` and `continues` conjuncts were always true of that kind. `continues` still reads
+  the flags, since no finding named it.
+- **The finding was a live bug, not only a smell.** A link's `source` is parsed into any
+  `AnalyticsSource`, so `konjugieren://quiz/practiceSet?…&source=verbPage` hid the practice set's
+  verb links in corrections and was remembered on the hub as a verb page's quiz, of no verb;
+  `source=custom` made it a custom quiz. `LastQuizResult.Kind(scope:)`, the other reader of
+  `source`, is now an exhaustive switch on the kind, which also makes a new mode name its hub row.
+- **The sein collection's quiz did ask haben readings**, confirmed by reading `QuizDraw.candidates`,
+  which offers every reading when the scope names none, and then by a test: on fahren alone, 44 of
+  100 questions asked "hat gefahren". `VerbCollection.admits(_:region:)` says which readings a
+  collection's quiz may ask, `QuizScope.admits` asks the scope's collection, and
+  `QuizDraw.questions` takes it as `admitsReading`. The plan said to restrict "that scope"; the
+  test lives on the collection, so a custom quiz or practice set over the sein verbs, which the
+  custom quiz's editor offers, follows it too.
+- **Ablaut groups lose a reading as well**, which no finding named. A group's quiz drew any
+  reading of a verb that belongs by its primary one, so hängen's group asked weak hängte; schaffen
+  (schaffte) and weichen (weichte, "soak") are the other two such verbs in the corpus. The same
+  `admits` keeps a group's quiz to the group's readings, for the reason Phase 6 kept bewegen and
+  anhängen out of the groups. If Josh wants a group's quiz to ask hängen's weak reading too, it is
+  one case in `admits`. The modals and the top 100 admit every reading.
+- **`QuizScope.collectionKey` became `collection`**, a `VerbCollection`, with the key computed
+  from it, since every scope that set a key had the collection in hand. `QuizVerbSet.collectionKey`
+  became `collection` for the same reason.
+- **D7** made `Conjugator.withSeparablePrefix` internal and gave it a doc comment saying why a
+  caller splits before it respells. No doublet has a prefix with ß, so the test uses a made-up
+  großsenden in Switzerland.
+- **G7's `QuizSheet` bullet**, which Phase 10 left for this phase, is fixed: the sentence about the
+  Quiz tab's picker moved to `TabQuizScope`.
+- **Tests.** Nine in a new `QuizScopeTests.swift`, nested in `QuizTests`, and one in
+  `StandardVariantsTests`. The three tests of behaviour were run against the old logic, put back
+  temporarily: the sein quiz test failed with 44 haben questions, the D7 test got `["grosssandte",
+  "ssandte groß"]`, and the link test failed six ways. The tests of which scope is ranked, which
+  hides the link, and each scope's hub kind pin a refactor, since no mode was wrongly ranked; they
+  were not run against old code.
+- `README.md`'s three test counts went to 1052, and its file count to sixty-nine.
 
 ## Phase 12: Tests That Prove What They Claim
 

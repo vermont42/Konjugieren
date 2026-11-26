@@ -65,13 +65,13 @@ struct PracticeSet: Equatable {
   /// What a quiz over this set asks: the custom quiz's rules, at the set's level.
   func scope(source: AnalyticsSource) -> QuizScope {
     QuizScope(
+      kind: .practiceSet(custom),
       verbs: custom.verbSet?.verbs(myVerbs: []),
       readingIndex: nil,
       questionCount: Quiz.questionCount,
       source: source,
       title: L.PracticeSet.title,
-      collectionKey: custom.verbSet?.collectionKey,
-      custom: custom,
+      collection: custom.verbSet?.collection,
       level: level
     )
   }

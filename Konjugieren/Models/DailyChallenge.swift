@@ -249,7 +249,7 @@ extension QuizScope {
   /// a friend's link must ask the friend's questions. Never ranked, never continued, and never
   /// re-asked, so that the results show what the shared text says.
   static func challenge(_ key: DailyChallenge.Key, source: AnalyticsSource = .challenge) -> QuizScope {
-    QuizScope(verbs: nil, readingIndex: nil, questionCount: DailyChallenge.questionCount, source: source, title: nil, level: key.level, challenge: key)
+    QuizScope(kind: .challenge(key), verbs: nil, readingIndex: nil, questionCount: DailyChallenge.questionCount, source: source, title: nil, level: key.level)
   }
 }
 

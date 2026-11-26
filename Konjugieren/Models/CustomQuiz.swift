@@ -103,11 +103,12 @@ enum QuizVerbSet: Hashable {
     }
   }
 
-  /// The collection's key, for `startQuiz` to name as a collection's quiz does.
-  var collectionKey: String? {
+  /// The collection, for `startQuiz` to name as a collection's quiz does, and to choose the
+  /// readings a question may ask.
+  var collection: VerbCollection? {
     switch self {
     case .collection(let collection):
-      return collection.key
+      return collection
     case .all, .band, .list, .myVerbs:
       return nil
     }
@@ -198,12 +199,12 @@ extension QuizScope {
   /// A custom quiz from the Quiz tab: ten questions, then Ten More, never ranked.
   static func custom(_ custom: CustomQuiz, myVerbs: [Verb]) -> QuizScope {
     QuizScope(
+      kind: .custom(custom),
       verbs: custom.verbSet?.verbs(myVerbs: myVerbs),
       readingIndex: nil,
       questionCount: Quiz.questionCount,
       source: .custom,
-      collectionKey: custom.verbSet?.collectionKey,
-      custom: custom
+      collection: custom.verbSet?.collection
     )
   }
 }

@@ -13,7 +13,7 @@ extension QuizScope {
   /// The daily session, from the hub's row or from the reminder. Never ranked and never continued,
   /// since a second session is a session of its own, which a repair counts.
   static func daily(source: AnalyticsSource = .daily) -> QuizScope {
-    QuizScope(verbs: nil, readingIndex: nil, questionCount: DailySession.questionCount, source: source, isDaily: true)
+    QuizScope(kind: .daily, verbs: nil, readingIndex: nil, questionCount: DailySession.questionCount, source: source)
   }
 }
 

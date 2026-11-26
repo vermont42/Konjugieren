@@ -157,14 +157,13 @@ extension QuizScope {
   /// the group and the record itself, so `verbs` is only the group's.
   static func ablautPractice(_ session: AblautPracticeSession) -> QuizScope {
     QuizScope(
+      kind: .ablautPractice(session),
       verbs: AblautPracticeGroup.group(session.exemplar)?.verbs ?? [],
       readingIndex: nil,
       questionCount: verbEssentialsVerbCount * PracticeItem.Stem.allCases.count,
       source: session.source,
       title: session.title,
-      collectionKey: session.collection.key,
-      isVerbEssentials: true,
-      ablautPractice: session
+      collection: session.collection
     )
   }
 }

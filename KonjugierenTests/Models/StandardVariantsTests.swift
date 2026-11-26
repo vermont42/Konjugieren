@@ -149,6 +149,16 @@ struct StandardVariantsTests {
     #expect(try accepts("senden", .präteritumIndikativ(.firstSingular), "sendete"))
   }
 
+  // No doublet verb has a prefix with ß today, so this one is made up. Swiss ss is a letter
+  // longer than ß, so a split cut after respelling would leave "ssandte groß".
+  @Test func aSplitDoubletIsCutBeforeItIsRespelled() {
+    let reading = Reading(infinitiv: "großsenden", translation: "send grandly", family: .weak, auxiliary: .haben, prefixes: [.separable("groß")], auxiliaryIsRegional: false)
+    let variants = StandardVariants.variants(of: "sendete gross", reading: reading, conjugationgroup: .präteritumIndikativ(.firstSingular), region: .switzerland)
+    #expect(variants.contains("sandte gross"))
+    #expect(variants.contains("grosssandte"))
+    #expect(!variants.contains { $0.contains("ß") })
+  }
+
   // Duden gives senden's Konjunktiv II as sendete only.
   @Test func e1NotInKonjunktivII() throws {
     #expect(!(try accepts("senden", .präteritumKonjunktivII(.firstSingular), "sandte")))

@@ -33,6 +33,9 @@ enum QuizDraw {
   /// With `relaxesRestrictions`, for a custom quiz, a restricted kind that no verb of the scope
   /// admits is asked of every verb instead of being left out, since the learner chose it: a custom
   /// Präteritum Konjunktiv II of weak verbs alone asks machte rather than nothing.
+  ///
+  /// `admitsReading` narrows the readings a question may ask, as a collection's quiz does. Every
+  /// verb must keep at least one, or it is never asked.
   static func questions(
     pool: [QuizPoolEntry],
     verbs: [Verb],
@@ -41,11 +44,12 @@ enum QuizDraw {
     distinctCells: Bool,
     mixesVerbs: Bool = false,
     relaxesRestrictions: Bool = false, // swiftlint:disable:this function_default_parameter_at_end
+    admitsReading: (Reading) -> Bool = { _ in true },
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     var candidatesByVerbs: [QuizVerbs: [Candidate]] = [:]
     func admitted(by quizVerbs: QuizVerbs) -> [Candidate] {
-      let candidates = candidatesByVerbs[quizVerbs] ?? Self.candidates(of: verbs, admittedBy: quizVerbs, readingIndex: readingIndex)
+      let candidates = candidatesByVerbs[quizVerbs] ?? Self.candidates(of: verbs, admittedBy: quizVerbs, readingIndex: readingIndex, admitsReading: admitsReading)
       candidatesByVerbs[quizVerbs] = candidates
       return candidates
     }
@@ -150,10 +154,10 @@ enum QuizDraw {
     var isStrong: Bool?
   }
 
-  private static func candidates(of verbs: [Verb], admittedBy quizVerbs: QuizVerbs, readingIndex: Int?) -> [Candidate] {
+  private static func candidates(of verbs: [Verb], admittedBy quizVerbs: QuizVerbs, readingIndex: Int?, admitsReading: (Reading) -> Bool) -> [Candidate] {
     verbs.compactMap { verb in
       let readings: [(index: Int, reading: Reading)] = (readingIndex.map { [$0] } ?? Array(verb.readings.indices)).compactMap { index in
-        guard let reading = verb.reading(at: index), quizVerbs.admits(verb, reading: reading) else {
+        guard let reading = verb.reading(at: index), admitsReading(reading), quizVerbs.admits(verb, reading: reading) else {
           return nil
         }
         return (index, reading)

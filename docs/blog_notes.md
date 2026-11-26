@@ -12865,3 +12865,45 @@ Conjuguer session can no longer overwrite its binary. The tool's three outputs s
 byte-identical throughout.
 
 The suite went from 1041 tests to 1042.
+
+## What Kind of Quiz Is This? (2026-11-26)
+
+Phase 11 of `plans/verb_browse_fixes.md` took three findings from the browse review, and two of
+them turned out to be worse than the review thought.
+
+**A smell that was a bug.** The review called it a smell that the correction screen decided
+whether to link to the verb's page by asking whether the quiz's analytics `source` was
+`verbPage`, and that "is this quiz ranked?" was a conjunction of ten negatives. No mode was
+wrongly ranked, so the fix looked like tidying: give `QuizScope` a `kind`, and let only the
+default kind rank. Tracing where `source` comes from changed that. A link's `source` query is
+parsed into any value the enum has, so a practice-set link carrying `source=verbPage` would hide
+every verb link in its corrections and appear on the Quiz tab's hub as a verb page's quiz, of no
+verb in particular. Nobody sends such a link, but the app should not depend on that. The hub's
+memory of the last quiz read `source` too, to tell a custom quiz from a practice set.
+
+So `QuizScope.Kind` got one case per mode, and each mode's own state moved into its case: the
+custom quiz, the Review or Mistakes session, the ablaut session, the challenge's key. Five stored
+optionals and six Booleans became computed properties of the kind, so no call site changed, and a
+scope can no longer claim to be both a Speed Round and a daily session. Ranking, the mixing in of
+due items and choice questions, the verb link, and the hub's record all read the kind now. The hub's
+is an exhaustive switch, so the next mode will have to say what the hub calls it.
+
+**The sein verbs' quiz asked about haben.** The review suspected it and had not traced it. A
+collection's verbs are chosen by any of their readings: fahren belongs to "Verbs with sein" for
+"ist gefahren", though "hat das Auto gefahren" takes haben. But the quiz's draw offers every
+reading of a verb when the scope names none. A test on fahren alone found the haben reading in 44
+of 100 questions, under a title that says sein. `VerbCollection` now says which readings its quiz
+may ask, and the draw honours it. The same rule closed a twin of the bug that no finding named.
+An ablaut group's quiz could ask hängen's weak reading, hängte, under "Strong Verbs Like hängen".
+Schaffen and weichen are the corpus's other two verbs whose primary reading sits in a group while
+another reading is weak. Phase 6 had kept bewegen and anhängen out of their groups for the same
+reason.
+
+**The one the review got exactly right.** Duden's doublets (sandte beside sendete) split a
+separable verb's main-clause form by cutting the prefix's length off a string that had already
+been respelled for Switzerland. Swiss ss is a letter longer than ß, so a prefix like groß would
+land the cut a letter off. No doublet has such a prefix, so the test makes one up, großsenden, and
+the old code gave precisely the predicted "ssandte groß". The variant now uses the Conjugator's own
+split before respelling.
+
+The suite went from 1042 tests to 1052.

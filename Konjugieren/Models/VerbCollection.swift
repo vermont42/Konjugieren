@@ -73,9 +73,24 @@ enum VerbCollection: Hashable, Identifiable {
     case .sein:
       // Any reading counts, so fahren is here for "ist gefahren" though "hat das Auto gefahren"
       // takes haben. liegen, sitzen, and stehen take sein in Austria and Switzerland only.
-      return verb.readings.contains { $0.regionalAuxiliary(in: region) == .sein }
+      return verb.readings.contains { admits($0, region: region) }
     case .top100:
       return verb.isIn(.top100)
+    }
+  }
+
+  /// Whether a question in the collection's quiz may ask this reading of one of its verbs: the
+  /// sein verbs' quiz asks "ist gefahren", never "hat das Auto gefahren", and a group's asks
+  /// hängen's strong reading, never weak hängte. A verb belongs to a group by its primary
+  /// reading, which is always admitted.
+  func admits(_ reading: Reading, region: Region = Current.settings.region) -> Bool {
+    switch self {
+    case .ablautGroup(let exemplar):
+      return reading.ablautGroup == exemplar
+    case .modals, .top100:
+      return true
+    case .sein:
+      return reading.regionalAuxiliary(in: region) == .sein
     }
   }
 
@@ -181,12 +196,13 @@ struct VerbCollectionProgress: Equatable {
 extension QuizScope {
   static func collection(_ collection: VerbCollection) -> QuizScope {
     QuizScope(
+      kind: .collection,
       verbs: collection.verbs(),
       readingIndex: nil,
       questionCount: Quiz.questionCount,
       source: .list,
       title: collection.title,
-      collectionKey: collection.key
+      collection: collection
     )
   }
 }

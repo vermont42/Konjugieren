@@ -446,7 +446,7 @@ struct QuizView: View {
           QuizCorrectionView(
             question: question,
             correction: correction,
-            showsVerbLink: quiz.scope.source != .verbPage,
+            showsVerbLink: quiz.scope.showsVerbLink,
             accessibilityIsFocused: $correctionHasAccessibilityFocus,
             onOpen: { navigationPath.append($0) },
             onContinue: { quiz.continueAfterCorrection() }
@@ -1506,7 +1506,6 @@ private extension QuizRecordSession {
   }
 }
 
-/// What the Quiz tab's picker offers. A quiz over one verb starts from that verb's page instead.
 /// A quiz in a sheet, such as "Test me on this verb" or a collection's quiz, so the learner
 /// closes it onto the page it was started from. A quiz in the Quiz tab is a separate quiz and
 /// carries on. While a question waits, the sheet closes only through Quit, so every quiz started
@@ -1523,6 +1522,7 @@ struct QuizSheet: View {
 }
 
 // Semantic ordering: the picker's segments, the default first.
+/// What the Quiz tab's picker offers. A quiz over one verb starts from that verb's page instead.
 enum TabQuizScope: CaseIterable {
   case allVerbs
   case myVerbs

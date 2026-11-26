@@ -665,6 +665,7 @@ class Quiz {
       distinctCells: !scope.continues,
       mixesVerbs: scope.mixesVerbs,
       relaxesRestrictions: scope.custom != nil,
+      admitsReading: { scope.admits($0) },
       using: &randomSource
     )
     var items = QuizDraw.mixing(due, into: drawn, using: &randomSource).map { question in
@@ -1338,6 +1339,40 @@ class Quiz {
 
 /// What a quiz asks about, how many questions it asks, and where it was begun.
 struct QuizScope {
+  /// Which of the app's quizzes this is. Each mode's own state rides in its case, so a scope
+  /// cannot be two modes at once, and `source`, which says only where the quiz was begun for
+  /// analytics, decides nothing.
+  enum Kind {
+    /// Verb Essentials over an ablaut group, alone or mixed with the known groups.
+    case ablautPractice(AblautPracticeSession)
+    /// The Quiz tab's default quiz over the level's band.
+    case allVerbs
+    /// A day's challenge, the same five questions on every device.
+    case challenge(DailyChallenge.Key)
+    case collection
+    /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab.
+    case custom(CustomQuiz)
+    /// The daily session, whose results extend the streak.
+    case daily
+    case myVerbs
+    /// A custom quiz opened from a link or a code, asked at the set's level.
+    case practiceSet(CustomQuiz)
+    /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is.
+    case recognition
+    /// Review or My Mistakes, which draw from the practice record.
+    case recordSession(QuizRecordSession)
+    /// Sentences, which asks a conjugation in a short sentence.
+    case sentences
+    /// The Speed Round, sixty seconds on mastered items.
+    case speedRound
+    /// Verb Essentials, which asks each verb's three key conjugations together.
+    case verbEssentials
+    /// Test Me, three questions over the verb page it sits on.
+    case verbPage
+  }
+
+  let kind: Kind
+
   /// Nil asks about the level's band of verbs.
   let verbs: [Verb]?
 
@@ -1350,40 +1385,86 @@ struct QuizScope {
   /// What a quiz in a sheet shows as its title. Nil for the Quiz tab, which is titled Quiz.
   var title: String?
 
-  /// The collection a quiz was started from, which `startQuiz` names.
-  var collectionKey: String?
-
-  /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab, or a practice
-  /// set's.
-  var custom: CustomQuiz?
+  /// The collection whose verbs these are, which `startQuiz` names and which chooses the
+  /// readings a question may ask.
+  var collection: VerbCollection?
 
   /// A practice set's level, so that every learner who opens it is asked the same set.
   /// Nil asks at the learner's own level.
   var level: QuizLevel?
 
-  /// Review or My Mistakes, which draw from the practice record. Nil for every other quiz.
-  var recordSession: QuizRecordSession?
+  var collectionKey: String? {
+    collection?.key
+  }
 
-  /// Verb Essentials, which asks each verb's three key conjugations together.
-  var isVerbEssentials = false
+  /// The learner's own choice of conjugationgroups and verbs, or a practice set's.
+  var custom: CustomQuiz? {
+    switch kind {
+    case .custom(let custom), .practiceSet(let custom):
+      return custom
+    case .ablautPractice, .allVerbs, .challenge, .collection, .daily, .myVerbs, .recognition, .recordSession, .sentences, .speedRound, .verbEssentials, .verbPage:
+      return nil
+    }
+  }
 
-  /// Verb Essentials over an ablaut group, alone or mixed with the known groups.
-  var ablautPractice: AblautPracticeSession?
+  var recordSession: QuizRecordSession? {
+    if case .recordSession(let session) = kind {
+      return session
+    }
+    return nil
+  }
 
-  /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is.
-  var isRecognition = false
+  var ablautPractice: AblautPracticeSession? {
+    if case .ablautPractice(let session) = kind {
+      return session
+    }
+    return nil
+  }
 
-  /// Sentences, which asks a conjugation in a short sentence.
-  var isSentences = false
+  var challenge: DailyChallenge.Key? {
+    if case .challenge(let key) = kind {
+      return key
+    }
+    return nil
+  }
 
-  /// The Speed Round, sixty seconds on mastered items.
-  var isSpeedRound = false
+  /// An ablaut group's practice is Verb Essentials too, over the group's verbs.
+  var isVerbEssentials: Bool {
+    switch kind {
+    case .ablautPractice, .verbEssentials:
+      return true
+    case .allVerbs, .challenge, .collection, .custom, .daily, .myVerbs, .practiceSet, .recognition, .recordSession, .sentences, .speedRound, .verbPage:
+      return false
+    }
+  }
 
-  /// The daily session, whose results extend the streak.
-  var isDaily = false
+  var isRecognition: Bool {
+    if case .recognition = kind {
+      return true
+    }
+    return false
+  }
 
-  /// A day's challenge, the same five questions on every device.
-  var challenge: DailyChallenge.Key?
+  var isSentences: Bool {
+    if case .sentences = kind {
+      return true
+    }
+    return false
+  }
+
+  var isSpeedRound: Bool {
+    if case .speedRound = kind {
+      return true
+    }
+    return false
+  }
+
+  var isDaily: Bool {
+    if case .daily = kind {
+      return true
+    }
+    return false
+  }
 
   var isChallenge: Bool {
     challenge != nil
@@ -1409,8 +1490,27 @@ struct QuizScope {
     isDefaultQuiz
   }
 
+  /// Asked of the kind alone, so that a new mode is unranked and mixes in nothing until it says
+  /// otherwise.
   private var isDefaultQuiz: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && !isDaily && !isChallenge && continues
+    if case .allVerbs = kind {
+      return true
+    }
+    return false
+  }
+
+  /// A correction links to its verb's page, except in Test Me, which sits over that page.
+  var showsVerbLink: Bool {
+    if case .verbPage = kind {
+      return false
+    }
+    return true
+  }
+
+  /// Whether a question may ask this reading. A collection's quiz asks only the readings that
+  /// earn a verb its place.
+  func admits(_ reading: Reading, region: Region = Current.settings.region) -> Bool {
+    collection?.admits(reading, region: region) ?? true
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -1446,14 +1546,14 @@ struct QuizScope {
 
   static let verbPageQuestionCount = 3
 
-  static let allVerbs = QuizScope(verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .tab)
+  static let allVerbs = QuizScope(kind: .allVerbs, verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .tab)
 
   static func myVerbs(_ verbs: [Verb]) -> QuizScope {
-    QuizScope(verbs: verbs, readingIndex: nil, questionCount: Quiz.questionCount, source: .myVerbs)
+    QuizScope(kind: .myVerbs, verbs: verbs, readingIndex: nil, questionCount: Quiz.questionCount, source: .myVerbs)
   }
 
   static func verbPage(_ verb: Verb, readingIndex: Int) -> QuizScope {
-    QuizScope(verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage, title: verb.infinitiv.inUserRegion)
+    QuizScope(kind: .verbPage, verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage, title: verb.infinitiv.inUserRegion)
   }
 }
 

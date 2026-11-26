@@ -12813,3 +12813,55 @@ intents had escaped this before by conforming to `AppIntent` directly. Marking t
 `nonisolated` was enough.
 
 The suite went from 1027 tests to 1041.
+
+## The Subjunctive That Was Only a Subordinate Clause (2026-11-26)
+
+Phase 10 of `plans/verb_browse_fixes.md` took the review's findings about the build-time map tool
+and the two scripts that build it. Most were small. One changed the numbers a doc reports.
+
+**The finding.** `scripts/count_conjugationgroups.py` counts how often each conjugationgroup
+occurs in the corpus, and the verb page orders its tables by the result. habe and werde are
+ambiguous: "ich habe" is indicative, "er habe" is Konjunktiv I. The counter called them
+Konjunktiv I unless ich stood right beside them. But a German subordinate clause sends its finite
+verb to the end, away from its subject: "was ich dir geboten habe". Every such clause counted as
+indirect speech. A reviewer patched the rule to look for ich anywhere in the clause, and Perfekt
+Konjunktiv I fell from 851 to 358.
+
+There is a nice irony in the names. Latin's *modus coniunctivus*, the source of German's
+Konjunktiv, is the "joining" mood. Its twin *subiunctivus*, English's subjunctive, is a calque of
+the Greek grammarians' *hypotaktikē*, the "subordinated" mood. Both were named for the subordinate
+clauses they so often appear in. The counter made exactly that mistake: it took a subordinate
+clause for the subjunctive.
+
+**Reading the clauses found a second error.** The plan asked the auxiliary rule to ask what the
+simple-word rule asks, which also wants er, es, or man beside the word. A probe sorted the clauses
+by subject before choosing. Requiring a third-person pronoun would have discarded most real
+indirect speech, which is about named people: "der Minister habe gesagt". So that idea went. The
+probe also showed many clauses beginning with a blank, a word the counter had hidden. That blank
+was "Ich". Luther writes "und sprach: Ich habe gesündigt", and the counter broke the clause at the
+colon without starting a new sentence. So the capital looked like a noun mid-sentence and was
+dropped, and the clause appeared to have no ich. A colon, a quotation mark, or a parenthesis now
+counts as a place a sentence can begin. Together, the two fixes take Perfekt Konjunktiv I to 246
+and Futur Konjunktiv I to 91.
+
+**The fix moved something else.** The Imperativ doubled, from 594 to 1,236, because "sprach: Gehe
+hin!" now counts as the command it is. Neither block of the page changes order. The doc's upper
+bound for the Imperativ, though, which counts every sentence that might be one, rose from 0.4% to
+about 1.1%. That is above the Präsens Konjunktiv I's 0.5%. Josh should know that the order of those
+two tables now rests on the counting rule, and the doc says so.
+
+**A small question about sie.** The doc said an -e word beside er, es, or man is Konjunktiv I. The
+code had also accepted sie. A sample of the words whose only neighbour was sie found about one in
+four to be Konjunktiv I ("daß sie komme"). The rest were objects: "hole sie", "daß ich sie baue".
+The script now follows the doc.
+
+**The rest was hardening.** The counter checks that its cells table is Konjugieren's, by its group
+names, because another app's table once produced a table of zeros and a
+division by zero. `ConjugationMapTool` stops at a misspelled flag, where `--form-json` used to write
+the map and skip the file. The map loader throws on text that is not UTF-8. The map is written
+atomically, now that the app target's script sandbox is off. Timestamps showed that an unchanged
+rebuild still skips the phase. The tool builds into `KonjugierenConjugationMapTool-build`, so a
+Conjuguer session can no longer overwrite its binary. The tool's three outputs stayed
+byte-identical throughout.
+
+The suite went from 1041 tests to 1042.

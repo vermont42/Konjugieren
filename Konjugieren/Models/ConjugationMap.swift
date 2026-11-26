@@ -52,8 +52,13 @@ nonisolated struct ConjugationMap: Equatable, Sendable {
   }()
 }
 
-// The bundled file is this text, compressed with LZFSE: 1.4 MB becomes about 160 KB.
+// The bundled file is this text, compressed with LZFSE to about a ninth of its size: on
+// 2026-11-26, 1.6 MB became 177 KB.
 nonisolated extension ConjugationMap {
+  enum LoadError: Error {
+    case notUTF8
+  }
+
   /// One line per conjugation, in sorted order: the conjugation, then a tab before each entry.
   /// An entry is an infinitive, followed by a space and the particle when it has one.
   ///
@@ -92,7 +97,10 @@ nonisolated extension ConjugationMap {
 
   init(compressed data: Data) throws {
     let decompressed = try (data as NSData).decompressed(using: .lzfse) as Data
-    self.init(text: String(bytes: decompressed, encoding: .utf8) ?? "")
+    guard let text = String(bytes: decompressed, encoding: .utf8) else {
+      throw LoadError.notUTF8
+    }
+    self.init(text: text)
   }
 }
 

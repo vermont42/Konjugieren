@@ -79,7 +79,7 @@ OFF_PAGE = ["passiv", "futurII"]
 
 # Auxiliary forms, by what they make with a participle or an infinitive. The ambiguous ones
 # (habe, werde: ich habe is indicative, er habe is Konjunktiv I) are resolved by
-# `first_person_singular`, below.
+# `ich_in_clause`, below.
 HABEN_PRESENT = {"habe", "hast", "hat", "haben", "habt"}
 HABEN_K1_ONLY = {"habest", "habet"}
 HABEN_PAST = {"hatte", "hattest", "hatten", "hattet"}
@@ -111,6 +111,10 @@ MODALS = {
 }
 
 PRONOUNS = {"ich", "du", "er", "sie", "es", "wir", "ihr", "man"}
+# sie is left out, though "sie komme" is Konjunktiv I. Beside an -e spelling, sie is far more
+# often an object, after an Imperativ or a verb whose subject is ich: "hole sie", "behalte sie",
+# "daß ich sie baue". In a sample of 40 of the 161 such words in the corpus (2026-11-26), about
+# one in four was Konjunktiv I. The doc names the same three.
 THIRD_SINGULAR = {"er", "es", "man"}
 
 # Words that are spelled like a conjugation of some verb in the app but are, nearly always,
@@ -175,13 +179,27 @@ GUTENBERG_START = re.compile(r"\*\*\* ?START OF (THE|THIS) PROJECT GUTENBERG.*?\
 GUTENBERG_END = re.compile(r"\*\*\* ?END OF (THE|THIS) PROJECT GUTENBERG", re.S)
 WORD = re.compile(r"[A-Za-zÄÖÜäöüß]+")
 SENTENCE_END = set(".!?")
+# Marks after which a sentence can begin without a full stop: quoted speech after a colon or a
+# quotation mark ("und sprach: Ich habe gesündigt"), and a Bundestag speech resuming after an
+# interjection in parentheses ("(Beifall bei der SPD) Ich werde …"). A capitalized word after one
+# is read as a sentence start, so it counts unless it is a noun. Before 2026-11-26 such a word was
+# dropped as a mid-sentence capital, which hid the quoted "Ich" from the Konjunktiv I rule and
+# made Luther's "sprach: Ich habe …" Perfekt Konjunktiv I.
+INNER_SENTENCE_START = set(":()„“”\"«»‹›")
 CLAUSE_BREAK = set(",;:()[]„“”\"«»‹›–—")
 ADJECTIVE_ENDINGS = ("em", "en", "er", "es", "e")
 
 
+def fail(message):
+    """Stops with a message, for input this script cannot count from."""
+    sys.exit(f"error: count_conjugationgroups.py: {message}")
+
+
 def build_cells():
-    """Builds ConjugationMapTool, as scripts/write_forms_json.sh does, and writes the cells."""
-    build_root = Path(os.environ.get("TMPDIR", "/tmp")) / "ConjugationMapTool-build"
+    """Builds ConjugationMapTool, as scripts/write_forms_json.sh does, and writes the cells.
+    The build directory is that script's, named for Konjugieren because Conjuguer has a tool of
+    the same name; the script's comment says more."""
+    build_root = Path(os.environ.get("TMPDIR", "/tmp")) / "KonjugierenConjugationMapTool-build"
     subprocess.run(
         ["xcodebuild", "-project", str(REPO / "Konjugieren.xcodeproj"), "-target", "ConjugationMapTool",
          "-configuration", "Release", f"SYMROOT={build_root}/Products", f"OBJROOT={build_root}/Intermediates",
@@ -201,14 +219,36 @@ def build_cells():
 
 def load_cells(path):
     """form → {group → set of auxiliaries}. The verb itself is never needed: a conjugationgroup
-    is the same whichever verb a word belongs to, and the auxiliary is all that pairing asks."""
-    raw = json.loads(Path(path).read_text())
+    is the same whichever verb a word belongs to, and the auxiliary is all that pairing asks.
+
+    Checks the file's shape first. Conjugar's ConjugationMapTool writes a cells.json under the
+    same flag, and given another app's table, this script once matched no word, printed a table
+    of zeros, and then divided by zero (review finding S9, 2026-11-25). The group names are the
+    check that tells the apps apart: CellsJSON.swift spells Konjugieren's."""
+    try:
+        raw = json.loads(Path(path).read_text())
+    except (OSError, ValueError) as error:
+        fail(f"cannot read {path} as JSON: {error}")
+    if not isinstance(raw, dict) or not raw:
+        fail(f"{path} is not a nonempty object of form → [[group, infinitive, auxiliary], …].")
+    known = set(SIMPLE) | {"infinitiv"}
     cells = {}
     for form, rows in raw.items():
         groups = defaultdict(set)
-        for group, _infinitive, auxiliary in rows:
+        for row in rows if isinstance(rows, list) else [rows]:
+            if not (isinstance(row, list) and len(row) == 3 and all(isinstance(field, str) for field in row)):
+                fail(f"{path}: {form!r} has {row!r}, not [group, infinitive, auxiliary].")
+            group, _infinitive, auxiliary = row
+            if group not in known:
+                fail(f"{path}: {form!r} names the group {group!r}, which Konjugieren does not write. "
+                     "Is this another app's cells table? Without --cells, this script builds its own.")
+            if not auxiliary or set(auxiliary) - {"h", "s"}:
+                fail(f"{path}: {form!r} has the auxiliary {auxiliary!r}; expected h, s, or hs.")
             groups[group].update(auxiliary)
         cells[form] = dict(groups)
+    missing = known - {group for groups in cells.values() for group in groups}
+    if missing:
+        fail(f"{path} has no conjugation in {', '.join(sorted(missing))}. Is it a partial table?")
     return cells
 
 
@@ -267,7 +307,7 @@ def noun_spellings(texts):
         for match in TOKEN.finditer(text):
             token = match.group(0)
             if not token[0].isalpha():
-                sentence_start = sentence_start or token in SENTENCE_END
+                sentence_start = sentence_start or token in SENTENCE_END or token in INNER_SENTENCE_START
                 continue
             if not sentence_start:
                 if token[0].isupper():
@@ -296,6 +336,8 @@ def sentences(text, nouns):
                 if sentence:
                     yield sentence, token
                 sentence = []
+                sentence_start = True
+            elif token in INNER_SENTENCE_START:
                 sentence_start = True
             continue
         word = token
@@ -334,22 +376,36 @@ def participle_lookup(word, cells):
     return None
 
 
-def first_person_singular(words, index):
-    """Whether ich stands next to the word: ich habe, habe ich. Settles habe, werde, and every
-    other spelling that is both ich's indicative and er's Konjunktiv I."""
-    neighbors = words[max(0, index - 1): index] + words[index + 1: index + 2]
-    return "ich" in neighbors
+def ich_in_clause(words):
+    """Whether ich is in the clause. Settles habe, werde, and every other spelling that is both
+    ich's indicative and er's Konjunktiv I: such a spelling has no other subject, and ich is
+    nominative only, so an ich in its clause is nearly always its subject.
+
+    The whole clause, not the neighbors, because a subordinate clause sends its finite verb to
+    the end, away from the subject: "was ich dir geboten habe". Until 2026-11-26 the auxiliary
+    path asked only whether ich stood beside habe or werde, and so counted every such clause as
+    indirect speech. Perfekt Konjunktiv I fell from 851 pooled to 246 when the rule widened (with
+    the inner sentence starts above), and Futur Konjunktiv I from 221 to 91. The doc's Known
+    Errors say what remains: an ich in another clause, or left out.
+
+    The simple path asks this too, and also wants er, es, or man beside the word, because an -e
+    spelling is far more often ich's Präsens than anyone's Konjunktiv I."""
+    return "ich" in words
 
 
 def third_singular_neighbor(words, index):
     neighbors = words[max(0, index - 1): index] + words[index + 1: index + 2]
-    return bool(THIRD_SINGULAR & set(neighbors)) or "sie" in neighbors
+    return bool(THIRD_SINGULAR & set(neighbors))
 
 
 def auxiliary_kind(word, words, index):
     """(auxiliary verb, what it makes) for a form of haben, sein, or werden."""
     if word in HABEN_PRESENT:
-        if word == "habe" and not first_person_singular(words, index):
+        # No third-person pronoun is required, as the simple path below requires one: indirect
+        # speech is mostly about a named subject ("der Minister habe gesagt"), and a pronoun
+        # would also have to be found across the clause. habe without ich has no reading but
+        # er's Konjunktiv I, except where ich was left out ("und habe ihn daselbst mir erwählt").
+        if word == "habe" and not ich_in_clause(words):
             return ("h", "k1")
         return ("h", "present")
     if word in HABEN_K1_ONLY:
@@ -367,7 +423,7 @@ def auxiliary_kind(word, words, index):
     if word in SEIN_K2:
         return ("s", "k2")
     if word in WERDEN_PRESENT:
-        if word == "werde" and not first_person_singular(words, index):
+        if word == "werde" and not ich_in_clause(words):
             return ("w", "k1")
         return ("w", "present")
     if word in WERDEN_K1_ONLY:
@@ -492,7 +548,7 @@ def count_clause(clause, terminator, cells, counts, examples):
         if finite:
             if "praesensIndikativ" in finite and "praesensKonjunktivI" in finite:
                 group = "praesensKonjunktivI" if (
-                    not first_person_singular(words, index) and third_singular_neighbor(words, index) and word.endswith("e")
+                    not ich_in_clause(words) and third_singular_neighbor(words, index) and word.endswith("e")
                 ) else "praesensIndikativ"
             elif "praesensIndikativ" in finite:
                 group = "praesensIndikativ"
@@ -528,6 +584,10 @@ def main():
         folder: [clean(path) for path in sorted((REPO / "corpus" / folder).glob("*.txt")) if not path.name.endswith("-en.txt")]
         for folder in FOLDERS
     }
+    empty = [folder for folder in FOLDERS if not texts[folder]]
+    if empty:
+        fail(f"no German texts in corpus/{', corpus/'.join(empty)}. The texts are gitignored; "
+             "corpus/README.md says where they came from.")
     nouns = noun_spellings(text for folder in FOLDERS for text in texts[folder])
     by_folder = {}
     examples = defaultdict(Counter) if args.examples else None
@@ -540,6 +600,10 @@ def main():
         by_folder[folder] = counts
 
     pooled = sum(by_folder.values(), Counter())
+    # A guard for the shares and rankings below, which divide by these totals.
+    if not all(sum(by_folder[folder][g] for g in SIMPLE) for folder in FOLDERS):
+        fail("a folder of the corpus yielded no verb at all, so its shares are undefined. "
+             "Check the cells table and the texts.")
 
     def shares(counts, groups):
         total = sum(counts[g] for g in groups) or 1

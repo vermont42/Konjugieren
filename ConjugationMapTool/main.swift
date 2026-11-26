@@ -28,13 +28,23 @@
 
 import Foundation
 
-/// The command line, as a dictionary of flag to path. Every flag takes exactly one value.
+private let knownFlags: Set<String> = ["--ablaut-groups", "--cells-json", "--forms-json", "--map", "--verbs"]
+
+/// The command line, as a dictionary of flag to path. Every flag takes exactly one value. An
+/// unknown or repeated flag stops the tool, since a misspelling such as --form-json would
+/// otherwise write the map and silently skip the file that was asked for.
 private func parseArguments() -> [String: String] {
   var values: [String: String] = [:]
   var remaining = CommandLine.arguments.dropFirst()
   while let flag = remaining.popFirst() {
-    guard flag.hasPrefix("--"), let value = remaining.popFirst() else {
-      fail("Expected --flag value pairs, got \(flag).")
+    guard knownFlags.contains(flag) else {
+      fail("Unknown argument \(flag). Expected \(knownFlags.sorted().joined(separator: ", ")).")
+    }
+    guard values[flag] == nil else {
+      fail("\(flag) is given twice.")
+    }
+    guard let value = remaining.popFirst() else {
+      fail("\(flag) needs a value.")
     }
     values[flag] = value
   }
@@ -80,9 +90,11 @@ let finitePartCount = map.entriesByConjugation.values.filter { $0.contains { $0.
 
 do {
   if let mapPath {
-    // Not .atomic: an atomic write creates a temporary file beside the output, and Xcode's
-    // script sandbox (ENABLE_USER_SCRIPT_SANDBOXING) permits writing only the declared output.
-    try map.compressed().write(to: URL(fileURLWithPath: mapPath))
+    // Atomic, so that a write cut short cannot leave a truncated map whose fresh timestamp keeps
+    // Xcode from running the phase again. An atomic write creates a temporary file beside the
+    // output, which a sandboxed script phase may not, so this depends on the app target's
+    // ENABLE_USER_SCRIPT_SANDBOXING = NO (CLAUDE.md § SwiftLint says why it is off).
+    try map.compressed().write(to: URL(fileURLWithPath: mapPath), options: .atomic)
   }
   if let formsJSONPath {
     let forms = map.entriesByConjugation.mapValues { entries in

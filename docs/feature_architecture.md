@@ -1181,7 +1181,12 @@ executable stands for every Conjugator source: Xcode relinks it when a file it c
 a way that changes the code, and leaves it alone otherwise, so a comment-only edit regenerates
 nothing. An unchanged rebuild does not run the tool. `ConjugationMapTests` compares the bundled
 map with a fresh in-process build, which catches a Conjugator dependency the tool does not
-compile.
+compile. The tool writes the map atomically, so a write cut short cannot leave a truncated file
+whose fresh timestamp would keep the phase from running again; that needs the phase unsandboxed,
+which the app target is for SwiftLint (2026-11-26, Phase 10 of
+[`verb_browse_fixes.md`](../plans/verb_browse_fixes.md)). It also stops at an unknown or repeated
+flag, and `ConjugationMap(compressed:)` throws on text that is not UTF-8 rather than reading it as
+an empty map.
 
 **Keeping the core compilable.** The files the tool compiles may not reach `L`, `Settings`,
 `Region`, or any other app-only type. Display members of core types live in
@@ -1193,7 +1198,8 @@ outside the core; move the member out rather than growing `ToolWorld`.
 **Format.** One line per conjugation, sorted: the conjugation, then a tab before each entry. An
 entry is an infinitive, followed by a space and the particle for a finite part (`fängt	fangen	anfangen an`).
 Within a line, whole verbs come first, then finite parts, each alphabetical. The text is about
-1.4 MB and is LZFSE-compressed to about 173 KB. The tool takes 2 seconds in a Release build.
+1.6 MB and is LZFSE-compressed to about 177 KB (2026-11-26). The tool takes 2 seconds in a Release
+build.
 
 **Archives.** The tool has `SKIP_INSTALL = YES` and no dSYM, so an archive contains only the app
 (checked with an unsigned `xcodebuild archive`, 2026-11-12).

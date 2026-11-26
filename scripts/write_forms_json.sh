@@ -27,8 +27,12 @@ output="${1:-$repo/corpus/working/forms.json}"
 
 # A bare `xcodebuild -target` build writes ./build into the repository unless SYMROOT and
 # OBJROOT point elsewhere. A scratch directory under TMPDIR keeps the tree clean, and reusing it
-# across runs keeps rebuilds incremental.
-build_root="${TMPDIR:-/tmp}/ConjugationMapTool-build"
+# across runs keeps rebuilds incremental. The directory is named for Konjugieren because
+# Conjuguer has a target of the same name and builds it into the plain ConjugationMapTool-build,
+# which this script also used until 2026-11-26: a Konjugieren and a Conjuguer session running at
+# once could overwrite each other's binary (review finding S10). Conjugar's is
+# ConjugarConjugationMapTool-build. scripts/count_conjugationgroups.py shares this directory.
+build_root="${TMPDIR:-/tmp}/KonjugierenConjugationMapTool-build"
 
 xcodebuild -project "$repo/Konjugieren.xcodeproj" -target ConjugationMapTool -configuration Release \
   SYMROOT="$build_root/Products" OBJROOT="$build_root/Intermediates" -quiet build

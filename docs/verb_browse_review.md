@@ -314,7 +314,10 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   fell from 851 to 358 pooled and Futur Konjunktiv I from 221 to 107. **The page's section order
   does not change.** What fails is the doc's sentence that pooling reverses the three close groups
   "because literature and the Bible are full of indirect speech". The patch is itself a heuristic,
-  so the new figures are estimates.
+  so the new figures are estimates. **Fixed on `main` 2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): ich
+  anywhere in the clause, as patched here, and a quoted "Ich" after a colon is no longer dropped as
+  a noun. The figures are 246 and 91, the order is unchanged, and the doc and the script agree
+  that sie is not a third-person neighbour.
 - **G3. `DeeplinkTests` pins copies of the widget's links (Read).** `docs/feature_architecture.md`
   says the tests pin every widget literal. They pin the three `pendingDeeplink` constants in
   `Shared/`. The six `"konjugieren://verb/\(…)?source=widget"` strings in five widget views are
@@ -339,10 +342,13 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **G7. Stale prose (Read).**
   - `VerbLookup.swift:39`: "ausgehen and 30 more". The map has 63. **Fixed on `main`
     2026-11-25**, by Phase 1 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as "dozens more".
-  - `ConjugationMap.swift:55`: "about 160 KB". The file is 173 KB.
+  - `ConjugationMap.swift:55`: "about 160 KB". The file is 173 KB. **Fixed on `main`
+    2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as a ratio with a dated example.
   - `ConjugationMapTool/main.swift:83-84`: the map is not written atomically because of the script
     sandbox, which the app target has since turned off. An atomic write would now work, and would
-    avoid a truncated map whose fresh timestamp keeps the phase from rerunning.
+    avoid a truncated map whose fresh timestamp keeps the phase from rerunning. **Fixed on `main`
+    2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the write is atomic, and an unchanged rebuild still
+    skips the phase, by the map's timestamp.
   - `QuizView.swift:1509-1514`: `QuizSheet`'s doc comment opens with a sentence about
     `TabQuizScope`.
   - `Analytics.swift:70-71`: "once the quiz track sends it". **Fixed on `main` 2026-11-25**, by
@@ -456,18 +462,22 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   - `LearnerVerbs.recent(limit:)` takes a limit that nothing passes. **Fixed on `main`
     2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
   - `ConjugationMapTool` accepts any `--flag value`, so `--form-json` for `--forms-json` writes
-    the map and silently skips the file (`main.swift:32-41`).
+    the map and silently skips the file (`main.swift:32-41`). **Fixed on `main` 2026-11-26**, by
+    Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): an unknown or repeated flag, or one with no value, stops the tool.
   - `ConjugationMap(compressed:)` turns invalid UTF-8 into an empty map, so every way the map can
-    fail to load looks the same (`ConjugationMap.swift:93-96`).
+    fail to load looks the same (`ConjugationMap.swift:93-96`). **Fixed on `main` 2026-11-26**, by
+    Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): it throws `LoadError.notUTF8`.
   - `scripts/count_conjugationgroups.py` prints zeros and then divides by zero when given another
-    app's `cells.json` (line 578).
+    app's `cells.json` (line 578). **Fixed on `main` 2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): it
+    checks the table's shape and group names, and stops on a folder with no texts or no verbs.
   - `Analytics.swift:44-45` breaks the alphabetical order of the signal names. **Fixed on `main`
     2026-11-25**, by Phase 2 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **S10. Konjugieren and Conjuguer build the tool into one directory (Reviewer).**
   `$TMPDIR/ConjugationMapTool-build` in `scripts/write_forms_json.sh:31` and
   `scripts/count_conjugationgroups.py:184` is the path Conjuguer's script uses for a target of the
   same name. Conjugar already prefixes its own. Two sessions running at once can overwrite each
-  other's binary.
+  other's binary. **Fixed on `main` 2026-11-26**, by Phase 10 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+  `KonjugierenConjugationMapTool-build`.
 
 ## Elegance
 

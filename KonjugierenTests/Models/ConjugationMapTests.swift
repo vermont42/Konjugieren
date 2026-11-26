@@ -119,5 +119,13 @@ enum ConjugationMapTests {
       #expect(ConjugationMap(text: map.text) == map)
       #expect(try ConjugationMap(compressed: map.compressed()) == map)
     }
+
+    @Test func refusesTextThatIsNotUTF8() throws {
+      let latin1 = try #require("fängt\tfangen".data(using: .isoLatin1))
+      let compressed = try (latin1 as NSData).compressed(using: .lzfse) as Data
+      #expect(throws: ConjugationMap.LoadError.notUTF8) {
+        try ConjugationMap(compressed: compressed)
+      }
+    }
   }
 }

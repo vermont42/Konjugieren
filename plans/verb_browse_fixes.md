@@ -28,7 +28,7 @@ empty until it is committed.
 | 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
 | 8 | Done | 2026-11-26 | `a06f7e3` | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Done | 2026-11-26 | `b1d3344` | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
-| 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
+| 10 | Done | 2026-11-26 | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Not started | | | S6, D7, the sein collection's quiz | No |
 | 12 | Not started | | | T1, T2, T3, T4 | No |
 | Closing | Not started | | | S5, S7, the audit | No |
@@ -630,7 +630,62 @@ nothing.
   is named for Konjugieren.
 - Correct the "about 160 KB" comment.
 
-**How it differed:**
+**How it differed:** Mostly in G2, where reading the clauses behind the counts found a second error
+beside the first. The suite went from 1041 to 1042 tests, in 105 suites.
+
+- **The auxiliary path asks whether ich is in the clause, not what the simple path asks.**
+  Requiring a third-person pronoun as well, as the simple path does beside the word, took
+  Perfekt Konjunktiv I to 129 and Futur Konjunktiv I to 44. But a sample of the clauses with no
+  pronoun at all showed them mostly true indirect speech about a named subject ("der _ _ habe
+  ihn geschickt", "als habe der _ etwas _ ausgeführt"), which that rule throws away. So both
+  paths now share `ich_in_clause`, which is the reviewer's patch, and only the simple path also
+  wants er, es, or man beside the word.
+- **A quoted "Ich" was dropped as a noun.** A colon or a quotation mark breaks a clause but does
+  not start a sentence, so the capital in "und sprach: Ich habe gesündigt" read as a noun
+  mid-sentence, and the clause had no ich. `INNER_SENTENCE_START` treats a colon, a quotation
+  mark, or a parenthesis (the Bundestag's "(Beifall …) Ich werde …") as a place a sentence can
+  begin. With the clause rule it took Perfekt Konjunktiv I from 851 to 246 and Futur Konjunktiv
+  I from 221 to 91, where the clause rule alone gave the review's 358 and 107. `--examples
+  perfektKonjunktivI` read before: getan habe 42, gegeben habe 35, gesagt habe 35, geboten habe
+  30, nearly all "…, was ich … habe". After: habe gegeben 12, sei gewesen 10, habe gemacht 8.
+- **The Imperativ doubled, from 594 to 1,236,** because Luther's "sprach: Gehe hin!" now counts.
+  The words are real commands (laß, nimm, komm, gib, sprich), with about 50 exclamations such as
+  "Stimmt!", now in Known Errors. The measured order of the page's sections does not change, in
+  either block, so this phase did not stop. But the doc's upper bound, every sentence that could
+  be an Imperativ, is now about 1.1%, above the Präsens Konjunktiv I's 0.5%, where before it was
+  0.4% and "still last". The order of those two tables now rests on the counting rule, and the doc
+  says so.
+- **sie left the script, as the doc had it.** Of 161 -e words whose only third-person neighbour
+  was sie, a sample of 40 was about one in four Konjunktiv I ("daß sie komme"); the rest were
+  objects ("hole sie", "daß ich sie baue").
+- **The regenerated tables also carry small drift** from Conjugator changes since 2026-11-12:
+  before this phase's edits, the Präsens Indikativ was 140,165 against the doc's 140,184.
+- **The pooled sentence was rewritten for what the numbers now say:** pooled, only Plusquamperfekt
+  Konjunktiv II passes Futur Konjunktiv II, because the modern folder holds three quarters of the
+  compounds. A dated paragraph records the old claim and why it was wrong.
+- **The cells check knows Konjugieren's group names**, since Conjugar's tool writes a
+  `cells.json` under the same flag. No sibling's table was on disk, so five made-up files were
+  tried: French group names, a row of two fields, a partial table, a list, and a missing file.
+  Each stops with a message. A folder with no texts or no verbs stops too, which is the other road
+  to the division.
+- **The tool stops at an unknown flag, a repeated one, and one with no value**, tried by hand:
+  `--form-json` now stops before writing the map. Neither the tool's flags nor the script's checks
+  have an automated test, since the tool is a macOS target that the iOS test bundle cannot run
+  and the scripts have no harness. `refusesTextThatIsNotUTF8` was run against the old loader,
+  put back temporarily, and failed: no error, an empty map. The error is
+  `ConjugationMap.LoadError`, not `DecodingError`, which would shadow Swift's.
+- **The atomic write, confirmed by timestamps.** A build from 14:00:19 to 14:00:54, after the tool
+  relinked, wrote the map at 14:00:49. An unchanged rebuild from 14:01:00 to 14:01:10 left it at
+  14:00:49, and no temporary file stayed in the bundle.
+- **Every output of the tool is byte-identical** to the outputs before the phase: the map, the
+  cells table, and `forms.json`, which `scripts/write_forms_json.sh` also left unchanged. The
+  counter run end to end, building its own table in the renamed directory, matched the counts
+  from the table written beforehand.
+- **"About 160 KB" became "about a ninth of its size"** with a dated example (1.6 MB to 177 KB),
+  for the reason Phase 1 gave "dozens more". `docs/feature_architecture.md` had 1.4 MB and 173 KB,
+  now 1.6 MB and 177 KB, and gained a sentence on the atomic write, the flags, and the throw.
+- **G7's `QuizSheet` bullet is not this phase's** and was left; Phase 11 reads that code.
+- `README.md`'s three test counts went to 1042. No file was added, so its file count stays.
 
 ## Phase 11: The Quiz's Scope
 

@@ -85,6 +85,36 @@ enum ConjugationTable: CaseIterable {
     }
   }
 
+  /// The section of the verb page that this table's arrival on screen marks: the first table of
+  /// each block. `ConjugationTableTests` pins that these are the first of their blocks.
+  var pageSection: VerbPageSection? {
+    switch self {
+    case .präsensIndikativ:
+      return .simple
+    case .perfektIndikativ:
+      return .compound
+    case .präteritumIndikativ, .präteritumKonjunktivII, .präsensKonjunktivI, .imperativ, .perfektpartizip, .präsenspartizip,
+      .futurIndikativ, .plusquamperfektIndikativ, .futurKonjunktivII, .plusquamperfektKonjunktivII, .perfektKonjunktivI, .futurKonjunktivI:
+      return nil
+    }
+  }
+
+  /// Whether a simple table of the reading shows a red letter, which `RedLettersTip` explains.
+  /// The compound tables are left out, because their auxiliaries are red on every verb's page,
+  /// and the segmenter that draws the red letters decides, so that the polite Imperativ's Sie,
+  /// written with a capital, does not count.
+  static func hasRedLetters(_ verb: Verb, readingIndex: Int, region: Region = Current.settings.region) -> Bool {
+    allCases.lazy
+      .filter { !$0.isCompound }
+      .flatMap(\.cells)
+      .contains { cell in
+        guard let conjugation = try? RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: cell, region: region, readingIndex: readingIndex).get() else {
+          return false
+        }
+        return MixedCaseSegmenter.segments(for: conjugation).contains(where: \.isIrregular)
+      }
+  }
+
   /// The identifier the verb page scrolls to.
   var scrollID: String {
     representative.germanDisplayName

@@ -80,7 +80,8 @@ struct TryQuizTip: Tip {
 }
 
 /// Explains the verb page's red letters. It stays until the learner closes it, and appears
-/// only on a page that has red letters, since machen's page would leave it nothing to point at.
+/// only where the verb itself is irregular (`ConjugationTable.hasRedLetters`): machen's red
+/// auxiliaries would leave it nothing of the verb's own to point at.
 struct RedLettersTip: Tip {
   var title: Text {
     Text("Tips.redLettersTitle")

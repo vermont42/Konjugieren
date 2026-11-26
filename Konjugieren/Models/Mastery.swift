@@ -72,10 +72,10 @@ struct Mastery {
     }
 
     /// Conjugated when shown rather than when counted, since the hub's row needs only the
-    /// counts and would otherwise conjugate some 150 cells each time it draws.
-    func conjugation(region: Region = Current.settings.region) -> String {
-      let result = RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: stem.keyConjugationgroup, region: region, readingIndex: readingIndex)
-      return (try? result.get()) ?? infinitiv
+    /// counts and would otherwise conjugate some 150 cells each time it draws. Nil, and so left
+    /// out, for a cell the Conjugator cannot fill, as the verb page leaves it out.
+    func conjugation(region: Region = Current.settings.region) -> String? {
+      stem.keyConjugation(of: infinitiv, readingIndex: readingIndex, region: region)
     }
   }
 

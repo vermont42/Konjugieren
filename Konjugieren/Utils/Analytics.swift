@@ -140,6 +140,7 @@ enum VerbPageSection: String, CaseIterable, Comparable {
   case compound
   case etymology
   case example
+  case related
 
   nonisolated static func < (lhs: VerbPageSection, rhs: VerbPageSection) -> Bool {
     let order = allCases

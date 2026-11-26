@@ -179,13 +179,14 @@ private struct MasteryVerbRowView: View {
 
       FlowLayout(spacing: Layout.doubleDefaultSpacing) {
         ForEach(row.keyConjugations) { keyConjugation in
-          let conjugation = keyConjugation.conjugation()
-          HStack(spacing: 4) {
-            MasteryMark(state: keyConjugation.state)
-            Text(mixedCaseString: conjugation)
-              .font(.body)
-              .accessibilityLabel(Text(verbatim: conjugation.lowercased()))
-              .germanPronunciation()
+          if let conjugation = keyConjugation.conjugation() {
+            HStack(spacing: 4) {
+              MasteryMark(state: keyConjugation.state)
+              Text(mixedCaseString: conjugation)
+                .font(.body)
+                .accessibilityLabel(Text(verbatim: conjugation.lowercased()))
+                .germanPronunciation()
+            }
           }
         }
       }

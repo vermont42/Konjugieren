@@ -49,7 +49,7 @@ Konjugieren/
 │   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
 │   ├── ConjugationIndex.swift  # The bundled conjugation map indexed for search: folded spellings (muß → muss) and length buckets for the guess
 │   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, in any region and either clause; Conjugationgroup.personNumber
-│   ├── ConjugationTable.swift  # The verb page's tables in page order (frequency within simple, then compound; docs/conjugationgroup_frequency.md), each table's cells, second names, and Info article; Conjugationgroup.allCells and .table
+│   ├── ConjugationTable.swift  # The verb page's tables in page order (frequency within simple, then compound; docs/conjugationgroup_frequency.md), each table's cells, second names, Info article, and the page section it marks; hasRedLetters, whether the simple tables show a red letter of the verb's own, which RedLettersTip waits for; Conjugationgroup.allCells and .table
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
@@ -78,7 +78,7 @@ Konjugieren/
 │   │   └── GameState+Robot.swift       # Robot brain/minion mechanic (spawn/update)
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
-│   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
+│   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label), Verb.shareText, what the verb page's share button sends, and Stem.keyConjugation, one stem's, which the Mastery page shares
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., ChangeLevelTip, shown in Settings after a quiz; the verb page's RedLettersTip and ScrollToBottomTip)
 │   ├── LastQuizResult.swift    # The last quiz's results for the Quiz tab's hub: a kind (LastQuizResult.Kind(scope:)), a verb or collection key (an ablaut group's for its practice, alone or mixed), the level, counts, score, and date; kept by PracticeStore on the device and never sent
 │   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens and stars, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs)
@@ -122,6 +122,7 @@ Konjugieren/
 │   ├── VerbDraw.swift          # The widget's verb of the day and every random verb: the top 1,000 weighted toward strong and unprefixed verbs, and My Verbs every third day (random: one draw in three)
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
+│   ├── VerbVisitTracker.swift  # When a verb page's visits begin and end (on screen, in the foreground, no sheet over it), and the open its first visit records
 │   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search, whose core takes Sendable candidates so it can run off the main actor and stops when its task is cancelled
 │   ├── VerbSearchModel.swift   # The verb list's search (@Observable): the text, its results, the guess found off the main actor and cancelled by the next edit, the keyboard selection, the folded row's state, the sad trombone once per failed search, and the finishSearch reports
 │   ├── VerbLookup.swift        # What Look Up a Verb says about a word (an infinitive, a conjugation of one or more verbs, other matches, the guess) and where it then opens the app
@@ -318,7 +319,8 @@ KonjugierenTests/
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess, its cancellation, and the limited edit distance
 │   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region
 │   ├── VerbTests.swift         # Verb.stamm and endingIsValid tests
-│   └── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
+│   ├── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
+│   └── VerbVisitTrackerTests.swift # VerbVisitTracker: sheets, scene phases, and reappearance pair each view with one leave
 ├── Utils/
 │   ├── AnalyticsTests.swift    # Analytics bands, section order, and the match-kind mapping
 │   ├── DeeplinkTests.swift     # The deeplink grammar: every route, the `source` and `match` query items, the search route, stable-key articles, the control and quick-action links

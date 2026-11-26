@@ -1289,7 +1289,7 @@ the snapshot bundle the app writes (§ Choosing the Verb). Under unit tests it u
 `GetterSetterFake`. iCloud sync was rejected.
 
 **What counts as an open.** Every `viewVerbView` whose source is not `resume`: a verb page
-arriving by any route, but not the same page reappearing after another tab or the background.
+arriving by any route, but not the same page reappearing after another tab, a sheet, or the background.
 
 **Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
 the key, so a required field would fail to decode every record an older build wrote, and on
@@ -1743,8 +1743,8 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 
 | Signal | Parameters | Sent |
 |---|---|---|
-| `viewVerbView` | `source` | When a verb page appears: on arrival, and again with `source` `resume` after the page returns from another tab, a pushed page, or the background |
-| `leaveVerbView` | `deepestSection` (`header`, `simple`, `compound`, `etymology`, `example`), `dwell` (`0-5s`, `5-15s`, `15-60s`, `60s+`) | Exactly once for each `viewVerbView`: when the page leaves the screen or the app goes to the background |
+| `viewVerbView` | `source` | When a verb page appears: on arrival, and again with `source` `resume` after the page returns from another tab, a pushed page, a sheet (an article or Test Me), or the background |
+| `leaveVerbView` | `deepestSection` (`header`, `simple`, `compound`, `etymology`, `example`, `related`), `dwell` (`0-5s`, `5-15s`, `15-60s`, `60s+`) | Exactly once for each `viewVerbView`: when the page leaves the screen, a sheet covers it, or the app goes to the background. `related` (the Related Verbs card) is sent from 2026-11-26 on `main` |
 | `finishSearch` | `source` (where the search began; below), `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
 | `tapConjugationgroupArticle` | None | When the ⓘ button beside a verb page's conjugationgroup heading opens that conjugationgroup's article. The article itself also sends `viewInfoView` |
 | `tapShareVerb` | None | When the share button in a verb page's navigation bar is tapped, whether or not the learner then shares. Copying a conjugation with a long press sends nothing |
@@ -1767,9 +1767,13 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress: the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
-model one search. A section counts as reached when a third of its block's first card is on screen
+model one search. `VerbVisitTracker` decides when a stretch begins and ends: the page on screen,
+the app out of the background, and no sheet over the page. An article or a Test Me quiz therefore
+ends the visit and its close begins a `resume`, so `dwell` counts no quiz question as reading
+(Josh, 2026-11-26). A section counts as reached when a third of its block's first card is on screen
 (`onScrollVisibilityChange`); `simple` is the Präsens Indikativ card and `compound` the Perfekt
-Indikativ card, the first of each block in `ConjugationTable`. Returning to the results and
+Indikativ card, the first of each block in `ConjugationTable` (`ConjugationTable.pageSection`), and
+`related` is the Related Verbs card. Returning to the results and
 opening another verb without editing the text sends no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
 over.
 

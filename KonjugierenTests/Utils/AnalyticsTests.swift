@@ -32,7 +32,7 @@ struct AnalyticsTests {
   }
 
   @Test func sectionsRunTopToBottom() {
-    #expect(VerbPageSection.allCases.sorted() == [.header, .simple, .compound, .etymology, .example])
+    #expect(VerbPageSection.allCases.sorted() == [.header, .simple, .compound, .etymology, .example, .related])
   }
 
   @Test func everySearchMatchKindHasAnAnalyticsValue() {

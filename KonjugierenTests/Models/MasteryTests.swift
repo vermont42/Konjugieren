@@ -133,7 +133,14 @@ struct MasteryTests {
     let mastery = Mastery(level: .intermediate, record: PracticeRecord())
     let kommen = try #require(mastery.verbs.first { $0.verb.infinitiv == "kommen" })
 
-    #expect(kommen.keyConjugations.map { $0.conjugation(region: .north).lowercased() } == ["kommt", "kam", "ist gekommen"])
+    #expect(kommen.keyConjugations.map { $0.conjugation(region: .north)?.lowercased() } == ["kommt", "kam", "ist gekommen"])
+  }
+
+  @Test func aKeyConjugationTheConjugatorCannotFillIsLeftOut() {
+    let keyConjugation = Mastery.KeyConjugation(infinitiv: "xyzzyq", readingIndex: 0, stem: .präteritum, state: .notPracticed)
+
+    #expect(keyConjugation.conjugation(region: .north) == nil)
+    #expect(PracticeItem.Stem.präteritum.keyConjugation(of: "xyzzyq", readingIndex: 0, region: .north) == nil)
   }
 
   @Test func theDisplayReflectsTheRecord() throws {

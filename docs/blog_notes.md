@@ -12691,3 +12691,32 @@ vowel were the strong ones, because they need no helper ending to make a past.
 `FlowLayout` moved to its own file and now offers each child the width of its row, so a chip
 wider than a row wraps its text instead of running past the edge. Its test measures a
 `UIHostingController`, since a layout's subviews cannot be built by hand.
+
+## The Verb Page Counts Only What It Shows (2026-11-26)
+
+Phase 7 of `plans/verb_browse_fixes.md` fixed the verb page's small untruths. The headline was a
+tip that explains the red letters and was meant to stay away from pages that have none. Its
+guard asked whether any conjugation on the page had a capital letter, and every one of the 3,572
+verbs did, for two reasons that are not red letters of the verb's own. The compound tables mark
+their auxiliary (hAt gemacht), and the polite Imperativ is "machen Sie". The guard now asks the
+same function that draws the red letters, `MixedCaseSegmenter`, and asks it only about the simple
+tables. machen's page has no tip; singen's has one.
+
+The capital in Sie is a typographic courtesy with a history. German addressed a superior as Ihr,
+then as Er or Sie in the third person singular, and by the eighteenth century settled on the
+third person plural, "they", for anyone one did not know well. The capital S is what tells that
+"they" from the other one. So the segmenter's one exemption encodes three centuries of manners.
+
+**Dwell time stopped counting quizzes as reading.** A visit to a verb page ended only when the
+page left the screen or the app went to the background. A sheet does neither, so three Test Me
+questions counted as time spent reading the page. Josh chose to end the visit when a sheet opens
+and begin a `resume` visit when it closes. The rule now lives in `VerbVisitTracker`, which sets a
+flag for each event and reconciles, so tests can drive any sequence of appearances, scene phases,
+and sheets and see one leave per view. Pulling the pairing out of the view is what made the
+change safe: the old pairing was three handlers in `VerbView`, and the only way to test it was
+to read it.
+
+The rest was tidying. The key conjugation of a stem had two implementations that failed
+differently, one dropping a cell the Conjugator could not fill and the other showing the
+infinitive in its place; there is now one, and it drops. The Related Verbs card became a section
+that `leaveVerbView` can report, and the privacy line waiting for release names it.

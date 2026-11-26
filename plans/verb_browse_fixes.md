@@ -25,7 +25,7 @@ empty until it is committed.
 | 4 | Done | 2026-11-25 | `905c500` | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
 | 6 | Done | 2026-11-25 | `ab2493b` | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
-| 7 | Not started | | | C3, D4, E2, E3, G5, G6 | Yes |
+| 7 | Done | 2026-11-26 | | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
 | 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
@@ -431,7 +431,41 @@ went from 1002 to 1012 tests, in 103 suites.
 **Tell Josh to try,** on a fresh install so that TipKit has no history: machen's page (no tip),
 then singen's (the tip), then close it and open another verb (the scroll tip).
 
-**How it differed:**
+**How it differed:** Little, and mostly in where things live. The suite went from 1012 to 1022
+tests, in 104 suites.
+
+- **Josh's answer (2026-11-26): end and resume.** Presenting the article sheet or the Test Me quiz
+  ends the visit, and closing it begins a `resume` visit. `VerbVisitTracker` holds the rule: a
+  visit lasts while the page is on screen, the app is out of the background, and no sheet covers
+  it. Each event (appear, disappear, scene phase, cover) sets one flag and reconciles, so no
+  sequence can send a leave without a view or two views in a row. An inactive scene still ends
+  nothing, as before. The tracker is a plain class held in `@State`, not `@Observable`, since the
+  page draws nothing from it. It takes the stores, the analytics, and a clock, as
+  `ReviewCardHost` does.
+- **One small artifact of the rule, left.** A link to a verb inside an article dismisses the sheet
+  and replaces the page about 0.4 s later, so the close begins a `resume` visit that ends at once:
+  one extra view and leave, in the `0-5s` band. Suppressing it would need the sheet to tell the
+  page why it closed.
+- **C3's question lives on `ConjugationTable`, as a static `hasRedLetters(_:readingIndex:region:)`**,
+  not on `Verb`: an extension of `Verb` in `ConjugationTable.swift` would be another of S3's stray
+  declarations. The test asks it for machen, singen, and sein in all three regions.
+- **D4's one answer is "left out".** `PracticeItem.Stem.keyConjugation(of:readingIndex:region:)`
+  returns nil for a cell the Conjugator cannot fill, `Verb.keyConjugations` drops it as before,
+  and the Mastery page now drops the chip, mark and all, where it showed the infinitive. No core
+  verb fails today, so the test uses a nonsense infinitive.
+- **E3's closure became a function**, `openArticle(_:)`, that returns it, so
+  `table.article.map(openArticle)` reads in one line.
+- **G6's `related` also retires the scroll tip**, since it lies below the etymology. The staged
+  privacy bullet names the related verbs and now says "in view" where it said "open", to fit G5,
+  in a new dated section of `docs/privacy_policy_pending.md`.
+- **`VerbView` lost its stored `source`**, which the tracker now holds; its initializer is
+  unchanged.
+- **Tests.** Each fix's test was run against the old logic, put back temporarily: the red-letter
+  test failed for machen in every region, the Mastery test got "xyzzyq", and three tracker tests
+  failed with the cover ignored. One of them crashed on an index, so the tests now read the second
+  signal's parameters safely. `pageSection`'s test pins a refactor and was not run against old
+  code. The review's T3 bullet on the visit's pairing now points to `VerbVisitTrackerTests`.
+- `README.md`'s three test counts went to 1022, and its file count to sixty-eight.
 
 ## Phase 8: One Home for Each Piece of the Search Model
 

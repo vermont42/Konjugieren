@@ -1125,3 +1125,27 @@ Der Absatz über die Liste auf dem Gerät lautet nun:
 ```
 Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet. Wenn Sie ein Verb aus „Meine Verben“ löschen oder Ihre zuletzt geöffneten Verben leeren, zählt es weiter als nachgeschlagen; „Übungsstand zurücksetzen“ in den Einstellungen vergisst, welche Verben Sie nachgeschlagen haben.
 ```
+
+## The Related Verbs card, and time under a sheet (2026-11-26)
+
+Phase 7 of [`plans/verb_browse_fixes.md`](../plans/verb_browse_fixes.md) adds `related`, the
+Related Verbs card at the foot of a verb page, to `leaveVerbView`'s `deepestSection`. It also ends
+a page's visit while an article or a Test Me quiz covers it, and begins a new one when the sheet
+closes (Josh, 2026-11-26), so the dwell is time with the page in view. Both change the scroll
+bullet of the lookup section above, which this version replaces.
+
+### English
+
+The bullet about scrolling a verb's page in section 2 now reads:
+
+```
+- How far down a verb's page you scrolled (its top, the conjugation tables, the etymology, the example sentence, or the related verbs), and roughly how long the page was in view (under 5 seconds, 5 to 15 seconds, 15 to 60 seconds, or longer)
+```
+
+### German
+
+Der Punkt über das Scrollen auf der Seite eines Verbs in Abschnitt 2 lautet nun:
+
+```
+- Wie weit Sie auf der Seite eines Verbs nach unten gescrollt haben (ihr Anfang, die Konjugationstabellen, die Etymologie, der Beispielsatz oder die verwandten Verben) und ungefähr, wie lange die Seite zu sehen war (unter 5 Sekunden, 5 bis 15 Sekunden, 15 bis 60 Sekunden oder länger)
+```

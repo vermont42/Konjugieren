@@ -12,13 +12,8 @@ extension Verb {
   /// Mixed case, as the Conjugator writes it, so that a caller can show the red letters. A
   /// conjugation the Conjugator cannot produce is left out.
   func keyConjugations(readingIndex: Int = 0, region: Region = Current.settings.region) -> [String] {
-    Self.keyConjugationgroups.compactMap { conjugationgroup in
-      switch RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, region: region, readingIndex: readingIndex) {
-      case .success(let conjugation):
-        return conjugation
-      case .failure:
-        return nil
-      }
+    PracticeItem.Stem.allCases.compactMap { stem in
+      stem.keyConjugation(of: infinitiv, readingIndex: readingIndex, region: region)
     }
   }
 
@@ -36,7 +31,13 @@ extension Verb {
       link: URL.appStore.absoluteString
     )
   }
+}
 
-  /// The practice record schedules a strong verb's key conjugations, so the two lists are one.
-  private static let keyConjugationgroups = PracticeItem.Stem.allCases.map(\.keyConjugationgroup)
+extension PracticeItem.Stem {
+  /// This stem's key conjugation of a reading, in mixed case, or nil for a cell the Conjugator
+  /// cannot fill. The practice record schedules a strong verb's key conjugations, so the verb
+  /// page's list and the Mastery page's rows both come from here.
+  func keyConjugation(of infinitiv: String, readingIndex: Int, region: Region = Current.settings.region) -> String? {
+    try? RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: keyConjugationgroup, region: region, readingIndex: readingIndex).get()
+  }
 }

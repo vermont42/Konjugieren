@@ -5,15 +5,12 @@ import TipKit
 
 struct VerbView: View {
   let verb: Verb
-  let source: AnalyticsSource
   let marks: MarkedConjugations?
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
   @Environment(\.isBeneathQuiz) private var isBeneathQuiz
   @State private var readingIndex = 0
-  @State private var visit: VerbVisit?
-  @State private var visibleSections: Set<VerbPageSection> = []
-  @State private var isOnScreen = false
+  @State private var visits: VerbVisitTracker
   @State private var hasAppeared = false
   @State private var article: Info?
   @State private var isTestingVerb = false
@@ -23,9 +20,9 @@ struct VerbView: View {
 
   init(verb: Verb, source: AnalyticsSource, marks: MarkedConjugations? = nil) {
     self.verb = verb
-    self.source = source
     self.marks = marks
     _readingIndex = State(initialValue: marks?.readingIndex ?? 0)
+    _visits = State(initialValue: VerbVisitTracker(verb: verb, source: source))
   }
 
   /// The reading the screen is currently showing. Every piece of metadata below (family,
@@ -52,12 +49,6 @@ struct VerbView: View {
       return nil
     }
     return Conjugationgroup.allCells.first { marks.conjugationgroups.contains($0) }?.table.scrollID
-  }
-
-  /// Whether any conjugation on the page has a red letter, which the Conjugator marks by
-  /// writing it in uppercase. `RedLettersTip` has nothing to explain on a page without one.
-  private var hasRedLetters: Bool {
-    Conjugationgroup.allCells.contains { conjugate($0).contains(where: \.isUppercase) }
   }
 
   var body: some View {
@@ -144,7 +135,7 @@ struct VerbView: View {
 
           Divider()
 
-          if hasRedLetters {
+          if ConjugationTable.hasRedLetters(verb, readingIndex: readingIndex) {
             TipView(redLettersTip)
               .padding(.horizontal)
           }
@@ -214,6 +205,9 @@ struct VerbView: View {
 
           Divider()
           RelatedVerbsView(related: verb.related(readingIndex: readingIndex))
+            .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+              sectionVisibilityChanged(.related, isVisible: isVisible)
+            }
             .padding(.horizontal)
         }
         .padding(.vertical)
@@ -224,8 +218,7 @@ struct VerbView: View {
             proxy.scrollTo(markedSectionID, anchor: .top)
           }
         }
-        isOnScreen = true
-        beginVisit(source: hasAppeared ? .resume : source)
+        visits.pageAppeared()
         hasAppeared = true
         unlockScrollTipIfDue()
       }
@@ -236,21 +229,14 @@ struct VerbView: View {
     .sheet(isPresented: $isTestingVerb) {
       QuizSheet(scope: .verbPage(verb, readingIndex: readingIndex))
     }
+    .onChange(of: article != nil || isTestingVerb) { _, isCovered in
+      visits.coverChanged(isCovered: isCovered)
+    }
     .onDisappear {
-      isOnScreen = false
-      endVisit()
+      visits.pageDisappeared()
     }
     .onChange(of: scenePhase) {
-      switch scenePhase {
-      case .background:
-        endVisit()
-      case .active:
-        if isOnScreen {
-          beginVisit(source: .resume)
-        }
-      default:
-        break
-      }
+      visits.scenePhaseChanged(to: scenePhase)
     }
     .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
@@ -378,41 +364,33 @@ struct VerbView: View {
       conjugations: rows(for: table),
       titleIsGerman: titleIsGerman,
       secondName: table.secondName(lang: settings.conjugationgroupLang),
-      openArticle: table.article.map { info in {
-          Current.analytics.signal(name: .tapConjugationgroupArticle)
-          article = info
-      }
-      }
+      openArticle: table.article.map(openArticle)
     )
     .id(table.scrollID)
 
-    if table == Self.firstSimpleTable {
+    if let pageSection = table.pageSection {
       section.onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
-        sectionVisibilityChanged(.simple, isVisible: isVisible)
-      }
-    } else if table == Self.firstCompoundTable {
-      section.onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
-        sectionVisibilityChanged(.compound, isVisible: isVisible)
+        sectionVisibilityChanged(pageSection, isVisible: isVisible)
       }
     } else {
       section
     }
   }
 
-  private static let firstSimpleTable = ConjugationTable.allCases.first { !$0.isCompound }
-  private static let firstCompoundTable = ConjugationTable.allCases.first { $0.isCompound }
+  private func openArticle(_ info: Info) -> () -> Void {
+    {
+      Current.analytics.signal(name: .tapConjugationgroupArticle)
+      article = info
+    }
+  }
 
+  // A participle has no person, so its row has no pronoun.
   private func rows(for table: ConjugationTable) -> [ConjugationRow] {
-    switch table {
-    case .perfektpartizip, .präsenspartizip:
-      return table.cells.map { ConjugationRow(pronoun: nil, form: conjugate($0), isMarked: isMarked($0)) }
-    case .imperativ:
+    guard table != .imperativ else {
       return imperativConjugations()
-    case .präsensIndikativ, .präteritumIndikativ, .präteritumKonjunktivII, .präsensKonjunktivI, .perfektIndikativ, .futurIndikativ,
-      .plusquamperfektIndikativ, .futurKonjunktivII, .plusquamperfektKonjunktivII, .perfektKonjunktivI, .futurKonjunktivI:
-      return table.cells.map { cell in
-        ConjugationRow(pronoun: cell.personNumber?.pronoun, form: conjugate(cell), isMarked: isMarked(cell))
-      }
+    }
+    return table.cells.map { cell in
+      ConjugationRow(pronoun: cell.personNumber?.pronoun, form: conjugate(cell), isMarked: isMarked(cell))
     }
   }
 
@@ -434,36 +412,10 @@ struct VerbView: View {
   // could never be met by an etymology card taller than the screen.
   private static let sectionVisibilityThreshold = 0.3
 
-  private func beginVisit(source: AnalyticsSource) {
-    guard visit == nil else {
-      return
-    }
-    let newVisit = VerbVisit(source: source, start: .now, visibleSections: visibleSections)
-    visit = newVisit
-    if source != .resume {
-      Current.learnerVerbs.recordOpen(verb)
-      Current.practice.recordLookup(verb, source: source)
-    }
-    Current.analytics.signal(name: .viewVerbView, parameters: newVisit.viewParameters)
-  }
-
-  private func endVisit() {
-    guard let visit else {
-      return
-    }
-    Current.analytics.signal(name: .leaveVerbView, parameters: visit.leaveParameters(end: .now))
-    self.visit = nil
-  }
-
   private func sectionVisibilityChanged(_ section: VerbPageSection, isVisible: Bool) {
-    if isVisible {
-      visibleSections.insert(section)
-      visit?.reach(section)
-      if section >= .etymology, TipDisplay.tipsEnabled {
-        scrollToBottomTip.invalidate(reason: .actionPerformed)
-      }
-    } else {
-      visibleSections.remove(section)
+    visits.sectionVisibilityChanged(section, isVisible: isVisible)
+    if isVisible, section >= .etymology, TipDisplay.tipsEnabled {
+      scrollToBottomTip.invalidate(reason: .actionPerformed)
     }
   }
 

@@ -131,6 +131,10 @@ should appear only where the verb itself is irregular, test the simple tables wi
 `MixedCaseSegmenter.segments(for:).contains(where: \.isIrregular)`, so that one function answers
 "is this letter red?" for the renderer and the guard alike.
 
+**Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the tip appears only where the verb itself
+is irregular, as Josh chose, and `ConjugationTable.hasRedLetters` asks the segmenter about the
+simple tables. machen's page has no tip; singen's and sein's do.
+
 <a id="c4"></a>
 ### C4. Tidying My Verbs erases collection progress (Read)
 
@@ -313,9 +317,12 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **G5. Dwell time includes time under a sheet (Read, not measured).** `VerbVisit` ends on
   `onDisappear` or backgrounding (`VerbView.swift:239-254`). Presenting the article sheet or the
   Test Me quiz does not make the page disappear, so `leaveVerbView`'s `dwell` counts three quiz
-  questions as reading.
+  questions as reading. **Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): a sheet ends the
+  visit and its close begins a `resume` (Josh, 2026-11-26), and `VerbVisitTracker`, which tests
+  drive, holds the pairing.
 - **G6. The Related Verbs card has no `VerbPageSection` (Reviewer)**, so `deepestSection` cannot
-  say that a learner reached the newest thing on the page.
+  say that a learner reached the newest thing on the page. **Fixed on `main` 2026-11-26**, by
+  Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `related`, staged in the privacy policy with the sheet change.
 - **G7. Stale prose (Read).**
   - `VerbLookup.swift:39`: "ausgehen and 30 more". The map has 63. **Fixed on `main`
     2026-11-25**, by Phase 1 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as "dozens more".
@@ -345,7 +352,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `ConjugationMapTool/CellsJSON.swift:24-29`.
 - **D4. The key conjugation of a stem is computed twice, with different failures (Read).**
   `KeyConjugations.swift:14-23` drops a cell the Conjugator cannot fill.
-  `Mastery.swift:76-79` shows the infinitive in its place.
+  `Mastery.swift:76-79` shows the infinitive in its place. **Fixed on `main` 2026-11-26**, by
+  Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `PracticeItem.Stem.keyConjugation(of:readingIndex:region:)` serves both, and
+  both leave out a cell the Conjugator cannot fill.
 - **D5. The collection and family views repeat themselves (Reviewer).** The sort `Picker` appears
   in `VerbCollectionView.swift:47-56`, `FamilyDetailView.swift:40-49`, and
   `RelatedVerbsView.swift:171-179`. The "N of M" count, text, and accessibility label are computed
@@ -444,11 +453,13 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   in `entries(separableVerbsAreShown:)`, and the one in `VerbLookup.swift:47-54` would go.
 - **E2. `VerbView.rows(for:)` has a redundant case.** A participle has no `personNumber`, so the
   general branch already gives it a nil pronoun (`VerbView.swift:405-417`). The switch reduces to
-  the Imperativ and everything else.
+  the Imperativ and everything else. **Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **E3. Two static tables and an if-else chain pick the tracked sections.** `firstSimpleTable`,
   `firstCompoundTable`, and the three-way branch in `conjugationSection(for:)`
   (`VerbView.swift:389-403`) would be one optional `VerbPageSection` on `ConjugationTable`. The
   `openArticle` closure just above them is formatted so that it reads as a block inside a block.
+  **Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `ConjugationTable.pageSection`, and a
+  function that returns the closure.
 - **E4. `sorted(by:)` should sort** (see C5), and **`QuizScope` wants a `kind`** (see S6).
   **The sort is fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The `kind` is Phase 11's.
 
@@ -475,6 +486,7 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   - The Spotlight migration's order, the bug Phase 11 found by testing. `VerbSpotlight` calls
     `CSSearchableIndex` directly, so a test cannot reach it.
   - The begin-and-end pairing of a visit across `scenePhase`, which lives in `VerbView`.
+    **Tested on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `VerbVisitTrackerTests`.
   - `ReviewSchedule` on a daylight-saving day. The code is right; nothing pins it.
 - **T4. Exact assertions against a growing corpus.** `results("eat", includeGlosses: false) ==
   ["beatmen"]` (`VerbSearchTests.swift:68`) breaks the day a verb containing "eat" is imported.

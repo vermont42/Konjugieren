@@ -38,6 +38,26 @@ struct ConjugationTableTests {
     #expect(stacks.filter { $0.count > 1 }.count == 1)
   }
 
+  @Test func theFirstTableOfEachBlockMarksItsSection() {
+    #expect(ConjugationTable.allCases.first { !$0.isCompound }?.pageSection == .simple)
+    #expect(ConjugationTable.allCases.first { $0.isCompound }?.pageSection == .compound)
+    #expect(ConjugationTable.allCases.compactMap(\.pageSection) == [.simple, .compound])
+  }
+
+  // machen's page has red auxiliaries in its compound tables and a capital in "machen Sie",
+  // and neither is a red letter of the verb's own.
+  @Test(arguments: [
+    ("machen", false),
+    ("singen", true),
+    ("sein", true)
+  ])
+  func redLettersAreTheVerbsOwn(infinitiv: String, expected: Bool) throws {
+    let verb = try #require(Verb.verbs[infinitiv])
+    for region in Region.allCases {
+      #expect(ConjugationTable.hasRedLetters(verb, readingIndex: 0, region: region) == expected)
+    }
+  }
+
   @Test func allCellsFollowsThePage() {
     #expect(Conjugationgroup.allCells == ConjugationTable.allCases.flatMap(\.cells))
   }

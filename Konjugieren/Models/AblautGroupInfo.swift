@@ -12,7 +12,7 @@ struct AblautGroupInfo: Identifiable {
   }
 
   var verbs: [Verb] {
-    Verb.verbsSortedAlphabetically.filter { $0.ablautGroup == exemplar }
+    VerbCollection.ablautGroup(exemplar).verbs()
   }
 
   var verbCount: Int {

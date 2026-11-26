@@ -1349,8 +1349,8 @@ sheet, and is shared as text with a `list/<key>` link and the App Store link.
 
 | Piece | Role |
 |---|---|
-| `VerbCollection.swift` | The collections, their keys, their verbs (alphabetical, as every list's arrive), the share text, `viewCollection`, and `QuizScope.collection(_:)` |
-| `VerbCollectionView.swift` | A featured collection's page, and `VerbCollectionBar` (progress, Quiz, Share), which the Ablaut page's expanded groups also show |
+| `VerbCollection.swift` | The collections, their keys, their verbs (alphabetical, in `Verb.precedesAlphabetically`'s German order), the share text, `viewCollection`, `QuizScope.collection(_:)`, and `VerbCollectionProgress`, the one source of the "3 of 6 looked up" that the bar, row, and card show |
+| `VerbCollectionView.swift` | A featured collection's page, and `VerbCollectionBar` (progress, Quiz, Share), which the Ablaut page's expanded groups also show; the bar asks its collection for its verbs, so its count and its quiz cannot disagree |
 | `FamilyBrowseView.swift` | The Collections section at the top of the Families tab, and the `list` route's landing |
 | `LearnerVerbs.hasOpened(_:)` | What counts toward progress: a verb ever opened, which is a verb with a first open. Clear and a swipe in My Verbs keep it, and Reset Practice forgets it; a star alone does not count |
 
@@ -1363,7 +1363,12 @@ reading that takes sein in the learner's region, so fahren is in for "ist gefahr
 sitzen, and stehen are in only for Austria and Switzerland (607 northern, 610 southern on
 2026-11-13). An ablaut group's verbs are those whose primary reading is in the group, as on the
 Ablaut page; 18 of the 76 groups hold a single verb (sein, tun, können, …), and those have the
-bar too.
+bar too. `AblautGroupInfo.verbs` reads the collection's, so the predicate is written once.
+
+The verb page's ablaut row counts differently (2026-11-25): a verb joins it if any of its
+readings is in the group, through the cached `Verb.verbsByAblautGroup`, so bewegen, weak when
+it moves something and strong when it induces, appears on bieten's page though not in the bieten
+group's collection.
 
 ## Game System
 

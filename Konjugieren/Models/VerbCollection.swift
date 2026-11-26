@@ -57,8 +57,7 @@ enum VerbCollection: Hashable, Identifiable {
     }
   }
 
-  /// The collection's verbs, alphabetically, as every list's verbs arrive, since
-  /// `sorted(by: .alphabetical)` keeps the order it is given.
+  /// The collection's verbs, alphabetically.
   func verbs(region: Region = Current.settings.region) -> [Verb] {
     Verb.verbsSortedAlphabetically.filter { contains($0, region: region) }
   }
@@ -81,7 +80,7 @@ enum VerbCollection: Hashable, Identifiable {
   var title: String {
     switch self {
     case .ablautGroup(let exemplar):
-      return L.VerbCollection.ablautGroupTitle(exemplar)
+      return L.VerbCollection.ablautGroupTitle(exemplar.inUserRegion)
     case .modals:
       return L.VerbCollection.modalsTitle
     case .sein:
@@ -148,6 +147,32 @@ enum VerbCollection: Hashable, Identifiable {
       parameters[ParameterKey.collection.rawValue] = key
     }
     Current.analytics.signal(name: .viewCollection, parameters: parameters)
+  }
+}
+
+/// How many of a collection's verbs have been opened, in the words of its bar, row, and card.
+struct VerbCollectionProgress: Equatable {
+  let opened: Int
+  let total: Int
+
+  init(opened: Int, total: Int) {
+    self.opened = opened
+    self.total = total
+  }
+
+  init(_ collection: VerbCollection, learnerVerbs: LearnerVerbStore = Current.learnerVerbs) {
+    let verbs = collection.verbs()
+    self.init(opened: learnerVerbs.openedCount(of: verbs), total: verbs.count)
+  }
+
+  /// "3/6", for a row or card with room for no more.
+  var count: String {
+    "\(opened)/\(total)"
+  }
+
+  /// "3 of 6 looked up", which the bar shows and VoiceOver reads for the count.
+  var text: String {
+    L.VerbCollection.progress(opened: opened, total: total)
   }
 }
 

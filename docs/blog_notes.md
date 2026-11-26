@@ -12660,3 +12660,34 @@ suppression that hides a card without forgetting it.
 One behaviour moved by a hair. The copied-address note used to live in the parent view, so it
 could outlive the failed search that showed it. Now it leaves with the search. Nobody would
 notice, but the phase promised no change in behaviour, so the plan records it.
+
+## Alphabetical Means German, and Other Shared Pieces (2026-11-25)
+
+Phase 6 of `plans/verb_browse_fixes.md` fixed the order, spelling, and shared pieces of the
+verb lists. The headline bug was a function named `sorted(by: .alphabetical)` that returned its
+input untouched, on the assumption that every caller already passed an alphabetical list. The
+Separable and Inseparable pages did not: they re-sorted with `<`, which compares code points, and
+code points put every umlaut after z. So abändern came after abziehen. Now `Verb.precedesAlphabetically` is the one German comparator, in which ä sorts
+with a and ß with ss, and the function sorts. The cost of sorting a list that is already sorted
+turned out to be about 6 ms for 2,191 verbs in a debug build, so it needed no memo.
+
+**Measuring that sort found a slower thing beside it.** The Separable page built its 40 prefix
+sections by filtering all 2,191 verbs once per prefix, inside `body`, for 0.22 s. Grouping the
+verbs by prefix once brought it to 0.02 s. A timing harness written to answer one question is
+often most useful for the question it was not written for.
+
+**Swiss spelling had gaps where a raw string reached a caption.** The chips on aufschließen's
+Related Verbs card read schliessen while the caption above them read "Built on schließen". The
+captions now come from the relation itself, which makes them testable and halved their number.
+
+**bewegen joined bieten's row, but not bieten's collection.** bewegen is weak when it moves
+something (bewegte, bewegt) and strong when it induces (bewog, bewogen). The verb page's ablaut
+row looked only at the first reading, so the strong one never appeared beside its kin. The row
+now counts any reading. The collections and the Ablaut page still count the first reading,
+because their quizzes draw a reading at random and would ask the weak one half the time. The two
+words, "weak" and "strong", are Jacob Grimm's, from 1819: he thought the verbs that change their
+vowel were the strong ones, because they need no helper ending to make a past.
+
+`FlowLayout` moved to its own file and now offers each child the width of its row, so a chip
+wider than a row wraps its text instead of running past the edge. Its test measures a
+`UIHostingController`, since a layout's subviews cannot be built by hand.

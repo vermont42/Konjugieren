@@ -38,6 +38,24 @@ extension Verb {
     return index
   }
 
+  @MainActor private static var cachedAblautGroupIndex: [String: [Verb]]?
+
+  /// Every verb, keyed by each ablaut group that any of its readings is in, each list by
+  /// frequency. bewegen is weak when it moves something and strong, like bieten, when it induces.
+  @MainActor static var verbsByAblautGroup: [String: [Verb]] {
+    if let cachedAblautGroupIndex {
+      return cachedAblautGroupIndex
+    }
+    var index: [String: [Verb]] = [:]
+    for verb in verbsSortedByFrequency {
+      for group in Set(verb.readings.compactMap(\.ablautGroup)) {
+        index[group, default: []].append(verb)
+      }
+    }
+    cachedAblautGroupIndex = index
+    return index
+  }
+
   /// The innermost base after peeling every prefix the corpus marks, following a base that is
   /// itself a prefixed verb of the corpus: an+erkennen gives erkennen, and er\*kennen gives kennen.
   @MainActor var root: String {
@@ -75,8 +93,7 @@ extension Verb {
   }
 
   @MainActor private static func ablautRelatives(in group: String, excludingRoot: String) -> [Verb] {
-    let members = verbsSortedByFrequency.filter { $0.ablautGroup == group }
-    let byRoot = Dictionary(grouping: members) { $0.root }
+    let byRoot = Dictionary(grouping: verbsByAblautGroup[group] ?? []) { $0.root }
     return byRoot
       .filter { $0.key != excludingRoot }
       .compactMap { root, verbs in

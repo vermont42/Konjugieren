@@ -115,6 +115,50 @@ struct RelatedVerbsTests {
     #expect(groups.contains("hängen"))
   }
 
+  // bewegen is weak when it moves something and strong, like bieten, when it induces. The row
+  // read only the primary reading's group, so bewegen appeared on no group-mate's page.
+  @Test func strongSecondReadingJoinsItsGroupsRow() throws {
+    let bewegen = try #require(Verb.verbs["bewegen"])
+    try #require(bewegen.ablautGroup == nil)
+    try #require(bewegen.readings.contains { $0.ablautGroup == "bieten" })
+
+    #expect(try related("bieten").ablautRelatives.contains(bewegen))
+    #expect(Verb.verbsByAblautGroup["bieten"]?.count { $0 == bewegen } == 1)
+  }
+
+  @Test func ablautGroupIndexListsEachGroupByFrequency() {
+    for (group, verbs) in Verb.verbsByAblautGroup {
+      #expect(zip(verbs, verbs.dropFirst()).allSatisfy { $0.frequency < $1.frequency }, "\(group)")
+    }
+  }
+
+  // The captions received the root and the group as stored, so with Swiss spelling aufschließen's
+  // card read "Built on schließen" above chips that read schliessen and beschliessen.
+  @Test func relationTitlesFollowTheRegion() throws {
+    let related = try related("aufschließen")
+    try #require(related.root == "schließen")
+    let ablautGroup = try #require(related.ablautGroup)
+    Current.settings.region = .switzerland
+    defer { Current.settings.region = .north }
+
+    let titles = [
+      RelatedVerbListDestination.Relation.builtOn(related.root).title,
+      RelatedVerbListDestination.Relation.ablautGroup(ablautGroup).title
+    ]
+    for title in titles {
+      #expect(title.contains("schliessen"), "\(title)")
+      #expect(!title.contains("ß"), "\(title)")
+    }
+  }
+
+  // .alphabetical returned its input unsorted, on the ground that every caller passed an
+  // alphabetical list, which the prefix pages did not.
+  @Test func alphabeticalSortIsGermanOrder() {
+    let verbs = ["abziehen", "abändern", "abbauen"].compactMap { Verb.verbs[$0] }
+
+    #expect(verbs.sorted(by: .alphabetical).map(\.infinitiv) == ["abändern", "abbauen", "abziehen"])
+  }
+
   @Test func frequencySortPutsTheMostFrequentFirst() {
     let verbs = Verb.verbsSortedAlphabetically.filter { $0.ablautGroup == "singen" }
     let sorted = verbs.sorted(by: .frequency)

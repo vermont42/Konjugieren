@@ -46,11 +46,28 @@ struct VerbCollectionTests {
     #expect(verbs.map(\.infinitiv) == expected.map(\.infinitiv))
   }
 
-  @Test func everyAblautGroupMatchesTheAblautPage() {
-    for group in AblautGroupInfo.allGroups {
-      let verbs = VerbCollection.ablautGroup(group.exemplar).verbs(region: .north)
-      #expect(verbs.map(\.infinitiv) == group.verbs.map(\.infinitiv), "\(group.exemplar)")
+  // The title received the exemplar as stored, so the quiz sheet and the share text kept the ß.
+  @Test func ablautGroupTitleFollowsTheRegion() {
+    Current.settings.region = .switzerland
+    defer { Current.settings.region = .north }
+    let title = VerbCollection.ablautGroup("schließen").title
+
+    #expect(title.contains("schliessen"), "\(title)")
+    #expect(!title.contains("ß"), "\(title)")
+  }
+
+  @Test func progressCountsOpenedVerbsOfTheCollection() {
+    let store = LearnerVerbStore(getterSetter: GetterSetterFake())
+    for infinitiv in ["können", "sollen", "machen"] {
+      if let verb = Verb.verbs[infinitiv] {
+        store.recordOpen(verb)
+      }
     }
+    let progress = VerbCollectionProgress(.modals, learnerVerbs: store)
+
+    #expect(progress == VerbCollectionProgress(opened: 2, total: 6))
+    #expect(progress.count == "2/6")
+    #expect(progress.text == L.VerbCollection.progress(opened: 2, total: 6))
   }
 
   @Test(arguments: ["gehen", "kommen", "werden", "fahren"])

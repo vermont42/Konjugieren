@@ -41,19 +41,12 @@ struct VerbCollectionView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .konjCard()
 
-          VerbCollectionBar(collection: collection, verbs: verbs)
+          VerbCollectionBar(collection: collection)
             .padding(.top, Layout.doubleDefaultSpacing)
 
-          Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
-            ForEach(SortOrder.allCases, id: \.self) { order in
-              Text(order.displayName)
-                .tag(order)
-            }
-          }
-          .pickerStyle(.segmented)
-          .padding(.top, Layout.doubleDefaultSpacing)
-          .sensoryFeedback(.selection, trigger: sortOrder)
-          .accessibilityIdentifier("collection_sort_order")
+          SortOrderPicker(selection: $sortOrder)
+            .padding(.top, Layout.doubleDefaultSpacing)
+            .accessibilityIdentifier("collection_sort_order")
 
           VerbListSection(verbs: verbs.sorted(by: sortOrder), showsLookedUp: true, navigateToVerb: navigateToVerb)
         }
@@ -75,18 +68,17 @@ struct VerbCollectionView: View {
 /// How many of a collection's verbs have been looked up, with a quiz on them and a share button.
 struct VerbCollectionBar: View {
   let collection: VerbCollection
-  let verbs: [Verb]
   @State private var isQuizzing = false
   @State private var shareButtonFrame = CGRect.zero
   @Environment(\.isBeneathQuiz) private var isBeneathQuiz
   private var settings: Settings { Current.settings }
 
   var body: some View {
-    let openedCount = Current.learnerVerbs.openedCount(of: verbs)
+    let progress = VerbCollectionProgress(collection)
 
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       HStack(spacing: Layout.defaultSpacing) {
-        Text(L.VerbCollection.progress(opened: openedCount, total: verbs.count))
+        Text(progress.text)
           .font(.subheadline)
           .foregroundStyle(.customForeground)
 
@@ -119,9 +111,7 @@ struct VerbCollectionBar: View {
       .buttonStyle(.bordered)
       .tint(.customYellow)
 
-      ProgressView(value: Double(openedCount), total: Double(max(verbs.count, 1)))
-        .tint(.customYellow)
-        .accessibilityHidden(true)
+      VerbCollectionProgressBar(progress: progress)
     }
     .konjCard()
     .sheet(isPresented: $isQuizzing) {
@@ -148,9 +138,6 @@ struct VerbCollectionRow: View {
   let collection: VerbCollection
 
   var body: some View {
-    let verbs = collection.verbs()
-    let openedCount = Current.learnerVerbs.openedCount(of: verbs)
-
     HStack(alignment: .top, spacing: 12) {
       Image(systemName: collection.systemImageName)
         .font(.title2)
@@ -166,10 +153,7 @@ struct VerbCollectionRow: View {
 
       Spacer()
 
-      Text(verbatim: "\(openedCount)/\(verbs.count)")
-        .font(.caption)
-        .foregroundStyle(.secondary)
-        .accessibilityLabel(L.VerbCollection.progress(opened: openedCount, total: verbs.count))
+      VerbCollectionProgressCount(progress: VerbCollectionProgress(collection))
     }
     .contentShape(Rectangle())
     .padding(.horizontal)
@@ -183,8 +167,7 @@ struct VerbCollectionCard: View {
   let collection: VerbCollection
 
   var body: some View {
-    let verbs = collection.verbs()
-    let openedCount = Current.learnerVerbs.openedCount(of: verbs)
+    let progress = VerbCollectionProgress(collection)
 
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       HStack {
@@ -194,10 +177,7 @@ struct VerbCollectionCard: View {
 
         Spacer()
 
-        Text(verbatim: "\(openedCount)/\(verbs.count)")
-          .font(.caption)
-          .foregroundStyle(.secondary)
-          .accessibilityLabel(L.VerbCollection.progress(opened: openedCount, total: verbs.count))
+        VerbCollectionProgressCount(progress: progress)
       }
 
       Text(collection.title)
@@ -208,9 +188,7 @@ struct VerbCollectionCard: View {
 
       Spacer(minLength: 0)
 
-      ProgressView(value: Double(openedCount), total: Double(max(verbs.count, 1)))
-        .tint(.customYellow)
-        .accessibilityHidden(true)
+      VerbCollectionProgressBar(progress: progress)
     }
     .padding()
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -218,6 +196,27 @@ struct VerbCollectionCard: View {
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .contentShape(Rectangle())
     .accessibilityElement(children: .combine)
+  }
+}
+
+private struct VerbCollectionProgressCount: View {
+  let progress: VerbCollectionProgress
+
+  var body: some View {
+    Text(verbatim: progress.count)
+      .font(.caption)
+      .foregroundStyle(.secondary)
+      .accessibilityLabel(progress.text)
+  }
+}
+
+private struct VerbCollectionProgressBar: View {
+  let progress: VerbCollectionProgress
+
+  var body: some View {
+    ProgressView(value: Double(progress.opened), total: Double(max(progress.total, 1)))
+      .tint(.customYellow)
+      .accessibilityHidden(true)
   }
 }
 

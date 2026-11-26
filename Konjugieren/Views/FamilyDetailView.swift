@@ -37,16 +37,9 @@ struct FamilyDetailView: View {
               .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
               .konjCard()
 
-            Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
-              ForEach(SortOrder.allCases, id: \.self) { order in
-                Text(order.displayName)
-                  .tag(order)
-              }
-            }
-            .pickerStyle(.segmented)
-            .padding(.top, Layout.doubleDefaultSpacing)
-            .sensoryFeedback(.selection, trigger: sortOrder)
-            .accessibilityIdentifier("family_sort_order")
+            SortOrderPicker(selection: $sortOrder)
+              .padding(.top, Layout.doubleDefaultSpacing)
+              .accessibilityIdentifier("family_sort_order")
 
             if family.hasPrefixList {
               PrefixGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
@@ -307,7 +300,7 @@ struct AblautGroupSection: View {
         }
 
       if isExpanded {
-        VerbCollectionBar(collection: .ablautGroup(group.exemplar), verbs: group.verbs)
+        VerbCollectionBar(collection: .ablautGroup(group.exemplar))
           .padding(.leading, 16)
           .padding(.bottom, Layout.defaultSpacing)
 

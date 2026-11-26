@@ -125,15 +125,12 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
       return []
     }
 
+    let verbs = self.verbs
+    let verbsByPrefixName = Dictionary(grouping: verbs) { $0.prefix.name }
     let curated = Set(prefixes.map { String($0.prefix.dropLast()) })
 
     var sections = prefixes.compactMap { prefixMeaning -> (section: PrefixSection, verbs: [Verb])? in
-      let prefixString = String(prefixMeaning.prefix.dropLast())
-      let matchingVerbs = verbs
-        .filter { $0.prefix.name == prefixString }
-        .sorted { $0.infinitiv < $1.infinitiv }
-
-      guard !matchingVerbs.isEmpty else {
+      guard let matchingVerbs = verbsByPrefixName[String(prefixMeaning.prefix.dropLast())] else {
         return nil
       }
       return (section: .curated(prefixMeaning), verbs: matchingVerbs)
@@ -149,7 +146,6 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
         }
         return !curated.contains(name)
       }
-      .sorted { $0.infinitiv < $1.infinitiv }
 
     if !uncurated.isEmpty {
       sections.append((section: .other, verbs: uncurated))

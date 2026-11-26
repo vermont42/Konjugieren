@@ -24,7 +24,7 @@ empty until it is committed.
 | 3 | Done | 2026-11-25 | `eb8d40b` | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
 | 4 | Done | 2026-11-25 | `905c500` | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
-| 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |
+| 6 | Awaiting Josh | 2026-11-25 | | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Not started | | | C3, D4, E2, E3, G5, G6 | Yes |
 | 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
@@ -361,7 +361,53 @@ alone would have changed behaviour. The suite went from 994 to 1002 tests, in 10
 to Switzerland, aufschließen's Related Verbs card and the schließen group's quiz title; "All N"
 from a card in both orders; and the chips on the Quiz start screen, which share `FlowLayout`.
 
-**How it differed:**
+**How it differed:** Mostly in one choice about membership, and in two measurements. The suite
+went from 1002 to 1012 tests, in 103 suites.
+
+- **The ablaut row counts any reading; a collection still counts the primary one.** C7 names the
+  row, and the plan says "a verb joins an ablaut row". Extending the rule to the bieten
+  collection and the Ablaut page would add bewegen and anhängen to their groups' quizzes, whose
+  readings are drawn at random, so half of anhängen's questions would ask its weak reading.
+  `BrowseableFamilyTests` also states that a group's row counts the primary reading. So
+  `Verb.verbsByAblautGroup` (any reading, by frequency) serves the row, and D5's single
+  predicate is `VerbCollection.contains`, which `AblautGroupInfo.verbs` now reads. If Josh wants
+  the Ablaut page to count second readings too, that is a one-line change there.
+- **No memo for the sort.** In a debug build on the Intel simulator, sorting the Separable page's
+  2,191 verbs takes about 6 ms, and the Strong page's 1,531 about 4 ms. The input arrives sorted,
+  which the standard library's sort handles quickly.
+- **`verbsByPrefix` got faster, which no finding asked.** Measuring the sort showed that the
+  Separable page's sections took 0.22 s to build, because each of 40 prefixes filtered all 2,191
+  verbs and re-read each one's prefix. Grouping once took it to 0.02 s. `PrefixGroupedVerbList`
+  builds the sections in `body`.
+- **Found and left: an ablaut group's verbs cost about 7 ms** (0.55 s for all 78), the same
+  before and after, since each filters the whole corpus. The Ablaut page's lazy stack builds only
+  the visible headers. A cached index for the collections would fix it; it belongs with whatever
+  next touches the Ablaut page.
+- **The four captions became two.** `RelatedVerbListDestination.Relation.title` gives the
+  caption for the card and the full list's title, in the user's region's spelling, so a test can
+  ask it. `relation(_:)` takes the destination alone.
+- **`VerbCollectionProgress`** holds the opened count and total, the compact "3/6", and the
+  sentence the bar shows and VoiceOver reads. `VerbCollectionProgressCount` and
+  `VerbCollectionProgressBar`, private to `VerbCollectionView.swift`, draw the parts the row and
+  card shared. Its test pins the shared source; as a refactor's, it was not run against old code.
+- **`everyAblautGroupMatchesTheAblautPage` was deleted**, since `AblautGroupInfo.verbs` now reads
+  the collection and the test could no longer fail. The review called it a sign that one
+  predicate should go.
+- **The Verbs tab keeps its own picker.** It chooses a `VerbListMode`, which adds My Verbs, so
+  `SortOrderPicker` serves the other three lists.
+- **`FlowLayout`'s test measures a `UIHostingController`**, since a `Layout`'s subviews cannot be
+  built in a test. A 20-word `Text` in 120 points was one line high before the fix. Two guards
+  beside it check that chips that fit still share a row and chips that do not wrap. Every
+  `FlowLayout` child in the app is text, a label, or a fixed-width field, so offering the row's
+  width changes nothing for a child that already fit.
+- **Tests.** The seven tests of the fixes were each run against the old logic, put back
+  temporarily, and all failed: the order of every prefix section but the uncurated one, the
+  Swiss captions and title, bewegen, and the wrapping chip.
+- **E4's sort**, which the heading named and the Status row did not, is C5 and is fixed with it.
+- `ConjugationMapTool` still builds with the new comparator in `Verb.swift`, and
+  `scripts/write_forms_json.sh` left `corpus/working/forms.json` unchanged.
+- `README.md`'s test counts went to 1012, and its file count to sixty-seven. `project_structure.md`
+  gained `BrowseableFamilyTests`, which it had been missing.
 
 ## Phase 7: The Verb Page
 

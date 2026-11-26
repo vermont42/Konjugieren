@@ -162,6 +162,10 @@ comparator (`RelatedVerbsView.swift:155-158`, copied from `Verb.swift:16`).
 copy and the two `<` sorts. A function named `sorted` that does not sort will catch the next
 caller too.
 
+**Fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `Verb.precedesAlphabetically` is the one comparator,
+`.alphabetical` sorts with it, and the copy and the two `<` sorts are gone. Sorting the Separable
+page's 2,191 verbs costs about 6 ms in a debug build, so nothing is memoized.
+
 ### C6. Swiss spelling is missing from four captions and a title (Read)
 
 `L.VerbView.builtOn(related.root)` and `L.VerbView.sameAblaut(ablautGroup)` receive the raw
@@ -174,12 +178,17 @@ with ß.
 
 **Fix.** `.inUserRegion` in the five places.
 
+**Fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The four captions are now two, since
+`RelatedVerbListDestination.Relation.title` serves the card and the full list.
+
 ### C7. Smaller correctness findings
 
 - **A strong second reading drops out of the ablaut row (Read).** `ablautRelatives` filters on
   `$0.ablautGroup`, which is the primary reading's (`RelatedVerbs.swift:78`, `Verb.swift:81`).
   bewegen and anhängen are weak first and strong second, so neither appears on its group-mates'
-  pages. Match a verb if any reading is in the group.
+  pages. Match a verb if any reading is in the group. **Fixed on `main` 2026-11-25**, by
+  Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), for the row: bewegen is on bieten's page. A collection and the Ablaut page still
+  count the primary reading, as before.
 - **Recent can show fewer than 20 (Read).** `recent()` takes 20 before starred verbs are filtered
   out (`LearnerVerbStore.swift:27`, `LearnerVerbs.swift:65-67`). With 15 of the last 20 opens
   starred, Recent lists 5 while older unstarred opens exist. **Fixed on `main` 2026-11-25**, by
@@ -238,7 +247,7 @@ guesses arrive after 0.11 s and 0.39 s.
 - **Related verbs are rebuilt in `body` (Read).** `verb.related(readingIndex:)` runs at
   `VerbView.swift:216`, and `ablautRelatives` filters and regroups all 3,572 verbs each time
   (`RelatedVerbs.swift:77-86`). `verbsByRoot` is cached; a `verbsByAblautGroup` beside it would
-  finish the job.
+  finish the job. **Fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **Look Up a Verb may build the index on the main actor (Suspected).** The only warm-up is the
   verb list's `.task` (`VerbBrowseView.swift:352-358`). A Siri run that never draws the list
   decompresses the map and folds 50,000 keys inside `MainActor.run`
@@ -343,7 +352,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   in both `VerbCollectionRow` and `VerbCollectionCard`. The ablaut-group predicate exists in
   `AblautGroupInfo.verbs` and in `VerbCollection.contains`, and `VerbCollectionBar` is handed one
   list of verbs while its quiz asks the other; a test pins that the two agree, which is a sign
-  that one should go.
+  that one should go. **Fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `SortOrderPicker`,
+  `VerbCollectionProgress`, a bar that asks its collection, and `AblautGroupInfo.verbs` reading
+  the collection's, so the test that pinned their agreement went too.
 - **D6. Widget and intent links (Read).** Six retyped verb links (see G3), and three intents in
   `Shared/` whose `perform` bodies are identical. A `WidgetDeeplink` enum in `Shared/` and a
   `PendingDeeplinkIntent` protocol with a default `perform()` would remove both, and would give
@@ -379,7 +390,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `VerbSearchResults.swift`. `VerbDestination` and `MarkedConjugations` live in `VerbVisit.swift`.
   `VerbListMode` lives in `SortOrder.swift`. `FlowLayout`, used in eight files, lives in
   `RelatedVerbsView.swift:194-243`. It also proposes `.unspecified` to every child, so a chip
-  wider than its row overflows instead of wrapping.
+  wider than its row overflows instead of wrapping. **`FlowLayout` is fixed on `main`
+  2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): it has its own file and offers each child the row's width. The other
+  moves are Phase 8's.
 - **S4. `VerbSearch.keysCache` is a global memo keyed by infinitive** (`VerbSearch.swift:328-342`).
   It is correct for the one corpus. A test that builds its own `Verb` named gehen with another
   gloss would be served the real one's keys. Storing the lowercased and folded infinitive on
@@ -437,6 +450,7 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   (`VerbView.swift:389-403`) would be one optional `VerbPageSection` on `ConjugationTable`. The
   `openArticle` closure just above them is formatted so that it reads as a block inside a block.
 - **E4. `sorted(by:)` should sort** (see C5), and **`QuizScope` wants a `kind`** (see S6).
+  **The sort is fixed on `main` 2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md). The `kind` is Phase 11's.
 
 ## Tests
 

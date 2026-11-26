@@ -15,12 +15,10 @@ enum SortOrder: String, CaseIterable {
 }
 
 extension [Verb] {
-  /// The verbs in the given order. Alphabetical keeps the order they arrive in, which every
-  /// caller already gives alphabetically, so a list keeps its own collation.
   func sorted(by order: SortOrder) -> [Verb] {
     switch order {
     case .alphabetical:
-      return self
+      return sorted(by: Verb.precedesAlphabetically)
     case .frequency:
       return sorted { $0.frequency < $1.frequency }
     }

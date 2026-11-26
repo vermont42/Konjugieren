@@ -37,6 +37,27 @@ struct BrowseableFamilyTests {
     #expect(missing.isEmpty, "\(family.rawValue): \(missing.count) verbs in no section, e.g. \(missing.sorted().prefix(10))")
   }
 
+  // The sections were sorted with <, which compares code points and puts every umlaut after z,
+  // so the Separable page's ab- section listed abändern after abziehen.
+  @Test(arguments: [BrowseableFamily.separable, BrowseableFamily.inseparable])
+  func prefixSectionsAreInGermanOrder(family: BrowseableFamily) {
+    for section in family.verbsByPrefix {
+      let infinitives = section.verbs.map(\.infinitiv)
+      #expect(infinitives == section.verbs.sorted(by: Verb.precedesAlphabetically).map(\.infinitiv), "\(section.section.id)")
+    }
+  }
+
+  @Test func abändernPrecedesAbziehen() throws {
+    let ab = try #require(BrowseableFamily.separable.verbsByPrefix.first { section in
+      section.verbs.contains { $0.infinitiv == "abziehen" }
+    })
+    let infinitives = ab.verbs.map(\.infinitiv)
+    let abändern = try #require(infinitives.firstIndex(of: "abändern"))
+    let abziehen = try #require(infinitives.firstIndex(of: "abziehen"))
+
+    #expect(abändern < abziehen)
+  }
+
   // pieMeaning builds its catalog key by dropping the prefix's trailing hyphen, and
   // String(localized:) hands back the key itself when it misses. An entry added without
   // its catalog key therefore renders a literal "PIEMeaning.durch" in the UI, visible

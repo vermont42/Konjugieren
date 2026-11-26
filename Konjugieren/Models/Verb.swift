@@ -12,11 +12,17 @@ struct Verb: Identifiable, Hashable {
     if let cachedAlpha {
       return cachedAlpha
     }
-    let sorted = Array(verbs.values).sorted {
-      $0.infinitiv.compare($1.infinitiv, locale: Locale(identifier: "de")) == .orderedAscending
-    }
+    let sorted = Array(verbs.values).sorted(by: precedesAlphabetically)
     cachedAlpha = sorted
     return sorted
+  }
+
+  nonisolated private static let germanLocale = Locale(identifier: "de")
+
+  /// German dictionary order, in which an umlaut sorts with its base vowel and ß as ss, so that
+  /// abändern precedes abziehen. Code-point order puts every umlaut after z.
+  nonisolated static func precedesAlphabetically(_ lhs: Verb, _ rhs: Verb) -> Bool {
+    lhs.infinitiv.compare(rhs.infinitiv, locale: germanLocale) == .orderedAscending
   }
 
   @MainActor static var verbsSortedByFrequency: [Verb] {

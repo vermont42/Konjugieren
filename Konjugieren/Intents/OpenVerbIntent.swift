@@ -11,11 +11,11 @@ struct OpenVerbIntent: AppIntent {
   var verb: VerbEntity
 
   func perform() async throws -> some IntentResult {
+    let infinitiv = verb.id
     await MainActor.run {
-      Current.verb = nil
-      Current.verbSource = .shortcut
-      Current.verb = Verb.verbs[verb.id]
-      Current.selectedTab = .verbs
+      if let url = URL.verbDeeplink(infinitiv, source: .shortcut) {
+        Current.handleURL(url)
+      }
     }
     return .result()
   }

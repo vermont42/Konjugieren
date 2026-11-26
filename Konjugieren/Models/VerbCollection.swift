@@ -38,11 +38,13 @@ enum VerbCollection: Hashable, Identifiable {
 
   init?(key: String) {
     if key.hasPrefix(Self.ablautKeyPrefix) {
+      // String equality is canonical, so a link may spell hängen decomposed and still match.
+      // The group's own spelling is kept, so that analytics sees one key for one group.
       let exemplar = String(key.dropFirst(Self.ablautKeyPrefix.count))
-      guard AblautGroupInfo.allGroups.contains(where: { $0.exemplar == exemplar }) else {
+      guard let group = AblautGroupInfo.allGroups.first(where: { $0.exemplar == exemplar }) else {
         return nil
       }
-      self = .ablautGroup(exemplar)
+      self = .ablautGroup(group.exemplar)
       return
     }
     switch key {

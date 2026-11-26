@@ -24,7 +24,7 @@ Konjugieren/
 │   ├── OpenVerbIntent.swift        # Siri shortcut intent to open a verb detail view
 │   ├── SiriConjugationgroup.swift  # AppEnum mapping conjugationgroups for Siri
 │   ├── VerbEntity.swift            # AppEntity for verb selection in Siri intents; its attributeSet carries the Spotlight fields
-│   └── VerbSpotlight.swift         # Each verb's Spotlight entry (key conjugations as description, glosses and conjugations as alternate names and keywords), indexed at launch into the named index "verbs"
+│   └── VerbSpotlight.swift         # Each verb's Spotlight entry (key conjugations as description, glosses and conjugations as alternate names and keywords), indexed at launch into the named index "verbs", deleting first the verbs that have left the corpus
 ├── Models/
 │   ├── Ablaut.swift            # Single ablaut: replacement + target conjugationgroups
 │   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
@@ -168,6 +168,9 @@ Konjugieren/
 │   ├── Settings.swift          # @Observable settings with UserDefaults persistence
 │   ├── ShareSheet.swift        # UIKit workaround: presents UIActivityViewController for the verb page's share button, anchored to the visible bar button on iPad, with an LPLinkMetadata header (ShareLink sends no tap from a toolbar and loses Copy with a SharePreview)
 │   ├── SoundPlayer.swift       # Protocol for audio playback
+│   ├── SpotlightIndex.swift    # Current.spotlightIndex: protocol for VerbSpotlight's three Spotlight calls (empty every index, delete verbs, index verbs)
+│   ├── SpotlightIndexReal.swift    # The three calls through Core Spotlight's named index "verbs" and the default index
+│   ├── SpotlightIndexSpy.swift     # Records the calls in order under unit tests, and can fail them
 │   ├── SoundPlayerDummy.swift  # No-op implementation for tests
 │   ├── SoundPlayerReal.swift   # AVAudioPlayer implementation with debouncing
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
@@ -254,14 +257,16 @@ ConjugationMapTool/             # macOS command-line target; borrows the conjuga
 Shared/
 ├── GameActivityAttributes.swift    # ActivityKit model for game live activity
 ├── MixedCaseSegmenter.swift        # Pure ablaut segmentation shared by app and widget highlighting
-├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink
+├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink (a PendingDeeplinkIntent)
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
+├── PendingDeeplinkIntent.swift     # The four Open… intents' one perform(): leaves a WidgetDeeplink in the App Group's defaults, which the app follows when it becomes active
 ├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults, which the widget does not read; a first open is collection progress and a last open is Recent; new fields must be optional
 ├── PracticeRecord.swift            # The practice record: PracticeItem (a strong verb's key conjugation or a weak pattern, with a permanent string key) and a ReviewSchedule, last answer, and last lookup per item, stored as JSON in the App Group's defaults; never sent
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── ReviewSchedule.swift            # The practice record's Leitner ladder (1, 3, 7, 14, 30 days): a box and a due date per item, started by a lookup or a wrong answer, raised by a review or a right answer when due, postponed a day by a snooze
+├── WidgetDeeplink.swift            # The links the widgets and the Shared/ intents hand the app, with their `source` spelled once, since neither can see AnalyticsSource
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
 └── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, the snapshot displayed at a moment, and the last day each verb of My Verbs was given, which only the app reads)
@@ -321,13 +326,13 @@ KonjugierenTests/
 │   ├── VerbLookupTests.swift   # Look Up a Verb: what it says about infinitives, conjugations, ambiguous and unknown words, and where it opens the app
 │   ├── VerbSearchModelTests.swift # The verb list's search flow: typing, clearing, a guess that arrives, one cancelled by the next letter, opening a result or the guess, requests, the scope, the trombone, and the report each sends
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess, its cancellation, and the limited edit distance
-│   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region
+│   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region; and indexing's calls, in order, through SpotlightIndexSpy
 │   ├── VerbTests.swift         # Verb.stamm and endingIsValid tests
 │   ├── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
 │   └── VerbVisitTrackerTests.swift # VerbVisitTracker: sheets, scene phases, and reappearance pair each view with one leave
 ├── Utils/
 │   ├── AnalyticsTests.swift    # Analytics bands, section order, and the match-kind mapping
-│   ├── DeeplinkTests.swift     # The deeplink grammar: every route, the `source` and `match` query items, the search route, stable-key articles, the control and quick-action links
+│   ├── DeeplinkTests.swift     # The deeplink grammar: every route, the `source` and `match` query items, the search route, stable-key articles, every WidgetDeeplink, the control and quick-action links, a link to nothing leaving a pending search, and Handoff and the Open Verb shortcut going through the route
 │   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
 │   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
 │   ├── SettingsTests.swift     # Settings persistence and default-value tests

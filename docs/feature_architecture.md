@@ -1092,9 +1092,15 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
   names the surface that built the link, from `AnalyticsSource`, because a widget or an intent can
   hand the app nothing but a URL. A missing or unknown value counts as `deeplink`.
 - **Builders, not literals.** App code builds links with `URL.verbDeeplink`, `URL.searchDeeplink`,
-  and `URL.infoDeeplink`, which percent-encode. Only the widget extension and `Shared/`, which
-  cannot see `AnalyticsSource`, write literals, and `DeeplinkTests` pins each literal's source to
-  the vocabulary.
+  and `URL.infoDeeplink`, which percent-encode. The widget extension and `Shared/` cannot see
+  `AnalyticsSource` or those builders, so they build theirs with `WidgetDeeplink`, in `Shared/`,
+  which spells each source once. `DeeplinkTests` opens every `WidgetDeeplink` and pins its source
+  to the vocabulary, and pins a widget's verb link to the one `URL.verbDeeplink` builds.
+- **One route.** Spotlight, Handoff, the Open Verb shortcut, Look Up a Verb, and an article's
+  links all build a link and call `handleURL`, rather than setting `Current.verb` themselves.
+  `handleURL` clears the pending targets only once a route has found its own, so a link to a verb,
+  family, collection, or article that does not exist leaves a pending search or practice set
+  where it was (fixed 2026-11-26).
 
 | Route | Target | Query items | Opens |
 |---|---|---|---|
@@ -1116,7 +1122,9 @@ Messages may not make a `konjugieren://` link tappable and that it does nothing 
 |------|---------|
 | `URLExtension.swift` | The grammar's constants (routes, query-item names), `isDeeplink`, `analyticsSource`, `deeplinkQueryValue(named:)`, and the builders, `practiceSetDeeplink` among them |
 | `PracticeSet.swift` | Reads a `quiz/set` link (`PracticeSet(url:)`) and writes one |
-| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection`, `practiceSet`, or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
+| `World.swift` | `handleURL(_:)` parses a link and, once its target is found, clears the other pending targets and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection`, `practiceSet`, or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses; `handleUserActivity(_:)` turns a Handoff into a `verb` link |
+| `WidgetDeeplink.swift` (`Shared/`) | The links the widgets and the `Shared/` intents hand the app |
+| `PendingDeeplinkIntent.swift` (`Shared/`) | The four `Shared/` intents' one `perform()`, which leaves a `WidgetDeeplink` in the shared defaults for the app to follow when it becomes active |
 | `Info.swift` | `Info.info(deeplinkTarget:)` resolves a stable key or a legacy position |
 | `VerbBrowseView.swift` | Consumes `verb` and `searchRequest` on appear and on change, since a link can arrive before the tab first appears |
 | `FamilyBrowseView.swift` | Consumes `family` and `collection` the same way |
@@ -1645,13 +1653,13 @@ The app registers five Siri Shortcuts via the App Intents framework.
 | `KonjugierenShortcuts.swift` | `AppShortcutsProvider` registering all shortcuts with phrases |
 | `ConjugateVerbIntent.swift` | Intent: conjugate a verb in a specific conjugationgroup |
 | `LookUpVerbIntent.swift` | Intent: Look Up a Verb, which answers which verb a word belongs to and then opens it (`OpenLookupResultIntent`, hidden, is what it opens) |
-| `OpenVerbIntent.swift` | Intent: open a verb's detail view |
+| `OpenVerbIntent.swift` | Intent: open a verb's detail view, through `handleURL` |
 | `VerbEntity.swift` | `AppEntity` for verb selection with entity query; its `attributeSet` carries the Spotlight fields |
 | `VerbSpotlight.swift` | Builds and indexes every verb's Spotlight entry; see [Spotlight](#spotlight) |
 | `VerbLookup.swift` | What Look Up a Verb says about a word and where it opens the app, read from the same search as the verb list |
 | `SiriConjugationgroup.swift` | `AppEnum` mapping conjugationgroups for Siri voice commands |
-| `OpenQuizIntent.swift` | Shared intent to open quiz (used by Siri and widgets) |
-| `OpenRandomVerbIntent.swift` | Shared intent to open a random verb (used by Siri and widgets) |
+| `OpenQuizIntent.swift` | Shared intent to open quiz (used by Siri and widgets), a `PendingDeeplinkIntent` |
+| `OpenRandomVerbIntent.swift` | Shared intent to open a random verb (used by Siri and widgets), a `PendingDeeplinkIntent` |
 
 ### Registered Shortcuts
 
@@ -1690,7 +1698,10 @@ The stranded parts of a conjugation do not keep the learner from the base verb's
 every strong verb's Präteritum is also a part of separable verbs, and someone who says ging
 almost always means gehen. An intent's result can open the app only by naming another intent, so
 the answer comes back with `.result(opensIntent:dialog:)` naming `OpenLookupResultIntent`, which
-calls `handleURL` with the destination. In the Shortcuts app on the simulator, the app opened
+calls `handleURL` with the destination. Before it looks the word up on the main actor, the intent
+builds `ConjugationIndex.bundled` off it (`warmBundled()`), as the verb list does, since a Siri
+run may never have drawn the list: decompressing the map and building the index took 1.3 seconds
+in a debug build on the Intel simulator, and the lookup itself 0.05 to 0.10. In the Shortcuts app on the simulator, the app opened
 without the answer showing; Siri should speak it, which needs a device to check.
 
 ## Spotlight
@@ -1718,9 +1729,25 @@ description. Indexing classic `CSSearchableItem`s with the same fields, linked w
 match less reliably than titles; a device test is the open question.
 
 **Leaving the default index.** Earlier versions indexed the entries in the default index, so the
-app deletes the `VerbEntity` entries from it once (`spotlightLeftDefaultIndex`). It does so
+app deletes the `VerbEntity` entries from it once (`spotlightLeftDefaultIndex`), and records that
+it has only when the delete succeeded, so a failure is tried again at the next launch. It does so
 **before** indexing: deleting app entities by type, called on the default index, emptied the named
 index too in the simulator, and run afterward it left no entries at all.
+
+**A verb that leaves the corpus leaves Spotlight.** Indexing replaces the entries it is given and
+leaves the rest, so the app remembers the infinitives it indexed (`spotlightIndexedVerbs`) and,
+before indexing, deletes those no longer in the corpus. One whose deletion fails stays
+remembered, to be tried again. The list is written before the entries are indexed, not after:
+`indexAppEntities` had not returned a minute and a half after it began in the simulator, so a list
+written after it would never have been written. The calls go through `Current.spotlightIndex`, a `SpotlightIndex`,
+so that `VerbSpotlightTests` can pin their order with `SpotlightIndexSpy`.
+
+**An unchanged corpus is indexed again anyway (decided 2026-11-26).** Skipping it would need a
+fingerprint of everything an entry is made from: the corpus, the map, the region, and the code
+that writes the text. One read from the files would miss a change to the code, and one that
+builds the entries to compare them pays most of the cost it saves. The work is done in the
+background, and the numbers below are a debug build's on an Intel Mac. Measure a release build on
+a phone before reconsidering.
 
 **Cost.** In a debug build on an Intel simulator, building the 3,572 entries takes about 3.3
 seconds and indexing them 7 more. The map's inversion runs off the main actor; the key

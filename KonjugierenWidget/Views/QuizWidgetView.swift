@@ -47,7 +47,7 @@ struct QuizWidgetView: View {
       }
     }
     // The question is the first of today's challenge, so a tap beside the answers opens the rest.
-    .widgetURL(URL(string: "konjugieren://quiz/challenge?source=challengeWidget"))
+    .widgetURL(WidgetDeeplink.challenge.url)
   }
 
   private var answeredView: some View {
@@ -66,7 +66,7 @@ struct QuizWidgetView: View {
           .foregroundStyle(.green)
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)?source=widget"))
+    .widgetURL(WidgetDeeplink.verb(quiz.infinitiv).url)
   }
 
   private func answerButton(answer: String) -> some View {

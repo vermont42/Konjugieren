@@ -65,4 +65,57 @@ struct VerbSpotlightTests {
     #expect(entity.spotlight?.keywords.contains("ging") == true)
     #expect(entity.attributeSet.keywords?.contains("ging") == true)
   }
+
+  @MainActor
+  @Suite("Indexing")
+  struct IndexingTests {
+    private let verbs = ["gehen", "machen"].map { Verb.verbs[$0]! }
+    private let spy = SpotlightIndexSpy()
+
+    private func indexed(_ getterSetter: GetterSetterFake) -> String? {
+      getterSetter.get(key: VerbSpotlight.indexedVerbsKey)
+    }
+
+    private func migrated(remembering indexed: String? = nil) -> GetterSetterFake {
+      var dictionary = [VerbSpotlight.leftDefaultIndexKey: "true"]
+      dictionary[VerbSpotlight.indexedVerbsKey] = indexed
+      return GetterSetterFake(dictionary: dictionary)
+    }
+
+    @Test func theFirstRunEmptiesEveryIndexBeforeIndexing() async {
+      let getterSetter = GetterSetterFake()
+      await VerbSpotlight.indexVerbs(verbs, in: spy, getterSetter: getterSetter)
+      #expect(spy.calls == [.deleteEveryVerb, .indexVerbs(["gehen", "machen"])])
+      #expect(getterSetter.get(key: VerbSpotlight.leftDefaultIndexKey) == "true")
+      #expect(indexed(getterSetter) == "gehen\nmachen")
+    }
+
+    @Test func aFailedEmptyingIsTriedAgainAtTheNextLaunch() async {
+      let getterSetter = GetterSetterFake()
+      spy.deletesFail = true
+      await VerbSpotlight.indexVerbs(verbs, in: spy, getterSetter: getterSetter)
+      #expect(getterSetter.get(key: VerbSpotlight.leftDefaultIndexKey) == nil)
+      #expect(spy.calls.last == .indexVerbs(["gehen", "machen"]))
+    }
+
+    @Test func aVerbThatLeftTheCorpusLeavesSpotlightBeforeTheRestAreIndexed() async {
+      let getterSetter = migrated(remembering: "gehen\nmachen\nxyzzyq")
+      await VerbSpotlight.indexVerbs(verbs, in: spy, getterSetter: getterSetter)
+      #expect(spy.calls == [.deleteVerbs(["xyzzyq"]), .indexVerbs(["gehen", "machen"])])
+      #expect(indexed(getterSetter) == "gehen\nmachen")
+    }
+
+    @Test func aVerbWhoseDeletionFailedIsRememberedForTheNextLaunch() async {
+      let getterSetter = migrated(remembering: "gehen\nxyzzyq")
+      spy.deletesFail = true
+      await VerbSpotlight.indexVerbs(verbs, in: spy, getterSetter: getterSetter)
+      #expect(indexed(getterSetter) == "gehen\nmachen\nxyzzyq")
+    }
+
+    @Test func nothingIsDeletedWhenNoVerbLeft() async {
+      let getterSetter = migrated(remembering: "gehen")
+      await VerbSpotlight.indexVerbs(verbs, in: spy, getterSetter: getterSetter)
+      #expect(spy.calls == [.indexVerbs(["gehen", "machen"])])
+    }
+  }
 }

@@ -12757,3 +12757,59 @@ e. The two dots began as an e. Medieval scribes wrote a small e above a vowel to
 fronted, and in German cursive that e shrank to two strokes and then to two dots. So ae and ä are
 not a spelling and its substitute. They are a letter and its ancestor, and the search's fold
 puts them back together.
+
+## One Route In, and Spotlight That Forgets (2026-11-26)
+
+Phase 9 of `plans/verb_browse_fixes.md` took the review's findings about how the app is
+entered: links, intents, Handoff, Spotlight, and the widget.
+
+**The route now waits until it knows where it is going.** `handleURL` used to clear every pending
+target (a search, a practice set, a challenge) before it looked at the link, so
+`konjugieren://verb/nonexistent` wiped a good request and put nothing in its place. Each route now
+finds its target first and clears only then. Two entry points had skipped the route altogether.
+The Open Verb shortcut and Handoff set `Current.verb` by hand, and the shortcut switched to the
+Verbs tab even when it found no verb. Both now build a link and go through `handleURL`, as
+Spotlight already did. The tests call the intent's `perform()` directly, which turned out to work
+under unit tests with nothing more than setting its `@Parameter`.
+
+**A Suspected finding became a real one.** A collection link was matched to its ablaut group by
+Swift's string equality, which is canonical: "hängen" spelled as a, then U+0308 COMBINING
+DIAERESIS, equals the precomposed "hängen". But the code then stored the link's own spelling, so a
+decomposed link would have sent analytics a second key for one group. Running
+`konjugieren://list/ablaut-ha%CC%88ngen` through the route showed that the decomposed spelling
+reached the model intact. It now keeps the group's own spelling. Unicode's name for the mark
+belongs with the last entry's history: it has a single code point for the umlaut, which came from
+a small e written above a vowel, and for the diaeresis of naïve, which marks a vowel spoken apart.
+The two dots look the same and have separate pasts, and the decomposed form spells either one as
+a base letter with a mark set above it.
+
+**Measuring first paid off.** The plan said to warm the conjugation index for Look Up a Verb only
+if loading it cost more than a few milliseconds. It cost 1.3 seconds in a debug build, all on the
+main actor, whenever Siri ran the intent before the verb list had ever been drawn. The list warmed
+the index itself, so the gap existed only on the path that skips the list. One `@concurrent`
+helper now serves both.
+
+**Spotlight learned to forget.** Indexing replaces the entries it is given and leaves the rest
+alone, so a verb that left the corpus would stay in Spotlight for good. The app now remembers what
+it indexed and deletes what has gone, before indexing the rest. The one-time migration out of the
+default index also recorded success even when its delete had failed. That is fixed too. Both
+rules have tests, because the Spotlight calls moved behind a `SpotlightIndex` on `Current` whose
+spy records their order. The test host indexes at launch, so the tests take their own spy as a
+parameter rather than swap the shared one, which they would have raced. Skipping an unchanged
+reindex was considered and declined. A fingerprint cheap enough to be worth having would miss a
+change to the code that writes the entries, and a stale Spotlight fails silently. One line moved
+after a launch in the simulator: the app wrote its list of indexed verbs after
+`indexAppEntities` returned, and a minute and a half later it still had not. The list needs only
+to name every verb that might be in the index, so it is now written first.
+
+**The widget's links have one spelling.** The five widget views had retyped
+`"konjugieren://verb/\(…)?source=widget"` six times, and the test pinned a seventh copy, so a typo
+in a view would have passed. `WidgetDeeplink`, in `Shared/`, now builds them all, and a test pins
+its verb link to the one the app's own builder makes. The four `Shared/` intents that leave a
+pending link for the app share one `perform()` through a `PendingDeeplinkIntent` protocol. The
+first build failed. Under the project's default `MainActor` isolation, a plain protocol made every
+intent that adopted it main-actor-isolated, and `AppIntent` wants its `title` nonisolated. The
+intents had escaped this before by conforming to `AppIntent` directly. Marking the protocol
+`nonisolated` was enough.
+
+The suite went from 1027 tests to 1041.

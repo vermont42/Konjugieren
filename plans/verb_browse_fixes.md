@@ -27,7 +27,7 @@ empty until it is committed.
 | 6 | Done | 2026-11-25 | `ab2493b` | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
 | 8 | Done | 2026-11-26 | `a06f7e3` | D1, D2, D3, E1, S3 (the rest), S4 | No |
-| 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
+| 9 | Done | 2026-11-26 | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Not started | | | S6, D7, the sein collection's quiz | No |
 | 12 | Not started | | | T1, T2, T3, T4 | No |
@@ -553,7 +553,59 @@ suite went from 1022 to 1027 tests, in 104 suites.
 **Tell Josh he could try:** a widget's tap, the Random Verb control, Look Up a Verb for ging and
 for drucken, and a verb found in Spotlight.
 
-**How it differed:**
+**How it differed:** Mostly in Spotlight, where the plan left two choices open, and in one
+concurrency rule. The suite went from 1027 to 1041 tests, in 105 suites.
+
+- **The index was worth warming.** Measured with a temporary test, three runs, debug build,
+  Konjugieren iPhone 17 simulator on the Intel Mac: decompressing the map took 0.57–0.63 s and
+  building the index 0.70–0.75 s, which a cold Siri run paid on the main actor. The lookup itself
+  took 0.05–0.10 s. `ConjugationIndex.warmBundled()`, a `@concurrent` function, now serves the
+  intent and the verb list's `.task`, which had its own detached task. The list's warm-up loses
+  its explicit `.utility` priority and takes its task's.
+- **Spotlight's calls moved behind `Current.spotlightIndex`**, a `SpotlightIndex` with real and spy
+  implementations, as `LiveActivities` is. `indexVerbs` also takes its verbs, index, and store as
+  parameters that default to `Current`, so the tests use their own spy and `GetterSetterFake`. The
+  test host's launch indexes too, and a shared spy would have raced with it.
+- **Removing departed verbs: built.** The app remembers the infinitives it indexed
+  (`spotlightIndexedVerbs`), deletes those no longer in the corpus before indexing, and keeps one
+  whose deletion failed for the next launch. The named index has existed only on `main` since
+  2026-11-12, so no shipped build wrote entries this list does not know; Josh's own devices may
+  keep a stale entry from before this build, and tapping it now does nothing.
+- **Skipping an unchanged reindex: not built.** A fingerprint read from the files would miss a
+  change to the code that writes the text, and one that builds the entries to compare them pays
+  most of what it saves. The work runs in the background, and the 3.3 + 7 s in
+  `docs/feature_architecture.md` are a debug build's on an Intel Mac. The decision is recorded
+  there, with the advice to measure a release build on a phone first.
+- **The collection key was confirmed by running it.** `konjugieren://list/ablaut-ha%CC%88ngen`
+  reached `init?(key:)`, matched hängen's group by canonical equality, and stored the decomposed
+  spelling. Whether iOS ever delivers such a link is still unknown, but the question no longer
+  matters.
+- **`PendingDeeplinkIntent` is a `nonisolated` protocol.** Declared plainly, it took the app's
+  default `MainActor` isolation, which made the intents that adopt it main-actor-isolated, and
+  then their `title` could not satisfy `AppIntent`'s nonisolated requirement. The intents had
+  escaped this before by conforming to `AppIntent` directly. The protocol extension's `perform()`
+  satisfies `AppIntent` in both targets, and the App Intents metadata processor raised no warning.
+- **`WidgetDeeplink` covers the quiz widget's challenge link too**, a sixth view link the plan did
+  not count, and builds every link with `URLComponents`, as the app's builders do. A test pins a
+  widget's verb link, for gehen, hängen, and aufstehen, to the one `URL.verbDeeplink` builds.
+  `OpenQuizIntent`'s link keeps no `source`, since `quiz/start` reads none.
+- **Two side effects of the route fix.** A link to a missing verb no longer sets `verbSource`, and
+  a link to an unknown route no longer clears anything. Handoff of an activity whose infinitive is
+  "random" would now open a random verb, as Spotlight's would; only the app's own activities carry
+  one, and no verb is called random.
+- **Tests.** The eight tests of the fixes were run against the old logic, put back temporarily in
+  the working tree, and all failed, with twelve issues: five links to nothing, Handoff, both Open
+  Verb shortcut cases, the collection key, and two Spotlight rules. Two more Spotlight tests are
+  guards and passed either way. The tests call `OpenVerbIntent().perform()` and
+  `OpenRandomVerbControlIntent().perform()` directly, which works under unit tests; the second
+  reads what the protocol's `perform()` left in the App Group's defaults.
+- **The simulator moved one line.** In a launch on the iPhone simulator, `indexAppEntities` had
+  not returned a minute and a half after it began, and the list of indexed verbs, written after
+  it, never was. It is now written before the index call, which is as correct, since it needs only
+  to name every verb that might be indexed. After a relaunch it held all 3,572 infinitives within
+  eight seconds. The same launch showed a link to a missing verb leaving the list alone and
+  `verb/h%C3%A4ngen?source=widget` opening hängen's page.
+- `README.md`'s three test counts went to 1041. No test file was added, so its file count stays.
 
 ## Phase 10: The Map Tool and the Scripts
 

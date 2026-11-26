@@ -16,6 +16,8 @@ struct DeeplinkTests {
     Current.info = nil
     Current.searchRequest = nil
     Current.practiceSet = nil
+    Current.dailySessionRequest = nil
+    Current.challengeRequest = nil
     Current.selectedTab = .settings
   }
 
@@ -127,20 +129,97 @@ struct DeeplinkTests {
     #expect(Current.verbSource == .spotlight)
   }
 
-  // The widget extension and the intents in Shared/ cannot see AnalyticsSource, so they spell
-  // their sources as literals. These pin the literals to the vocabulary.
+  // The widget extension and the intents in Shared/ cannot see AnalyticsSource, so
+  // WidgetDeeplink spells their sources as literals. These pin the literals to the vocabulary.
   @Test(arguments: zip(
-    [OpenRandomVerbIntent.pendingDeeplink, OpenRandomVerbControlIntent.pendingDeeplink, "konjugieren://verb/gehen?source=widget"],
+    [WidgetDeeplink.randomVerbFromShortcut, .randomVerbFromControl, .verb("gehen")],
     [AnalyticsSource.shortcut, .control, .widget]
   ))
-  func literalSourcesBelongToTheVocabulary(deeplink: String, source: AnalyticsSource) {
-    Current.handleURL(URL(string: deeplink)!)
+  func widgetVerbLinksNameSourcesInTheVocabulary(deeplink: WidgetDeeplink, source: AnalyticsSource) throws {
+    Current.handleURL(try #require(deeplink.url))
     #expect(Current.verb != nil)
     #expect(Current.verbSource == source)
   }
 
+  @Test(arguments: ["gehen", "hängen", "aufstehen"])
+  func aWidgetsVerbLinkIsTheAppsOwn(infinitiv: String) {
+    #expect(WidgetDeeplink.verb(infinitiv).url == URL.verbDeeplink(infinitiv, source: .widget))
+  }
+
+  @Test func theQuizWidgetsLinkAsksForTodaysChallenge() throws {
+    Current.handleURL(try #require(WidgetDeeplink.challenge.url))
+    #expect(Current.selectedTab == .quiz)
+    #expect(Current.challengeRequest?.key == nil)
+    #expect(Current.challengeRequest?.source == .challengeWidget)
+  }
+
+  @Test func theQuizIntentOpensTheQuizTab() throws {
+    Current.handleURL(try #require(OpenQuizIntent.pendingDeeplink.url))
+    #expect(Current.selectedTab == .quiz)
+  }
+
+  // The protocol's perform() serves all four intents, and the app reads what it leaves.
+  @Test func aPendingDeeplinkIntentLeavesItsLinkForTheApp() async throws {
+    let defaults = try #require(WidgetConstants.sharedDefaults)
+    defaults.removeObject(forKey: WidgetConstants.pendingDeeplinkKey)
+    _ = try await OpenRandomVerbControlIntent().perform()
+    #expect(defaults.string(forKey: WidgetConstants.pendingDeeplinkKey) == "konjugieren://verb/random?source=control")
+    defaults.removeObject(forKey: WidgetConstants.pendingDeeplinkKey)
+  }
+
+  @Test(arguments: [
+    "konjugieren://verb/nonexistent",
+    "konjugieren://family/nonexistent",
+    "konjugieren://list/nonexistent",
+    "konjugieren://info/99999",
+    "konjugieren://unknown/test"
+  ])
+  func aLinkToNothingLeavesAPendingSearch(link: String) throws {
+    Current.openSearch(text: "ging", source: .control)
+    Current.selectedTab = .settings
+    Current.handleURL(try #require(URL(string: link)))
+    #expect(Current.searchRequest == SearchRequest(text: "ging", source: .control))
+    #expect(Current.selectedTab == .settings)
+  }
+
+  @Test func theOpenVerbShortcutGoesThroughTheRoute() async throws {
+    Current.handleURL(URL(string: "konjugieren://list/modals")!)
+    let intent = OpenVerbIntent()
+    intent.verb = VerbEntity(id: "gehen", translation: "go")
+    _ = try await intent.perform()
+    #expect(Current.collection == nil)
+    #expect(Current.verb?.infinitiv == "gehen")
+    #expect(Current.verbSource == .shortcut)
+    #expect(Current.selectedTab == .verbs)
+  }
+
+  @Test func theOpenVerbShortcutToNoVerbLeavesAPendingSearch() async throws {
+    Current.openSearch(text: "ging", source: .control)
+    Current.selectedTab = .settings
+    let intent = OpenVerbIntent()
+    intent.verb = VerbEntity(id: "nonexistent", translation: "")
+    _ = try await intent.perform()
+    #expect(Current.searchRequest == SearchRequest(text: "ging", source: .control))
+    #expect(Current.selectedTab == .settings)
+  }
+
+  @Test func handoffToNoVerbLeavesAPendingSearch() {
+    Current.openSearch(text: "ging", source: .control)
+    let activity = NSUserActivity(activityType: World.viewVerbActivityType)
+    activity.userInfo = ["infinitiv": "nonexistent"]
+    Current.handleUserActivity(activity)
+    #expect(Current.searchRequest == SearchRequest(text: "ging", source: .control))
+  }
+
+  // Strings compare by canonical equivalence, so only the scalars show which spelling was kept.
+  @Test func aDecomposedCollectionLinkKeepsTheGroupsOwnSpelling() throws {
+    Current.handleURL(try #require(URL(string: "konjugieren://list/ablaut-ha%CC%88ngen")))
+    let key = try #require(Current.collection?.collection.key)
+    #expect(Array(key.unicodeScalars) == Array("ablaut-h\u{E4}ngen".unicodeScalars))
+  }
+
   @Test func findAVerbControlOpensAnEmptySearch() {
-    Current.handleURL(URL(string: OpenVerbSearchIntent.pendingDeeplink)!)
+    Current.handleURL(OpenVerbSearchIntent.pendingDeeplink.url!)
     #expect(Current.searchRequest == SearchRequest(text: "", source: .control))
   }
 

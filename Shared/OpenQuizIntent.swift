@@ -2,14 +2,8 @@
 
 import AppIntents
 
-struct OpenQuizIntent: AppIntent {
+struct OpenQuizIntent: PendingDeeplinkIntent {
   static let title = LocalizedStringResource("Intent.openQuizTitle")
   static let openAppWhenRun = true
-
-  func perform() async throws -> some IntentResult {
-    await MainActor.run {
-      WidgetConstants.sharedDefaults?.set("konjugieren://quiz/start", forKey: WidgetConstants.pendingDeeplinkKey)
-    }
-    return .result()
-  }
+  static let pendingDeeplink = WidgetDeeplink.quiz
 }

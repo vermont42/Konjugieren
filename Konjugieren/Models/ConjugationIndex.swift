@@ -24,9 +24,15 @@ nonisolated struct ConjugationIndex: Sendable {
     self.foldedKeysByLength = foldedKeysByLength
   }
 
-  /// Built on first use from `ConjugationMap.bundled`. Building takes a moment, so the verb
-  /// list touches it from a background task before the learner types.
+  /// Built on first use from `ConjugationMap.bundled`. Building takes a moment, so a caller on
+  /// the main actor warms it first.
   static let bundled = ConjugationIndex(map: .bundled)
+
+  /// Builds `bundled` off the main actor. Decompressing the map and folding its 50,000
+  /// conjugations took 1.3 seconds in a debug build on the Intel simulator.
+  @concurrent static func warmBundled() async {
+    _ = bundled
+  }
 
   nonisolated struct Spelling: Equatable, Sendable {
     let conjugation: String

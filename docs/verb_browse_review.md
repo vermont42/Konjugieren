@@ -200,20 +200,29 @@ with ß.
 - **A bad link cancels a good pending one (Read).** `handleURL` calls `clearDeeplinkTargets()`
   before it knows that the route resolves (`World.swift:131`), so
   `konjugieren://verb/nonexistent` wipes a pending practice set, challenge, or search and replaces
-  it with nothing.
+  it with nothing. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): each route clears the pending targets only once it has found
+  its own, and `DeeplinkTests` pins a pending search surviving links to a missing verb, family,
+  collection, and article, and to an unknown route.
 - **Two entry points bypass the route (Read).** `OpenVerbIntent` and `handleUserActivity` set
   `Current.verb` by hand. The intent never clears other pending targets and switches to the Verbs
   tab even when the verb is not found (`OpenVerbIntent.swift:14-19`). Spotlight already does this
-  properly through `URL.verbDeeplink`.
+  properly through `URL.verbDeeplink`. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): both build a link with
+  `URL.verbDeeplink` and call `handleURL`, and tests drive the intent's `perform()`.
 - **Spotlight's migration flag is set even if the delete failed (Read).** `try?` swallows the
   error and line 39 sets `leftDefaultIndexKey` regardless (`VerbSpotlight.swift:37-40`), which
   would leave duplicates for good. Nothing ever removes an entry for a verb that leaves the
-  corpus, and all 3,572 entries are rebuilt at every launch.
+  corpus, and all 3,572 entries are rebuilt at every launch. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the flag is
+  set only when the delete succeeded, and a verb that leaves the corpus is deleted before the
+  rest are indexed, through a `SpotlightIndex` on `Current` whose spy pins the order. An
+  unchanged corpus is still indexed again at each launch, by decision; see
+  `docs/feature_architecture.md` § Spotlight.
 - **A collection key may be stored as the link spelled it (Suspected).** `init?(key:)` checks the
   exemplar with canonical equality and then stores the incoming string
   (`VerbCollection.swift:39-46`). A link carrying decomposed "hängen" would work, and would send a
   second spelling of `ablaut-hängen` to analytics. Nobody confirmed that iOS delivers such a link.
-  Storing the matched group's own exemplar removes the question.
+  Storing the matched group's own exemplar removes the question. **Confirmed and fixed on `main`
+  2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `konjugieren://list/ablaut-ha%CC%88ngen` reached
+  `init?(key:)` and stored the decomposed spelling, and now stores the group's.
 
 ## Performance
 
@@ -255,7 +264,10 @@ guesses arrive after 0.11 s and 0.39 s.
 - **Look Up a Verb may build the index on the main actor (Suspected).** The only warm-up is the
   verb list's `.task` (`VerbBrowseView.swift:352-358`). A Siri run that never draws the list
   decompresses the map and folds 50,000 keys inside `MainActor.run`
-  (`LookUpVerbIntent.swift:24-28`). Not measured.
+  (`LookUpVerbIntent.swift:24-28`). Not measured. **Confirmed and fixed on `main` 2026-11-26**,
+  by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): cold, the map took 0.57–0.63 s to decompress and the index
+  0.70–0.75 s to build, in a debug build on the Intel simulator. The intent now awaits
+  `ConjugationIndex.warmBundled()`, which the verb list also uses, before it looks the word up.
 - **A search ended by clearing the field is computed again (Read).** `signalEndedSearch`
   re-runs `VerbSearch.matches` (`VerbBrowseView.swift:772`) for a query whose results the cache
   still holds. **Fixed on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the report reads the model's results.
@@ -306,7 +318,8 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **G3. `DeeplinkTests` pins copies of the widget's links (Read).** `docs/feature_architecture.md`
   says the tests pin every widget literal. They pin the three `pendingDeeplink` constants in
   `Shared/`. The six `"konjugieren://verb/\(…)?source=widget"` strings in five widget views are
-  retyped in the test. A typo in a view would pass and silently report `deeplink`.
+  retyped in the test. A typo in a view would pass and silently report `deeplink`. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), with D6: the views and the test read `WidgetDeeplink`, and a widget's verb link is pinned to
+  the one `URL.verbDeeplink` builds.
 - **G4. A migration for data no shipped build wrote (Reviewer).** `PracticeStore.migrated` and
   `LegacyLearnerVerbs` (`PracticeStore.swift:216-246`) carry Phase 15's per-verb schedule into the
   practice record. Both exist only on `main`; version 1.4 has neither. The migration serves Josh's
@@ -370,7 +383,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
 - **D6. Widget and intent links (Read).** Six retyped verb links (see G3), and three intents in
   `Shared/` whose `perform` bodies are identical. A `WidgetDeeplink` enum in `Shared/` and a
   `PendingDeeplinkIntent` protocol with a default `perform()` would remove both, and would give
-  `OpenQuizIntent`'s inline literal a constant that a test can pin.
+  `OpenQuizIntent`'s inline literal a constant that a test can pin. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as suggested. The
+  protocol is `nonisolated`, since under the app's default isolation it would otherwise make its
+  intents main-actor-isolated, which `AppIntent` refuses.
 - **D7. The main-clause split is reimplemented in the quiz's variants (Reviewer).**
   `StandardVariants.swift:226` cuts the separable run off a string that has already been through
   `inRegion`. Swiss ss is one character longer than ß, so the cut would land a letter off for a
@@ -437,7 +452,7 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   Phase 1 notes this. Disabling the picker while `isSearching` would say so on screen. **Fixed
   on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
 - **S9. Unused or unguarded.**
-  - `URL.konjugierenURLPrefix` (`URLExtension.swift:121`) has no caller.
+  - `URL.konjugierenURLPrefix` (`URLExtension.swift:121`) has no caller. **Fixed on `main` 2026-11-26**, by Phase 9 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): deleted.
   - `LearnerVerbs.recent(limit:)` takes a limit that nothing passes. **Fixed on `main`
     2026-11-25**, by Phase 3 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).
   - `ConjugationMapTool` accepts any `--flag value`, so `--form-json` for `--forms-json` writes

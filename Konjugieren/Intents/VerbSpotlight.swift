@@ -1,7 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import AppIntents
-import CoreSpotlight
 
 /// Konjugieren's Spotlight entries, one per verb, in a named index. Each can be found by its
 /// infinitive, by the gloss of every reading, and by its conjugations, so that typing
@@ -26,17 +25,26 @@ enum VerbSpotlight {
 
   /// Until 2026-11-12 the verbs went into the default index, whose entries would otherwise
   /// stay beside the named index's and appear twice.
-  private static let leftDefaultIndexKey = "spotlightLeftDefaultIndex"
+  static let leftDefaultIndexKey = "spotlightLeftDefaultIndex"
+
+  /// The infinitives indexed, one per line, so that a verb that leaves the corpus leaves
+  /// Spotlight too.
+  static let indexedVerbsKey = "spotlightIndexedVerbs"
 
   /// Builds every verb's entry and indexes them. It runs at each launch, as indexing always has,
   /// and yields between batches, because the key conjugations need the Conjugator, which
   /// shares the main actor with the interface.
-  static func indexVerbs() async {
-    // Deleting app entities by type empties every index of the app, not only the one it is
-    // called on (seen in the iOS 26.3 simulator), so the old entries go before the new arrive.
-    if Current.getterSetter.get(key: leftDefaultIndexKey) == nil {
-      try? await CSSearchableIndex.default().deleteAppEntities(ofType: VerbEntity.self)
-      Current.getterSetter.set(key: leftDefaultIndexKey, value: "true")
+  static func indexVerbs(_ verbs: [Verb] = Verb.verbsSortedAlphabetically, in index: SpotlightIndex = Current.spotlightIndex, getterSetter: GetterSetter = Current.getterSetter) async {
+    // Deleting by type empties the named index too, so the old entries go before the new arrive.
+    if getterSetter.get(key: leftDefaultIndexKey) == nil, (try? await index.deleteEveryVerb()) != nil {
+      getterSetter.set(key: leftDefaultIndexKey, value: "true")
+    }
+
+    let infinitivs = Set(verbs.map(\.infinitiv))
+    let remembered = Set(getterSetter.get(key: indexedVerbsKey)?.split(separator: "\n").map(String.init) ?? [])
+    var departed = remembered.subtracting(infinitivs)
+    if !departed.isEmpty, (try? await index.deleteVerbs(departed.sorted())) != nil {
+      departed = []
     }
 
     let conjugations = await Task.detached(priority: .utility) {
@@ -44,13 +52,16 @@ enum VerbSpotlight {
     }.value
     let region = Current.settings.region
     var entities: [VerbEntity] = []
-    for (offset, verb) in Verb.verbsSortedAlphabetically.enumerated() {
+    for (offset, verb) in verbs.enumerated() {
       entities.append(entity(for: verb, conjugations: conjugations[verb.infinitiv] ?? [], region: region))
       if offset.isMultiple(of: 100) {
         await Task.yield()
       }
     }
-    try? await CSSearchableIndex(name: indexName).indexAppEntities(entities)
+    // Recorded before indexing, which need not return promptly. A verb whose deletion failed is
+    // kept, to be deleted at the next launch.
+    getterSetter.set(key: indexedVerbsKey, value: infinitivs.union(departed).sorted().joined(separator: "\n"))
+    try? await index.indexVerbs(entities)
   }
 
   static func entity(for verb: Verb, conjugations: Set<String>, region: Region) -> VerbEntity {

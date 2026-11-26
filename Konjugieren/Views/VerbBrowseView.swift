@@ -307,11 +307,8 @@ struct VerbBrowseView: View {
         openRequestedSearch()
       }
       .task {
-        // Building the index decompresses the map and folds 50,000 conjugations, which the
-        // first keystroke should not wait for.
-        await Task.detached(priority: .utility) {
-          _ = ConjugationIndex.bundled
-        }.value
+        // The first keystroke should not wait for the index.
+        await ConjugationIndex.warmBundled()
       }
       .onChange(of: world.verb) {
         openRequestedVerb()

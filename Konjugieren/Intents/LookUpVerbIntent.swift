@@ -21,6 +21,8 @@ struct LookUpVerbIntent: AppIntent {
 
   func perform() async throws -> some IntentResult & OpensIntent & ProvidesDialog {
     let word = word
+    // A Siri run may never have drawn the verb list, which warms the index too.
+    await ConjugationIndex.warmBundled()
     let (answer, destination) = await MainActor.run {
       let settings = Current.settings
       let lookup = VerbLookup(word: word, verbs: Verb.verbsSortedByFrequency, includeGlosses: settings.searchScope == .infinitiveAndTranslation)

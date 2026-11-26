@@ -22,6 +22,7 @@ class World {
   var practice: PracticeStore
   var reminderScheduler: ReminderScheduler
   var liveActivities: LiveActivities
+  var spotlightIndex: SpotlightIndex
   var verb: Verb?
   var verbSource: AnalyticsSource = .deeplink
   var verbMarks: MarkedConjugations?
@@ -37,7 +38,7 @@ class World {
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
-  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore, reminderScheduler: ReminderScheduler, liveActivities: LiveActivities) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore, reminderScheduler: ReminderScheduler, liveActivities: LiveActivities, spotlightIndex: SpotlightIndex) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.getterSetter = getterSetter
@@ -52,6 +53,7 @@ class World {
     self.practice = practice
     self.reminderScheduler = reminderScheduler
     self.liveActivities = liveActivities
+    self.spotlightIndex = spotlightIndex
   }
 
   nonisolated static let isRunningUnitTests = NSClassFromString("XCTestCase") != nil
@@ -64,13 +66,13 @@ class World {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
     let sharedGetterSetter = GetterSetterReal(userDefaults: WidgetConstants.sharedDefaults ?? .standard)
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter), reminderScheduler: ReminderSchedulerReal(), liveActivities: LiveActivitiesReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter), reminderScheduler: ReminderSchedulerReal(), liveActivities: LiveActivitiesReal(), spotlightIndex: SpotlightIndexReal())
   }()
 
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()), reminderScheduler: ReminderSchedulerSpy(), liveActivities: LiveActivitiesSpy())
+    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()), reminderScheduler: ReminderSchedulerSpy(), liveActivities: LiveActivitiesSpy(), spotlightIndex: SpotlightIndexSpy())
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"
@@ -102,11 +104,8 @@ class World {
     else {
       return
     }
-    clearDeeplinkTargets()
-    verb = Verb.verbs[infinitiv]
-    verbSource = .handoff
-    if verb != nil {
-      selectedTab = .verbs
+    if let url = URL.verbDeeplink(infinitiv, source: .handoff) {
+      handleURL(url)
     }
   }
 
@@ -128,46 +127,55 @@ class World {
       return
     }
 
-    clearDeeplinkTargets()
-
+    // Pending targets are cleared only once a route has found its own, so that a link to
+    // nothing leaves a pending search or practice set where it was.
+    let target = url.pathComponents[1]
+    let source = url.analyticsSource ?? .deeplink
     switch url.host {
     case URL.verbHost:
-      let target = url.pathComponents[1]
-      let found = target == "random" ? VerbDraw.randomVerb(myVerbs: learnerVerbs.myVerbs) : Verb.verbs[target]
-      verbSource = url.analyticsSource ?? .deeplink
-      if let found {
-        verbMarks = url.deeplinkQueryValue(named: URL.matchQueryName).flatMap { MarkedConjugations(text: $0, on: found) }
-        verb = found
-        selectedTab = .verbs
+      guard let found = target == "random" ? VerbDraw.randomVerb(myVerbs: learnerVerbs.myVerbs) : Verb.verbs[target] else {
+        return
       }
+      clearDeeplinkTargets()
+      verbSource = source
+      verbMarks = url.deeplinkQueryValue(named: URL.matchQueryName).flatMap { MarkedConjugations(text: $0, on: found) }
+      verb = found
+      selectedTab = .verbs
     case URL.quizHost:
+      clearDeeplinkTargets()
       // A practice set shows over whatever tab is open, as a sheet with Start.
-      if url.pathComponents[1] == URL.practiceSetTarget {
-        practiceSet = PracticeSetRequest(practiceSet: PracticeSet(url: url), source: url.analyticsSource ?? .deeplink)
-      } else if url.pathComponents[1] == URL.dailySessionTarget {
-        dailySessionRequest = DailySessionRequest(source: url.analyticsSource ?? .deeplink)
+      if target == URL.practiceSetTarget {
+        practiceSet = PracticeSetRequest(practiceSet: PracticeSet(url: url), source: source)
+      } else if target == URL.dailySessionTarget {
+        dailySessionRequest = DailySessionRequest(source: source)
         selectedTab = .quiz
-      } else if url.pathComponents[1] == URL.challengeTarget {
-        challengeRequest = DailyChallengeRequest(key: Self.challengeKey(in: url, level: settings.quizLevel), source: url.analyticsSource ?? .deeplink)
+      } else if target == URL.challengeTarget {
+        challengeRequest = DailyChallengeRequest(key: Self.challengeKey(in: url, level: settings.quizLevel), source: source)
         selectedTab = .quiz
       } else {
         selectedTab = .quiz
       }
     case URL.familyHost:
-      if BrowseableFamily(rawValue: url.pathComponents[1]) != nil {
-        family = url.pathComponents[1]
-        selectedTab = .families
+      guard BrowseableFamily(rawValue: target) != nil else {
+        return
       }
+      clearDeeplinkTargets()
+      family = target
+      selectedTab = .families
     case URL.listHost:
-      if let found = VerbCollection(key: url.pathComponents[1]) {
-        collection = VerbCollectionRequest(collection: found, source: url.analyticsSource ?? .deeplink)
-        selectedTab = .families
+      guard let found = VerbCollection(key: target) else {
+        return
       }
+      clearDeeplinkTargets()
+      collection = VerbCollectionRequest(collection: found, source: source)
+      selectedTab = .families
     case URL.infoHost:
-      if let found = Info.info(deeplinkTarget: url.pathComponents[1]) {
-        info = found
-        selectedTab = .info
+      guard let found = Info.info(deeplinkTarget: target) else {
+        return
       }
+      clearDeeplinkTargets()
+      info = found
+      selectedTab = .info
     default:
       return
     }

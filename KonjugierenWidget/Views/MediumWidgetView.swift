@@ -66,6 +66,6 @@ struct MediumWidgetView: View {
         }
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)?source=widget"))
+    .widgetURL(WidgetDeeplink.verb(snapshot.infinitiv).url)
   }
 }

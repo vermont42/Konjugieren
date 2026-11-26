@@ -118,7 +118,6 @@ extension URL {
   }
 
   static let deeplinkScheme = "konjugieren"
-  static let konjugierenURLPrefix = "\(deeplinkScheme)://"
   static let quizHost = "quiz"
   static let verbHost = "verb"
   static let familyHost = "family"

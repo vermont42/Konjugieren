@@ -55,29 +55,34 @@ extension Verb {
   }
 }
 
-extension Conjugationgroup {
-  /// Nil for a participle, which has no person.
-  var personNumber: PersonNumber? {
-    switch self {
-    case .perfektpartizip, .präsenspartizip:
-      return nil
-    case .präsensIndikativ(let personNumber), .präsensKonjunktivI(let personNumber), .präteritumIndikativ(let personNumber),
-      .präteritumKonjunktivII(let personNumber), .imperativ(let personNumber), .perfektIndikativ(let personNumber),
-      .perfektKonjunktivI(let personNumber), .plusquamperfektIndikativ(let personNumber), .plusquamperfektKonjunktivII(let personNumber),
-      .futurIndikativ(let personNumber), .futurKonjunktivI(let personNumber), .futurKonjunktivII(let personNumber):
-      return personNumber
-    }
+extension Verb {
+  /// Which of a text's matching cells a caller wants.
+  enum CellPreference {
+    case finitePart
+    case whole
+
+    /// Whole conjugations, and failing those, finite parts, so that hielt marks aufhalten's
+    /// "ich hielt auf".
+    case wholeThenFinitePart
   }
 
-  /// Whether a main clause splits this cell around its separable prefix, leaving a finite part
-  /// that is a word on its own. A compound conjugationgroup's first word is the auxiliary,
-  /// which belongs to haben, sein, or werden rather than to the verb.
-  fileprivate var leavesFinitePart: Bool {
-    switch self {
-    case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII, .imperativ:
-      return true
-    case .perfektpartizip, .präsenspartizip, .perfektIndikativ, .perfektKonjunktivI, .plusquamperfektIndikativ, .plusquamperfektKonjunktivII, .futurIndikativ, .futurKonjunktivI, .futurKonjunktivII:
-      return false
+  /// The cells that `text` fills in the first reading that has any of the kind `preference`
+  /// wants, in page order. Nil when it fills none.
+  func cells(filledBy text: String, preferring preference: CellPreference) -> (readingIndex: Int, conjugationgroups: [Conjugationgroup])? {
+    let matches = conjugations(matching: text)
+    let wholeMatches = matches.filter { !$0.isFinitePart }
+    let chosen: [ConjugationMatch]
+    switch preference {
+    case .finitePart:
+      chosen = matches.filter(\.isFinitePart)
+    case .whole:
+      chosen = wholeMatches
+    case .wholeThenFinitePart:
+      chosen = wholeMatches.isEmpty ? matches : wholeMatches
     }
+    guard let first = chosen.first else {
+      return nil
+    }
+    return (first.readingIndex, chosen.filter { $0.readingIndex == first.readingIndex }.map(\.conjugationgroup))
   }
 }

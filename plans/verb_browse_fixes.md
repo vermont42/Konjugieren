@@ -26,7 +26,7 @@ empty until it is committed.
 | 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
 | 6 | Done | 2026-11-25 | `ab2493b` | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
-| 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |
+| 8 | Done | 2026-11-26 | | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Not started | | | S6, D7, the sein collection's quiz | No |
@@ -489,7 +489,44 @@ tests, in 104 suites.
 leaves `corpus/working/forms.json` byte-identical (`git diff --stat` shows nothing). D2, D3, and S4
 all touch files the tool compiles, and an identical map is the proof that nothing moved.
 
-**How it differed:**
+**How it differed:** In one cost that S4 exposed, and in a few placements the tool forced. The
+suite went from 1022 to 1027 tests, in 104 suites.
+
+- **Every output of the tool is byte-identical.** `forms.json` is gitignored, so `git diff
+  --stat` could not show a change. Instead the tool's three outputs (the compressed map,
+  `forms.json`, and `cells.json`) were written to a scratch directory before any edit and again
+  after the last, and their SHA-1s match. `matchesAFreshBuild` passes, and
+  `scripts/write_forms_json.sh` left `corpus/working/forms.json` unchanged.
+- **S4 moved a cost to launch, so `fold` became one pass.** Keys made with each verb are made as
+  the corpus loads, and building them for 3,572 verbs took 0.11 s in a debug build on the Intel
+  simulator, nearly all of it `fold`'s seven `replacingOccurrences`. The old cache paid the same on
+  the first search. One pass over the characters takes 0.026 s. A test folds every infinitive and
+  every key of the bundled map, more than 50,000 texts, both ways and finds no difference.
+- **`fold` lives at `Verb.SearchKeys.fold`**, since `Verb.swift` compiles into the tool and
+  `VerbSearch.swift` does not. Its callers in `VerbSearch` and `ConjugationIndex` were renamed.
+- **D3's list is a function, `Conjugationgroup.oneWordFinites(for:)`**, which returns one person's
+  four cells, rather than stored closures, so `leavesFinitePart` can ask whether a cell is among
+  them and adds the Imperativ. The builder and `CellsJSON` now loop over persons outside groups,
+  which changes nothing because both sort what they collect. `CellsJSON` names its groups with an
+  exhaustive switch, which also replaced the three literals for the participles and the
+  Imperativ, and its header no longer points to a `groupKeys` that did not exist.
+- **D1's helper is `Verb.cells(filledBy:preferring:)`**, in `ConjugationMatch.swift`, with three
+  preferences: whole, finite part, and whole then finite part. `Recognition` and `AnswerDiagnosis`
+  also filter `conjugations(matching:)`, but they want every reading's cells, so they stay.
+- **S3 moved `MatchedConjugation` too**, which the review did not name, so that
+  `VerbSearchResults.swift` holds only the results. New files: `MarkedConjugations.swift`,
+  `MatchedConjugation.swift`, `VerbDestination.swift`, and `VerbListMode.swift`.
+- **E1.** The results store entries, with the folded row's verbs after it, and
+  `entries(separableVerbsAreShown:)` filters them; `hits` serves `VerbLookup`. `Entry` gained
+  `isInSeparableVerbs`, which shortened the grid's section rule. The tests that read `rows` read
+  `entries(separableVerbsAreShown: false)`, which is what `rows` was.
+- **Tests.** `aVerbIsSearchedByItsOwnKeys` searches the corpus first, so that the cache holds the
+  real gehen, and then a gehen glossed "wander". Run against the old code in a scratch worktree
+  at `125329c`, both its expectations failed: wander found nothing, and go found the impostor. The
+  other four (the fold's equivalence, `leavesFinitePart` over every cell, and two for the filled
+  cells) pin refactors and were not run against old code. `leavesFinitePart`'s test loops rather
+  than taking `allCells` as arguments, because arguments are evaluated off the main actor.
+- `README.md`'s three test counts went to 1027. No test file was added, so its file count stays.
 
 ## Phase 9: Links, Intents, and Spotlight
 

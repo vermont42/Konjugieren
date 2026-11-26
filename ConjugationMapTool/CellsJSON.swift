@@ -10,7 +10,7 @@
 //   "ging": [["praeteritumIndikativ", "gehen", "s"], …]
 //   "gegangen": [["perfektpartizip", "gehen", "s"]]
 //
-// `group` is one of the keys in `groupKeys` below, plus "infinitiv". `auxiliary` is "h", "s",
+// `group` is a conjugationgroup's name as `key(for:)` below spells it, or "infinitiv". `auxiliary` is "h", "s",
 // or "hs" for a reading whose auxiliary varies by region (stehen); the counter needs it to tell
 // a Perfekt (ist gegangen) from a Zustandspassiv (ist gemacht), which look alike.
 //
@@ -21,12 +21,41 @@
 import Foundation
 
 enum CellsJSON {
-  private static let finiteGroups: [(key: String, factory: (PersonNumber) -> Conjugationgroup)] = [
-    ("praesensIndikativ", Conjugationgroup.präsensIndikativ),
-    ("praesensKonjunktivI", Conjugationgroup.präsensKonjunktivI),
-    ("praeteritumIndikativ", Conjugationgroup.präteritumIndikativ),
-    ("praeteritumKonjunktivII", Conjugationgroup.präteritumKonjunktivII)
-  ]
+  /// The name the counter reads, in ASCII because scripts/count_conjugationgroups.py matches
+  /// these strings literally. Only the simple conjugationgroups are written, but the switch
+  /// names them all so that a new case cannot go unnamed.
+  private static func key(for group: Conjugationgroup) -> String {
+    switch group {
+    case .perfektpartizip:
+      return "perfektpartizip"
+    case .präsenspartizip:
+      return "praesenspartizip"
+    case .präsensIndikativ:
+      return "praesensIndikativ"
+    case .präsensKonjunktivI:
+      return "praesensKonjunktivI"
+    case .präteritumIndikativ:
+      return "praeteritumIndikativ"
+    case .präteritumKonjunktivII:
+      return "praeteritumKonjunktivII"
+    case .imperativ:
+      return "imperativ"
+    case .perfektIndikativ:
+      return "perfektIndikativ"
+    case .perfektKonjunktivI:
+      return "perfektKonjunktivI"
+    case .plusquamperfektIndikativ:
+      return "plusquamperfektIndikativ"
+    case .plusquamperfektKonjunktivII:
+      return "plusquamperfektKonjunktivII"
+    case .futurIndikativ:
+      return "futurIndikativ"
+    case .futurKonjunktivI:
+      return "futurKonjunktivI"
+    case .futurKonjunktivII:
+      return "futurKonjunktivII"
+    }
+  }
 
   /// Only the du and ihr Imperativ: the wir and Sie Imperativ (gehen wir, gehen Sie) are the
   /// infinitive in a different word order, and the counter cannot tell them apart by spelling.
@@ -53,25 +82,25 @@ enum CellsJSON {
         }
 
         add(reading.infinitiv, "infinitiv", infinitiv, auxiliary)
-        if let participle = conjugate(.perfektpartizip, .subordinate) {
-          add(participle, "perfektpartizip", infinitiv, auxiliary)
+        for group in [Conjugationgroup.perfektpartizip, .präsenspartizip] {
+          if let participle = conjugate(group, .subordinate) {
+            add(participle, key(for: group), infinitiv, auxiliary)
+          }
         }
-        if let participle = conjugate(.präsenspartizip, .subordinate) {
-          add(participle, "praesenspartizip", infinitiv, auxiliary)
-        }
-        for (key, factory) in finiteGroups {
-          for personNumber in PersonNumber.allCases {
-            if let joined = conjugate(factory(personNumber), .subordinate) {
-              add(joined, key, infinitiv, auxiliary)
+        for personNumber in PersonNumber.allCases {
+          for group in Conjugationgroup.oneWordFinites(for: personNumber) {
+            if let joined = conjugate(group, .subordinate) {
+              add(joined, key(for: group), infinitiv, auxiliary)
             }
-            if let main = conjugate(factory(personNumber), .main), let head = main.split(separator: " ").first {
-              add(head, key, infinitiv, auxiliary)
+            if let main = conjugate(group, .main), let head = main.split(separator: " ").first {
+              add(head, key(for: group), infinitiv, auxiliary)
             }
           }
         }
         for personNumber in imperativPersonNumbers {
-          if let imperativ = conjugate(.imperativ(personNumber), .main), let head = imperativ.split(separator: " ").first {
-            add(head, "imperativ", infinitiv, auxiliary)
+          let group = Conjugationgroup.imperativ(personNumber)
+          if let imperativ = conjugate(group, .main), let head = imperativ.split(separator: " ").first {
+            add(head, key(for: group), infinitiv, auxiliary)
           }
         }
       }

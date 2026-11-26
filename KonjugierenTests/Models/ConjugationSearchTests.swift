@@ -149,7 +149,8 @@ enum ConjugationSearchTests {
 
     @Test func strandedPartFoldsItsVerbsIntoOneRowAfterTheBaseVerb() throws {
       let found = results("hielt")
-      guard case .hit(let halten) = found.rows.first, case .separableVerbs(let hits) = found.rows.dropFirst().first else {
+      let rows = found.entries(separableVerbsAreShown: false)
+      guard case .hit(let halten, _) = rows.first, case .separableVerbs(let hits) = rows.dropFirst().first else {
         Issue.record("Expected halten, then the separable verbs")
         return
       }
@@ -163,7 +164,7 @@ enum ConjugationSearchTests {
       let found = results("hielt")
       let closed = found.entries(separableVerbsAreShown: false)
       let open = found.entries(separableVerbsAreShown: true)
-      #expect(closed.count == found.rows.count)
+      #expect(closed.count == 2)
       #expect(open.count == found.matchCount + 1)
       #expect(open[1].id == VerbSearchResults.Entry.separableVerbsID)
       if case .hit(_, let isInSeparableVerbs) = open[2] {
@@ -174,11 +175,11 @@ enum ConjugationSearchTests {
     }
 
     @Test func literalConjugationLeadsAndItsFoldedRowPrecedesTheFoldedInfinitive() {
-      let rows = results("fuhren").rows
+      let rows = results("fuhren").entries(separableVerbsAreShown: false)
       guard
-        case .hit(let fahren) = rows.first,
+        case .hit(let fahren, _) = rows.first,
         case .separableVerbs(let hits) = rows.dropFirst().first,
-        case .hit(let führen) = rows.dropFirst(2).first
+        case .hit(let führen, _) = rows.dropFirst(2).first
       else {
         Issue.record("Expected fahren, then its separable verbs, then führen")
         return
@@ -189,8 +190,8 @@ enum ConjugationSearchTests {
     }
 
     @Test func infinitiveQueryHasNoFoldedRow() {
-      #expect(!results("gehen").rows.contains { row in
-        if case .separableVerbs = row {
+      #expect(!results("gehen").entries.contains { entry in
+        if case .separableVerbs = entry {
           return true
         }
         return false
@@ -205,18 +206,8 @@ enum ConjugationSearchTests {
         entries.count == 1 && entries[0].particle != nil && Verb.verbs[key] == nil && !key.contains(" ")
       })
       let found = results(lone.key)
-      #expect(found.rows.allSatisfy { row in
-        if case .hit = row {
-          return true
-        }
-        return false
-      })
-      #expect(found.rows.contains { row in
-        if case .hit(let hit) = row {
-          return hit.kind == .finitePart
-        }
-        return false
-      })
+      #expect(found.entries.allSatisfy { $0.hit?.kind != nil && !$0.isInSeparableVerbs })
+      #expect(found.hits.contains { $0.kind == .finitePart })
     }
 
     @Test func emptySearchHasAGuessWithItsConjugation() throws {

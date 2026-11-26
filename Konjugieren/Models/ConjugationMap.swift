@@ -97,15 +97,6 @@ nonisolated extension ConjugationMap {
 }
 
 extension ConjugationMap {
-  /// The four conjugationgroups whose conjugations are one finite word, and which therefore
-  /// strand a separable prefix in a main clause.
-  private static let finiteFactories: [(PersonNumber) -> Conjugationgroup] = [
-    Conjugationgroup.präsensIndikativ,
-    Conjugationgroup.präsensKonjunktivI,
-    Conjugationgroup.präteritumIndikativ,
-    Conjugationgroup.präteritumKonjunktivII
-  ]
-
   /// Builds the map from `Verb.verbs` and `AblautGroup.ablautGroups`, which must be loaded.
   ///
   /// Every reading counts, because readings differ in family and so in conjugations: hängen is
@@ -137,10 +128,8 @@ extension ConjugationMap {
 
       add(reading.infinitiv, infinitiv: infinitiv, particle: nil)
 
-      // The zu-infinitive is one word only when a separable prefix wraps the zu: anzufangen,
-      // but "zu vermeiden", whose second word the infinitive already covers.
-      if !run.isEmpty {
-        add(run + "zu" + reading.infinitiv.dropFirst(run.count), infinitiv: infinitiv, particle: nil)
+      if let zuInfinitive = reading.zuInfinitive {
+        add(zuInfinitive, infinitiv: infinitiv, particle: nil)
       }
 
       for group in [Conjugationgroup.perfektpartizip, .präsenspartizip] {
@@ -149,9 +138,8 @@ extension ConjugationMap {
         }
       }
 
-      for factory in ConjugationMap.finiteFactories {
-        for personNumber in PersonNumber.allCases {
-          let group = factory(personNumber)
+      for personNumber in PersonNumber.allCases {
+        for group in Conjugationgroup.oneWordFinites(for: personNumber) {
           if let joined = conjugate(infinitiv, group, readingIndex, .subordinate) {
             add(joined, infinitiv: infinitiv, particle: nil)
           }

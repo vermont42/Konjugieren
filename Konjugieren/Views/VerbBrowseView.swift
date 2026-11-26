@@ -423,10 +423,7 @@ struct VerbBrowseView: View {
       }
       return false
     } isUnderHeader: { entry in
-      if case .hit(_, true) = entry {
-        return true
-      }
-      return false
+      entry.isInSeparableVerbs
     }
   }
 

@@ -77,4 +77,20 @@ struct ConjugationgroupTests {
     expectEnding(.imperativ(.firstPlural), family: Self.weak, "en")
     expectEnding(.imperativ(.thirdPlural), family: Self.weak, "en")
   }
+
+  // A main clause strands the prefix of a one-word simple conjugation and of the Imperativ.
+  // A participle is one word but not finite, and a compound's first word is its auxiliary's.
+  @Test func leavesAFinitePartOnlyWhenSimpleAndFinite() {
+    for group in Conjugationgroup.allCells {
+      let expected: Bool
+      switch group {
+      case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII, .imperativ:
+        expected = true
+      case .perfektpartizip, .präsenspartizip, .perfektIndikativ, .perfektKonjunktivI, .plusquamperfektIndikativ,
+        .plusquamperfektKonjunktivII, .futurIndikativ, .futurKonjunktivI, .futurKonjunktivII:
+        expected = false
+      }
+      #expect(group.leavesFinitePart == expected, "\(group)")
+    }
+  }
 }

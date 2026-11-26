@@ -64,4 +64,22 @@ struct ConjugationMatchTests {
     #expect(Conjugationgroup.allCells.count == 2 + 4 * 6 + 4 + 7 * 6)
     #expect(Set(Conjugationgroup.allCells).count == Conjugationgroup.allCells.count)
   }
+
+  private static let hieltCells: [Conjugationgroup] = [.präteritumIndikativ(.firstSingular), .präteritumIndikativ(.thirdSingular)]
+
+  @Test func filledCellsTakeTheKindAsked() throws {
+    let aufhalten = try #require(Verb.verbs["aufhalten"])
+    #expect(aufhalten.cells(filledBy: "hielt", preferring: .whole) == nil)
+    #expect(aufhalten.cells(filledBy: "hielt", preferring: .finitePart)?.conjugationgroups == Self.hieltCells)
+    #expect(aufhalten.cells(filledBy: "aufhielt", preferring: .finitePart) == nil)
+    #expect(aufhalten.cells(filledBy: "aufhielt", preferring: .whole)?.conjugationgroups == Self.hieltCells)
+  }
+
+  @Test func filledCellsFallBackToFinitePartsOnlyWhenNothingIsWhole() throws {
+    let aufhalten = try #require(Verb.verbs["aufhalten"])
+    #expect(aufhalten.cells(filledBy: "hielt", preferring: .wholeThenFinitePart)?.conjugationgroups == Self.hieltCells)
+    let whole = try #require(aufhalten.cells(filledBy: "aufhielt", preferring: .wholeThenFinitePart))
+    #expect(whole.readingIndex == 0)
+    #expect(whole.conjugationgroups == Self.hieltCells)
+  }
 }

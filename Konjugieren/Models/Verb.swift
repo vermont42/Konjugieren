@@ -71,6 +71,19 @@ struct Verb: Identifiable, Hashable {
     )
   }
 
+  /// What search compares a query with, made once when the verb is.
+  let searchKeys: SearchKeys
+
+  init(infinitiv: String, hits: Int, hitsAreProvisional: Bool, frequency: Int, frequencyIcon: String, readings: [Reading]) {
+    self.infinitiv = infinitiv
+    self.hits = hits
+    self.hitsAreProvisional = hitsAreProvisional
+    self.frequency = frequency
+    self.frequencyIcon = frequencyIcon
+    self.readings = readings
+    searchKeys = SearchKeys(infinitiv: infinitiv, glosses: readings.map(\.translation))
+  }
+
   var hasMultipleReadings: Bool { readings.count > 1 }
 
   func reading(at index: Int) -> Reading? {
@@ -99,5 +112,52 @@ struct Verb: Identifiable, Hashable {
 
   static func endingIsValid(infinitiv: String) -> Bool {
     ["en", "rn", "ln", "in", "un"].contains(String(infinitiv.suffix(2)))
+  }
+}
+
+extension Verb {
+  nonisolated struct SearchKeys: Hashable, Sendable {
+    let infinitiv: String
+    let foldedInfinitiv: String
+    let glosses: [String]
+
+    init(infinitiv: String, glosses: [String]) {
+      self.infinitiv = infinitiv.lowercased()
+      foldedInfinitiv = Self.fold(infinitiv)
+      self.glosses = glosses.map { $0.lowercased() }
+    }
+
+    /// Collapses the spellings a learner without a German keyboard types (konnen, koennen) and
+    /// the Swiss ss onto one key. For matching only: never render it.
+    ///
+    /// One pass, because every verb is folded as the corpus loads, and seven passes of
+    /// `replacingOccurrences` cost a tenth of a second there. Only a typed a, o, or u begins a
+    /// digraph: ü followed by e is not a ue digraph, and folding it as one would lose the e.
+    static func fold(_ text: String) -> String {
+      var folded = ""
+      var characters = text.lowercased().makeIterator()
+      var next = characters.next()
+      while let character = next {
+        next = characters.next()
+        switch character {
+        case "a", "o", "u":
+          folded.append(character)
+          if next == "e" {
+            next = characters.next()
+          }
+        case "ä":
+          folded.append("a")
+        case "ö":
+          folded.append("o")
+        case "ü":
+          folded.append("u")
+        case "ß":
+          folded.append("ss")
+        default:
+          folded.append(character)
+        }
+      }
+      return folded
+    }
   }
 }

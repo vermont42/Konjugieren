@@ -1,5 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import Foundation
 @testable import Konjugieren
 import Testing
 
@@ -88,7 +89,7 @@ struct VerbSearchTests {
     ["konnen", "konnen", "konnen", "schliessen", "schliessen", "fusse", "gehen"]
   ))
   func foldCollapsesUmlautsDigraphsAndSharpS(text: String, folded: String) {
-    #expect(VerbSearch.fold(text) == folded)
+    #expect(Verb.SearchKeys.fold(text) == folded)
   }
 
   @Test(arguments: [
@@ -202,5 +203,39 @@ struct VerbSearchTests {
   @Test(arguments: zip([1, 4, 6, 9, 20], [1, 1, 2, 3, 3]))
   func guessDistanceGrowsWithTheQueryAndIsCapped(length: Int, expected: Int) {
     #expect(VerbSearch.maxGuessDistance(forQueryLength: length) == expected)
+  }
+
+  // A verb made in a test shares its infinitive with a corpus verb but not its gloss. Keys
+  // memoized by infinitive served it the corpus verb's gloss once the corpus had been searched.
+  @Test func aVerbIsSearchedByItsOwnKeys() throws {
+    #expect(results("go").first == "gehen")
+    let real = try #require(Verb.verbs["gehen"])
+    let reading = Reading(
+      infinitiv: "gehen",
+      translation: "wander",
+      family: real.family,
+      auxiliary: real.auxiliary,
+      prefixes: [],
+      auxiliaryIsRegional: false
+    )
+    let impostor = Verb(infinitiv: "gehen", hits: 0, hitsAreProvisional: false, frequency: 0, frequencyIcon: "", readings: [reading])
+    #expect(results("wander", in: [impostor]) == ["gehen"])
+    #expect(results("go", in: [impostor]).isEmpty)
+  }
+
+  // Folding was seven passes of replacingOccurrences, in this order, until it became one pass.
+  // The order is the rule: ß before the digraphs, and the digraphs before the umlauts.
+  @Test func foldMatchesItsOrderedReplacementsOnEveryInfinitiveAndConjugation() {
+    func replaced(_ text: String) -> String {
+      var folded = text.lowercased()
+      for (from, to) in [("ß", "ss"), ("ae", "a"), ("oe", "o"), ("ue", "u"), ("ä", "a"), ("ö", "o"), ("ü", "u")] {
+        folded = folded.replacingOccurrences(of: from, with: to)
+      }
+      return folded
+    }
+    let texts = Array(Verb.verbs.keys) + Array(ConjugationMap.bundled.entriesByConjugation.keys) + ["Aee", "äe", "Straße", "ÜE", "quaeoe"]
+    let mismatches = texts.filter { Verb.SearchKeys.fold($0) != replaced($0) }
+    #expect(texts.count > 50_000)
+    #expect(mismatches.isEmpty, "\(mismatches.prefix(5))")
   }
 }

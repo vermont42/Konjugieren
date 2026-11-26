@@ -45,14 +45,7 @@ struct VerbLookup {
     let trimmed = word.trimmingCharacters(in: .whitespacesAndNewlines)
     self.word = trimmed
     let results = VerbSearchResults(query: trimmed, verbs: verbs, includeGlosses: includeGlosses, index: index)
-    let hits = results.rows.flatMap { row -> [VerbSearchResults.Hit] in
-      switch row {
-      case .hit(let hit):
-        return [hit]
-      case .separableVerbs(let hits):
-        return hits
-      }
-    }
+    let hits = results.hits
 
     // An infinitive and a conjugation answer the question equally: gefallen is a verb and
     // fallen's Perfektpartizip, and naming only the first would mislead a reader of the second.

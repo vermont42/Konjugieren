@@ -174,7 +174,7 @@ struct SearchReportTests {
       return entries.count > 1 && entries.allSatisfy { $0.particle != nil } && !key.contains(" ")
     })
     let shown = results(part)
-    guard case .separableVerbs = shown.rows.first else {
+    guard case .separableVerbs = shown.entries.first else {
       Issue.record("Expected \(part) to put its folded row first")
       return
     }

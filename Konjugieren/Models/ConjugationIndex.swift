@@ -14,7 +14,7 @@ nonisolated struct ConjugationIndex: Sendable {
     self.map = map
     var keysByFoldedKey: [String: [String]] = [:]
     for key in map.entriesByConjugation.keys.sorted() {
-      keysByFoldedKey[VerbSearch.fold(key), default: []].append(key)
+      keysByFoldedKey[Verb.SearchKeys.fold(key), default: []].append(key)
     }
     self.keysByFoldedKey = keysByFoldedKey
     var foldedKeysByLength: [Int: [String]] = [:]
@@ -38,7 +38,7 @@ nonisolated struct ConjugationIndex: Sendable {
   func spellings(of word: String) -> [Spelling] {
     let lowered = word.lowercased()
     let literal = map.entriesByConjugation[lowered] == nil ? [] : [Spelling(conjugation: lowered, isFolded: false)]
-    let folded = (keysByFoldedKey[VerbSearch.fold(lowered)] ?? [])
+    let folded = (keysByFoldedKey[Verb.SearchKeys.fold(lowered)] ?? [])
       .filter { $0 != lowered }
       .map { Spelling(conjugation: $0, isFolded: true) }
     return literal + folded

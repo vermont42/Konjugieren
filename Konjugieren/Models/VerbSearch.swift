@@ -72,14 +72,14 @@ enum VerbSearch {
     guard !germanQuery.isEmpty else {
       return []
     }
-    let foldedQuery = fold(germanQuery)
+    let foldedQuery = Verb.SearchKeys.fold(germanQuery)
     let englishQuery = includeGlosses ? glossQuery(from: germanQuery) : nil
 
     var verbsByInfinitiv: [String: Verb] = [:]
     var best: [String: Match] = [:]
     for verb in verbs {
       verbsByInfinitiv[verb.infinitiv] = verb
-      if let kind = kind(of: keys(for: verb), germanQuery: germanQuery, foldedQuery: foldedQuery, englishQuery: englishQuery) {
+      if let kind = kind(of: verb.searchKeys, germanQuery: germanQuery, foldedQuery: foldedQuery, englishQuery: englishQuery) {
         best[verb.infinitiv] = Match(verb: verb, kind: kind)
       }
     }
@@ -144,10 +144,10 @@ enum VerbSearch {
 
     var found: [Match] = []
     if words.count == 2 {
-      let typedParticle = fold(words[1])
+      let typedParticle = Verb.SearchKeys.fold(words[1])
       for spelling in index.spellings(of: words[0]) {
         for entry in index.map.entries(for: spelling.conjugation) {
-          guard let particle = entry.particle, fold(particle) == typedParticle, let verb = verbNamed(entry.infinitiv) else {
+          guard let particle = entry.particle, Verb.SearchKeys.fold(particle) == typedParticle, let verb = verbNamed(entry.infinitiv) else {
             continue
           }
           let isFolded = spelling.isFolded || particle != words[1]
@@ -217,7 +217,7 @@ enum VerbSearch {
   }
 
   static func guessCandidates(of verbs: [Verb]) -> [GuessCandidate] {
-    verbs.map { GuessCandidate(infinitiv: $0.infinitiv, foldedInfinitiv: keys(for: $0).foldedInfinitiv, frequency: $0.frequency) }
+    verbs.map { GuessCandidate(infinitiv: $0.infinitiv, foldedInfinitiv: $0.searchKeys.foldedInfinitiv, frequency: $0.frequency) }
   }
 
   static func guess(for query: String, in verbs: [Verb], index: ConjugationIndex = .bundled) -> Guess? {
@@ -233,7 +233,7 @@ enum VerbSearch {
   /// when the task running it is cancelled, since a guess for text since edited is not wanted.
   nonisolated static func guess(for query: String, among candidates: [GuessCandidate], index: ConjugationIndex = .bundled) -> GuessFinding? {
     let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-    let foldedQuery = Array(fold(trimmed))
+    let foldedQuery = Array(Verb.SearchKeys.fold(trimmed))
     guard !foldedQuery.isEmpty else {
       return nil
     }
@@ -328,18 +328,6 @@ enum VerbSearch {
     return min(previousRow[rhs.count], beyondLimit)
   }
 
-  /// Collapses the spellings a learner without a German keyboard types (konnen, koennen) and
-  /// the Swiss ss onto one key. For matching only: never render it.
-  nonisolated static func fold(_ text: String) -> String {
-    var folded = text.lowercased()
-    // Digraphs fold before umlauts. In the other order, ü followed by e would become a false
-    // ue digraph and lose its e.
-    for (from, to) in [("ß", "ss"), ("ae", "a"), ("oe", "o"), ("ue", "u"), ("ä", "a"), ("ö", "o"), ("ü", "u")] {
-      folded = folded.replacingOccurrences(of: from, with: to)
-    }
-    return folded
-  }
-
   /// Glosses are stored without a leading "to", so a learner who types "to go" means "go".
   nonisolated static func glossQuery(from query: String) -> String {
     let lowered = query.lowercased()
@@ -363,29 +351,7 @@ enum VerbSearch {
     return false
   }
 
-  private struct Keys {
-    let infinitiv: String
-    let foldedInfinitiv: String
-    let glosses: [String]
-  }
-
-  private static var keysCache: [String: Keys] = [:]
-
-  private static func keys(for verb: Verb) -> Keys {
-    if let cached = keysCache[verb.infinitiv] {
-      return cached
-    }
-    let infinitiv = verb.infinitiv.lowercased()
-    let keys = Keys(
-      infinitiv: infinitiv,
-      foldedInfinitiv: fold(infinitiv),
-      glosses: verb.readings.map { $0.translation.lowercased() }
-    )
-    keysCache[verb.infinitiv] = keys
-    return keys
-  }
-
-  private static func kind(of keys: Keys, germanQuery: String, foldedQuery: String, englishQuery: String?) -> MatchKind? {
+  private static func kind(of keys: Verb.SearchKeys, germanQuery: String, foldedQuery: String, englishQuery: String?) -> MatchKind? {
     if keys.infinitiv == germanQuery {
       return .exactInfinitive
     }

@@ -12720,3 +12720,40 @@ The rest was tidying. The key conjugation of a stem had two implementations that
 differently, one dropping a cell the Conjugator could not fill and the other showing the
 infinitive in its place; there is now one, and it drops. The Related Verbs card became a section
 that `leaveVerbView` can report, and the privacy line waiting for release names it.
+
+## One Home for Each Piece of Search (2026-11-26)
+
+Phase 8 of `plans/verb_browse_fixes.md` was housekeeping in the search model. It moved no
+behaviour, and its proof had to be strong for that reason. Three of its six findings touched
+files that `ConjugationMapTool` compiles, the build-time tool that writes the conjugation map
+into the app bundle and `forms.json` for the Python pipelines. So before the first edit, the
+tool's three outputs went into a scratch directory: the compressed map, `forms.json`, and the
+`cells.json` that counts conjugationgroups in the corpus. They went there again after the last
+edit, and the hashes matched. Hashes were needed because `forms.json` is gitignored, so `git diff`,
+the check the plan named, would have shown nothing whether or not anything changed.
+
+The moves were these. The list of conjugationgroups that leave a finite word in a main clause
+(fängt, from "fängt … an") had been written three times, in the map's builder, in search, and in
+`CellsJSON`. It is now one function on `Conjugationgroup`. The zu-infinitive was built in one
+file and recognized in another; now there is one property on `Reading`. Three functions that each
+asked "which cells of this verb does this text fill, in its first reading" now share one helper.
+The search results stored their rows in one shape and showed them in another, and now they store
+what they show. Four types left files named for something else.
+
+**The one finding that changed a number was S4.** Search kept a global cache of each verb's
+lowercased and folded infinitive, keyed by the infinitive. That was correct for the one corpus
+and wrong for a test that built its own gehen with another gloss, which would have been served
+the real gehen's keys. The new test does exactly that, and against the old code, in a scratch
+worktree, it failed both ways: the made-up gehen's gloss found nothing, and the real gehen's gloss
+found the made-up one. The fix stores the keys on `Verb` as it is made. That moved a cost the
+cache had hidden. Folding all 3,572 verbs took 0.11 s in a debug build, first on a learner's
+first search and now at launch. Nearly all of it was seven passes of `replacingOccurrences`, one
+per rule. One pass over the characters takes 0.026 s, and a test folds more than 50,000
+infinitives and conjugations both ways to show that the two agree.
+
+The folding rule has a nice history. It treats ä, ae, and a as one letter, for a learner without
+a German keyboard, and it folds the digraph before the umlaut, so that ü followed by e keeps its
+e. The two dots began as an e. Medieval scribes wrote a small e above a vowel to mark it as
+fronted, and in German cursive that e shrank to two strokes and then to two dots. So ae and ä are
+not a spelling and its substitute. They are a letter and its ancestor, and the search's fold
+puts them back together.

@@ -48,6 +48,16 @@ struct Reading: Hashable {
   var prefix: Prefix {
     prefixes.first ?? .none
   }
+
+  /// anzufangen, in lowercase. The zu-infinitive is one word only when a separable prefix wraps
+  /// the zu, so this is nil for "zu vermeiden", whose second word the infinitive already is.
+  var zuInfinitive: String? {
+    let run = prefixes.separableRun
+    guard !run.isEmpty else {
+      return nil
+    }
+    return (run + "zu" + infinitiv.dropFirst(run.count)).lowercased()
+  }
 }
 
 extension [Prefix] {

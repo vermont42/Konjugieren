@@ -1149,10 +1149,12 @@ in search reads it ([below](#search-by-conjugation)).
 
 ### What It Holds
 
-About 50,000 conjugations: the infinitive, the zu-infinitive of a separable verb (anzufangen),
-both participles, the four finite simple conjugationgroups joined (anfängt), the finite part a
-main clause leaves when it sends a separable prefix to the end (fängt, with the particle an), and
-the first word of each Imperativ. Every reading counts. Compound conjugations have no entries,
+About 50,000 conjugations: the infinitive, the zu-infinitive of a separable verb (anzufangen,
+from `Reading.zuInfinitive`, which search also reads to name it), both participles, the four
+finite simple conjugationgroups joined (anfängt), the finite part a main clause leaves when it
+sends a separable prefix to the end (fängt, with the particle an), and the first word of each
+Imperativ. The four come from `Conjugationgroup.oneWordFinites(for:)`, the one list that
+`leavesFinitePart` and `CellsJSON` also derive theirs from. Every reading counts. Compound conjugations have no entries,
 because their parts do: hat gefunden resolves through gefunden. Keys are lowercase, because the
 Conjugator's uppercase marks ablaut, not spelling. ß is not folded; a caller that wants muß to find
 müssen folds both sides.
@@ -1223,7 +1225,7 @@ index and length buckets, and is built once, off the main actor, when the verb l
 
 | Query | How it is looked up |
 |---|---|
-| One word (ging) | Its own spelling, then spellings equal after `VerbSearch.fold` (muß → muss, gehort → gehört). Failing both, a participle with an adjective ending loses it (geklebte → geklebt), provided the stem is a participle cell of the verb. |
+| One word (ging) | Its own spelling, then spellings equal after `Verb.SearchKeys.fold` (muß → muss, gehort → gehört). Failing both, a participle with an adjective ending loses it (geklebte → geklebt), provided the stem is a participle cell of the verb. |
 | Two words, the second a particle (stand auf) | The first word's finite-part entries whose particle is the second word. The particle settles the verb, so this is a whole match. |
 | A compound (hat gefunden, wird gehen) | The last word's whole-verb entries, kept only if `conjugations(matching:)` confirms the whole text is a cell: "hat gegangen" finds nothing. |
 | Any of these after ich, du, er, sie, es, wir, ihr, or man | The pronoun is dropped. |
@@ -1237,12 +1239,20 @@ sein ahead of warten, zahlen is still followed directly by zählen, and zahl, za
 keeps zählen below zahlen's literal matches. A finite part comes only from a literal spelling, or zahl would gather zählen's separable
 verbs.
 
+**Keys.** A verb's lowercased infinitive, folded infinitive, and lowercased glosses are made with
+the verb, as `Verb.SearchKeys`, rather than memoized by infinitive, so a verb built in a test is
+searched by its own gloss. The fold is one pass over the characters, because every verb is folded
+as the corpus loads: seven passes of `replacingOccurrences` took 0.11 seconds there in a debug
+build, and one takes 0.03 (2026-11-26, Phase 8 of
+[`verb_browse_fixes.md`](../plans/verb_browse_fixes.md)).
+
 **Stranded parts.** A finite part (hielt, of aufhalten) matches only when the query is not itself
 an infinitive, literally spelled: fuhren, which is führen only once folded, keeps them. Josh chose
 this on 2026-11-12, so that a search for gehen or kommen does not also
 list every separable verb whose finite part it spells. The verb list (`VerbSearchResults`) folds two or more finite-part matches into one row,
 "Also in 67 separable verbs", placed after the base verb and opened in place; a lone finite part
-gets an ordinary row. The shortcut picker passes `includeFiniteParts: false`, since it cannot fold
+gets an ordinary row. The results keep the folded row and its verbs in one list of entries, and
+the list leaves out the verbs while the row is closed; Look Up a Verb reads the same entries. The shortcut picker passes `includeFiniteParts: false`, since it cannot fold
 them and 62 separable verbs would fill its 25 slots for komm.
 
 **Naming and landing.** A whole match's row names its cells, "ging: Präteritum Indikativ (ich,

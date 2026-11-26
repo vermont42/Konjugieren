@@ -48,9 +48,9 @@ Konjugieren/
 │   ├── ConjugationLabels.swift # Display members of core types that need L or Settings (Family.displayName, PersonNumber.pronoun, Conjugationgroup.displayName(lang:)), kept out of the files ConjugationMapTool compiles
 │   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
 │   ├── ConjugationIndex.swift  # The bundled conjugation map indexed for search: folded spellings (muß → muss) and length buckets for the guess
-│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, in any region and either clause; Conjugationgroup.personNumber
+│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, in any region and either clause; Verb.cells(filledBy:preferring:), the first reading's whole conjugations or finite parts, which MatchedConjugation and MarkedConjugations share
 │   ├── ConjugationTable.swift  # The verb page's tables in page order (frequency within simple, then compound; docs/conjugationgroup_frequency.md), each table's cells, second names, Info article, and the page section it marks; hasRedLetters, whether the simple tables show a red letter of the verb's own, which RedLettersTip waits for; Conjugationgroup.allCells and .table
-│   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
+│   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings; personNumber, isParticiple, isImperativ, and oneWordFinites(for:), the one list of cells that leave a finite word, from which leavesFinitePart, the conjugation map's builder, and CellsJSON derive theirs
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
@@ -85,6 +85,8 @@ Konjugieren/
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
+│   ├── MarkedConjugations.swift # The cells of a verb page that a search matched, which the page opens on, scrolls to, and marks; init?(text:on:) for a deeplink's match
+│   ├── MatchedConjugation.swift # The conjugation a search result matched: its text, a finite part's particle, its cells' names for the row, and the marks it gives the verb page
 │   ├── Mastery.swift           # The Mastery page's model: MasteryState (not practiced, learning, or mastered at the third box of the ladder, which the Speed Round shares), the level's weak patterns by conjugationgroup and person (the Futurs serving every verb), and the key conjugations each level asks of the 50 most frequent strong and mixed verbs, a row per strong reading; the counts the hub's row shows
 │   ├── PracticeItemMapping.swift # Which PracticeItem a question exercises (a strong reading's key conjugation by the stem its cell is built on, otherwise its cell's pattern; the Futurs are patterns for every verb), the items a lookup schedules, the cell an item asks, and PracticeItem.Stem's tables and key cell
 │   ├── PracticeSet.swift       # A custom quiz shared as a link or QR code: reads and writes konjugieren://quiz/set, carries the sharer's level while a part is left to it, turns My Verbs into a list of infinitives, its scope, share text, and summary; PracticeSetRequest, which World.handleURL sets
@@ -109,24 +111,26 @@ Konjugieren/
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200), read by the Tutor's recommendations; cleared by Reset Practice
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
-│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), whose alphabetical order is Verb.precedesAlphabetically's German one, used by the family pages, the collections, and the related-verb list; VerbListMode, the verb list's picker (Alphabetical, Frequency, My Verbs)
+│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), whose alphabetical order is Verb.precedesAlphabetically's German one, used by the family pages, the collections, and the related-verb list
 │   ├── StandardVariants.swift  # Duden's other standard conjugations of a cell (komme, sammle, kämst, stünde, sandte, erkennt an), accepted by the quiz but not shown on the verb page; rows of plans/pedagogy_phase1_variant_audit.md
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
 │   ├── TabSelection.swift      # TabView selection enum for programmatic tab switching
 │   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
 │   ├── TutorChatHistory.swift  # Persistence for chat messages with the AI tutor
-│   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
-│   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings; precedesAlphabetically, the one German comparator (abändern before abziehen)
+│   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes; zuInfinitive (anzufangen), which the conjugation map's builder and search both read
+│   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings; precedesAlphabetically, the one German comparator (abändern before abziehen); SearchKeys, the lowercased and folded infinitive and glosses made with the verb, and fold, the umlaut/digraph/ß folding
+│   ├── VerbDestination.swift   # A verb page to push, with its analytics source and the cells a search marked
+│   ├── VerbListMode.swift      # The verb list's picker (Alphabetical, Frequency, My Verbs)
 │   ├── VerbCollection.swift    # Collections: the 100 most frequent verbs, the modal verbs, the verbs that take sein (by region), and each ablaut group (by the primary reading, as the Ablaut page lists them); keys for `list/<key>` links, the share text, viewCollection, QuizScope.collection, and VerbCollectionProgress, the "3 of 6 looked up" that the bar, row, and card show
 │   ├── VerbEssentials.swift    # Verb Essentials: QuizScope.verbEssentials (five strong or mixed verbs, three key conjugations each), QuizDraw.verbEssentialsStep and verbEssentialsSteps (over verbs, or over members whose readings are already chosen, as ablaut practice passes), Quiz.currentStepRange and essentialsRows (a step's rows: answered, current, pending, given), and Quiz.reaskPlacement (a missed blank returns after the next verb's step)
 │   ├── VerbDraw.swift          # The widget's verb of the day and every random verb: the top 1,000 weighted toward strong and unprefixed verbs, and My Verbs every third day (random: one draw in three)
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
+│   ├── VerbVisit.swift         # VerbVisit (one viewVerbView/leaveVerbView pair)
 │   ├── VerbVisitTracker.swift  # When a verb page's visits begin and end (on screen, in the foreground, no sheet over it), and the open its first visit records
-│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search, whose core takes Sendable candidates so it can run off the main actor and stops when its task is cancelled
+│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search, whose core takes Sendable candidates so it can run off the main actor and stops when its task is cancelled
 │   ├── VerbSearchModel.swift   # The verb list's search (@Observable): the text, its results, the guess found off the main actor and cancelled by the next edit, the keyboard selection, the folded row's state, the sad trombone once per failed search, and the finishSearch reports
 │   ├── VerbLookup.swift        # What Look Up a Verb says about a word (an infinitive, a conjugation of one or more verbs, other matches, the guess) and where it then opens the app
-│   ├── VerbSearchResults.swift # What a query shows: rows, the folded row of separable verbs, the top row's kind, and the guess (which the verb list asks for separately); MatchedConjugation names a match's cells and the marks for the verb page; MarkedConjugations(text:on:) for a deeplink's match
+│   ├── VerbSearchResults.swift # What a query shows: one list of entries, the folded row of separable verbs followed by its verbs, which show only while it is open; the top row's kind; and the guess (which the verb list asks for separately)
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection; handleURL parses the deeplink grammar (docs/feature_architecture.md § Deeplink System); SearchRequest
 ├── Utils/

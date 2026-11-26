@@ -342,14 +342,17 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `MarkedConjugations.init?(text:on:)` (`VerbSearchResults.swift:24-32`, `:76-88`, `:223-234`) each
   call `conjugations(matching:)`, filter on `isFinitePart`, take the first reading, and collect its
   conjugationgroups. One helper that takes the matches and a preference for whole or part would
-  serve all three.
+  serve all three. **Fixed on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `Verb.cells(filledBy:preferring:)` serves all three, with a
+  preference of whole, finite part, or whole then finite part.
 - **D2. The zu-infinitive is built twice (Reviewer).** `ConjugationMap.swift:142-144` writes the
   key and `Reading.zuInfinitive` (`VerbSearchResults.swift:209-217`) recognizes it. If one changes
   alone, a key with no cell is named as nothing. Move `zuInfinitive` to `Reading.swift`, which the
-  tool compiles, and have the builder call it.
+  tool compiles, and have the builder call it. **Fixed on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as suggested.
 - **D3. "Which conjugationgroups leave a finite word" is listed three times (Reviewer).**
   `ConjugationMap.swift:102-107`, `ConjugationMatch.swift:75-81` (`leavesFinitePart`), and
-  `ConjugationMapTool/CellsJSON.swift:24-29`.
+  `ConjugationMapTool/CellsJSON.swift:24-29`. **Fixed on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+  `Conjugationgroup.oneWordFinites(for:)` lists the four, and `leavesFinitePart` adds the
+  Imperativ to it. `CellsJSON` names its groups with one exhaustive switch.
 - **D4. The key conjugation of a stem is computed twice, with different failures (Read).**
   `KeyConjugations.swift:14-23` drops a cell the Conjugator cannot fill.
   `Mastery.swift:76-79` shows the infinitive in its place. **Fixed on `main` 2026-11-26**, by
@@ -401,11 +404,17 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   `RelatedVerbsView.swift:194-243`. It also proposes `.unspecified` to every child, so a chip
   wider than its row overflows instead of wrapping. **`FlowLayout` is fixed on `main`
   2026-11-25**, by Phase 6 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): it has its own file and offers each child the row's width. The other
-  moves are Phase 8's.
+  moves are Phase 8's. **The other moves are on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): the
+  `Conjugationgroup` properties to `Conjugationgroup.swift`, `zuInfinitive` to `Reading.swift`, and
+  `MarkedConjugations`, `MatchedConjugation`, `VerbDestination`, and `VerbListMode` to files of
+  their own.
 - **S4. `VerbSearch.keysCache` is a global memo keyed by infinitive** (`VerbSearch.swift:328-342`).
   It is correct for the one corpus. A test that builds its own `Verb` named gehen with another
   gloss would be served the real one's keys. Storing the lowercased and folded infinitive on
-  `Verb` at parse time needs no cache.
+  `Verb` at parse time needs no cache. **Fixed on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md): `Verb.SearchKeys`, made with the verb, and
+  `fold` moved with it, rewritten as one pass so that folding the corpus at launch costs 0.03
+  seconds rather than 0.11 in a debug build. The test the finding describes failed against the
+  old cache.
 - **S5. App-wide statics, with multiple scenes enabled (Suspected, not tried).** `Info.plist`
   sets `UIApplicationSupportsMultipleScenes`. `VerbSearchArrowKeys` keeps one `move` closure and
   one `host` (`VerbSearchArrowKeys.swift:13-14`). With two windows on an iPad, focusing the second
@@ -451,6 +460,7 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   with an `isInSeparableVerbs` flag (`VerbSearchResults.swift:104-132`). If the results stored
   entries, with the folded row's verbs behind an `isShown` filter, the `Row` type, the `flatMap`
   in `entries(separableVerbsAreShown:)`, and the one in `VerbLookup.swift:47-54` would go.
+  **Fixed on `main` 2026-11-26**, by Phase 8 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), as suggested; `hits` gives the matches without the folded row.
 - **E2. `VerbView.rows(for:)` has a redundant case.** A participle has no `personNumber`, so the
   general branch already gives it a nil pronoun (`VerbView.swift:405-417`). The switch reduces to
   the Imperativ and everything else. **Fixed on `main` 2026-11-26**, by Phase 7 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md).

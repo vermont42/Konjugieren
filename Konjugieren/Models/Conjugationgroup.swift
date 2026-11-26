@@ -85,6 +85,45 @@ enum Conjugationgroup: Hashable {
     }
   }
 
+  /// Nil for a participle, which has no person.
+  var personNumber: PersonNumber? {
+    switch self {
+    case .perfektpartizip, .präsenspartizip:
+      return nil
+    case .präsensIndikativ(let personNumber), .präsensKonjunktivI(let personNumber), .präteritumIndikativ(let personNumber),
+      .präteritumKonjunktivII(let personNumber), .imperativ(let personNumber), .perfektIndikativ(let personNumber),
+      .perfektKonjunktivI(let personNumber), .plusquamperfektIndikativ(let personNumber), .plusquamperfektKonjunktivII(let personNumber),
+      .futurIndikativ(let personNumber), .futurKonjunktivI(let personNumber), .futurKonjunktivII(let personNumber):
+      return personNumber
+    }
+  }
+
+  var isParticiple: Bool {
+    self == .perfektpartizip || self == .präsenspartizip
+  }
+
+  var isImperativ: Bool {
+    if case .imperativ = self {
+      return true
+    }
+    return false
+  }
+
+  /// The cells, for one person, whose conjugations are a single finite word, in page order. A
+  /// main clause sends a separable prefix to the end and leaves that word on its own: fängt,
+  /// from "fängt … an". The Imperativ is split too, but it is not listed, because it lacks two
+  /// persons and may carry a pronoun (fangen wir an), so each caller treats it apart.
+  static func oneWordFinites(for personNumber: PersonNumber) -> [Conjugationgroup] {
+    [.präsensIndikativ(personNumber), .präsensKonjunktivI(personNumber), .präteritumIndikativ(personNumber), .präteritumKonjunktivII(personNumber)]
+  }
+
+  /// Whether a main clause splits this cell around its separable prefix, leaving a finite part
+  /// that is a word on its own. A compound conjugationgroup's first word is the auxiliary,
+  /// which belongs to haben, sein, or werden rather than to the verb.
+  var leavesFinitePart: Bool {
+    isImperativ || personNumber.map { Self.oneWordFinites(for: $0).contains(self) } ?? false
+  }
+
   func ending(family: Family) -> String {
     switch self {
     case .präsensIndikativ(let personNumber):

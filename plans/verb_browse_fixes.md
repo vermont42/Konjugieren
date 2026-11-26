@@ -25,7 +25,7 @@ empty until it is committed.
 | 4 | Done | 2026-11-25 | `905c500` | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
 | 5 | Done | 2026-11-25 | `0df57c4` | S1 (the rest) | Yes |
 | 6 | Done | 2026-11-25 | `ab2493b` | C5, C6, C7 (ablaut row), D5, E4 (the sort), F2 (related verbs), S3 (`FlowLayout`) | Yes |
-| 7 | Done | 2026-11-26 | | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
+| 7 | Done | 2026-11-26 | `45fef14` | C3, D4, E2, E3, G5, G6 | Yes; he answered its question |
 | 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |
 | 9 | Not started | | | C7 (links, intents, Spotlight, the key), D6, F2 (Look Up), G3, S9 (the unused prefix) | No |
 | 10 | Not started | | | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |

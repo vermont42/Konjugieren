@@ -31,7 +31,10 @@ empty until it is committed.
 | 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Done | 2026-11-26 | `8525086` | S6, D7, the sein collection's quiz, G7 (`QuizSheet`) | No |
 | 12 | Done | 2026-11-26 | `3a924a1` | T1, T2, T3, T4 | No |
-| Closing | Not started | | | S5, S7, the audit | No |
+| Closing | Done | 2026-11-27 | | S5, S7, the audit | No |
+
+**This plan is finished (2026-11-27).** Every finding in the review carries a line: fixed, found
+not to be real, or left with its reason.
 
 ## How to Work This Plan
 
@@ -819,4 +822,81 @@ the old bundle. The suite went from 1052 to 1059 tests, in 106 suites.
   what is needed to say whether a phase was ported.
 - Mark this plan finished in its Status section.
 
-**How it differed:**
+**How it differed:** In S5, which was broken and small enough to fix, and in where S7's list went.
+The suite went from 1059 to 1062 tests, in 107 suites.
+
+- **The baseline was green before anything changed:** 1059 tests in 106 suites, 0 SwiftLint
+  violations, 0 `check_docs.py` problems.
+- **S5 was worse than the review guessed.** Opening a second window on the iPad simulator took
+  Windowed Apps mode and a temporary DEBUG hook calling `requestSceneSessionActivation`, since
+  AXe's Command-N did nothing, as Conjuguer's session had found. With an `NSLog` marker in each
+  path: the second window's field took focus while the first was still the key window, and the
+  first field never lost its focus. So the second `install` replaced the shared closure but left
+  the commands on the first window's root. ↓ in the second window did nothing, and ↓ back in the
+  first moved the **second** window's highlight.
+- **The fix is a file and a line.** `VerbSearchArrowKeys` keeps an installation per window, each
+  with its own commands and closure, and a key finds its installation through the window of the
+  controller that received it. The view learns its window from a small UIKit view's
+  `didMoveToWindow`, because the key window is the wrong guide at the moment of focus. A
+  `verbSearchArrowKeys(isActive:move:)` modifier holds that, so `VerbBrowseView`'s `onChange` lost
+  its install and uninstall. Conjuguer's Phase 3 reached the same shape for the same reason. After
+  the fix, ↓ moved each window's own highlight in turn. Each window's first ↓ after a tap was
+  lost, before the fix as after, which is the field's focus animation.
+- **Tests.** Three, in `VerbSearchArrowKeysTests`, with two real windows in the test host's scene.
+  Against a mutation that put back the shared closure and the old guard, the two tests of two
+  windows failed with five issues; the one-window guard passed, as it should.
+- **The rest of S5 is written down, not fixed.** `World` holds the selected tab, every pending
+  target, and the quiz for all windows. `docs/feature_architecture.md` § Multiple Windows says so,
+  names the two ways out (a router per window, as Conjuguer built; or multiple scenes off, as
+  Conjugar has), and leaves the choice to Josh. Multiple scenes have been on since 2026-02-04, so
+  the shipped app has the limit too.
+- **S7's list is a doc of its own**, [`docs/timed_workarounds.md`](../docs/timed_workarounds.md),
+  with eight entries where the review named five: it adds the Families page's 300 ms scroll, the
+  Tutor's 500 ms push, the quiz's refocus waits, and VoiceOver's announcement delays. The
+  copied-address note left the list: four seconds on screen is a display duration, not a bet on
+  iOS. Each entry says what to do to see whether a new iOS still needs it, and a retry log waits
+  at the bottom.
+- **No superseded task was cancelled.** None is one line: the two that can be superseded (the
+  note and the lingering focus) need a stored task and a check after the sleep, since
+  `try? await Task.sleep` swallows the cancellation. The list says so under each.
+- **The audit.** Every finding has its line. Four were added here: S5, S7, and the two costs of
+  settled decisions that had none (the widget's open and the search-scope flip), each marked
+  "left, by decision". The sein collection's cost had been fixed in Phase 11.
+- The iPad simulator was set back to Full Screen Apps, its second window closed, and shut down.
+- `README.md`'s three test counts went to 1062, and its file count to seventy.
+
+### What Would Carry Over
+
+Read from the siblings' plans and reviews only, as of 2026-11-27. Both ported the Browse plan
+(Conjuguer every phase but Konjugieren's 4, the main-clause split, and 8, an article), and each has reviewed its port,
+checked every Konjugieren finding against its own code in a section of its review, and written a
+fixes plan of its own. So the review's findings need no list here. What follows is what this plan
+learned beyond the review's text that a sibling's open phases could use.
+
+- **A link's `source` can decide a mode (Phase 11).** The review's S6 read as a smell, and it was a
+  live bug: `quiz/practiceSet?…&source=verbPage` hid a practice set's verb links and was
+  remembered on the hub as a verb's quiz. Both siblings carried S6 over (Conjuguer's S7, Conjugar's
+  S6), and neither phase has started. Try the same link there first.
+- **`noParameterValueEchoesTheQuery` is half evidence (Phase 12).** Both reviews say it holds by
+  the types. The echo does, and the bands do not, since the parameters are strings: an unbanded
+  length failed it. Keep it, and add a test that a report stores no text, as
+  `aReportKeepsNoText` does. Conjuguer's T3 and Conjugar's T1 are not started.
+- **The arrow keys' failure ran in both directions (Closing).** Conjuguer's Phase 3 fixed it
+  without running the old build with two windows visible; this run confirms its trace. Conjugar
+  has multiple scenes off. Nothing to do, unless Conjugar turns them on.
+- **Timed workarounds (Closing).** Both closings will write this list. Konjugieren's found three
+  waits the review had not counted, outside the files it read. Sweep the whole app for
+  `Task.sleep` and `asyncAfter`, not only the review's lines.
+- **A protocol that adopts `AppIntent` must be `nonisolated` (Phase 9)** under default main-actor
+  isolation, or its intents' `title` cannot meet `AppIntent`'s requirement. Conjugar has done its
+  intents; Conjuguer's S11 is in its Phase 12, not started.
+- **Look Up a Verb's cold index cost 0.57–0.75 s on the main actor (Phase 9)**, measured. That is
+  the case for Conjuguer's B11, also in its Phase 12.
+- **Spotlight's `indexAppEntities` did not return in the simulator (Phase 9)**, so the list of
+  indexed verbs is written before the call. Conjuguer's B20 (removing departed verbs) is in its
+  Phase 12.
+- **`FlowLayout` overflowed a chip wider than its row (Phase 6).** Both siblings noted where it
+  lives; neither review mentions the wrapping. Check a long chip in each.
+- **Storing search keys at parse time moves their cost to launch (Phase 8).** Konjugieren's
+  `fold` became one pass to keep that at 0.03 s. Conjuguer's version of S4 is in its Phase 13,
+  not started; measure the launch when it lands.

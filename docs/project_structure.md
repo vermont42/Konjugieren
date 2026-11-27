@@ -180,7 +180,7 @@ Konjugieren/
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
 │   ├── ViewControllerTransitions.swift  # UIKit workaround: waits until no view controller is presenting or dismissing, since UIKit drops a push made mid-transition (an iPad tap that ends an empty search)
-│   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
+│   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused, one installation per window; the verbSearchArrowKeys(isActive:move:) modifier finds its own window
 │   ├── UserLocale.swift        # Locale detection helpers (isGerman, isEnglish)
 │   ├── Utterer.swift           # Protocol for text-to-speech with UttererLocale constants
 │   ├── UttererDummy.swift      # No-op TTS implementation for tests
@@ -341,6 +341,7 @@ KonjugierenTests/
 │   ├── TimeFormatterTests.swift     # Time formatting utility tests
 │   ├── URLExtensionTests.swift      # mailto: percent-encoding and the App Store link
 │   ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
+│   ├── VerbSearchArrowKeysTests.swift  # The arrow keys with two windows: each window's commands on its own root, each key reaching its own window's selection
 │   ├── VerbExportTests.swift        # Harness: every verb's page as JSON, for scripts/generate_verb_pdf.py. Gated on TEST_RUNNER_KONJUGIEREN_EXPORT_OUT (optional TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY)
 │   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, My Verbs turns carried from bundle to bundle, a same-day rewrite, an older bundle's decoding, and process-stable answer-shuffle tests
 └── Views/
@@ -398,6 +399,7 @@ docs/
 ├── screenshots/                               # Captured App Store screenshots produced by `scripts/take_screenshots.sh` (gitignored)
 ├── telemetry_usage.md                         # Usage snapshot (2026-11-10) for Konjugieren, Conjuguer, Conjugar from TelemetryDeck and App Store Connect, the China-device reconciliation, and the recipes and gotchas for refreshing both
 ├── terminology.md                             # Conjugationgroup definitions, tense/mood/voice distinctions
+├── timed_workarounds.md                       # Every timed wait that works around iOS (focus, transitions, sheets, layout), what each waits for, and how to tell whether a new iOS has made it unnecessary; from the browse review's S7
 ├── tutor_recording.md                         # Playbook for recording the short Tutor walkthrough that the App Store nomination lists as supplemental material
 ├── tutor_test_queries.txt                     # Test queries for the AI tutor
 ├── ui_audit.md                                # UI audit notes and findings (Round One; implemented in commit 657bb4f)

@@ -444,7 +444,12 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   one `host` (`VerbSearchArrowKeys.swift:13-14`). With two windows on an iPad, focusing the second
   window's search and blurring the first can leave the arrow keys uninstalled or pointed at the
   wrong window. `Current` is global too, so this is one more instance of a standing limit and not
-  a new kind of problem.
+  a new kind of problem. **Confirmed and fixed on `main` 2026-11-27**, by the Closing of
+  [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), for the arrow keys, and worse than suspected: on the iPad
+  simulator, ↓ in the second window did nothing, and ↓ back in the first moved the second
+  window's highlight. Each window now has its own installation. The rest of the standing limit,
+  the routing state on `Current`, is written down in `docs/feature_architecture.md` § Multiple
+  Windows and left, since a router per window is a phase's work.
 - **S6. An analytics value decides what the interface shows (Reviewer; I read `isRanked`).**
   `showsVerbLink` is `quiz.scope.source != .verbPage` (`QuizView.swift:449`). And `isRanked` is
   `isDefaultQuiz`, a conjunction of ten negatives (`Quiz.swift:1413-1415`), so a new mode that
@@ -460,7 +465,12 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   (`VerbBrowseView.swift:80`, `:620`, `:576`; `VerbView.swift:722`;
   `ViewControllerTransitions.swift:13-18`). Each is commented as a hack with its reason, which is
   right. None of the tasks is cancelled when superseded, so a second tap on the mail link hides
-  the note early. They are worth one list in a doc, to retry on each new iOS.
+  the note early. They are worth one list in a doc, to retry on each new iOS. **Listed on `main`
+  2026-11-27**, by the Closing of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md), in
+  [`timed_workarounds.md`](timed_workarounds.md), with three more the review missed (the Families
+  scroll, the Tutor push, and the quiz's refocus waits) and how to retry each. The 4-second note is
+  a display duration, not a workaround. No superseded task was cancelled: none is one line, and
+  the list says why each was left.
 - **S8. The sort picker returns during a search and does nothing.** With text in the field and the
   keyboard down, the picker replaces the letter row, and choosing My Verbs has no visible effect.
   Phase 1 notes this. Disabling the picker while `isSearching` would say so on screen. **Fixed
@@ -563,10 +573,14 @@ These are Josh's decisions, recorded in the plan. Each has a cost its note does 
 
 - **Opening a verb from the widget counts as forgetting it (Reviewer).** Any lookup but the card
   sends a verb back to the first box (`VerbView.swift:443-446`). On a My Verbs day the widget
-  shows a verb the learner already knows, and a tap resets its schedule.
+  shows a verb the learner already knows, and a tap resets its schedule. **Left, by decision**
+  (2026-11-27, the Closing of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md)): the rule is the quiz track's, of
+  2026-11-13, and the plan's decisions keep it.
 - **The search-scope flip overrides a deliberate choice.** A learner on 1.4 who chose Infinitive
   Only on purpose is moved to the new default once. The rule is right for everyone who only
-  inherited the old one, and the two cannot be told apart.
+  inherited the old one, and the two cannot be told apart. **Left, by decision** (2026-11-27, the
+  Closing of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md)): the plan's defaults keep the flip, and Josh did not
+  overrule them.
 - **The sein collection's quiz may ask a haben reading (Suspected).** Its scope passes no reading
   index, so a question on fahren may expect "hat gefahren" under a title that says sein. The
   reading draw was not traced. **Confirmed and fixed on `main` 2026-11-26**, by Phase 11 of

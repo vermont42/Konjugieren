@@ -282,14 +282,12 @@ struct VerbBrowseView: View {
       }
       .onChange(of: searchIsFocused) {
         searchFocusChanged()
-        if searchIsFocused {
-          VerbSearchArrowKeys.install { offset in
-            moveKeyboardSelection(by: offset)
-          }
-        } else {
-          VerbSearchArrowKeys.uninstall()
+        if !searchIsFocused {
           search.fieldClosed()
         }
+      }
+      .verbSearchArrowKeys(isActive: searchIsFocused) { offset in
+        moveKeyboardSelection(by: offset)
       }
       .onChange(of: settings.searchScope) {
         search.includeGlosses = searchIncludesGlosses

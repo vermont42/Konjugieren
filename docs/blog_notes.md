@@ -12957,3 +12957,53 @@ mutations went in at once, the seven affected suites ran, and every test tied to
 red. The working tree's diff was then restored and compared byte for byte with a copy saved before.
 
 The suite went from 1052 tests to 1059.
+
+## Two Windows, One Pair of Arrow Keys (2026-11-27)
+
+The browse review's last open smell, S5, was a suspicion: `VerbSearchArrowKeys` held one closure
+and one host view controller for the whole app, while `Info.plist` allows several windows. The
+Closing of `plans/verb_browse_fixes.md` asked for it to be tried on the iPad simulator.
+
+Getting two windows on screen was most of the work. The simulator's iPad defaults to Full Screen
+Apps, where one window shows at a time, and Conjuguer's session the day before had found that
+AXe's Command-N opens nothing. Switching the iPad to Windowed Apps in Settings, and adding a
+throwaway DEBUG hook that called `requestSceneSessionActivation` once at launch, put a second
+window on top of the first, and an AXe swipe on its top edge dragged it aside. The first launch
+with the hook showed one window; only the second did what it should, and an `NSLog` of the
+connected scenes was what told the two runs apart.
+
+With a marker in each path, the run read like a trace. Tapping the second window's field fired
+`install` while the first window was still the key window, and the first field never lost its
+focus, so nothing was uninstalled. The closure became the second window's; the key commands stayed
+on the first window's root. The second window's ↓ reached nothing. Back in the first window, ↓
+moved the second window's highlight. The review had guessed "uninstalled or pointed at the wrong
+window". It was both, one after the other.
+
+The fix gives each window its own installation and lets a key find its window through the view
+controller that received it. The one subtlety is learning a view's window. SwiftUI never names
+it, and the key window is exactly the wrong guide at the moment of focus, which is how the bug
+arose. A zero-size UIKit view reports its window from `didMoveToWindow`, and a modifier,
+`verbSearchArrowKeys(isActive:move:)`, keeps that and the installing together. Conjuguer reached
+the same design a day earlier without having watched the old build fail with both windows in view;
+this run is the evidence its trace was right.
+
+The rest of S5 stays a written limit. `World` holds the selected tab, every pending link target,
+and the quiz for all windows at once. Fixing that is a router per window, a phase of its own in
+Conjuguer, or turning scenes off, as Conjugar has. The choice is Josh's, and
+`docs/feature_architecture.md` now has a Multiple Windows section that lays it out.
+
+S7 became `docs/timed_workarounds.md`. The review had named five timers in the files it read.
+Sweeping the whole app for `Task.sleep` and `asyncAfter` found three more workarounds (a scroll
+that waits for layout on the Families page, the Tutor's push after onboarding, and the quiz's
+refocus waits) and one the review had counted wrongly: the copied-address note's four seconds are
+how long a message stays up, not a bet about iOS. Each entry now says what to do to learn whether
+a new iOS still needs it. The one Tutor wait has no comment in the code, so its entry says what
+the commit implies and marks it as a guess.
+
+The audit found four findings with no line, and each got one. The closing's carry-over list
+turned out shorter than expected, because Conjuguer and Conjugar had each already checked every
+Konjugieren finding against their own code. What was left to pass on was what the phases learned
+beyond the review: a practice-set link whose `source` changed the quiz's behaviour, a privacy test
+that was only half held by the types, and a sweep wider than the review's files.
+
+The suite went from 1059 tests to 1062, and the plan is finished. 🧠🤜🤛🦀

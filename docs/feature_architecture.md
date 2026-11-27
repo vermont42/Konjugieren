@@ -1782,6 +1782,38 @@ a phone before reconsidering.
 seconds and indexing them 7 more. The map's inversion runs off the main actor; the key
 conjugations need the Conjugator, which is on the main actor, so the loop yields every 100 verbs.
 
+## Multiple Windows
+
+`Info.plist` has set `UIApplicationSupportsMultipleScenes` since 2026-02-04, so an iPad (and a
+Mac) can open the app in several windows. Each window is its own `MainTabView` with its own view
+state, but everything on `Current` is one for the whole app.
+
+**Per window: the arrow keys** (2026-11-27, the browse review's S5). `VerbSearchArrowKeys` keeps
+one installation per window, each with its own key commands on that window's root view controller
+and its own closure. A key finds its installation through the window of the view controller that
+received it, and the `verbSearchArrowKeys(isActive:move:)` modifier learns its window from a small
+UIKit view's `didMoveToWindow`, since SwiftUI names no window to a view. The key window is no
+guide: a second window's field takes focus while the first window is still key, and the first
+field keeps its focus. Before the fix, on the iPad simulator, ↓ in the second window did nothing,
+and ↓ back in the first moved the second window's highlight. `VerbSearchArrowKeysTests` pins the
+order that broke it.
+
+**Shared, and left: the routing state.** `World` holds the selected tab and every pending target a
+link or a command sets (`verb`, `family`, `collection`, `info`, `searchRequest`, `practiceSet`,
+`dailySessionRequest`, `challengeRequest`, `shouldNavigateToTutor`), and the quiz. Read from the
+code, not run: a tab switch in one window switches the other, a link or Command-F can act in a
+window other than the one in front, and a quiz under way shows in both. Conjuguer's port found the
+same and ran it: one verb link presented the page in both windows and counted two opens. The fix is
+a router per window, which Conjuguer built (its `plans/verb_browse_fixes.md`, Phase 3) and which is
+a phase's work, not a closing's. The other way out is Conjugar's: turn multiple scenes off, which
+also gives up a second window on a Mac. That choice is Josh's.
+
+**Opening a second window on the simulator.** AXe's Command-N does nothing, and the default Full
+Screen Apps mode shows one window at a time. Set the iPad to Windowed Apps (Settings, Multitasking
+& Gestures), add a temporary DEBUG hook that calls `requestSceneSessionActivation` once when one
+scene is connected, launch, and drag the front window aside by its top edge. Set the iPad back to
+Full Screen Apps afterward.
+
 ## Review Prompting
 
 The app prompts users to leave an App Store review after sufficient engagement.

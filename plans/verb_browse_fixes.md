@@ -31,7 +31,7 @@ empty until it is committed.
 | 10 | Done | 2026-11-26 | `01d6c68` | G2, G7 (the map's comments), S9 (the tool and the script), S10 | No |
 | 11 | Done | 2026-11-26 | `8525086` | S6, D7, the sein collection's quiz, G7 (`QuizSheet`) | No |
 | 12 | Done | 2026-11-26 | `3a924a1` | T1, T2, T3, T4 | No |
-| Closing | Done | 2026-11-27 | | S5, S7, the audit | No |
+| Closing | Done | 2026-11-27 | `41e4069` | S5, S7, the audit | No |
 
 **This plan is finished (2026-11-27).** Every finding in the review carries a line: fixed, found
 not to be real, or left with its reason.

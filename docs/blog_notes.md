@@ -13007,3 +13007,83 @@ beyond the review: a practice-set link whose `source` changed the quiz's behavio
 that was only half held by the types, and a sweep wider than the review's files.
 
 The suite went from 1059 tests to 1062, and the plan is finished. 🧠🤜🤛🦀
+
+## A Review That Is Also Its Fix Plan (2026-11-27)
+
+Josh asked for a review of everything the pedagogy plan built, about 25,800 lines in 118 files,
+with the output written as the plan to fix it: `plans/pedagogy_fixes.md`. The browse review had
+been two files, a review and then a plan that cited it. This time the findings and the phases
+live together, each finding with a label, a file and line, its evidence, how it was verified, and
+a fix.
+
+The method was the browse review's, scaled up. I read the quiz's core myself (`Quiz.swift`,
+`QuizView.swift`, the practice record, the draw), and six Opus subagents each took one area
+without seeing my conclusions: grading, the draw, the record, the new exercises, privacy, and the
+tests. Then nothing above "small" went into the plan on a reviewer's word. A temporary suite of
+19 probe tests drew 4,000 rounds, graded wrong answers, and walked items through the record with
+injected dates, and it was deleted before the plan was written.
+
+The probes changed what the review could say. Reading `QuizLevel.pool` suggests that the quiz
+might ask the Imperativ of a modal verb. Running it says that 509 of 1,000 Beginner rounds do,
+and that the expected answer is "könn". The research report had criticized Conjuguer for asking
+the imperative of faillir, and Konjugieren has no notion of a defective verb at all. Phase 6's
+guarantee of two questions on sein, haben, werden, or a modal turned a rare oddity into every
+other round.
+
+The findings turned out to share a cause. Each phase was built faithfully, and later phases
+changed what earlier ones meant without going back. The second attempt was built for a typing
+slip, where "one letter was all that stood between the learner and the conjugation", and Phase
+14 then gave it to every diagnosed error, so "gehte", a hint, and "ging" raises the item on the
+ladder. The box was a due date when browse Phase 15 let a revealed card raise it, and it became
+mastery, achievements, and the Speed Round's entry, so two taps on Reveal master a verb nobody
+typed. The re-ask predates My Mistakes, and a right re-ask, three questions after the answer was
+shown, takes the miss off the list. None of these is a bug in the phase that wrote it.
+
+One reviewer finding did not survive. A subagent suspected that six unseeded diagnosis tests
+could flake, since each draws a random cell of verstehen. A probe tried all 17 cells and every
+one supports the test's assumption. It was dropped rather than listed as Suspected.
+
+Josh's question about `SeededRNG` has a two-part answer. The generator is sound, SplitMix64 with
+the reference outputs. The tests around it are mostly sound too, but two assert five strong
+questions in a round where the code has guaranteed four of nine since the choice question
+arrived, and they pass on their seeds: 8 of the first 40 seeds fail. Five more check "distinct"
+or "never twice running" on one seed against a pool where chance obliges more than half the
+time. A model of each draw with its guarantee removed passed 509, 846, 600, 900, and 919 times
+in 1,000.
+
+The plan asks Josh fifteen questions before most phases can start, because most of the findings
+are not mine to settle. Whether a lookup should demote a mastered verb is his rule of 2026-11-13,
+made before anything read the box as mastery. The plan says what the rule now costs and offers
+options. It does not decide.
+
+Not done: the app was never launched for this review. Everything rests on code and probes, and
+the plan says so.
+
+The same day Josh asked for a Phase 0, to find the slow tests and propose speed-ups, and then
+had it deleted. The baseline log had answered the question before any session ran: the tests
+themselves take 76 seconds, which he judged fine for an app of this size. One thing the log
+showed is worth keeping. The slowest "test", at 11 seconds, is a loop over cached quizzes, and
+its time is a static fixture that the whole suite shares, charged to whichever test touches it
+first. A per-test timing misleads there, and a per-suite one does not.
+
+Josh then answered all fifteen decisions in one sitting, 28 questions in seven rounds of four.
+Each question had to stand alone, since the dialog shows no plan beside it, so each restated its
+evidence in a sentence: the 51% of Beginner rounds, "gehte" then "ging", the box that fell from
+the fourth to the first. He took the suggested option wherever one was offered. The one question
+with none, whether the choice question's ten points stay in a ranked round's hundred, he
+answered by keeping Phase 19's ruling.
+
+Three answers replace rulings of his own, and the plan says so where it records them. A lookup
+now demotes only from search, which undoes "any later lookup" of 2026-11-13 and the widget's
+case of 2026-11-25. A reveal on the review card stops at the second box, and a dismissal hides
+the card without snoozing its items, which undoes browse Phase 15. And due items leave a default
+quiz's first round for Ten More, so that every ranked round is its level's own mix. None of the
+older rulings was wrong when it was made. Each was made before the box meant mastery.
+
+Answering changed the plan more than the Status table shows. Each phase that had said "as Josh
+rules" now says what he ruled and what a test must pin, and writing those out surfaced three
+things the questions had not covered: whether a repaired diagnosis belongs in the Tutor's error
+history, whether `viewCollection` may still name a one-verb ablaut group, and that a shorter
+round makes `questionCount` a new value to stage. The first two are flagged for him in their
+phases. Two rulings still wait on something to look at, a list of impersonal verbs and Duden's
+entries for three doublets, and those phases bring him the list before building on it.

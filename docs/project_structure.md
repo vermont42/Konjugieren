@@ -485,6 +485,7 @@ prompts/                       # What Josh wrote to get Claude to do something. 
 ├── location_cleanup.md        # Asks for the sorting of 2026-11-16 that put prompts, plans, and documents in the folders this file describes
 ├── more_verbs.md              # Asks for new sources of verbs; executed 2026-07-18, producing docs/verb_sources.md
 ├── pedagogy.md                # Asks whether the quiz is pedagogically sound and how to improve it; answered by docs/pedagogy_research.md
+├── pedagogy_review.md         # Asks for a review of the code that plans/pedagogy_implementation.md built (e385749 to 4d22060), output to plans/pedagogy_fixes.md as a phased plan to fix the findings, every phase waiting for Josh before git
 ├── telemetry.md               # Asks for the usage data of all three apps from TelemetryDeck; answered by docs/telemetry_usage.md
 └── verb_browse_review.md      # Asks for a review of the code that plans/browse_and_verb_implementation.md built; answered by docs/verb_browse_review.md
 

@@ -165,6 +165,7 @@ Konjugieren/
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
 │   ├── ReviewPrompterReal.swift    # Real implementation prompting reviews at intervals
+│   ├── SearchPrompt.swift      # The verb list's search prompt: the longest of a ladder (full, short, "Search") that fits the field without truncating, by the body font and the field's measured iOS 26 insets; at accessibility sizes the full one, which UIKit shrinks to fit
 │   ├── Settings.swift          # @Observable settings with UserDefaults persistence
 │   ├── ShareSheet.swift        # UIKit workaround: presents UIActivityViewController for the verb page's share button, anchored to the visible bar button on iPad, with an LPLinkMetadata header (ShareLink sends no tap from a toolbar and loses Copy with a SharePreview)
 │   ├── SoundPlayer.swift       # Protocol for audio playback
@@ -336,6 +337,7 @@ KonjugierenTests/
 │   ├── DeeplinkTests.swift     # The deeplink grammar: every route, the `source` and `match` query items, the search route, stable-key articles, every WidgetDeeplink, the control and quick-action links, a link to nothing leaving a pending search, and Handoff and the Open Verb shortcut going through the route
 │   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
 │   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
+│   ├── SearchPromptTests.swift # SearchPrompt: the prompt chosen by field width, text size, and size class, including a 375-point iPhone at XXXL
 │   ├── SettingsTests.swift     # Settings persistence and default-value tests
 │   ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
 │   ├── TimeFormatterTests.swift     # Time formatting utility tests

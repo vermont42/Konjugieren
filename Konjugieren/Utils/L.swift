@@ -318,6 +318,18 @@ enum L {
       String(localized: "VerbBrowse.searchPromptInfinitiveOrMeaning")
     }
 
+    static var searchPromptInfinitiveOrMeaningShort: String {
+      String(localized: "VerbBrowse.searchPromptInfinitiveOrMeaningShort")
+    }
+
+    static var searchPromptInfinitiveShort: String {
+      String(localized: "VerbBrowse.searchPromptInfinitiveShort")
+    }
+
+    static var searchPromptMinimal: String {
+      String(localized: "VerbBrowse.searchPromptMinimal")
+    }
+
     static var noVerbsFound: String {
       String(localized: "VerbBrowse.noVerbsFound")
     }

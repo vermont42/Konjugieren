@@ -10642,6 +10642,54 @@
         }
       }
     },
+    "VerbBrowse.searchPromptInfinitiveOrMeaningShort" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb oder Bedeutung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb or meaning"
+          }
+        }
+      }
+    },
+    "VerbBrowse.searchPromptInfinitiveShort" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb oder Konjugation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb or conjugation"
+          }
+        }
+      }
+    },
+    "VerbBrowse.searchPromptMinimal" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
     "VerbBrowse.separableVerbs.%lld" : {
       "localizations" : {
         "de" : {

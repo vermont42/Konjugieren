@@ -13087,3 +13087,51 @@ history, whether `viewCollection` may still name a one-verb ablaut group, and th
 round makes `questionCount` a new value to stage. The first two are flagged for him in their
 phases. Two rulings still wait on something to look at, a list of impersonal verbs and Duden's
 entries for three doublets, and those phases bring him the list before building on it.
+
+## The Search Prompt That Lost Three Points (2026-11-28)
+
+Josh sent a screenshot of the verb list with his phone's text at its largest non-accessibility
+size, XXXL. The search field's prompt read "Verb, conjugation, or mea…". He did not want to
+shorten the prompt for everyone, and he asked whether it could shrink to fit instead.
+
+SwiftUI cannot do either thing directly. The `prompt:` of `.searchable` is not a SwiftUI view. It
+becomes the placeholder of a UIKit `UISearchTextField`, so `minimumScaleFactor` and `ViewThatFits`
+have nothing to act on. Rather than guess at the field's geometry, a temporary probe walked the
+view hierarchy once a second and logged the field's frame, `textRect`, font, and placeholder
+label on the iPhone 17 and iPad simulators at all twelve text sizes. Several facts came out of it.
+The field's font is exactly the body text style. The field sits 16 points in from the edges on
+iPhone and 20 on iPad. Its text ends 7 points short of its trailing edge and begins past a
+magnifying glass that grows from 36 points at XS to 68 at AX5. Josh's phone is 375 points wide,
+and at XXXL its text area is 289.7 points, while the English prompt needs 292.7. It missed by 3.
+
+The probe also found that UIKit already does what Josh asked for, but only sometimes. At the five
+accessibility sizes, the private `UISearchBarTextFieldLabel` has `adjustsFontSizeToFitWidth` on,
+with `minimumScaleFactor` set to 14 divided by the font size, so the placeholder shrinks to fit
+down to 14 points. From XS through XXXL it is off, and the prompt truncates. The bug therefore
+lives only in the band where the font is large enough to overflow but UIKit has not started to
+shrink.
+
+That suggested extending UIKit's own behavior to every size. Setting the field's
+`adjustsFontSizeToFitWidth` from inside the probe flipped the placeholder label to shrink, and an
+overlong test prompt fit at XXXL. Josh chose that approach. An appearance proxy then did nothing,
+in both its `UISearchTextField.appearance()` and its `whenContainedInInstancesOf: [UISearchBar.self]`
+forms. Apple supports appearance proxies only for properties marked `UI_APPEARANCE_SELECTOR`, and
+this one is not marked. A single direct set did not stick either. The earlier success had come
+from the probe setting the property again every second. Keeping it set would mean finding the
+private field in the hierarchy and setting it again whenever SwiftUI rebuilt the field, so Josh
+went back to the first idea.
+
+`SearchPrompt.longestFitting` picks the longest prompt of a ladder that fits the field. The
+English ladder runs "Verb, conjugation, or meaning", then "Verb or meaning", then "Search", and
+the infinitive-only scope's runs "German verb or conjugation", "Verb or conjugation", "Search". It
+measures each candidate in the body font at the environment's `dynamicTypeSize` against the width
+`onGeometryChange` reports, less the measured margins and insets. At accessibility sizes it
+always returns the full prompt, since UIKit shrinks that one itself, and replacing a shrunken but
+complete hint with "Search" would have been a regression. A parameterized test pins nine cases,
+Josh's 375-point XXXL among them. On the simulator, English keeps its full prompt at every size,
+since 402 points are enough, and German switches to "Verb oder Bedeutung" at XXXL only.
+
+The glass widths are iOS 26 measurements, and a future iOS could change them. A change of a
+point or two moves the threshold by that much, and the ladder still never truncates by more
+than that. If a later iOS makes the placeholder shrink at every size, `longestFitting` can return
+the full prompt unconditionally and the table can go.

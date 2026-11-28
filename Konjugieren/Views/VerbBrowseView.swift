@@ -13,6 +13,8 @@ struct VerbBrowseView: View {
   @State private var reviewCard = ReviewCardHost()
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
+  @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+  @State private var searchFieldContainerWidth: CGFloat = 0
   @Environment(\.scenePhase) private var scenePhase
   private let tryQuizTip = TryQuizTip()
 
@@ -28,6 +30,13 @@ struct VerbBrowseView: View {
 
   private var searchIncludesGlosses: Bool {
     settings.searchScope == .infinitiveAndTranslation
+  }
+
+  private var searchPrompt: String {
+    let candidates = searchIncludesGlosses
+      ? [L.VerbBrowse.searchPromptInfinitiveOrMeaning, L.VerbBrowse.searchPromptInfinitiveOrMeaningShort, L.VerbBrowse.searchPromptMinimal]
+      : [L.VerbBrowse.searchPromptInfinitive, L.VerbBrowse.searchPromptInfinitiveShort, L.VerbBrowse.searchPromptMinimal]
+    return SearchPrompt.longestFitting(candidates, containerWidth: searchFieldContainerWidth, dynamicTypeSize: dynamicTypeSize, sizeClass: sizeClass)
   }
 
   private var isSearching: Bool {
@@ -237,6 +246,7 @@ struct VerbBrowseView: View {
           .accessibilityIdentifier("verb_list_mode_picker")
         }
       }
+      .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { searchFieldContainerWidth = $0 }
       .sensoryFeedback(.selection, trigger: listMode)
       // Here rather than on the ScrollView, which is absent while My Verbs shows, so that
       // leaving My Verbs for the other order still re-sorts.
@@ -270,7 +280,7 @@ struct VerbBrowseView: View {
       .searchable(
         text: $search.text,
         placement: searchPlacement,
-        prompt: searchIncludesGlosses ? L.VerbBrowse.searchPromptInfinitiveOrMeaning : L.VerbBrowse.searchPromptInfinitive
+        prompt: searchPrompt
       )
       .searchFocused($searchIsFocused)
       .textInputAutocapitalization(.never)
